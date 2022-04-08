@@ -4,9 +4,13 @@ import router from "./router";
 import store from "./store";
 import "../node_modules/bootstrap/dist/css/bootstrap.css";
 
-import Amplify, * as AmplifyModules from "aws-amplify";
-import { AmplifyPlugin } from "aws-amplify-vue";
-import aws_exports from "./aws-exports";
-Amplify.configure(aws_exports);
+import Amplify from "aws-amplify";
+import awsconfig from "./aws-exports";
+import { applyPolyfills, defineCustomElements } from "@aws-amplify/ui-components/loader";
 
-createApp(App).use(store).use(router).use(AmplifyPlugin, AmplifyModules).mount("#app");
+applyPolyfills().then(() => {
+  defineCustomElements(window);
+});
+Amplify.configure(awsconfig);
+
+createApp(App).use(store).use(router).mount("#app");
