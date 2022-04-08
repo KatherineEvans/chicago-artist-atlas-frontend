@@ -1,0 +1,23 @@
+{
+    "dev": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-chicagoartistatlasfr-dev-153148-authRole",
+            "UnauthRoleArn": "arn:aws:iam::750364841929:role/amplify-chicagoartistatlasfr-dev-153148-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::750364841929:role/amplify-chicagoartistatlasfr-dev-153148-authRole",
+            "Region": "us-east-1",
+            "DeploymentBucketName": "amplify-chicagoartistatlasfr-dev-153148-deployment",
+            "UnauthRoleName": "amplify-chicagoartistatlasfr-dev-153148-unauthRole",
+            "StackName": "amplify-chicagoartistatlasfr-dev-153148",
+            "StackId": "arn:aws:cloudformation:us-east-1:750364841929:stack/amplify-chicagoartistatlasfr-dev-153148/eba7f970-b77a-11ec-a0de-0e8a04997629",
+            "AmplifyAppId": "d3753a0fx7e80w"
+        },
+        "categories": {
+            "hosting": {
+                "amplifyhosting": {
+                    "appId": "d3753a0fx7e80w",
+                    "type": "cicd"
+                }
+            }
+        }
+    }
+}
