@@ -1,5 +1,11 @@
 {
   "AppSyncApiName": "chicagoartistatlasfr",
   "DynamoDBBillingMode": "PAY_PER_REQUEST",
-  "DynamoDBEnableServerSideEncryption": false
+  "DynamoDBEnableServerSideEncryption": false,
+  "AuthCognitoUserPoolId": {
+    "Fn::GetAtt": [
+      "authchicagoartistatlasfr066a0443",
+      "Outputs.UserPoolId"
+    ]
+  }
 }
