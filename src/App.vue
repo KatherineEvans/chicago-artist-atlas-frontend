@@ -1,13 +1,17 @@
 <template>
-  <NavBar></NavBar>
+  <NavBar />
+  <BannerImage />
   <router-view />
 </template>
 
 <script>
 import NavBar from "./components/NavBar.vue";
+import BannerImage from "./components/BannerImage.vue";
+
 export default {
   components: {
     NavBar,
+    BannerImage,
   },
 };
 </script>
