@@ -1,8 +1,9 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
-import DirectoryView from "../views/DirectoryView.vue";
-import ResourceView from "../views/ResourceView.vue";
+import TheaterDirectory from "../views/TheaterDirectory.vue";
+import TheaterResources from "../views/TheaterResources.vue";
 import ContactView from "../views/ContactView.vue";
+import AuditionBoard from "../views/AuditionBoard.vue";
 
 const routes = [
   {
@@ -11,14 +12,19 @@ const routes = [
     component: HomeView,
   },
   {
-    path: "/directory",
+    path: "/theater-directory",
     name: "directory",
-    component: DirectoryView,
+    component: TheaterDirectory,
+  },
+  {
+    path: "/auditions",
+    name: "auditions",
+    component: AuditionBoard,
   },
   {
     path: "/resources",
     name: "resources",
-    component: ResourceView,
+    component: TheaterResources,
   },
   {
     path: "/contact",

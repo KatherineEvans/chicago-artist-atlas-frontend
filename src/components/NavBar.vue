@@ -15,20 +15,34 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item active">
-          <a class="nav-link" href="/">Home</a>
+          <a class="nav-link" :class="{ active: $route.name == 'home' }" href="/">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/directory">Directory</a>
+          <a class="nav-link" :class="{ active: $route.name == 'directory' }" href="/theater-directory">
+            Theater Directory
+          </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/resources">Resources</a>
+          <a class="nav-link" :class="{ active: $route.name == 'auditions' }" href="/auditions">Auditions</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/contact">Contact</a>
+          <a class="nav-link" :class="{ active: $route.name == 'contact' }" href="/contact">Contact</a>
         </li>
       </ul>
     </div>
   </nav>
 </template>
 
-<script></script>
+<script>
+export default {
+  data: function () {
+    return {};
+  },
+};
+</script>
+
+<style>
+.navbar-dark.bg-dark {
+  background-color: #0b0b35 !important;
+}
+</style>
