@@ -14,6 +14,7 @@ import "bootstrap-vue/dist/bootstrap-vue.css";
 applyPolyfills().then(() => {
   defineCustomElements(window);
 });
+
 Amplify.configure(awsconfig);
 
 createApp(App).use(store).use(router).mount("#app");

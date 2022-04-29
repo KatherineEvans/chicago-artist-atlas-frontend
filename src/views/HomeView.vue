@@ -10,20 +10,47 @@
       </p>
     </div>
     <div class="row my-4 mx-auto">
-      <div
-        v-for="link in activeLinks"
-        v-bind:key="link.name"
-        class="col p-2"
-        v-on:mouseover="active = link"
-        v-on:mouseleave="active = {}"
-      >
-        <div class="card mx-auto text-center" :class="{ ltblue: active.name === link.name }" style="width: 18rem">
-          <img :src="link.img" alt="" />
+      <div class="col p-2">
+        <div class="card mx-auto text-center" style="width: 18rem">
+          <img class="m-auto pb-2 pt-4" src="../assets/shore.png" alt="" />
           <div class="card-body">
             <p class="card-title">
-              <strong>{{ link.name }}</strong>
+              <strong>Theater Directory</strong>
             </p>
-            <p class="card-text">{{ link.description }}.</p>
+            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col p-2">
+        <div class="card mx-auto text-center" style="width: 18rem">
+          <img class="m-auto pb-2 pt-4" src="../assets/night.png" alt="" />
+          <div class="card-body">
+            <p class="card-title">
+              <strong>Directory</strong>
+            </p>
+            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col p-2">
+        <div class="card mx-auto text-center" style="width: 18rem">
+          <img class="m-auto pb-2 pt-4" src="../assets/park.png" alt="" />
+          <div class="card-body">
+            <p class="card-title">
+              <strong>Master Classes</strong>
+            </p>
+            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col p-2">
+        <div class="card mx-auto text-center" style="width: 18rem">
+          <img class="m-auto pb-2 pt-4" src="../assets/wheel.png" alt="" />
+          <div class="card-body">
+            <p class="card-title">
+              <strong>Contact</strong>
+            </p>
+            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
           </div>
         </div>
       </div>
@@ -35,7 +62,6 @@
 export default {
   data: function () {
     return {
-      active: {},
       lightBlueDiv: "light-blue-div",
       activeLinks: [
         {
@@ -67,8 +93,11 @@ export default {
   },
 };
 </script>
-<style>
+<style scoped>
 .ltblue {
   background-color: #e6f4f7 !important;
+}
+img {
+  max-width: 150px;
 }
 </style>
