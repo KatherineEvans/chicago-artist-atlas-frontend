@@ -26,7 +26,7 @@
           <img class="m-auto pb-2 pt-4" src="../assets/night.png" alt="" />
           <div class="card-body">
             <p class="card-title">
-              <strong>Directory</strong>
+              <strong>Auditions</strong>
             </p>
             <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
           </div>
