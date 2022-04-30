@@ -1,6 +1,6 @@
 <template>
   <div class="container-fluid" style="padding: 0px">
-    <img src="../assets/evening.svg" :alt="timeOfDay" />
+    <img src="../assets/morning.svg" :alt="timeOfDay" />
   </div>
 </template>
 <script>
