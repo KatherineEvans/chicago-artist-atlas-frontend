@@ -1,6 +1,6 @@
 <template>
   <div class="container-fluid" style="padding: 0px">
-    <img src="../assets/morning.svg" :alt="timeOfDay" />
+    <img :src="imageUrl" :alt="timeOfDay" />
   </div>
 </template>
 <script>
@@ -15,13 +15,10 @@ export default {
       let now = new Date();
       let hours = now.getHours();
       if (hours >= 6 && hours <= 14) {
-        console.log(hours, "morning");
         return "../assets/morning.svg";
       } else if (hours >= 15 && hours <= 18) {
-        console.log(hours, "afternoon");
         return "../assets/afternoon.svg";
       } else {
-        console.log(hours, "evening");
         return "../assets/evening.svg";
       }
     },
