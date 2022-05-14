@@ -170,4 +170,7 @@ a {
   text-decoration: none;
   color: #2c3e50;
 }
+.card {
+  max-width: 350px !important;
+}
 </style>
