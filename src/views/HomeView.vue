@@ -1,5 +1,5 @@
 <template>
-  <div class="home mx-auto">
+  <div class="home mx-auto text-center">
     <div class="row ltblue py-3 px-4">
       <div class="col-8 m-auto my-3">
         <p>

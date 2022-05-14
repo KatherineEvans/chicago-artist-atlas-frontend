@@ -79,7 +79,7 @@
         <div class="col-md-3 text-center">
           <ul class="list-unstyled mb-0">
             <li>
-              <i class="fas fa-map-marker-alt fa-2x"></i>
+              <i class="fas fa-map-marker-alt fa-2x" style="color: #0b0b35"></i>
               <p>Chicago, IL 60613, USA</p>
             </li>
 
@@ -89,7 +89,7 @@
             </li> -->
 
             <li>
-              <i class="fas fa-envelope mt-4 fa-2x"></i>
+              <i class="fas fa-envelope mt-4 fa-2x" style="color: #0b0b35"></i>
               <p>info@chiartistatlas.com</p>
             </li>
           </ul>
