@@ -20,7 +20,7 @@
         </div>
       </div>
 
-      <div class="row mx-5 my-5">
+      <div class="row m-5">
         <!--Grid column-->
         <div class="col-md-9 mb-md-0 mb-5">
           <form method="post" action="https://formspree.io/f/xpzbkjvn" id="contact-form" name="contact-form">
@@ -73,6 +73,15 @@
             <!--Grid row-->
           </form>
 
+          <div class="text-center text-md-left">
+            <a
+              style="background-color: #0b0b35; border-color: #0b0b35"
+              class="btn btn-primary"
+              onclick="document.getElementById('contact-form').submit();"
+            >
+              Send
+            </a>
+          </div>
           <div class="status"></div>
         </div>
         <!--Grid column-->
@@ -97,17 +106,6 @@
           </ul>
         </div>
         <!--Grid column-->
-        <div class="row mt-3 mx-5">
-          <div class="text-center text-md-left">
-            <a
-              style="background-color: #0b0b35; border-color: #0b0b35"
-              class="btn btn-primary"
-              onclick="document.getElementById('contact-form').submit();"
-            >
-              Send
-            </a>
-          </div>
-        </div>
       </div>
     </div>
     <!--Section: Contact v.2-->

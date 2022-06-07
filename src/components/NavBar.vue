@@ -48,4 +48,7 @@ export default {
 .navbar-dark.bg-dark {
   background-color: #0b0b35 !important;
 }
+.nav-item {
+  font-size: 14px !important;
+}
 </style>
