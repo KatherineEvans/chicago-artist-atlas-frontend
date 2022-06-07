@@ -1,8 +1,19 @@
 <template>
   <div class="container-fluid">
-    <h1 class="text-center my-3">{{ title }}</h1>
+    <div class="row ltblue py-3 px-4 text-center">
+      <div class="col-8 m-auto my-3">
+        <h2>
+          <strong>{{ title }}</strong>
+        </h2>
+        <p style="font-size: 16px">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam est erat, ultricies at pharetra vel, volutpat
+          ac urna.
+        </p>
+      </div>
+    </div>
+    <!-- <h1 class="text-center my-3">{{ title }}</h1> -->
     <div class="row my-4 mx-auto">
-      <div class="col-3 mx-auto">
+      <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-xs-12 mx-auto my-2">
         <div class="card text-left">
           <div class="card-body">
             <h5 class="card-title">Steppenwolf Theater</h5>
@@ -17,7 +28,7 @@
           </div>
         </div>
       </div>
-      <div class="col-7 m-auto">
+      <div class="col-xl-7 col-lg-7 col-md-7 col-sm-12 col-xs-12 mx-auto my-2">
         <div id="map" class="mx-auto"></div>
       </div>
     </div>
@@ -28,7 +39,7 @@
 export default {
   data: function () {
     return {
-      title: "Directory",
+      title: "Theater Directory",
     };
   },
   created: function () {

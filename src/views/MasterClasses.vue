@@ -1,6 +1,16 @@
 <template>
-  <div>
-    <h1 class="my-3 text-center">{{ message }}</h1>
+  <div class="container-fluid">
+    <div class="row ltblue py-3 px-4 text-center">
+      <div class="col-8 m-auto my-3">
+        <h2>
+          <strong>Classes</strong>
+        </h2>
+        <p style="font-size: 16px">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam est erat, ultricies at pharetra vel, volutpat
+          ac urna.
+        </p>
+      </div>
+    </div>
   </div>
 </template>
 

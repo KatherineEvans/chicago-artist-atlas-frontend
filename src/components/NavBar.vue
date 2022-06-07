@@ -26,9 +26,7 @@
           <a class="nav-link" :class="{ active: $route.name == 'auditions' }" href="/auditions">Auditions</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" :class="{ active: $route.name == 'master-classes' }" href="/master-classes">
-            Master Classes
-          </a>
+          <a class="nav-link" :class="{ active: $route.name == 'classes' }" href="/classes">Classes</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" :class="{ active: $route.name == 'contact' }" href="/contact">Contact</a>

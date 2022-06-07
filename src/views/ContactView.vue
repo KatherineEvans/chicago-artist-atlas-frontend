@@ -1,15 +1,26 @@
 <template>
   <div class="container-fluid">
-    <section class="m-4">
+    <div>
       <!--Section heading-->
-      <h2 class="h1-responsive font-weight-bold text-center my-4">Contact us</h2>
+      <!-- <h2 class="h1-responsive font-weight-bold text-center my-4">Contact us</h2> -->
       <!--Section description-->
-      <p class="text-center w-responsive mx-auto mb-5">
+      <!-- <p class="text-center w-responsive mx-auto mb-5">
         Do you have any questions? Please do not hesitate to contact us directly. Our team will come back to you within
         24-hours to help you.
-      </p>
+      </p> -->
+      <div class="row ltblue py-3 px-4 text-center">
+        <div class="col-8 m-auto my-3">
+          <h2>
+            <strong>Contact Us</strong>
+          </h2>
+          <p style="font-size: 16px">
+            Do you have any questions? Please do not hesitate to contact us directly. Our team will come back to you
+            within 24-hours to help you.
+          </p>
+        </div>
+      </div>
 
-      <div class="row">
+      <div class="row mx-5 my-5">
         <!--Grid column-->
         <div class="col-md-9 mb-md-0 mb-5">
           <form method="post" action="https://formspree.io/f/xpzbkjvn" id="contact-form" name="contact-form">
@@ -62,15 +73,6 @@
             <!--Grid row-->
           </form>
 
-          <div class="text-center text-md-left">
-            <a
-              style="background-color: #0b0b35; border-color: #0b0b35"
-              class="btn btn-primary"
-              onclick="document.getElementById('contact-form').submit();"
-            >
-              Send
-            </a>
-          </div>
           <div class="status"></div>
         </div>
         <!--Grid column-->
@@ -95,8 +97,19 @@
           </ul>
         </div>
         <!--Grid column-->
+        <div class="row mt-3 mx-5">
+          <div class="text-center text-md-left">
+            <a
+              style="background-color: #0b0b35; border-color: #0b0b35"
+              class="btn btn-primary"
+              onclick="document.getElementById('contact-form').submit();"
+            >
+              Send
+            </a>
+          </div>
+        </div>
       </div>
-    </section>
+    </div>
     <!--Section: Contact v.2-->
   </div>
 </template>

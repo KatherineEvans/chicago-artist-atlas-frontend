@@ -4,6 +4,7 @@ import TheaterDirectory from "../views/TheaterDirectory.vue";
 import TheaterResources from "../views/TheaterResources.vue";
 import ContactView from "../views/ContactView.vue";
 import AuditionBoard from "../views/AuditionBoard.vue";
+import Classes from "../views/MasterClasses.vue";
 
 const routes = [
   {
@@ -30,6 +31,11 @@ const routes = [
     path: "/contact",
     name: "contact",
     component: ContactView,
+  },
+  {
+    path: "/classes",
+    name: "classes",
+    component: Classes,
   },
 ];
 

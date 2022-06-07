@@ -22,6 +22,7 @@ export default {
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-size: 12px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   /* text-align: center; */
@@ -39,5 +40,8 @@ nav a {
 
 nav a.router-link-exact-active {
   color: #42b983;
+}
+.ltblue {
+  background-color: #e6f4f7 !important;
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <div class="footer p-3">
-    <div class="container">
+    <div class="container text-center">
       <small>©2022 Chicago Artist Atlas LLC, All rights reserved.</small>
     </div>
   </div>
