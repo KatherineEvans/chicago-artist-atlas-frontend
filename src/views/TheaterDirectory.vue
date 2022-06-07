@@ -18,7 +18,7 @@
           <div class="card-body">
             <h5 class="card-title">Steppenwolf Theater</h5>
             <p class="card-subtitle mb-2 text-muted">1650 N Halsted St, Chicago, IL 60614</p>
-            <p class="card-text" style="font-size: 12px">
+            <p class="card-text">
               Steppenwolf Theatre Company is a Chicago theatre company founded in 1974 by Terry Kinney, Jeff Perry, and
               Gary Sinise in the Unitarian church on Half Day Road in Deerfield, Illinois and is now located in
               Chicago's Lincoln Park neighborhood on Halsted Street.
