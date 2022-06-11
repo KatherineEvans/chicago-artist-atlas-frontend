@@ -5,6 +5,7 @@ import TheaterResources from "../views/TheaterResources.vue";
 import ContactView from "../views/ContactView.vue";
 import AuditionBoard from "../views/AuditionBoard.vue";
 import Classes from "../views/MasterClasses.vue";
+import Resources from "../views/ResourcesView.vue";
 
 const routes = [
   {
@@ -36,6 +37,11 @@ const routes = [
     path: "/classes",
     name: "classes",
     component: Classes,
+  },
+  {
+    path: "/resources",
+    name: "resources",
+    component: Resources,
   },
 ];
 

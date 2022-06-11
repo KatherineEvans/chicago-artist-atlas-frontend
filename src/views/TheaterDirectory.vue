@@ -6,8 +6,9 @@
           <strong>{{ title }}</strong>
         </h2>
         <p style="font-size: 16px">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam est erat, ultricies at pharetra vel, volutpat
-          ac urna.
+          ATLAS provides the most comprehensive directory of theatres, agencies, and classes in the city of Chicago. Use
+          this tool to explore the vast layout of the who, what, and where that makes up Chicago’s performing arts
+          scene.
         </p>
       </div>
     </div>

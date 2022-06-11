@@ -6,8 +6,8 @@
           <strong>Classes</strong>
         </h2>
         <p style="font-size: 16px">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam est erat, ultricies at pharetra vel, volutpat
-          ac urna.
+          ATLAS produces a wide array of classes for creatives, by creatives. ATLAS is here to help guide you on every
+          aspect of your journey from fitness to finance.
         </p>
       </div>
     </div>

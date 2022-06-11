@@ -26,11 +26,9 @@
                 <p style="font-size: 14px">Explore The Who, What, and Where for Chicagoland Artists.</p>
               </div>
             </div>
-            <p class="card-text">
-              ATLAS provides the most comprehensive directory of theatres, agencies, and classes in the city of Chicago.
-              Use this tool to explore the vast layout of the who, what, and where that makes up Chicago’s performing
-              arts scene.
-            </p>
+            <!-- <p class="card-text">
+              
+            </p> -->
           </div>
         </a>
       </div>
@@ -44,16 +42,14 @@
                 <p style="font-size: 14px">Navigate Auditions in the Chicago Area.</p>
               </div>
             </div>
-            <p class="card-text">
-              ATLAS strives to deliver accurate, timely, and transparent audition information for Chicago and the
-              greater Chicagoland area. Theatres and creative who would like to post an audition, please fill out the
-              form here!
-            </p>
+            <!-- <p class="card-text">
+              
+            </p> -->
           </div>
         </a>
       </div>
       <div class="mx-auto col-xl-4 col-lg-3 col-md-6 col-sm-12 col-xs-12 p-2">
-        <div class="h-100 card mx-auto text-center">
+        <a href="/auditions" class="h-100 card mx-auto text-center">
           <img class="m-auto pb-2 pt-4" src="../assets/wheel.png" alt="" />
           <div class="card-body">
             <div class="card-title">
@@ -62,12 +58,11 @@
                 <p style="font-size: 14px">Delve into ATLAS’s Exceptional Courses for Creatives!</p>
               </div>
             </div>
-            <p class="card-text">
-              ATLAS produces a wide array of classes for creatives, by creatives. ATLAS is here to help guide you on
-              every aspect of your journey from fitness to finance.
-            </p>
+            <!-- <p class="card-text">
+              
+            </p> -->
           </div>
-        </div>
+        </a>
       </div>
       <!-- <div class="mx-auto col-xl-4 col-lg-3 col-md-6 col-sm-12 col-xs-12 p-2">
         <a href="/contact" class="h-100 card mx-auto text-center">
@@ -95,7 +90,7 @@
         </div>
       </div>
       <div class="mx-auto col-xl-4 col-lg-3 col-md-6 col-sm-12 col-xs-12 p-2">
-        <div class="h-100 card mx-auto text-center">
+        <a href="/resources" class="h-100 card mx-auto text-center">
           <img class="m-auto pb-2 pt-4" src="../assets/bean.png" alt="" />
           <div class="card-body">
             <div class="card-title">
@@ -104,16 +99,16 @@
                 <p style="font-size: 14px">Specifically catered to Black, Indigenous, and People of Color</p>
               </div>
             </div>
-            <p class="card-text">
+            <!-- <p class="card-text">
               ATLAS fully recognizes the need to serve the BIPOC community to fit their specific needs, challenges and
               concerns. Here you’ll find resources to help you not only navigate through this industry, but thrive in it
               such as BIPOC headshot photographers, BIPOC led organizations, and helpful articles.
-            </p>
+            </p> -->
           </div>
-        </div>
+        </a>
       </div>
       <div class="mx-auto col-xl-4 col-lg-3 col-md-6 col-sm-12 col-xs-12 p-2">
-        <div class="h-100 card mx-auto text-center">
+        <a href="/resources" class="h-100 card mx-auto text-center">
           <img class="m-auto pb-2 pt-4" src="../assets/lion.png" alt="" />
           <div class="card-body">
             <div class="card-title">
@@ -124,16 +119,16 @@
                 </p>
               </div>
             </div>
-            <p class="card-text">
+            <!-- <p class="card-text">
               ATLAS fully recognizes the need to serve the LGBTQIA+ community to fit their specific needs, challenges
               and concerns. Here you’ll find resources to help you not only navigate through this industry, but thrive
               in it such as LGBTQIA+ headshot photographers, LGBTQIA+ led organizations and helpful articles.
-            </p>
+            </p> -->
           </div>
-        </div>
+        </a>
       </div>
       <div class="mx-auto col-xl-4 col-lg-3 col-md-6 col-sm-12 col-xs-12 p-2">
-        <div class="h-100 card mx-auto text-center">
+        <a href="/resources" class="h-100 card mx-auto text-center">
           <img class="m-auto pb-2 pt-4" src="../assets/park.png" alt="" />
           <div class="card-body">
             <div class="card-title">
@@ -142,12 +137,12 @@
                 <p style="font-size: 14px">Keep your theatre company in the know with these production resources.</p>
               </div>
             </div>
-            <p class="card-text">
+            <!-- <p class="card-text">
               From finding rehearsal spaces to creating brave spaces, ATLAS makes it easy for theatre companies to
               discover resources to create processes and productions that are streamlined and sustainable.
-            </p>
+            </p> -->
           </div>
-        </div>
+        </a>
       </div>
       <!-- <div class="mx-auto col-xl-4 col-lg-3 col-md-6 col-sm-12 col-xs-12 p-2">
         <div class="h-100 card mx-auto text-center">

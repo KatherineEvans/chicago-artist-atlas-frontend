@@ -7,7 +7,7 @@
         </h2>
         <p style="font-size: 16px">
           ATLAS strives to deliver accurate, timely, and transparent audition information for Chicago and the greater
-          Chicagoland area. [NEED ONE MORE SENTENCE]
+          Chicagoland area. Theatres and creative who would like to post an audition, please fill out the form here!
         </p>
       </div>
     </div>
