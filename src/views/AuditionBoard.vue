@@ -35,9 +35,9 @@
           <button class="aud-btn h-100 w-100 btn btn-primary">Search Open Auditions</button>
         </div>
       </div>
-      <div class="row my-2 py-2">
+      <div class="row my-2 py-2 no-gutters">
         <h4>Top Results</h4>
-        <div class="row my-2 py-2">
+        <div class="row my-2 py-2 pl-4">
           <div class="aud-card card d-flex pb-2">
             <div class="row mb-1">
               <div class="col">
