@@ -85,6 +85,27 @@
         <div class="row m-auto">
           <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-xs-12">
             <div class="card" style="position: relative">
+              <img class="card-img-top" src="../assets/classes/yoga2.png" alt="Card image cap" />
+              <div class="free-banner">
+                <i class="fa-solid fa-star mr-2"></i>
+                <strong>FREE</strong>
+                Anytime, Anywhere
+              </div>
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-3 pl-0">
+                    <img class="teacher-icon" src="../assets/classes/gretta.png" />
+                  </div>
+                  <div class="col-9 pl-0 pt-1">
+                    <h5 class="class-title">Workout to Disney's The Lion King</h5>
+                    <p>Gretta Teacherson</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-xs-12">
+            <div class="card" style="position: relative">
               <img class="card-img-top" src="../assets/classes/investing.png" alt="Card image cap" />
               <div class="free-banner">
                 <i class="fa-solid fa-star mr-2"></i>
@@ -120,27 +141,6 @@
                   <div class="col-9 pl-0 pt-1">
                     <h5 class="class-title">Credit Cards & Building Credit</h5>
                     <p>Jacob Mundell</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-xs-12">
-            <div class="card" style="position: relative">
-              <img class="card-img-top" src="../assets/classes/yoga2.png" alt="Card image cap" />
-              <div class="free-banner">
-                <i class="fa-solid fa-star mr-2"></i>
-                <strong>FREE</strong>
-                Anytime, Anywhere
-              </div>
-              <div class="card-body">
-                <div class="row">
-                  <div class="col-3 pl-0">
-                    <img class="teacher-icon" src="../assets/classes/gretta.png" />
-                  </div>
-                  <div class="col-9 pl-0 pt-1">
-                    <h5 class="class-title">Workout to Disney's The Lion King</h5>
-                    <p>Gretta Teacherson</p>
                   </div>
                 </div>
               </div>
