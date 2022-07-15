@@ -11,6 +11,144 @@
         </p>
       </div>
     </div>
+    <div class="row p-5 m-auto">
+      <div class="row pb-4 m-auto">
+        <h3 class="mb-3 pl-4">Upcoming Live Classes</h3>
+        <div class="row m-auto">
+          <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-xs-12">
+            <div class="card" style="position: relative">
+              <img class="card-img-top" src="../assets/classes/yoga.webp" alt="Card image cap" />
+              <div class="live-banner">
+                <i class="fa-regular fa-clock mr-2"></i>
+                <strong>TODAY</strong>
+                8:15am CST
+              </div>
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-3 pl-0">
+                    <img class="teacher-icon" src="../assets/classes/gretta.png" />
+                  </div>
+                  <div class="col-9 pl-0 pt-1">
+                    <h5 class="class-title">Workout to Disney's Hercules</h5>
+                    <p>Gretta Teacherson</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-xs-12">
+            <div class="card" style="position: relative">
+              <img class="card-img-top" src="../assets/classes/movement.webp" alt="Card image cap" />
+              <div class="live-banner">
+                <i class="fa-regular fa-clock mr-2"></i>
+                <strong>TODAY</strong>
+                3:15pm CST
+              </div>
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-3 pl-0">
+                    <img class="teacher-icon" src="../assets/classes/brad.png" />
+                  </div>
+                  <div class="col-9 pl-0 pt-1">
+                    <h5 class="class-title">Movement 101</h5>
+                    <p>Brad Teacher</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-xs-12">
+            <div class="card" style="position: relative">
+              <img class="card-img-top" src="../assets/classes/credit-cards.png" alt="Card image cap" />
+              <div class="live-banner">
+                <i class="fa-regular fa-clock mr-2"></i>
+                <strong>TODAY</strong>
+                7:00pm CST
+              </div>
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-3 pl-0">
+                    <img class="teacher-icon" src="../assets/classes/jacob.png" />
+                  </div>
+                  <div class="col-9 pl-0 pt-1">
+                    <h5 class="class-title">Tackling Taxes for the Actor</h5>
+                    <p>Jacob Mundell</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row pb-4 m-auto">
+        <h3 class="mb-3 pl-4">Browse All Classes</h3>
+        <div class="row m-auto">
+          <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-xs-12">
+            <div class="card" style="position: relative">
+              <img class="card-img-top" src="../assets/classes/investing.png" alt="Card image cap" />
+              <div class="free-banner">
+                <i class="fa-solid fa-star mr-2"></i>
+                <strong>FREE</strong>
+                Anytime, Anywhere
+              </div>
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-3 pl-0">
+                    <img class="teacher-icon" src="../assets/classes/jacob.png" />
+                  </div>
+                  <div class="col-9 pl-0 pt-1">
+                    <h5 class="class-title">Investing 101</h5>
+                    <p>Jacob Mundell</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-xs-12">
+            <div class="card" style="position: relative">
+              <img class="card-img-top" src="../assets/classes/taxes.png" alt="Card image cap" />
+              <div class="class-banner">
+                <i class="fa-solid fa-lock mr-2"></i>
+                <strong>SIGN UP</strong>
+                to access
+              </div>
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-3 pl-0">
+                    <img class="teacher-icon" src="../assets/classes/jacob.png" />
+                  </div>
+                  <div class="col-9 pl-0 pt-1">
+                    <h5 class="class-title">Credit Cards & Building Credit</h5>
+                    <p>Jacob Mundell</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-xs-12">
+            <div class="card" style="position: relative">
+              <img class="card-img-top" src="../assets/classes/yoga2.jpeg" alt="Card image cap" />
+              <div class="free-banner">
+                <i class="fa-solid fa-star mr-2"></i>
+                <strong>FREE</strong>
+                Anytime, Anywhere
+              </div>
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-3 pl-0">
+                    <img class="teacher-icon" src="../assets/classes/gretta.png" />
+                  </div>
+                  <div class="col-9 pl-0 pt-1">
+                    <h5 class="class-title">Workout to Disney's The Lion King</h5>
+                    <p>Gretta Teacherson</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -24,4 +162,51 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.live-banner {
+  position: absolute;
+  top: 10px;
+  left: 0px;
+
+  padding: 5px;
+  background-color: #a21414;
+  border: 2px solid #a21414;
+  color: white;
+  border-radius: 0 3% 3% 0;
+}
+.class-banner {
+  position: absolute;
+  top: 10px;
+  left: 0px;
+
+  padding: 5px;
+  background-color: #d0ba11;
+  border: 2px solid #d0ba11;
+  color: white;
+  border-radius: 0 3% 3% 0;
+}
+.free-banner {
+  position: absolute;
+  top: 10px;
+  left: 0px;
+
+  padding: 5px;
+  background-color: #087e1a;
+  border: 2px solid #087e1a;
+  color: white;
+  border-radius: 0 3% 3% 0;
+}
+.card-img-top {
+  border-radius: 2%;
+  height: 300px;
+  object-fit: cover;
+}
+.card {
+  border: none !important;
+}
+.teacher-icon {
+  border-radius: 50%;
+  height: 65px;
+  width: 65px;
+}
+</style>

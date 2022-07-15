@@ -21,9 +21,9 @@
           <img class="m-auto pb-2 pt-4" src="../assets/shore.png" alt="" />
           <div class="card-body">
             <div class="card-title">
-              <span style="font-weight: bolder">Theater Directory</span>
+              <h5>Theater Directory</h5>
               <div>
-                <p style="font-size: 14px">Explore The Who, What, and Where for Chicagoland Artists.</p>
+                <p style="font-size: 16px">Explore The Who, What, and Where for Chicagoland Artists.</p>
               </div>
             </div>
             <!-- <p class="card-text">
@@ -37,9 +37,9 @@
           <img class="m-auto pb-2 pt-4" src="../assets/night.png" alt="" />
           <div class="card-body">
             <div class="card-title">
-              <span style="font-weight: bolder">Auditions</span>
+              <h5>Auditions</h5>
               <div>
-                <p style="font-size: 14px">Navigate Auditions in the Chicago Area.</p>
+                <p style="font-size: 16px">Navigate Auditions in the Chicago Area.</p>
               </div>
             </div>
             <!-- <p class="card-text">
@@ -49,13 +49,13 @@
         </a>
       </div>
       <div class="mx-auto col-xl-4 col-lg-3 col-md-6 col-sm-12 col-xs-12 p-2">
-        <a href="/auditions" class="h-100 card mx-auto text-center">
+        <a href="/classes" class="h-100 card mx-auto text-center">
           <img class="m-auto pb-2 pt-4" src="../assets/wheel.png" alt="" />
           <div class="card-body">
             <div class="card-title">
-              <span style="font-weight: bolder">Classes</span>
+              <h5>Classes</h5>
               <div>
-                <p style="font-size: 14px">Delve into ATLAS’s Exceptional Courses for Creatives!</p>
+                <p style="font-size: 16px">Delve into ATLAS’s Exceptional Courses for Creatives!</p>
               </div>
             </div>
             <!-- <p class="card-text">
@@ -94,9 +94,9 @@
           <img class="m-auto pb-2 pt-4" src="../assets/bean.png" alt="" />
           <div class="card-body">
             <div class="card-title">
-              <span style="font-weight: bolder">BIPOC Resources</span>
+              <h5>BIPOC Resources</h5>
               <div>
-                <p style="font-size: 14px">Specifically catered to Black, Indigenous, and People of Color</p>
+                <p style="font-size: 16px">Specifically catered to Black, Indigenous, and People of Color</p>
               </div>
             </div>
             <!-- <p class="card-text">
@@ -112,9 +112,9 @@
           <img class="m-auto pb-2 pt-4" src="../assets/lion.png" alt="" />
           <div class="card-body">
             <div class="card-title">
-              <span style="font-weight: bolder">LGBTQIA+ Resources</span>
+              <h5>LGBTQIA+ Resources</h5>
               <div>
-                <p style="font-size: 14px">
+                <p style="font-size: 16px">
                   Specifically catered to Lesbian, Gay, Bi, Trans, Queer, Intersex and Asexual community
                 </p>
               </div>
@@ -132,9 +132,9 @@
           <img class="m-auto pb-2 pt-4" src="../assets/park.png" alt="" />
           <div class="card-body">
             <div class="card-title">
-              <span style="font-weight: bolder">Theater Resources</span>
+              <h5>Theater Resources</h5>
               <div>
-                <p style="font-size: 14px">Keep your theatre company in the know with these production resources.</p>
+                <p style="font-size: 16px">Keep your theatre company in the know with these production resources.</p>
               </div>
             </div>
             <!-- <p class="card-text">
