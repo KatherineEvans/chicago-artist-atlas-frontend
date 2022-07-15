@@ -162,7 +162,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .live-banner {
   position: absolute;
   top: 10px;
