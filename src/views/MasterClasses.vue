@@ -17,7 +17,7 @@
         <div class="row m-auto">
           <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-xs-12">
             <div class="card" style="position: relative">
-              <img class="card-img-top" src="../assets/classes/yoga.webp" alt="Card image cap" />
+              <img class="card-img-top" src="../assets/classes/yoga.png" alt="Card image cap" />
               <div class="live-banner">
                 <i class="fa-regular fa-clock mr-2"></i>
                 <strong>TODAY</strong>
@@ -38,7 +38,7 @@
           </div>
           <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-xs-12">
             <div class="card" style="position: relative">
-              <img class="card-img-top" src="../assets/classes/movement.webp" alt="Card image cap" />
+              <img class="card-img-top" src="../assets/classes/movement.png" alt="Card image cap" />
               <div class="live-banner">
                 <i class="fa-regular fa-clock mr-2"></i>
                 <strong>TODAY</strong>
@@ -127,7 +127,7 @@
           </div>
           <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-xs-12">
             <div class="card" style="position: relative">
-              <img class="card-img-top" src="../assets/classes/yoga2.jpeg" alt="Card image cap" />
+              <img class="card-img-top" src="../assets/classes/yoga2.png" alt="Card image cap" />
               <div class="free-banner">
                 <i class="fa-solid fa-star mr-2"></i>
                 <strong>FREE</strong>
