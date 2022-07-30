@@ -38,14 +38,14 @@
           <a class="nav-link" :class="{ active: $route.name == 'signup' }" href="/signup">Sign Up</a>
         </li>
         <li class="nav-item status-item">
-          <button
+          <a
             class="nav-link"
             data-bs-toggle="modal"
             data-bs-target="#staticBackdrop"
             :class="{ active: $route.name == 'login' }"
           >
             Login
-          </button>
+          </a>
         </li>
         <li class="nav-item status-item">
           <a class="nav-link" href="/logout">Logout</a>
