@@ -199,8 +199,8 @@ export default {
   left: 0px;
 
   padding: 5px;
-  background-color: #e74c3c;
-  border: 2px solid #e74c3c;
+  background-color: #27ae60;
+  border: 2px solid #27ae60;
   color: white;
   border-radius: 0 3% 3% 0;
 }
@@ -210,8 +210,8 @@ export default {
   left: 0px;
 
   padding: 5px;
-  background-color: #f1c40e;
-  border: 2px solid #f1c40e;
+  background-color: #9b59b6;
+  border: 2px solid #9b59b6;
   color: white;
   border-radius: 0 3% 3% 0;
 }
@@ -221,8 +221,8 @@ export default {
   left: 0px;
 
   padding: 5px;
-  background-color: #27ae60;
-  border: 2px solid #27ae60;
+  background-color: #2980b9;
+  border: 2px solid #2980b9;
   color: white;
   border-radius: 0 3% 3% 0;
 }
