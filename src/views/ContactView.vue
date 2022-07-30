@@ -75,7 +75,7 @@
 
           <div class="text-center text-md-left">
             <a
-              style="background-color: #0b0b35; border-color: #0b0b35"
+              style="background-color: #0b0b35; border-color: #0b0b35; color: white"
               class="btn btn-primary"
               onclick="document.getElementById('contact-form').submit();"
             >

@@ -6,6 +6,7 @@ import ContactView from "../views/ContactView.vue";
 import AuditionBoard from "../views/AuditionBoard.vue";
 import Classes from "../views/MasterClasses.vue";
 import Resources from "../views/ResourcesView.vue";
+import Signup from "../views/SignUp.vue";
 
 const routes = [
   {
@@ -42,6 +43,11 @@ const routes = [
     path: "/resources",
     name: "resources",
     component: Resources,
+  },
+  {
+    path: "/signup",
+    name: "signup",
+    component: Signup,
   },
 ];
 

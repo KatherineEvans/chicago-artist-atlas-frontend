@@ -13,7 +13,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <ul class="navbar-nav">
+      <ul class="navbar-nav w-100">
         <li class="nav-item active">
           <a class="nav-link" :class="{ active: $route.name == 'home' }" href="/">Home</a>
         </li>
@@ -34,6 +34,15 @@
         <li class="nav-item">
           <a class="nav-link" :class="{ active: $route.name == 'contact' }" href="/contact">Contact</a>
         </li>
+        <li class="nav-item status-item">
+          <a class="nav-link" :class="{ active: $route.name == 'signup' }" href="/signup">Sign Up</a>
+        </li>
+        <li class="nav-item status-item">
+          <a class="nav-link" :class="{ active: $route.name == 'login' }">Login</a>
+        </li>
+        <li class="nav-item status-item">
+          <a class="nav-link" href="/logout">Logout</a>
+        </li>
       </ul>
     </div>
   </nav>
@@ -53,5 +62,14 @@ export default {
 }
 .nav-item {
   font-size: 14px !important;
+}
+@media only screen and (min-width: 889px) {
+  .navbar-nav {
+    display: flex;
+    flex-direction: row;
+  }
+  .status-item {
+    justify-content: flex-end !important;
+  }
 }
 </style>
