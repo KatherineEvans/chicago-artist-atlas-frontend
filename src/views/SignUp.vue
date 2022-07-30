@@ -13,25 +13,25 @@
     <div class="row pb-5 px-5 m-auto">
       <form action="submit-signup">
         <div class="card mt-5 py-3 px-5">
-          <div class="row mb-3">
+          <div class="input-group row mb-3">
             <label class="form-label pl-0">First Name:</label>
-            <input type="text" />
+            <input type="text" class="form-control" />
           </div>
-          <div class="row mb-3">
+          <div class="input-group row mb-3">
             <label class="form-label pl-0">Last Name:</label>
-            <input type="text" />
+            <input type="text" class="form-control" />
           </div>
-          <div class="row mb-3">
+          <div class="input-group row mb-3">
             <label class="form-label pl-0">Email:</label>
-            <input type="email" />
+            <input type="email" class="form-control" />
           </div>
-          <div class="row mb-3">
+          <div class="input-group row mb-3">
             <label class="form-label pl-0">Password:</label>
-            <input type="password" />
+            <input type="password" class="form-control" />
           </div>
-          <div class="row mb-3">
+          <div class="input-group row mb-3">
             <label class="form-label pl-0">Password Confirmation:</label>
-            <input type="password" />
+            <input type="password" class="form-control" />
           </div>
           <button
             style="max-width: 150px; background-color: #0b0b35; border-color: #0b0b35; color: white"
@@ -74,5 +74,8 @@ img {
 .card {
   max-width: 400px;
   margin: auto;
+}
+.input-group > .form-control {
+  border-radius: 5 !important;
 }
 </style>

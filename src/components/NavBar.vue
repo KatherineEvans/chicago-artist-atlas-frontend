@@ -38,12 +38,42 @@
           <a class="nav-link" :class="{ active: $route.name == 'signup' }" href="/signup">Sign Up</a>
         </li>
         <li class="nav-item status-item">
-          <a class="nav-link" :class="{ active: $route.name == 'login' }">Login</a>
+          <button
+            class="nav-link"
+            data-bs-toggle="modal"
+            data-bs-target="#staticBackdrop"
+            :class="{ active: $route.name == 'login' }"
+          >
+            Login
+          </button>
         </li>
         <li class="nav-item status-item">
           <a class="nav-link" href="/logout">Logout</a>
         </li>
       </ul>
+    </div>
+    <div
+      class="modal fade"
+      id="staticBackdrop"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+      tabindex="-1"
+      aria-labelledby="staticBackdropLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">...</div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Understood</button>
+          </div>
+        </div>
+      </div>
     </div>
   </nav>
 </template>
