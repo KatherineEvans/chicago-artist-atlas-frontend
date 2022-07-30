@@ -26,11 +26,16 @@
               <div class="card-body">
                 <div class="row">
                   <div class="col-3 pl-0">
-                    <img class="teacher-icon" src="../assets/classes/gretta.png" />
+                    <div class="row no-gutters m-auto">
+                      <img class="teacher-icon p-0 m-auto" src="../assets/classes/gretta.png" />
+                    </div>
+                    <div class="row no-gutters text-center">
+                      <p><strong>Gretta Teacherson</strong></p>
+                    </div>
                   </div>
                   <div class="col-9 pl-0 pt-1">
                     <h5 class="class-title">Workout to Disney's Hercules</h5>
-                    <p>Gretta Teacherson</p>
+                    <p>I'm baby distillery taxidermy kombucha, neutra irony normcore.</p>
                   </div>
                 </div>
               </div>
@@ -47,11 +52,16 @@
               <div class="card-body">
                 <div class="row">
                   <div class="col-3 pl-0">
-                    <img class="teacher-icon" src="../assets/classes/brad.png" />
+                    <div class="row no-gutters m-auto">
+                      <img class="teacher-icon p-0 m-auto" src="../assets/classes/brad.png" />
+                    </div>
+                    <div class="row no-gutters text-center">
+                      <p><strong>Brad Teacher</strong></p>
+                    </div>
                   </div>
                   <div class="col-9 pl-0 pt-1">
                     <h5 class="class-title">Movement 101</h5>
-                    <p>Brad Teacher</p>
+                    <p>I'm baby distillery taxidermy kombucha, neutra irony normcore.</p>
                   </div>
                 </div>
               </div>
@@ -68,11 +78,16 @@
               <div class="card-body">
                 <div class="row">
                   <div class="col-3 pl-0">
-                    <img class="teacher-icon" src="../assets/classes/jacob.png" />
+                    <div class="row no-gutters m-auto">
+                      <img class="teacher-icon p-0 m-auto" src="../assets/classes/jacob.png" />
+                    </div>
+                    <div class="row no-gutters text-center">
+                      <p><strong>Jacob Mundell</strong></p>
+                    </div>
                   </div>
                   <div class="col-9 pl-0 pt-1">
                     <h5 class="class-title">Tackling Taxes for the Actor</h5>
-                    <p>Jacob Mundell</p>
+                    <p>I'm baby distillery taxidermy kombucha, neutra irony normcore.</p>
                   </div>
                 </div>
               </div>
@@ -89,16 +104,21 @@
               <div class="free-banner">
                 <i class="fa-solid fa-star mr-2"></i>
                 <strong>FREE</strong>
-                Anytime, Anywhere
+                Anytime
               </div>
               <div class="card-body">
                 <div class="row">
                   <div class="col-3 pl-0">
-                    <img class="teacher-icon" src="../assets/classes/gretta.png" />
+                    <div class="row no-gutters m-auto">
+                      <img class="teacher-icon p-0 m-auto" src="../assets/classes/gretta.png" />
+                    </div>
+                    <div class="row no-gutters text-center">
+                      <p><strong>Gretta Teacherson</strong></p>
+                    </div>
                   </div>
                   <div class="col-9 pl-0 pt-1">
                     <h5 class="class-title">Workout to Disney's The Lion King</h5>
-                    <p>Gretta Teacherson</p>
+                    <p>I'm baby distillery taxidermy kombucha, neutra irony normcore.</p>
                   </div>
                 </div>
               </div>
@@ -110,16 +130,21 @@
               <div class="free-banner">
                 <i class="fa-solid fa-star mr-2"></i>
                 <strong>FREE</strong>
-                Anytime, Anywhere
+                Anytime
               </div>
               <div class="card-body">
                 <div class="row">
                   <div class="col-3 pl-0">
-                    <img class="teacher-icon" src="../assets/classes/jacob.png" />
+                    <div class="row no-gutters m-auto">
+                      <img class="teacher-icon p-0 m-auto" src="../assets/classes/jacob.png" />
+                    </div>
+                    <div class="row no-gutters text-center">
+                      <p><strong>Jacob Mundell</strong></p>
+                    </div>
                   </div>
                   <div class="col-9 pl-0 pt-1">
                     <h5 class="class-title">Investing 101</h5>
-                    <p>Jacob Mundell</p>
+                    <p>I'm baby distillery taxidermy kombucha, neutra irony normcore.</p>
                   </div>
                 </div>
               </div>
@@ -136,11 +161,16 @@
               <div class="card-body">
                 <div class="row">
                   <div class="col-3 pl-0">
-                    <img class="teacher-icon" src="../assets/classes/jacob.png" />
+                    <div class="row no-gutters m-auto">
+                      <img class="teacher-icon p-0 m-auto" src="../assets/classes/jacob.png" />
+                    </div>
+                    <div class="row no-gutters text-center">
+                      <p><strong>Jacob Mundell</strong></p>
+                    </div>
                   </div>
                   <div class="col-9 pl-0 pt-1">
                     <h5 class="class-title">Credit Cards & Building Credit</h5>
-                    <p>Jacob Mundell</p>
+                    <p>I'm baby distillery taxidermy kombucha, neutra irony normcore.</p>
                   </div>
                 </div>
               </div>
@@ -169,8 +199,8 @@ export default {
   left: 0px;
 
   padding: 5px;
-  background-color: #a21414;
-  border: 2px solid #a21414;
+  background-color: #e74c3c;
+  border: 2px solid #e74c3c;
   color: white;
   border-radius: 0 3% 3% 0;
 }
@@ -180,8 +210,8 @@ export default {
   left: 0px;
 
   padding: 5px;
-  background-color: #d0ba11;
-  border: 2px solid #d0ba11;
+  background-color: #f1c40e;
+  border: 2px solid #f1c40e;
   color: white;
   border-radius: 0 3% 3% 0;
 }
@@ -191,8 +221,8 @@ export default {
   left: 0px;
 
   padding: 5px;
-  background-color: #087e1a;
-  border: 2px solid #087e1a;
+  background-color: #27ae60;
+  border: 2px solid #27ae60;
   color: white;
   border-radius: 0 3% 3% 0;
 }
