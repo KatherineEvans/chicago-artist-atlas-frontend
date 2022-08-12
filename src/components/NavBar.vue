@@ -34,45 +34,52 @@
         <li class="nav-item">
           <a class="nav-link" :class="{ active: $route.name == 'contact' }" href="/contact">Contact</a>
         </li>
-        <li class="nav-item status-item">
-          <a class="nav-link" :class="{ active: $route.name == 'signup' }" href="/signup">Sign Up</a>
-        </li>
-        <li class="nav-item status-item">
-          <a
-            class="nav-link"
-            data-bs-toggle="modal"
-            data-bs-target="#staticBackdrop"
-            :class="{ active: $route.name == 'login' }"
-          >
-            Login
-          </a>
-        </li>
-        <li class="nav-item status-item">
-          <a class="nav-link" href="/logout">Logout</a>
-        </li>
       </ul>
     </div>
-    <div
-      class="modal fade"
-      id="staticBackdrop"
-      data-bs-backdrop="static"
-      data-bs-keyboard="false"
-      tabindex="-1"
-      aria-labelledby="staticBackdropLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">...</div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Understood</button>
-          </div>
-        </div>
+
+    <div>
+      <button
+        class="btn btn-secondary dropdown-toggle"
+        type="button"
+        id="dropdownMenuButton"
+        data-toggle="dropdown"
+        aria-haspopup="true"
+        aria-expanded="false"
+        style="background-color: #0b0b35; border-color: #ffffff; border-width: 1px"
+      >
+        <i class="fa-solid fa-user" style="color: #ffffff"></i>
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="right: 5px">
+        <a
+          v-if="!isLoggedIn"
+          class="dropdown-item"
+          href="/signup?path=login"
+          data-bs-toggle="modal"
+          data-bs-target="#staticBackdrop"
+          :class="{ active: $route.name == 'signup' }"
+        >
+          Login
+        </a>
+        <a
+          v-if="!isLoggedIn"
+          class="dropdown-item"
+          href="/signup"
+          data-bs-toggle="modal"
+          data-bs-target="#staticBackdrop"
+          :class="{ active: $route.name == 'signup' }"
+        >
+          Signup
+        </a>
+        <a
+          v-if="isLoggedIn"
+          class="dropdown-item"
+          href="/logout"
+          data-bs-toggle="modal"
+          data-bs-target="#staticBackdrop"
+          :class="{ active: $route.name == 'signup' }"
+        >
+          Logout
+        </a>
       </div>
     </div>
   </nav>
@@ -80,8 +87,14 @@
 
 <script>
 export default {
+  props: ["isLoggedIn"],
   data: function () {
     return {};
+  },
+  watch: {
+    isLoggedIn: function () {
+      consoel.log(this.isLoggedIn);
+    },
   },
 };
 </script>
@@ -100,6 +113,36 @@ export default {
   }
   .status-item {
     justify-content: flex-end !important;
+  }
+}
+
+@media (min-width: 576px) {
+  .dropdown-menu {
+    left: 60%;
+  }
+}
+
+@media (min-width: 768px) {
+  .dropdown-menu {
+    left: 70%;
+  }
+}
+
+@media (min-width: 992px) {
+  .dropdown-menu {
+    left: 88%;
+  }
+}
+
+@media (min-width: 1200px) {
+  .dropdown-menu {
+    left: 85%;
+  }
+}
+
+@media (min-width: 1400px) {
+  .dropdown-menu {
+    left: 90%;
   }
 }
 </style>

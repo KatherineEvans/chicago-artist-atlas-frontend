@@ -1,7 +1,44 @@
 <template>
-  <NavBar />
+  <NavBar :isLoggedIn="isLoggedIn" />
   <BannerImage />
-  <router-view />
+  <router-view v-if="isLoggedIn" />
+  <div v-else class="container-fluid home mx-auto text-center">
+    <div class="row ltblue py-3 px-4">
+      <div class="col-8 m-auto my-3">
+        <h2>
+          <strong>Chicago Artist Atlas Closed Beta</strong>
+        </h2>
+        <p style="font-size: 16px">
+          We combine vital information in an easily navigated, one-stop-shop with original content from experts in our
+          community to guide you on your journey.
+        </p>
+      </div>
+    </div>
+    <div class="row pb-5 px-5 m-auto">
+      <form v-on:submit.prevent="login()">
+        <div class="card mt-5 py-3 px-5">
+          <h1>Login</h1>
+          <ul>
+            <li v-for="error in errors" v-bind:key="error">{{ error }}</li>
+          </ul>
+          <div class="input-group row mb-3">
+            <label>Email:</label>
+            <input class="form-control" type="email" v-model="newSessionParams.email" />
+          </div>
+          <div class="input-group row mb-3">
+            <label>Password:</label>
+            <input class="form-control" type="password" v-model="newSessionParams.password" />
+          </div>
+          <input
+            style="max-width: 150px; background-color: #0b0b35; border-color: #0b0b35; color: white"
+            class="btn btn-primary my-4 mx-auto"
+            type="submit"
+            value="Login"
+          />
+        </div>
+      </form>
+    </div>
+  </div>
   <FooterBar />
 </template>
 
@@ -9,12 +46,45 @@
 import NavBar from "./components/NavBar.vue";
 import BannerImage from "./components/BannerImage.vue";
 import FooterBar from "./components/FooterBar.vue";
+import axios from "axios";
 
 export default {
   components: {
     NavBar,
     BannerImage,
     FooterBar,
+  },
+  data: function () {
+    return {
+      isLoggedIn: false,
+      newSessionParams: {},
+      errors: [],
+    };
+  },
+  created: function () {
+    this.isLoggedIn = !!localStorage.jwt;
+  },
+  watch: {
+    $route: function () {
+      this.isLoggedIn = !!localStorage.jwt;
+    },
+  },
+  methods: {
+    login: function () {
+      axios
+        .post("/sessions", this.newSessionParams)
+        .then((response) => {
+          axios.defaults.headers.common["Authorization"] = "Bearer " + response.data.jwt;
+          localStorage.setItem("jwt", response.data.jwt);
+          this.$router.go();
+        })
+        .catch((error) => {
+          console.log(error.response);
+          this.errors = ["Invalid email or password."];
+          this.email = "";
+          this.password = "";
+        });
+    },
   },
 };
 </script>

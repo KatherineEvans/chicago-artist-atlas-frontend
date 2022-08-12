@@ -7,6 +7,7 @@ import AuditionBoard from "../views/AuditionBoard.vue";
 import Classes from "../views/MasterClasses.vue";
 import Resources from "../views/ResourcesView.vue";
 import Signup from "../views/SignUp.vue";
+import LogOut from "../views/LogOut.vue";
 
 const routes = [
   {
@@ -48,6 +49,11 @@ const routes = [
     path: "/signup",
     name: "signup",
     component: Signup,
+  },
+  {
+    path: "/logout",
+    name: "logout",
+    component: LogOut,
   },
 ];
 
