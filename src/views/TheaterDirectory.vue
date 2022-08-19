@@ -65,7 +65,6 @@ export default {
             return;
           }
           const feature = response.body.features[0];
-
           const map = new mapboxgl.Map({
             container: "map",
             style: "mapbox://styles/mapbox/streets-v11",
