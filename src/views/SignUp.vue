@@ -157,7 +157,13 @@ export default {
   methods: {
     createUser: function () {
       axios
-        .post("/users", this.userParams)
+        .post("/users", this.userParams, {
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          crossDomain: true,
+        })
         .then((response) => {
           console.log(response.data);
           this.$router.push("/signup?path=login");
@@ -168,7 +174,13 @@ export default {
     },
     login: function () {
       axios
-        .post("/sessions", this.newSessionParams)
+        .post("/sessions", this.newSessionParams, {
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          crossDomain: true,
+        })
         .then((response) => {
           axios.defaults.headers.common["Authorization"] = "Bearer " + response.data.jwt;
           localStorage.setItem("jwt", response.data.jwt);
