@@ -14,7 +14,7 @@
       <div class="card mt-5">
         <div class="row">
           <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 p-0">
-            <img class="lf-img" src="../assets/more-equality.jpg" />
+            <img class="lf-img" src="../assets/bipoc.png" />
           </div>
           <div class="p-3 col-xs-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
             <h5>BIPOC Resources</h5>
@@ -39,14 +39,14 @@
             </p>
           </div>
           <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 p-0">
-            <img class="rt-img" src="../assets/heart-hands.jpg" />
+            <img class="rt-img" src="../assets/lgbtqa.png" />
           </div>
         </div>
       </div>
       <div class="card mt-5">
         <div class="row">
           <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 p-0">
-            <img class="lf-img" src="../assets/women.jpg" />
+            <img class="lf-img" src="../assets/women.png" />
           </div>
           <div class="p-3 col-xs-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
             <h5>Women's Resources</h5>
@@ -69,7 +69,7 @@
             </p>
           </div>
           <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 p-0">
-            <img class="rt-img" src="../assets/audiance.jpg" />
+            <img class="rt-img" src="../assets/theater.png" />
           </div>
         </div>
       </div>
@@ -81,8 +81,6 @@
 
 <style scoped>
 img {
-  -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
-  filter: grayscale(100%);
   max-height: 250px;
   width: 100%;
   object-fit: cover;
