@@ -85,7 +85,13 @@ img {
   width: 100%;
   object-fit: cover;
 }
-.lf-img {
+.card {
+  border: none;
+}
+img {
+  border-radius: 5px;
+}
+/* .lf-img {
   border-radius: 5px 0px 0px 5px;
 }
 
@@ -94,5 +100,5 @@ img {
 }
 .top-img {
   border-radius: 5px 5px 0px 0px;
-}
+} */
 </style>

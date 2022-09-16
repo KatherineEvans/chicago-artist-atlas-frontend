@@ -17,7 +17,7 @@
         <h1 class="mb-3">Directories & Resources</h1>
       </div>
       <div class="mx-auto col-xl-4 col-lg-3 col-md-6 col-sm-12 col-xs-12 p-2">
-        <a href="/theater-directory" class="h-100 card mx-auto text-center">
+        <a href="/theater-directory" class="shadow4 h-100 card mx-auto text-center">
           <img class="m-auto pb-2 pt-4" src="../assets/shore.png" alt="" />
           <div class="card-body">
             <div class="card-title">
@@ -33,7 +33,7 @@
         </a>
       </div>
       <div class="mx-auto col-xl-4 col-lg-3 col-md-6 col-sm-12 col-xs-12 p-2">
-        <a href="/auditions" class="h-100 card mx-auto text-center">
+        <a href="/auditions" class="h-100 card mx-auto text-center shadow2">
           <img class="m-auto pb-2 pt-4" src="../assets/night.png" alt="" />
           <div class="card-body">
             <div class="card-title">
@@ -49,7 +49,7 @@
         </a>
       </div>
       <div class="mx-auto col-xl-4 col-lg-3 col-md-6 col-sm-12 col-xs-12 p-2">
-        <a href="/classes" class="h-100 card mx-auto text-center">
+        <a href="/classes" class="shadow3 h-100 card mx-auto text-center">
           <img class="m-auto pb-2 pt-4" src="../assets/wheel.png" alt="" />
           <div class="card-body">
             <div class="card-title">
@@ -77,7 +77,7 @@
       </div> -->
     </div>
     <!-- COMING SOON -->
-    <div class="row my-3 py-3 mx-auto gr-bk">
+    <div class="row my-3 pt-3 pb-4 mx-auto gr-bk mb-0">
       <h3 class="py-3">Coming Soon</h3>
       <h5>FREE RESOURCES!</h5>
       <div class="row">
@@ -219,5 +219,17 @@ a:hover {
 }
 .card-text {
   text-align: left;
+}
+.shadow4 {
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+.shadow2 {
+  /* box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px; */
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.shadow3 {
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
+    rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+  border: none;
 }
 </style>

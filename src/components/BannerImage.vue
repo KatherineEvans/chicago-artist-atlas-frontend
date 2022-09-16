@@ -1,5 +1,6 @@
 <template>
   <div class="container-fluid" style="padding: 0px">
+    <img class="overlay" src="../assets/logo-text.png" />
     <img src="../assets/morning.svg" :alt="timeOfDay" />
   </div>
 </template>
@@ -26,3 +27,24 @@ export default {
   methods: {},
 };
 </script>
+<style>
+img {
+  width: 100%;
+  position: relative;
+}
+
+.overlay {
+  position: absolute;
+  top: 80px;
+  right: 50px;
+  max-height: 200px;
+  max-width: 275px;
+  width: 100%;
+  z-index: 100;
+}
+@media only screen and (max-width: 800px) {
+  .overlay {
+    display: none !important;
+  }
+}
+</style>
