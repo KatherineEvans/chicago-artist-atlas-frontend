@@ -2,7 +2,7 @@
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="#">Chicago Artist Atlas</a>
     <button
-      class="navbar-toggler"
+      class="navbar-toggler ml-auto mr-3"
       type="button"
       data-toggle="collapse"
       data-target="#navbarNavDropdown"
@@ -45,9 +45,9 @@
         data-toggle="dropdown"
         aria-haspopup="true"
         aria-expanded="false"
-        style="background-color: #0b0b35; border-color: #ffffff; border-width: 1px"
+        style="background-color: #0b0b35; border-color: rgba(255, 255, 255, 0.1); border-width: 1px"
       >
-        <i class="fa-solid fa-user" style="color: #ffffff"></i>
+        <i class="fa-solid fa-user" style="opacity: 0.75; color: #ffffff; font-size: 0.75rem"></i>
       </button>
       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="right: 5px">
         <a

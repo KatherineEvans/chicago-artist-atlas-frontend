@@ -37,16 +37,26 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   data: function () {
     return {
       title: "Theater Directory",
+      theaters: [],
     };
   },
   created: function () {
+    this.getTheaters();
     this.setMap();
   },
   methods: {
+    getTheaters() {
+      axios.get("/theaters").then((response) => {
+        console.log(response);
+        this.theaters = response.data;
+      });
+    },
     setMap() {
       console.log(process.env.VUE_APP_MAP_KEY);
       mapboxgl.accessToken = process.env.VUE_APP_MAP_KEY;
