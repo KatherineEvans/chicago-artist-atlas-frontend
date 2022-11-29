@@ -1,5 +1,4 @@
 <script>
-import { ConsoleLogger } from "@aws-amplify/core";
 import axios from "axios";
 
 export default {

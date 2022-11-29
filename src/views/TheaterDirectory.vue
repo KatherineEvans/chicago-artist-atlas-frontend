@@ -61,6 +61,13 @@ export default {
       console.log(process.env.VUE_APP_MAP_KEY);
       mapboxgl.accessToken = process.env.VUE_APP_MAP_KEY;
       const mapboxClient = mapboxSdk({ accessToken: mapboxgl.accessToken });
+      axios
+        .get(
+          "https://api.mapbox.com/geocoding/v5/mapbox.places-permanent/{1650 N Halsted St, Chicago, IL 60614};{1750 N Halsted St, Chicago, IL 60614}.json"
+        )
+        .then((response) => {
+          console.log(response, "HELLO");
+        });
       mapboxClient.geocoding
         .forwardGeocode({
           query: "1650 N Halsted St, Chicago, IL 60614",

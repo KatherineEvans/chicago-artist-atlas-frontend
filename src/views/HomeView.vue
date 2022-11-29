@@ -97,8 +97,9 @@
           <p style="font-size: 16px">
             Here at Atlas, we're focused on providing our users with the latest resources on topics that matter -
             inclusivity, diversity, sustainability, and the business of theater! We strive to continually improve and
-            grow our resporce respository to best serve the Chicago theater community.
+            grow our resource respository to best serve the Chicago theater community.
           </p>
+          <a style="text-decoration: underline" href="/resources">View all resources</a>
         </div>
       </div>
       <div class="mx-auto col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12 p-2">
