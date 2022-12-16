@@ -93,7 +93,7 @@ export default {
   },
   watch: {
     isLoggedIn: function () {
-      consoel.log(this.isLoggedIn);
+      console.log(this.isLoggedIn);
     },
   },
 };
