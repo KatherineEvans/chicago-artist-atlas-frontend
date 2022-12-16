@@ -15,22 +15,33 @@
     <!-- <h1 class="text-center my-3">{{ title }}</h1> -->
     <div class="row my-4 mx-auto">
       <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-xs-12 mx-auto my-2">
-        <div class="card text-left">
+        <div v-for="theater in theaters" v-bind:key="theater.id" class="card text-left mb-3">
           <div class="card-body">
-            <h5 class="card-title">Steppenwolf Theater</h5>
-            <p class="card-subtitle mb-2 text-muted">1650 N Halsted St, Chicago, IL 60614</p>
+            <div class="mb-2">
+              <h5 class="card-title d-inline">{{ theater.name }}</h5>
+              <a target="_blank" :href="'http://' + theater.website" class="hover-text float-right card-link">
+                <i class="fa-solid fa-square-up-right"></i>
+                <span class="tooltip-text" id="top">Visit Site</span>
+              </a>
+            </div>
+            <p class="card-subtitle mb-2 text-muted">{{ theater.address.full_address }}</p>
             <p class="card-text">
-              Steppenwolf Theatre Company is a Chicago theatre company founded in 1974 by Terry Kinney, Jeff Perry, and
-              Gary Sinise in the Unitarian church on Half Day Road in Deerfield, Illinois and is now located in
-              Chicago's Lincoln Park neighborhood on Halsted Street.
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. In porttitor blandit urna eu cursus. Sed urna
+              sem, aliquam ut elit convallis, ornare congue sem.
             </p>
-            <a href="https://www.steppenwolf.org/" class="card-link">Visit Site</a>
-            <!-- <a href="#" class="card-link">Another link</a> -->
           </div>
         </div>
       </div>
       <div class="col-xl-7 col-lg-7 col-md-7 col-sm-12 col-xs-12 mx-auto my-2">
-        <div id="map" class="mx-auto"></div>
+        <div id="map" class="mx-auto mb-4"></div>
+        <div class="mx-auto theater-highlight">
+          <div class="card">
+            <div class="card-body">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. In porttitor blandit urna eu cursus. Sed urna
+              sem, aliquam ut elit convallis, ornare congue sem.
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -48,50 +59,46 @@ export default {
   },
   created: function () {
     this.getTheaters();
-    this.setMap();
   },
   methods: {
     getTheaters() {
       axios.get("/theaters").then((response) => {
-        console.log(response);
         this.theaters = response.data;
+        let address_array = this.theaters.map((theater) => {
+          return theater?.address?.full_address;
+        });
+        let addresses = address_array.join(";");
+        axios
+          .get(
+            `https://api.mapbox.com/geocoding/v5/mapbox.places-permanent/${addresses}.json?access_token=${process.env.VUE_APP_MAP_KEY}&limit=1`
+          )
+          .then((response) => {
+            let centerArray = response.data.map((address) => {
+              return address.features[0].center;
+            });
+            console.log(centerArray);
+            this.setMap(centerArray);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
       });
     },
-    setMap() {
-      console.log(process.env.VUE_APP_MAP_KEY);
+    setMap(data) {
       mapboxgl.accessToken = process.env.VUE_APP_MAP_KEY;
-      const mapboxClient = mapboxSdk({ accessToken: mapboxgl.accessToken });
-      axios
-        .get(
-          "https://api.mapbox.com/geocoding/v5/mapbox.places-permanent/{1650 N Halsted St, Chicago, IL 60614};{1750 N Halsted St, Chicago, IL 60614}.json"
-        )
-        .then((response) => {
-          console.log(response, "HELLO");
-        });
-      mapboxClient.geocoding
-        .forwardGeocode({
-          query: "1650 N Halsted St, Chicago, IL 60614",
-          autocomplete: false,
-          limit: 1,
-        })
-        .send()
-        .then((response) => {
-          if (!response || !response.body || !response.body.features || !response.body.features.length) {
-            console.error("Invalid response:");
-            console.error(response);
-            return;
-          }
-          const feature = response.body.features[0];
-          const map = new mapboxgl.Map({
-            container: "map",
-            style: "mapbox://styles/mapbox/streets-v11",
-            center: feature.center,
-            zoom: 13,
-          });
+      const map = new mapboxgl.Map({
+        container: "map",
+        style: "mapbox://styles/mapbox/streets-v11",
+        center: data[0],
+        zoom: 10,
+      });
 
-          // Create a marker and add it to the map.
-          new mapboxgl.Marker().setLngLat(feature.center).addTo(map);
-        });
+      // Create a marker and add it to the map.
+      data.forEach((place) => {
+        console.log(place);
+        let marker = new mapboxgl.Marker().setLngLat([place[0], place[1]]).addTo(map);
+        console.log(marker);
+      });
     },
   },
 };
@@ -100,6 +107,55 @@ export default {
 <style scoped>
 #map {
   max-width: 600px;
-  height: 600px;
+  height: 500px;
+}
+.theater-highlight {
+  max-width: 600px;
+}
+.card-link {
+  font-size: 18px;
+  color: #0b0b35;
+}
+.tooltip-text {
+  visibility: hidden;
+  position: absolute;
+  z-index: 1;
+  width: 100px;
+  color: white;
+  font-size: 14px;
+  background-color: #192733;
+  border-radius: 10px;
+  padding: 10px 15px 10px 15px;
+}
+
+.hover-text:hover .tooltip-text {
+  visibility: visible;
+}
+
+#top {
+  top: -40px;
+  left: -50%;
+}
+
+#bottom {
+  top: 25px;
+  left: -50%;
+}
+
+#left {
+  top: -8px;
+  right: 120%;
+}
+
+#right {
+  top: -8px;
+  left: 120%;
+}
+
+.hover-text {
+  position: relative;
+  display: inline-block;
+  font-family: Avenir;
+  text-align: center;
 }
 </style>
