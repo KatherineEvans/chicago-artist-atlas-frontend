@@ -10,6 +10,10 @@
           inclusivity, diversity, sustainability, and the business of theater! We strive to continually improve and grow
           our resource respository to best serve the Chicago theater community.
         </p>
+        <p style="font-size: 16px">
+          Are there resources you don't see here?
+          <a href="mailto:info@chiartistatlas.com?subject=Inclusivity Resources">Let us know!</a>
+        </p>
       </div>
     </div>
     <div class="container pb-5 px-5 m-auto">
@@ -18,15 +22,13 @@
           <h5 class="resource-title">Top Inclusivity Resources</h5>
           <div class="resource-container">
             <div class="img-desc">
-              <img class="lf-img" src="../assets/inclusivity.png" />
-              <div class="resource-desc">
-                <p>
+              <img class="lf-img mx-auto mb-3" src="../assets/inclusivity.png" />
+              <div class="resource-desc mb-3">
+                <p class="px-2">
                   Here at Atlas, an inclusive community is paramount to our mission. We know that inclusive theater is
                   great theater! No matter how you identify, Atlias is here to offer support and help you navigate this
-                  industry. We strive to offer resources to fit your specific needs, challenges and concerns. Are there
-                  resources you don't see here?
+                  industry. We strive to offer resources to fit your specific needs, challenges and concerns.
                 </p>
-                <a href="mailto:info@chiartistatlas.com?subject=Inclusivity Resources">Let us know!</a>
               </div>
             </div>
             <div class="resource-cards">
@@ -54,6 +56,7 @@
                   ullamcorper sapien.
                 </p>
               </div>
+              <button class="btn btn-primary float-right px-4">View All</button>
             </div>
           </div>
         </div>
@@ -62,6 +65,16 @@
         <div class="mt-5">
           <h5 class="resource-title">Top Eco & Sustainability Resources</h5>
           <div class="resource-container">
+            <div class="img-desc">
+              <img class="lf-img mx-auto mb-3" src="../assets/eco_sustainability.png" />
+              <div class="resource-desc mb-3">
+                <p class="px-2">
+                  Want to adopt more environmentally friendly theatre practices? Atlas is here to help! As we slip
+                  further into climate crisis, more and more theaters are making efforts to have smaller carbon
+                  footprints. See how your theater or production company can join in the efforts!
+                </p>
+              </div>
+            </div>
             <div class="resource-cards">
               <div class="card resource-card">
                 <h6>Resource Name</h6>
@@ -87,16 +100,7 @@
                   ullamcorper sapien.
                 </p>
               </div>
-            </div>
-            <div class="img-desc">
-              <img class="lf-img" src="../assets/eco_sustainability.png" />
-              <div class="resource-desc">
-                <p>
-                  Want to adopt more environmentally friendly theatre practices? Atlas is here to help! As we slip
-                  further into climate crisis, more and more theaters are making efforts to have smaller carbon
-                  footprints. See how your theater or production company can join in the efforts!
-                </p>
-              </div>
+              <button class="btn btn-primary float-right px-4">View All</button>
             </div>
           </div>
         </div>
@@ -106,9 +110,9 @@
           <h5 class="resource-title">Top Theater Resources</h5>
           <div class="resource-container">
             <div class="img-desc">
-              <img class="lf-img" src="../assets/theater.png" />
-              <div class="resource-desc">
-                <p>
+              <img class="lf-img mx-auto mb-3" src="../assets/theater.png" />
+              <div class="resource-desc mb-3">
+                <p class="px-2">
                   From finding rehearsal spaces to creating brave spaces, ATLAS makes it easy for theatre companies to
                   discover resources to create processes and productions that are streamlined and sustainable.
                 </p>
@@ -139,6 +143,7 @@
                   ullamcorper sapien.
                 </p>
               </div>
+              <button class="btn btn-primary float-right px-4">View All</button>
             </div>
           </div>
         </div>
@@ -199,6 +204,14 @@ img {
 }
 img {
   border-radius: 5px;
+}
+.btn-primary {
+  background-color: #157b9e;
+  border-color: #157b9e;
+}
+.btn-primary:hover {
+  background-color: #0b0b35;
+  border-color: #0b0b35;
 }
 /* .lf-img {
   border-radius: 5px 0px 0px 5px;
