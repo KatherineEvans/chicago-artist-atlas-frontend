@@ -24,7 +24,7 @@
             <div class="img-desc">
               <img class="lf-img mx-auto mb-3" src="../assets/inclusivity.png" />
               <div class="resource-desc mb-3">
-                <p class="px-2">
+                <p class="px-2 desc">
                   Here at Atlas, an inclusive community is paramount to our mission. We know that inclusive theater is
                   great theater! No matter how you identify, Atlias is here to offer support and help you navigate this
                   industry. We strive to offer resources to fit your specific needs, challenges and concerns.
@@ -33,30 +33,44 @@
             </div>
             <div class="resource-cards">
               <div class="card resource-card">
-                <h6>Resource Name</h6>
+                <div>
+                  <h6 class="d-inline">Resource Name</h6>
+                  <span class="float-right badge badge-pill mb-2 badge-primary">LGBTQIA+</span>
+                </div>
                 <p>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis at molestie ligula. Etiam id odio
                   scelerisque, euismod ante lacinia, commodo erat. Aliquam varius nec felis sed suscipit. Maecenas id
                   ullamcorper sapien.
                 </p>
+                <a href="#" class="text-right">Visit Resource</a>
               </div>
               <div class="card resource-card">
-                <h6>Resource Name</h6>
+                <div>
+                  <h6 class="d-inline">Resource Name</h6>
+                  <span class="float-right badge badge-pill mb-2 badge-info">BIPOC</span>
+                </div>
                 <p>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis at molestie ligula. Etiam id odio
                   scelerisque, euismod ante lacinia, commodo erat. Aliquam varius nec felis sed suscipit. Maecenas id
                   ullamcorper sapien.
                 </p>
+                <a href="#" class="text-right">Visit Resource</a>
               </div>
               <div class="card resource-card">
-                <h6>Resource Name</h6>
+                <div>
+                  <h6 class="d-inline">Resource Name</h6>
+                  <span class="float-right badge badge-pill mb-2 badge-success">ADA</span>
+                </div>
                 <p>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis at molestie ligula. Etiam id odio
                   scelerisque, euismod ante lacinia, commodo erat. Aliquam varius nec felis sed suscipit. Maecenas id
                   ullamcorper sapien.
                 </p>
+                <a href="#" class="text-right">Visit Resource</a>
               </div>
-              <button class="btn btn-primary float-right px-4">View All</button>
+              <button class="btn btn-primary float-right px-4">
+                <strong>View All Inclusivity Resources</strong>
+              </button>
             </div>
           </div>
         </div>
@@ -68,7 +82,7 @@
             <div class="img-desc">
               <img class="lf-img mx-auto mb-3" src="../assets/eco_sustainability.png" />
               <div class="resource-desc mb-3">
-                <p class="px-2">
+                <p class="px-2 desc">
                   Want to adopt more environmentally friendly theatre practices? Atlas is here to help! As we slip
                   further into climate crisis, more and more theaters are making efforts to have smaller carbon
                   footprints. See how your theater or production company can join in the efforts!
@@ -100,7 +114,9 @@
                   ullamcorper sapien.
                 </p>
               </div>
-              <button class="btn btn-primary float-right px-4">View All</button>
+              <button class="btn btn-primary float-right px-4">
+                <strong>View All Eco Resources</strong>
+              </button>
             </div>
           </div>
         </div>
@@ -112,7 +128,7 @@
             <div class="img-desc">
               <img class="lf-img mx-auto mb-3" src="../assets/theater.png" />
               <div class="resource-desc mb-3">
-                <p class="px-2">
+                <p class="px-2 desc">
                   From finding rehearsal spaces to creating brave spaces, ATLAS makes it easy for theatre companies to
                   discover resources to create processes and productions that are streamlined and sustainable.
                 </p>
@@ -143,7 +159,9 @@
                   ullamcorper sapien.
                 </p>
               </div>
-              <button class="btn btn-primary float-right px-4">View All</button>
+              <button class="btn btn-primary float-right px-4">
+                <strong>View All Theater Resources</strong>
+              </button>
             </div>
           </div>
         </div>
@@ -162,6 +180,38 @@
   flex-direction: row;
   margin: 15px;
   padding: 20px;
+}
+.desc {
+  font-size: 16px;
+}
+.badge-success {
+  font-size: 14px;
+  font-weight: 900;
+  border-radius: 12px !important;
+}
+.badge-info {
+  font-size: 14px;
+  font-weight: 900;
+  border-radius: 12px !important;
+}
+.badge-primary {
+  font-size: 14px;
+  font-weight: 900;
+  border-radius: 12px !important;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 0, 0, 1) 0%,
+    rgba(255, 154, 0, 1) 10%,
+    rgba(208, 222, 33, 1) 20%,
+    rgba(79, 220, 74, 1) 30%,
+    rgba(63, 218, 216, 1) 40%,
+    rgba(47, 201, 226, 1) 50%,
+    rgba(28, 127, 238, 1) 60%,
+    rgba(95, 21, 242, 1) 70%,
+    rgba(186, 12, 248, 1) 80%,
+    rgba(251, 7, 217, 1) 90%,
+    rgba(255, 0, 0, 1) 100%
+  ) !important;
 }
 @media only screen and (max-width: 768px) {
   .resource-container {
