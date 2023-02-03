@@ -24,17 +24,21 @@
                 <span class="tooltip-text" id="top">Visit Site</span>
               </a>
             </div>
-            <p class="card-subtitle mb-2 text-muted">{{ theater.address.full_address }}</p>
+            <p v-if="theater?.address?.full_address" class="card-subtitle mb-2 text-muted">
+              {{ theater.address.full_address }}
+            </p>
             <div class="row">
               <div class="col">
                 <i class="fa-solid fa-phone mr-2"></i>
-                (888) 123-4567
+                <span v-if="theater.phone">{{ theater.phone }}</span>
+                <span v-else>-</span>
               </div>
             </div>
             <div class="row">
               <div class="col">
                 <i class="fa-solid fa-envelope mr-2"></i>
-                {{ theater.contact_email }}
+                <span v-if="theater.contact_email">{{ theater.contact_email }}</span>
+                <span v-else>-</span>
               </div>
             </div>
           </div>
@@ -66,9 +70,8 @@
                 <div class="card-body">
                   <h4 class="card-title d-inline">{{ currentTheater?.name }}</h4>
                   <h6 class="card-subtitle my-2 text-muted">{{ currentTheater?.address?.full_address }}</h6>
-                  <p class="card-text">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. In porttitor blandit urna eu cursus. Sed
-                    urna sem, aliquam ut elit convallis, ornare congue sem.
+                  <p v-if="currentTheater.mission" class="card-text">
+                    {{ currentTheater.mission }}
                   </p>
                   <div class="row">
                     <div class="col">
@@ -119,9 +122,12 @@ export default {
             `https://api.mapbox.com/geocoding/v5/mapbox.places-permanent/${addresses}.json?access_token=${process.env.VUE_APP_MAP_KEY}&limit=1`
           )
           .then((response) => {
+            console.log(response.data, "TOOT");
             let centerArray = response.data.map((address) => {
+              console.log(address.features, "HI");
               return address.features[0].center;
             });
+            console.log(address.features[0].center, "FART");
             console.log(centerArray);
             this.setMap(centerArray);
           })
@@ -150,11 +156,11 @@ export default {
 
 <style scoped>
 #map {
-  max-width: 600px;
+  max-width: 700px;
   height: 500px;
 }
 .theater-highlight {
-  max-width: 600px;
+  max-width: 700px;
 }
 .card-link {
   font-size: 18px;
