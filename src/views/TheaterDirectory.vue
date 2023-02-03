@@ -46,11 +46,21 @@
         <div class="row py-3">
           <nav aria-label="Page navigation example">
             <ul class="pagination justify-content-center">
-              <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-              <li class="page-item"><a class="page-link" href="#">1</a></li>
-              <li class="page-item"><a class="page-link" href="#">2</a></li>
-              <li class="page-item"><a class="page-link" href="#">3</a></li>
-              <li class="page-item"><a class="page-link" href="#">Next</a></li>
+              <li :class="currentPage == 1 ? 'disabled' : ''" class="page-item link-blue">
+                <a class="page-link" @click="currentPage--">Previous</a>
+              </li>
+              <li class="page-item link-blue" :class="currentPage == startingPage ? 'active' : ''">
+                <a class="page-link" @click="currentPage = startingPage">{{ startingPage }}</a>
+              </li>
+              <li class="page-item link-blue" :class="currentPage == middlePage ? 'active' : ''">
+                <a class="page-link" @click="currentPage = middlePage">{{ middlePage }}</a>
+              </li>
+              <li class="page-item link-blue" :class="currentPage == endingPage ? 'active' : ''">
+                <a class="page-link" @click="currentPage = endingPage">{{ endingPage }}</a>
+              </li>
+              <li :class="currentPage == totalPages ? 'disabled' : ''" class="page-item link-blue">
+                <a class="page-link" @click="currentPage++">Next</a>
+              </li>
             </ul>
           </nav>
         </div>
@@ -102,14 +112,36 @@ export default {
       title: "Theater Directory",
       theaters: [],
       currentTheater: {},
+      totalPages: 28,
+      startingPage: 1,
+      middlePage: 2,
+      endingPage: 3,
+      currentPage: 1,
     };
   },
+  watch: {
+    currentPage(newPage, oldPage) {
+      console.log(newPage);
+      if (newPage > this.endingPage) {
+        this.startingPage = newPage;
+        this.middlePage = newPage + 1;
+        this.endingPage = newPage + 2;
+      }
+
+      if (newPage < this.startingPage) {
+        this.endingPage = newPage;
+        this.middlePage = newPage - 1;
+        this.startingPage = newPage - 2;
+      }
+      this.getTheaters(`/theaters?page_number=${newPage}`);
+    },
+  },
   created: function () {
-    this.getTheaters();
+    this.getTheaters("/theaters");
   },
   methods: {
-    getTheaters() {
-      axios.get("/theaters").then((response) => {
+    getTheaters(link) {
+      axios.get(link).then((response) => {
         this.theaters = response.data;
         this.currentTheater = this.theaters[0];
         console.log(this.theaters);
@@ -155,6 +187,12 @@ export default {
 </script>
 
 <style scoped>
+.link-blue {
+  color: #0d6efd !important;
+}
+.link-blue {
+  color: red;
+}
 #map {
   max-width: 700px;
   height: 500px;
