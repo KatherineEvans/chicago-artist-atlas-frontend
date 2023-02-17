@@ -144,7 +144,6 @@ export default {
       axios.get(link).then((response) => {
         this.theaters = response.data;
         this.currentTheater = this.theaters[0];
-        console.log(this.theaters);
         let address_array = this.theaters.map((theater) => {
           return theater?.address?.full_address;
         });
@@ -154,13 +153,12 @@ export default {
             `https://api.mapbox.com/geocoding/v5/mapbox.places-permanent/${addresses}.json?access_token=${process.env.VUE_APP_MAP_KEY}&limit=1`
           )
           .then((response) => {
-            console.log(response.data, "TOOT");
             let centerArray = response.data.map((address) => {
-              console.log(address.features, "HI");
-              return address.features[0].center;
+              if (address?.features[0]?.center) {
+                return address.features[0].center;
+              }
+              return;
             });
-            console.log(address.features[0].center, "FART");
-            console.log(centerArray);
             this.setMap(centerArray);
           })
           .catch((error) => {
@@ -179,7 +177,9 @@ export default {
 
       // Create a marker and add it to the map.
       data.forEach((place) => {
-        let marker = new mapboxgl.Marker().setLngLat([place[0], place[1]]).addTo(map);
+        if (place) {
+          let marker = new mapboxgl.Marker().setLngLat([place[0], place[1]]).addTo(map);
+        }
       });
     },
   },
