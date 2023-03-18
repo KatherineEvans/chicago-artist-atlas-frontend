@@ -23,7 +23,7 @@
         </div> -->
         <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 py-2 my-2">
           <select class="h-100 w-100" name="audition-type" id="audition-type">
-            <option value="">Audition Type</option>
+            <option value="">Union Status</option>
             <option value="equity">Equity</option>
             <option value="non-equity">Non-Equity</option>
             <option value="union">Union</option>
@@ -33,6 +33,9 @@
         </div>
         <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 py-2 my-2">
           <button class="aud-btn h-100 w-100 btn btn-primary">Search Open Auditions</button>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 py-2 my-2">
+          <a class="create-aud-btn h-100 w-100 btn" href="/create-auditions">Create New Audition</a>
         </div>
       </div>
       <div class="row my-2 py-2 no-gutters">
@@ -303,8 +306,8 @@ p {
   border-color: #05788c;
 }
 .aud-btn:hover {
-  background-color: #212529;
-  border-color: #212529;
+  background-color: #0b0b35;
+  border-color: #0b0b35;
 }
 .posted-date {
   color: #c4c4c4;
@@ -326,5 +329,17 @@ p {
 }
 .strong {
   font-weight: 700 !important;
+}
+
+.create-aud-btn {
+  background-color: #00c4cc;
+  color: white;
+  font-weight: 500;
+  border-color: #00c4cc;
+}
+.create-aud-btn:hover {
+  color: white;
+  background-color: #0b0b35;
+  border-color: #0b0b35;
 }
 </style>
