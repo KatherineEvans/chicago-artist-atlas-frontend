@@ -1,7 +1,7 @@
 <template>
   <div class="container-fluid" style="padding: 0px">
     <img class="overlay" src="../assets/logo-text.png" />
-    <img src="../assets/morning.svg" :alt="timeOfDay" />
+    <img :src="imageUrl" :alt="timeOfDay" />
   </div>
 </template>
 <script>
@@ -16,11 +16,11 @@ export default {
       let now = new Date();
       let hours = now.getHours();
       if (hours >= 6 && hours <= 14) {
-        return "../assets/morning.svg";
+        return require("../assets/morning.svg");
       } else if (hours >= 15 && hours <= 18) {
-        return "../assets/afternoon.svg";
+        return require("../assets/afternoon.svg");
       } else {
-        return "../assets/evening.svg";
+        return require("../assets/evening.svg");
       }
     },
   },
