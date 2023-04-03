@@ -1,29 +1,31 @@
 import { createApp } from "vue";
 import App from "./App.vue";
 import router from "./router";
-import store from "./store";
+import Vuex from "vuex";
+import axios from "axios";
 
-import Amplify from "aws-amplify";
-import awsconfig from "./aws-exports";
-import { applyPolyfills, defineCustomElements } from "@aws-amplify/ui-components/loader";
+// Import 'store' files
+import auditions from "./store/auditions/";
+import users from "./store/users/";
 
 // Import Bootstrap an BootstrapVue CSS files (order is important)
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-vue/dist/bootstrap-vue.css";
-import axios from "axios";
+
+export default new Vuex.Store({
+  modules: {
+    auditions,
+    users,
+  },
+  plugins: [],
+});
 
 axios.defaults.baseURL =
   process.env.NODE_ENV === "development" ? "http://localhost:3000" : "https://chi-artist-atlas-backend.herokuapp.com";
-
-applyPolyfills().then(() => {
-  defineCustomElements(window);
-});
 
 var jwt = localStorage.getItem("jwt");
 if (jwt) {
   axios.defaults.headers.common["Authorization"] = `Bearer ${jwt}`;
 }
 
-Amplify.configure(awsconfig);
-
-createApp(App).use(store).use(router).mount("#app");
+createApp(App).use(Vuex).use(store).use(router).mount("#app");
