@@ -15,12 +15,12 @@ export default {
     lastLoggedInAt: {},
     // tosAcceptedAt: "",
     unionStatus: "",
-    // ethnicity: "",
+    ethnicity: "",
     pronouns: "",
-    // gender: "",
-    // height: "",
-    // eyeColor: "",
-    // hairColor: "",
+    gender: "",
+    height: "",
+    eyeColor: "",
+    hairColor: "",
     vocalRange: "",
     instrumentsPlayed: "",
     talents: "",
@@ -68,24 +68,24 @@ export default {
     setUnionStatus(state, payload) {
       state.unionStatus = payload;
     },
-    // setEthnicity(state, payload) {
-    //   state.ethnicity = payload;
-    // },
+    setEthnicity(state, payload) {
+      state.ethnicity = payload;
+    },
     setPronouns(state, payload) {
       state.pronouns = payload;
     },
-    // setGender(state, payload) {
-    //   state.gender = payload;
-    // },
-    // setHeight(state, payload) {
-    //   state.height = payload;
-    // },
-    // setEyeColor(state, payload) {
-    //   state.eyeColor = payload;
-    // },
-    // setHairColor(state, payload) {
-    //   state.hairColor = payload;
-    // },
+    setGender(state, payload) {
+      state.gender = payload;
+    },
+    setHeight(state, payload) {
+      state.height = payload;
+    },
+    setEyeColor(state, payload) {
+      state.eyeColor = payload;
+    },
+    setHairColor(state, payload) {
+      state.hairColor = payload;
+    },
     setVocalRange(state, payload) {
       state.vocalRange = payload;
     },
@@ -167,24 +167,24 @@ export default {
     unionStatus(state) {
       return state.unionStatus;
     },
-    // ethnicity(state) {
-    //   return state.ethnicity;
-    // },
+    ethnicity(state) {
+      return state.ethnicity;
+    },
     pronouns(state) {
       return state.pronouns;
     },
-    // gender(state) {
-    //   return state.gender;
-    // },
-    // height(state) {
-    //   return state.height;
-    // },
-    // eyeColor(state) {
-    //   return state.eyeColor;
-    // },
-    // hairColor(state) {
-    //   return state.hairColor;
-    // },
+    gender(state) {
+      return state.gender;
+    },
+    height(state) {
+      return state.height;
+    },
+    eyeColor(state) {
+      return state.eyeColor;
+    },
+    hairColor(state) {
+      return state.hairColor;
+    },
     vocalRange(state) {
       return state.vocalRange;
     },
