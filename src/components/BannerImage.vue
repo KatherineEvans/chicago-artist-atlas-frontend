@@ -11,6 +11,11 @@ export default {
       timeOfDay: "evening",
     };
   },
+  watch: {
+    imageUrl() {
+      console.log("hi");
+    },
+  },
   computed: {
     imageUrl() {
       let now = new Date();

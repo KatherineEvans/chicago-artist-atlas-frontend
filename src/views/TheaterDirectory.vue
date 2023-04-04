@@ -15,7 +15,12 @@
     <!-- <h1 class="text-center my-3">{{ title }}</h1> -->
     <div class="row my-4 mx-auto">
       <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-xs-12 mx-auto my-2">
-        <div v-for="theater in theaters" v-bind:key="theater.id" class="card text-left mb-3">
+        <div
+          v-for="theater in theaters"
+          v-bind:key="theater.id"
+          class="card text-left mb-3"
+          :class="theater.id === currentTheater.id ? activeClass : ''"
+        >
           <div class="card-body" v-on:click="currentTheater = theater">
             <div class="mb-2">
               <h5 class="card-title d-inline">{{ theater.name }}</h5>
@@ -27,6 +32,7 @@
             <p v-if="theater?.address?.full_address" class="card-subtitle mb-2 text-muted">
               {{ theater.address.full_address }}
             </p>
+            <p v-else><em>Various Addresses</em></p>
             <div class="row">
               <div class="col">
                 <i class="fa-solid fa-phone mr-2"></i>
@@ -74,11 +80,16 @@
         <div id="map" class="mx-auto mb-4"></div>
         <div class="mx-auto theater-highlight">
           <div class="card">
+            <div class="card-header">
+              <h4 class="card-title d-inline mb-0">{{ currentTheater?.name }}</h4>
+              <h6 v-if="currentTheater?.address?.full_address" class="card-subtitle card-subtitle-color mt-1">
+                {{ currentTheater?.address?.full_address }}
+              </h6>
+              <h6 v-else class="card-subtitle card-subtitle-color mt-1"><em>Various Addresses</em></h6>
+            </div>
             <div class="card-body">
               <div class="row">
-                <h4 class="card-title d-inline mb-0">{{ currentTheater?.name }}</h4>
-                <h6 class="card-subtitle text-muted mt-1">{{ currentTheater?.address?.full_address }}</h6>
-                <p v-if="currentTheater.mission" class="card-text my-3">
+                <p v-if="currentTheater.mission" class="card-text mb-3">
                   {{ currentTheater.mission }}
                 </p>
               </div>
@@ -149,6 +160,7 @@ export default {
       middlePage: 2,
       endingPage: 3,
       currentPage: 1,
+      activeClass: "active",
     };
   },
   watch: {
@@ -237,6 +249,22 @@ export default {
 </script>
 
 <style scoped>
+.card-header {
+  background-color: #0b0b35;
+  color: #fff;
+}
+.card-subtitle-color {
+  color: #e6e6e6;
+}
+.card {
+  /* box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px; */
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  /* border: solid 1px #e9ecef; */
+  border: none;
+}
+.active {
+  background-color: #f5f5f5;
+}
 .link-blue {
   color: #0d6efd !important;
 }
