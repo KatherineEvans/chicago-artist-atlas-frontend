@@ -36,9 +36,14 @@
             </div>
             <div class="row">
               <div class="col">
-                <i class="fa-solid fa-envelope mr-2"></i>
-                <span v-if="theater.contact_email">{{ theater.contact_email }}</span>
-                <span v-else>-</span>
+                <i v-if="theater.contact_email" class="fa-solid fa-envelope mr-2"></i>
+                <i v-if="theater.contact_form" class="fa-solid fa-message mr-2"></i>
+                <span v-if="theater.contact_email">
+                  <a :href="'mailto:' + theater.contact_email">{{ theater.contact_email }}</a>
+                </span>
+                <span v-if="theater.contact_form" target="_blank">
+                  <a :href="theater.contact_form">Contact Form</a>
+                </span>
               </div>
             </div>
           </div>
@@ -69,28 +74,49 @@
         <div id="map" class="mx-auto mb-4"></div>
         <div class="mx-auto theater-highlight">
           <div class="card">
-            <div class="row">
-              <div class="col-3">
-                <img
-                  class="theater-highlight-img"
-                  src="https://www.monaco-chicago.com/images/1700-960/istock-155341582-73776d3d.jpg"
-                />
+            <div class="card-body">
+              <div class="row">
+                <h4 class="card-title d-inline mb-0">{{ currentTheater?.name }}</h4>
+                <h6 class="card-subtitle text-muted mt-1">{{ currentTheater?.address?.full_address }}</h6>
+                <p v-if="currentTheater.mission" class="card-text my-3">
+                  {{ currentTheater.mission }}
+                </p>
               </div>
-              <div class="col-9">
-                <div class="card-body">
-                  <h4 class="card-title d-inline">{{ currentTheater?.name }}</h4>
-                  <h6 class="card-subtitle my-2 text-muted">{{ currentTheater?.address?.full_address }}</h6>
-                  <p v-if="currentTheater.mission" class="card-text">
-                    {{ currentTheater.mission }}
-                  </p>
+              <div class="row">
+                <div class="col-4">
+                  <img
+                    class="theater-highlight-img"
+                    src="https://www.monaco-chicago.com/images/1700-960/istock-155341582-73776d3d.jpg"
+                  />
+                </div>
+                <div class="col-8">
                   <div class="row">
-                    <div class="col">
-                      <strong>Season Type:</strong>
-                      {{ currentTheater?.season_type }}
+                    <div class="row">
+                      <p class="mb-0">
+                        <strong>Union Status:</strong>
+                        {{ currentTheater?.union_status }}
+                      </p>
                     </div>
-                    <div class="col">
-                      <strong>Union Status:</strong>
-                      {{ currentTheater?.union_status }}
+                    <div class="row">
+                      <p>
+                        <strong>Season Type:</strong>
+                        {{ currentTheater?.season_type }}
+                      </p>
+                    </div>
+                    <div>
+                      <i class="fa-solid fa-phone mr-2"></i>
+                      <span v-if="currentTheater.phone">{{ currentTheater.phone }}</span>
+                      <span v-else>-</span>
+                    </div>
+                    <div>
+                      <i v-if="currentTheater.contact_email" class="fa-solid fa-envelope mr-2"></i>
+                      <i v-if="currentTheater.contact_form" class="fa-solid fa-message mr-2"></i>
+                      <span v-if="currentTheater.contact_email">
+                        <a :href="'mailto:' + currentTheater.contact_email">{{ currentTheater.contact_email }}</a>
+                      </span>
+                      <span v-if="currentTheater.contact_form" target="_blank">
+                        <a :href="currentTheater.contact_form">Contact Form</a>
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -143,11 +169,17 @@ export default {
     getTheaters(link) {
       axios.get(link).then((response) => {
         this.theaters = response.data;
+        console.log(this.theaters, "theaters");
         this.currentTheater = this.theaters[0];
-        let address_array = this.theaters.map((theater) => {
+        let addressesForTooltip = [];
+        let addressArray = this.theaters.map((theater) => {
+          addressesForTooltip.push({
+            name: theater.name,
+            address: theater?.address?.full_address,
+          });
           return theater?.address?.full_address;
         });
-        let addresses = address_array.join(";");
+        let addresses = addressArray.join(";");
         axios
           .get(
             `https://api.mapbox.com/geocoding/v5/mapbox.places-permanent/${addresses}.json?access_token=${process.env.VUE_APP_MAP_KEY}&limit=1`
@@ -159,14 +191,14 @@ export default {
               }
               return;
             });
-            this.setMap(centerArray);
+            this.setMap(centerArray, addressesForTooltip);
           })
           .catch((error) => {
             console.log(error);
           });
       });
     },
-    setMap(data) {
+    setMap(data, addressesForTooltip) {
       mapboxgl.accessToken = process.env.VUE_APP_MAP_KEY;
       const map = new mapboxgl.Map({
         container: "map",
@@ -176,9 +208,21 @@ export default {
       });
 
       // Create a marker and add it to the map.
-      data.forEach((place) => {
-        if (place) {
-          let marker = new mapboxgl.Marker().setLngLat([place[0], place[1]]).addTo(map);
+      for (let i = 0; i < data.length; i++) {
+        addressesForTooltip[i]["location"] = data[i];
+        addressesForTooltip[i]["html"] = `<h3>${addressesForTooltip[i].name}</h3>`;
+        if (data[i]) {
+          addressesForTooltip[i]["html"] = addressesForTooltip[i]["html"] + `<p>${addressesForTooltip[i]?.address}</p>`;
+        }
+      }
+
+      addressesForTooltip.forEach((place) => {
+        if (place.location) {
+          let popup = new mapboxgl.Popup({ offset: 25 }).setHTML(place.html);
+          let marker = new mapboxgl.Marker()
+            .setLngLat([place.location[0], place.location[1]])
+            .setPopup(popup)
+            .addTo(map);
         }
       });
     },
@@ -205,8 +249,8 @@ export default {
   color: #0b0b35;
 }
 .theater-highlight-img {
-  height: 100%;
-  max-width: 150px;
+  width: 100%;
+  /* max-width: 150px; */
   object-fit: cover;
 }
 .tooltip-text {
