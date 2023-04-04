@@ -85,6 +85,13 @@
               <div class="row">
                 <div class="col-4">
                   <img
+                    v-if="currentTheater.image_url"
+                    :src="currentTheater.image_url"
+                    :alt="currentTheater.name"
+                    class="theater-highlight-img"
+                  />
+                  <img
+                    v-else
                     class="theater-highlight-img"
                     src="https://www.monaco-chicago.com/images/1700-960/istock-155341582-73776d3d.jpg"
                   />
@@ -104,9 +111,8 @@
                       </p>
                     </div>
                     <div>
-                      <i class="fa-solid fa-phone mr-2"></i>
+                      <i v-if="currentTheater.phone" class="fa-solid fa-phone mr-2"></i>
                       <span v-if="currentTheater.phone">{{ currentTheater.phone }}</span>
-                      <span v-else>-</span>
                     </div>
                     <div>
                       <i v-if="currentTheater.contact_email" class="fa-solid fa-envelope mr-2"></i>
