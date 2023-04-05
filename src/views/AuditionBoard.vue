@@ -64,7 +64,7 @@
                 <div class="row">
                   <p>
                     <span class="strong">Company:</span>
-                    {{ audition.name_of_company }}
+                    {{ audition.theater.name || audition.company }}
                   </p>
                 </div>
                 <div class="row">
@@ -113,38 +113,77 @@
                 have become her signature style.
               </p>
             </div>
-            <div class="hide" :class="'audition' + audition.id">
+            <div class="hide mt-3" :class="'audition' + audition.id">
               <div class="row">
                 <p>
                   <span class="strong">Cast Breakdown:</span>
-                  {{ audition.cast_breakdown }}
                 </p>
+                <div id="accordion" class="mt-3 row">
+                  <div
+                    v-for="character in audition.characters"
+                    v-bind:key="character.id"
+                    class="col-lg-6 col-xl-6 col-m-6 col-sm-12 col-xs-12"
+                  >
+                    <div class="card mx-3 mb-3">
+                      <div
+                        class="card-header collapsed"
+                        :id="`heading-${character.id}`"
+                        data-toggle="collapse"
+                        :data-target="`#collapse-${character.id}`"
+                        aria-expanded="true"
+                        :aria-controls="`#collapse-${character.id}`"
+                      >
+                        <div class="character-title mb-0">
+                          <div class="mr-auto">
+                            <strong>{{ character.name }}</strong>
+                            -
+                            {{ character.age }}
+                          </div>
+                          <div class="ml-auto">Gender: {{ character.gender }}</div>
+                        </div>
+                      </div>
+
+                      <div
+                        :id="`collapse-${character.id}`"
+                        class="collapse"
+                        :aria-labelledby="`heading-${character.id}`"
+                        data-parent="#accordion"
+                      >
+                        <div class="card-body">
+                          <div class="row mb-2">
+                            <div class="col-11">
+                              <p>
+                                <span class="strong">Character Description:</span>
+                                {{ character.description }}
+                              </p>
+                            </div>
+                            <div class="col-1">
+                              <i @click="heart = false" class="fa-solid fa-heart fa-lg" v-if="heart"></i>
+                              <i @click="heart = true" class="fa-regular fa-heart fa-lg" v-else></i>
+                            </div>
+                          </div>
+                          <div class="row mb-2">
+                            <p>
+                              <span class="strong">Character Skills:</span>
+                              {{ character.skills }}
+                            </p>
+                          </div>
+                          <div class="row mb-2">
+                            <p>
+                              <span class="strong">Character Warnings:</span>
+                              {{ character.warnings }}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- <div class="card" v-for="character in audition.characters" v-bind:key="character.id">
+                  {{ character.name }}
+                </div> -->
               </div>
               <br />
-              <div class="row">
-                <p>
-                  <span class="strong">Audition Character:</span>
-                  {{ audition.character }}
-                </p>
-              </div>
-              <div class="row">
-                <p>
-                  <span class="strong">Character Details:</span>
-                  {{ audition.character_details }}
-                </p>
-              </div>
-              <div class="row">
-                <p>
-                  <span class="strong">Character Skills:</span>
-                  {{ audition.character_skills }}
-                </p>
-              </div>
-              <div class="row">
-                <p>
-                  <span class="strong">Character Warnings:</span>
-                  {{ audition.character_warnings }}
-                </p>
-              </div>
               <div class="row">
                 <p>
                   <span class="strong">Materials to Prepare:</span>
@@ -218,6 +257,7 @@ export default {
       title: "Audition Board",
       auditions: [],
       currentAuditionId: null,
+      heart: false,
       // totalPages: 28,
       // startingPage: 1,
       // middlePage: 2,
@@ -293,6 +333,19 @@ export default {
 };
 </script>
 <style scoped>
+.character-title {
+  display: flex;
+  justify-content: space-between;
+}
+.collapsed {
+  border-radius: 5px !important;
+}
+.card {
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+.card-header {
+  background-color: #eff5f8;
+}
 p {
   margin-bottom: 0;
 }
@@ -341,5 +394,8 @@ p {
   color: white;
   background-color: #0b0b35;
   border-color: #0b0b35;
+}
+i {
+  color: #c385c0;
 }
 </style>
