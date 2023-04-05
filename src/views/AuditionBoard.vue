@@ -42,7 +42,7 @@
         <h4>Top Results</h4>
         <div class="row my-2 py-2 pl-4">
           <!-- START Audition Card -->
-          <div v-for="audition in auditions" v-bind:key="audition.id" class="aud-card card d-flex pb-2">
+          <div v-for="audition in auditions" v-bind:key="audition.id" class="aud-card card d-flex py-2 px-4">
             <div class="row mb-1">
               <div class="col">
                 <div class="row float-right">
