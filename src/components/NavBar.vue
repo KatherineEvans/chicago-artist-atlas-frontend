@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-3">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-">
     <a class="navbar-brand" href="#">Chicago Artist Atlas</a>
     <button
       class="navbar-toggler ml-auto mr-3"
