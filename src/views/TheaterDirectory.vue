@@ -14,6 +14,13 @@
     </div>
     <!-- <h1 class="text-center my-3">{{ title }}</h1> -->
     <div class="row my-4 mx-auto">
+      <div class="loading-spinner-container" v-if="isLoading">
+        <div class="loading-spinner m-auto">
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+      </div>
       <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-xs-12 mx-auto my-2">
         <div
           v-for="theater in theaters"
@@ -161,6 +168,7 @@ export default {
       endingPage: 3,
       currentPage: 1,
       activeClass: "active",
+      isLoading: true,
     };
   },
   watch: {
@@ -243,6 +251,7 @@ export default {
             .addTo(map);
         }
       });
+      this.isLoading = false;
     },
   },
 };
@@ -328,5 +337,51 @@ export default {
   display: inline-block;
   font-family: Avenir;
   text-align: center;
+}
+.loading-spinner-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  background-color: rgba(255, 255, 255);
+}
+.loading-spinner {
+  display: inline-block;
+  position: relative;
+  left: calc(50% - 50px);
+  width: 100px;
+  height: 100px;
+}
+.loading-spinner div {
+  display: inline-block;
+  position: absolute;
+  border-radius: 8px;
+  left: 8px;
+  width: 16px;
+  background: #0b0b35;
+  animation: loading-spinner 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+}
+.loading-spinner div:nth-child(1) {
+  left: 8px;
+  animation-delay: -0.24s;
+}
+.loading-spinner div:nth-child(2) {
+  left: 32px;
+  animation-delay: -0.12s;
+}
+.loading-spinner div:nth-child(3) {
+  left: 56px;
+  animation-delay: 0;
+}
+@keyframes loading-spinner {
+  0% {
+    top: 40px;
+    height: 96px;
+  }
+  50%,
+  100% {
+    top: 55px;
+    height: 65px;
+  }
 }
 </style>
