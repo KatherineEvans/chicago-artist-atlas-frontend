@@ -126,7 +126,7 @@
                   >
                     <div class="card mx-3 mb-3">
                       <div
-                        class="card-header collapsed"
+                        class="character-card card-header collapsed"
                         :id="`heading-${character.id}`"
                         data-toggle="collapse"
                         :data-target="`#collapse-${character.id}`"
@@ -140,6 +140,9 @@
                             {{ character.age }}
                           </div>
                           <div class="ml-auto">Gender: {{ character.gender }}</div>
+                          <div>
+                            <i class="ml-3 fa-solid fa-caret-down"></i>
+                          </div>
                         </div>
                       </div>
 
@@ -395,7 +398,10 @@ p {
   background-color: #0b0b35;
   border-color: #0b0b35;
 }
-i {
+.fa-heart {
   color: #c385c0;
+}
+.character-card {
+  cursor: pointer;
 }
 </style>

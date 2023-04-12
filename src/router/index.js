@@ -1,7 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
 import TheaterDirectory from "../views/TheaterDirectory.vue";
-import TheaterResources from "../views/TheaterResources.vue";
 import ContactView from "../views/ContactView.vue";
 import AuditionBoard from "../views/AuditionBoard.vue";
 import Classes from "../views/MasterClasses.vue";
@@ -16,7 +15,7 @@ const routes = [
     component: HomeView,
   },
   {
-    path: "/theater-directory",
+    path: "/directory",
     name: "directory",
     component: TheaterDirectory,
   },
@@ -24,11 +23,6 @@ const routes = [
     path: "/auditions",
     name: "auditions",
     component: AuditionBoard,
-  },
-  {
-    path: "/resources",
-    name: "resources",
-    component: TheaterResources,
   },
   {
     path: "/contact",

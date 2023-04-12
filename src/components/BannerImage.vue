@@ -45,7 +45,7 @@ img {
   max-height: 200px;
   max-width: 275px;
   width: 100%;
-  z-index: 100;
+  z-index: 5;
 }
 @media only screen and (max-width: 800px) {
   .overlay {
