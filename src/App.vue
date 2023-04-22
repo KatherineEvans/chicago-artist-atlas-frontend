@@ -1,6 +1,5 @@
 <template>
   <NavBar :isLoggedIn="isLoggedIn" />
-  <BannerImage />
   <router-view v-if="isLoggedIn" />
   <div v-else class="container-fluid home mx-auto text-center">
     <div class="row ltblue py-3 px-4">
@@ -44,14 +43,12 @@
 
 <script>
 import NavBar from "./components/NavBar.vue";
-import BannerImage from "./components/BannerImage.vue";
 import FooterBar from "./components/FooterBar.vue";
 import axios from "axios";
 
 export default {
   components: {
     NavBar,
-    BannerImage,
     FooterBar,
   },
   data: function () {
@@ -113,5 +110,18 @@ nav a.router-link-exact-active {
 }
 .ltblue {
   background-color: #e6f4f7 !important;
+}
+
+.content {
+  position: absolute;
+  z-index: 1000;
+  top: 80vh;
+
+  background: rgb(44, 123, 153);
+  height: 100vh;
+  width: 100vw;
+
+  box-shadow: 0 -2px 1px rgba(0, 0, 0, 0.15);
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
 }
 </style>

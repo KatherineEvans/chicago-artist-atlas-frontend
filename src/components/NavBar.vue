@@ -6,20 +6,20 @@
         <SignUpOptions></SignUpOptions>
       </template>
     </ModalContainer>
-    <nav class="mx-auto flex max-w-7xl items-center justify-between gap-x-6 p-3 lg:px-6" aria-label="Global">
-      <div class="flex lg:flex-1">
-        <a href="/" class="-m-1.5 p-1.5 no-underline hover:no-underline text-blue-200">
-          <h4 class="text-blue-200 hover:text-white m-0">
+    <nav class="mx-auto flex max-w-7xl items-center justify-between gap-x-6 p-2 lg:px-6" aria-label="Global">
+      <div class="flex lg:flex">
+        <a href="/" class="-m-1.5 p-1.5 no-underline hover:no-underline text-blue-100">
+          <h4 class="text-blue-100 hover:text-white m-0">
             <strong>Chicago Artist Atlas</strong>
           </h4>
         </a>
       </div>
-      <div class="hidden lg:flex lg:gap-x-12">
+      <div class="hidden lg:flex">
         <a
           v-for="item in navigation"
           :key="item.name"
           :href="item.href"
-          class="text-sm font-semibold leading-6 text-blue-200 no-underline hover:text-white"
+          class="p-3 mx-2 text-sm font-semibold leading-6 text-blue-100 hover:no-underline no-underline hover:text-white hover:bg-blue-900 rounded"
           :class="{ active: $route.name == item.name.toLowerCase() }"
         >
           {{ item.name }}
@@ -28,7 +28,7 @@
       <div class="flex flex-1 items-center justify-end gap-x-6">
         <a
           href="/login"
-          class="hidden lg:block lg:text-sm lg:font-semibold lg:leading-6 lg:text-blue-200 no-underline hover:text-white"
+          class="px-3 py-2 hidden lg:block lg:text-sm lg:font-semibold lg:leading-6 lg:text-blue-100 hover:no-underline no-underline hover:text-white hover:bg-blue-900 rounded"
         >
           Log in
         </a>
@@ -50,14 +50,14 @@
         </button>
       </div>
     </nav>
-    <Dialog as="div" class="lg:hidden bg-blue-950" @close="mobileMenuOpen = false" :open="mobileMenuOpen">
+    <Dialog as="div" class="rt-side-nav lg:hidden bg-blue-950" @close="mobileMenuOpen = false" :open="mobileMenuOpen">
       <div class="fixed inset-0 z-10"></div>
       <DialogPanel
         class="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto p-3 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10 bg-blue-950"
       >
         <div class="flex items-center gap-x-6">
-          <a href="/" class="-m-1.5 p-1.5 no-underline hover:no-underline text-blue-200">
-            <h4 class="text-blue-200 hover:text-white"><strong>Chicago Artist Atlas</strong></h4>
+          <a href="/" class="-m-1.5 p-1.5 no-underline hover:no-underline text-blue-100">
+            <h4 class="text-blue-100 hover:text-white"><strong>Chicago Artist Atlas</strong></h4>
           </a>
           <button
             @click="modalOpen = true"
@@ -77,7 +77,7 @@
                 v-for="item in navigation"
                 :key="item.name"
                 :href="item.href"
-                class="-mx-3 block px-3 py-2 text-base font-semibold leading-7 text-blue-200 no-underline hover:text-white hover:underline"
+                class="-mx-3 block p-3 text-base font-semibold leading-7 text-blue-100 hover:no-underline no-underline hover:text-white hover:bg-blue-900 rounded"
                 :class="{ active: $route.name == item.name.toLowerCase() }"
               >
                 {{ item.name }}
@@ -86,7 +86,7 @@
             <div class="py-6">
               <a
                 href="/login"
-                class="-mx-3 block px-3 py-2.5 text-base font-semibold leading-7 text-blue-200 no-underline hover:text-white hover:underline"
+                class="-mx-3 block p-3 text-base font-semibold leading-7 text-blue-100 no-underline hover:no-underline hover:text-white hover:bg-blue-900 rounded"
               >
                 Log in
               </a>
@@ -146,15 +146,21 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .active {
-  text-decoration: underline !important;
+  background-color: rgb(30 58 138) !important;
+  border-radius: 0.25rem;
   color: white !important;
 }
 
 @media (max-width: 576px) {
   .title {
     font-size: 18px !important;
+  }
+}
+@media (min-width: 640px) {
+  .sm\:max-w-sm {
+    max-width: 26rem !important;
   }
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid" style="padding: 0px">
+  <div>
     <img class="overlay" src="../assets/logo-text.png" />
     <img :src="imageUrl" :alt="timeOfDay" />
   </div>
@@ -21,22 +21,22 @@ export default {
       let now = new Date();
       let hours = now.getHours();
       if (hours >= 6 && hours <= 14) {
-        return require("../assets/morning.svg");
+        return require("../assets/hero/morning/morning.png");
       } else if (hours >= 15 && hours <= 18) {
-        return require("../assets/afternoon.svg");
+        return require("../assets/hero/afternoon/afternoon.png");
       } else {
-        return require("../assets/evening.svg");
+        return require("../assets/hero/evening/evening.png");
       }
     },
   },
   methods: {},
 };
 </script>
-<style>
-img {
+<style scoped>
+/* img {
   width: 100%;
   position: relative;
-}
+} */
 
 .overlay {
   position: absolute;
@@ -45,7 +45,6 @@ img {
   max-height: 200px;
   max-width: 275px;
   width: 100%;
-  z-index: 5;
 }
 @media only screen and (max-width: 800px) {
   .overlay {

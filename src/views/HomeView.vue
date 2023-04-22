@@ -1,4 +1,5 @@
 <template>
+  <BannerImage />
   <div class="home mx-auto text-center">
     <div class="row ltblue py-3 px-4">
       <div class="col-8 m-auto my-3">
@@ -9,11 +10,10 @@
           We combine vital information in an easily navigated, one-stop-shop with original content from experts in our
           community to guide you on your journey.
         </p>
-        <!-- <img style="max-width: 100px" src="../assets/logo-simple.png" alt="" /> -->
       </div>
     </div>
     <!-- CURRENT RESOURCES -->
-    <div class="row my-2 py-4 mx-auto">
+    <div class="row no-gutters my-2 py-4 mx-auto">
       <div class="col-12">
         <h3 class="mb-4">Atlas Directories</h3>
         <div class="row mb-3">
@@ -34,9 +34,6 @@
                 </p>
               </div>
             </div>
-            <!-- <p class="card-text">
-              
-            </p> -->
           </div>
         </a>
       </div>
@@ -52,9 +49,6 @@
                 </p>
               </div>
             </div>
-            <!-- <p class="card-text">
-              
-            </p> -->
           </div>
         </a>
       </div>
@@ -71,23 +65,9 @@
                 </p>
               </div>
             </div>
-            <!-- <p class="card-text">
-              
-            </p> -->
           </div>
         </a>
       </div>
-      <!-- <div class="mx-auto col-xl-4 col-lg-3 col-md-6 col-sm-12 col-xs-12 p-2">
-        <a href="/contact" class="h-100 card mx-auto text-center">
-          <img class="m-auto pb-2 pt-4" src="../assets/park.png" alt="" />
-          <div class="card-body">
-            <p class="card-title">
-              <strong>Contact</strong>
-            </p>
-            <p class="card-text">Got questions? Concerns? Comments? Requests? We’d love to hear from you!</p>
-          </div>
-        </a>
-      </div> -->
     </div>
     <!-- COMING SOON -->
     <div class="row my-3 pt-3 pb-4 mx-auto gr-bk mb-0">
@@ -115,11 +95,6 @@
                 </p>
               </div>
             </div>
-            <!-- <p class="card-text">
-              ATLAS fully recognizes the need to serve the BIPOC community to fit their specific needs, challenges and
-              concerns. Here you’ll find resources to help you not only navigate through this industry, but thrive in it
-              such as BIPOC headshot photographers, BIPOC led organizations, and helpful articles.
-            </p> -->
           </div>
         </a>
       </div>
@@ -136,11 +111,6 @@
                 </p>
               </div>
             </div>
-            <!-- <p class="card-text">
-              ATLAS fully recognizes the need to serve the LGBTQIA+ community to fit their specific needs, challenges
-              and concerns. Here you’ll find resources to help you not only navigate through this industry, but thrive
-              in it such as LGBTQIA+ headshot photographers, LGBTQIA+ led organizations and helpful articles.
-            </p> -->
           </div>
         </a>
       </div>
@@ -157,86 +127,17 @@
                 </p>
               </div>
             </div>
-            <!-- <p class="card-text">
-              From finding rehearsal spaces to creating brave spaces, ATLAS makes it easy for theatre companies to
-              discover resources to create processes and productions that are streamlined and sustainable.
-            </p> -->
           </div>
         </a>
       </div>
-      <!-- <div class="mx-auto col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12 p-2">
-        <a href="/resources" class="shadow2 h-100 card mx-auto text-center">
-          <img class="m-auto pb-2 pt-4" src="../assets/bean.png" alt="" />
-          <div class="card-body">
-            <div class="card-title">
-              <h5>Resources for Female-Identifying Theater Professionals</h5>
-              <div>
-                <p style="font-size: 16px">Specifically catered to Black, Indigenous, and People of Color</p>
-              </div>
-            </div>
-             <p class="card-text">
-              ATLAS fully recognizes the need to serve the BIPOC community to fit their specific needs, challenges and
-              concerns. Here you’ll find resources to help you not only navigate through this industry, but thrive in it
-              such as BIPOC headshot photographers, BIPOC led organizations, and helpful articles.
-            </p> 
-          </div>
-        </a>
-      </div>
-      <div class="mx-auto col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12 p-2">
-        <a href="/resources" class="shadow2 h-100 card mx-auto text-center">
-          <img class="m-auto pb-2 pt-4" src="../assets/lion.png" alt="" />
-          <div class="card-body">
-            <div class="card-title">
-              <h5>Eco & Sustainability Resources</h5>
-              <div>
-                <p style="font-size: 16px">
-                  Specifically catered to Lesbian, Gay, Bi, Trans, Queer, Intersex and Asexual community
-                </p>
-              </div>
-            </div>
-            <p class="card-text">
-              ATLAS fully recognizes the need to serve the LGBTQIA+ community to fit their specific needs, challenges
-              and concerns. Here you’ll find resources to help you not only navigate through this industry, but thrive
-              in it such as LGBTQIA+ headshot photographers, LGBTQIA+ led organizations and helpful articles.
-            </p>
-          </div>
-        </a>
-      </div>
-      <div class="mx-auto col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12 p-2">
-        <a href="/resources" class="shadow2 h-100 card mx-auto text-center">
-          <img class="m-auto pb-2 pt-4" src="../assets/park.png" alt="" />
-          <div class="card-body">
-            <div class="card-title">
-              <h5>Theater Resources</h5>
-              <div>
-                <p style="font-size: 16px">Keep your theatre company in the know with these production resources.</p>
-              </div>
-            </div>
-            <p class="card-text">
-              From finding rehearsal spaces to creating brave spaces, ATLAS makes it easy for theatre companies to
-              discover resources to create processes and productions that are streamlined and sustainable.
-            </p>
-          </div>
-        </a>
-      </div>
-      -->
-      <!-- <div class="mx-auto col-xl-4 col-lg-3 col-md-6 col-sm-12 col-xs-12 p-2">
-        <div class="h-100 card mx-auto text-center">
-          <img class="m-auto pb-2 pt-4" src="../assets/wheel.png" alt="" />
-          <div class="card-body">
-            <p class="card-title">
-              <strong>Contact</strong>
-            </p>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-          </div>
-        </div>
-      </div> -->
     </div>
   </div>
 </template>
 
 <script>
+import BannerImage from "@/components/BannerImage.vue";
 export default {
+  components: { BannerImage },
   data: function () {
     return {
       lightBlueDiv: "light-blue-div",
