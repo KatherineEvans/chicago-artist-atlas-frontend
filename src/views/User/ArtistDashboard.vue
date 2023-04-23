@@ -23,7 +23,7 @@
     </div>
     <!-- sidebar -->
     <div
-      class="sidebar divide-y w-64 bg-blue-950 text-blue-100 space-y-6 px-2 absolute inset-y-0 left-0 transform -translate-x-full transition duration-200 ease-in-out md:relative md:translate-x-0"
+      class="sidebar divide-y w-64 bg-blue-950 text-blue-100 space-y-6 px-3 absolute inset-y-0 left-0 transform -translate-x-full transition duration-200 ease-in-out md:relative md:translate-x-0"
     >
       <!-- profile pic -->
       <div class="py-3">

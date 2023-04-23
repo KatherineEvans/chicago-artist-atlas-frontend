@@ -57,7 +57,7 @@
       >
         <div class="flex items-center gap-x-6">
           <a href="/" class="-m-1.5 p-1.5 no-underline hover:no-underline text-blue-100">
-            <h4 class="text-blue-100 hover:text-white"><strong>Chicago Artist Atlas</strong></h4>
+            <h4 class="text-2xl text-blue-100 hover:text-white sm:text-base"><strong>Chicago Artist Atlas</strong></h4>
           </a>
           <button
             @click="modalOpen = true"
