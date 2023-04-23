@@ -13,12 +13,12 @@
   </div>
   <div class="relative min-h-screen md:flex">
     <!-- mobile menu bar -->
-    <div class="bg-blue-600 text-blue-100 flex justify-between md:hidden">
+    <div class="bg-white text-blue-900 flex justify-between md:hidden">
       <!-- logo -->
-      <a href="#" class="block p-4 text-white font-extrabold text-lg text-white no-underline">First Last</a>
+      <div href="#" class="text-blue-900 block px-5 py-3 font-extrabold text-lg no-underline">First Last</div>
       <!-- mobile menu button -->
-      <button @click="showNav = !showNav" class="mobile-menu-button text-lg px-4 focus:bg-blue-800">
-        <i class="fa-solid fa-bars" style="color: #ffffff"></i>
+      <button @click="showNav = !showNav" class="mobile-menu-button text-lg px-5 py-3">
+        <i class="fa-solid fa-bars text-blue-900"></i>
       </button>
     </div>
     <!-- sidebar -->
@@ -54,7 +54,11 @@
     </div>
     <!-- content -->
     <div class="flex-1 p-10 text-2xl font-bold">
-      <router-view></router-view>
+      <div
+        class="border border-gray-400 lg:border-gray-400 bg-white rounded p-10 flex flex-col justify-between leading-normal"
+      >
+        <router-view></router-view>
+      </div>
     </div>
   </div>
 </template>

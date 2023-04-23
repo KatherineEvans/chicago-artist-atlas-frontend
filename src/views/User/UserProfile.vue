@@ -9,7 +9,22 @@
           Donec eget magna hendrerit, rhoncus sem a, tempus ante. Morbi luctus consectetur purus molestie vulputate.
         </p>
 
-        <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+        <!-- goddamn.... -->
+        <div class="mt-10 flex flex-wrap">
+          <div class="w-full md:w-1/2 bg-red-300">Headshot</div>
+          <div class="w-full md:w-1/2 grid flex flex-wrap bg-green-300 flex">
+            <div class="flex-wrap flex">
+              <div class="w-full lg:w-1/2 bg-blue-300">pronouns</div>
+              <div class="w-full lg:w-1/2 bg-purple-300">gender</div>
+              <div class="w-full lg:w-1/2 bg-blue-300">age</div>
+              <div class="w-full lg:w-1/2 bg-purple-300">height</div>
+              <div class="w-full lg:w-1/2 bg-blue-300">hair color</div>
+              <div class="w-full lg:w-1/2 bg-purple-300">eye color</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
           <div class="sm:col-span-2 sm:col-start-1">
             <label for="city" class="block text-sm font-medium leading-6 text-gray-900">City</label>
             <div class="mt-2">
@@ -34,17 +49,6 @@
                 <DropdownSelect placeholder="in" :options="[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]" />
               </div>
             </div>
-
-            <!-- <label for="region" class="block text-sm font-medium leading-6 text-gray-900">State / Province</label>
-            <div class="mt-2">
-              <input
-                type="text"
-                name="region"
-                id="region"
-                autocomplete="address-level1"
-                class="px-2 block w-full rounded-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-              />
-            </div> -->
           </div>
 
           <div class="sm:col-span-2">
@@ -142,14 +146,14 @@
               </div>
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
 
-      <div class="pb-12">
-        <h2 class="font-semibold leading-7 text-gray-900 py-3">Account Information</h2>
-        <!-- <p class="mt-1 text-sm leading-6 text-gray-600">Use a permanent address where you can receive mail.</p> -->
+      <!-- <div class="pb-12">
+        <h2 class="font-semibold leading-7 text-gray-900 py-3">Account Information</h2> -->
+      <!-- <p class="mt-1 text-sm leading-6 text-gray-600">Use a permanent address where you can receive mail.</p> -->
 
-        <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+      <!-- <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
           <div class="sm:col-span-3">
             <label for="first-name" class="block text-sm font-medium leading-6 text-gray-900">First name</label>
             <div class="mt-2">
@@ -257,7 +261,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
 
       <!-- <div class="border-b border-gray-900/10 pb-12">
         <h2 class="text-base font-semibold leading-7 text-gray-900">Notifications</h2>
@@ -367,10 +371,10 @@
 </template>
 
 <script>
-import DropdownSelect from "../../form_elements/DropdownSelect.vue";
-import { PhotoIcon, UserCircleIcon } from "@heroicons/vue/24/solid";
+// import DropdownSelect from "../../form_elements/DropdownSelect.vue";
+// import { PhotoIcon, UserCircleIcon } from "@heroicons/vue/24/solid";
 export default {
-  components: { DropdownSelect, PhotoIcon, UserCircleIcon },
+  // components: { DropdownSelect, PhotoIcon, UserCircleIcon },
   data: function () {
     return {};
   },
