@@ -19,8 +19,8 @@
           v-for="item in navigation"
           :key="item.name"
           :href="item.href"
-          class="p-3 mx-2 text-sm font-semibold leading-6 text-blue-100 hover:no-underline no-underline hover:text-white hover:bg-blue-900 rounded"
-          :class="{ active: $route.name == item.name.toLowerCase() }"
+          class="p-3 mx-2 text-sm font-semibold leading-6 text-blue-100 hover:underline no-underline hover:text-white rounded"
+          :class="{ 'active-test': $route.name == item.name.toLowerCase() }"
         >
           {{ item.name }}
         </a>
@@ -28,7 +28,7 @@
       <div class="flex flex-1 items-center justify-end gap-x-6">
         <a
           href="/login"
-          class="px-3 py-2 hidden lg:block lg:text-sm lg:font-semibold lg:leading-6 lg:text-blue-100 hover:no-underline no-underline hover:text-white hover:bg-blue-900 rounded"
+          class="px-3 py-2 hidden lg:block lg:text-sm lg:font-semibold lg:leading-6 lg:text-blue-100 hover:no-underline no-underline hover:text-white rounded"
         >
           Log in
         </a>
@@ -147,6 +147,10 @@ export default {
 </script>
 
 <style scoped>
+.active-test {
+  color: white !important;
+  text-decoration: underline;
+}
 .active {
   background-color: rgb(30 58 138) !important;
   border-radius: 0.25rem;
