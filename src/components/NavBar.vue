@@ -6,7 +6,7 @@
         <SignUpOptions></SignUpOptions>
       </template>
     </ModalContainer>
-    <nav class="mx-auto flex max-w-7xl items-center justify-between gap-x-6 p-2 lg:px-6" aria-label="Global">
+    <nav class="lg:mx-5 md:mx-3 sm:mx-1 flex items-center justify-between gap-x-6 p-2 lg:px-6" aria-label="Global">
       <div class="flex lg:flex">
         <a href="/" class="-m-1.5 p-1.5 no-underline hover:no-underline text-blue-100">
           <p class="lg:text-3xl md:text-2xl text-lg text-blue-100 hover:text-white m-0">Chicago Artist Atlas</p>
