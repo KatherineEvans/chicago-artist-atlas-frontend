@@ -9,9 +9,7 @@
     <nav class="mx-auto flex max-w-7xl items-center justify-between gap-x-6 p-2 lg:px-6" aria-label="Global">
       <div class="flex lg:flex">
         <a href="/" class="-m-1.5 p-1.5 no-underline hover:no-underline text-blue-100">
-          <h4 class="text-blue-100 hover:text-white m-0">
-            <strong>Chicago Artist Atlas</strong>
-          </h4>
+          <p class="md:text-2xl text-lg text-blue-100 hover:text-white m-0">Chicago Artist Atlas</p>
         </a>
       </div>
       <div class="hidden lg:flex">
@@ -57,7 +55,7 @@
       >
         <div class="flex items-center gap-x-6">
           <a href="/" class="-m-1.5 p-1.5 no-underline hover:no-underline text-blue-100">
-            <h4 class="text-2xl text-blue-100 hover:text-white sm:text-base"><strong>Chicago Artist Atlas</strong></h4>
+            <h4 class="text-blue-100 hover:text-white md:text-2xl text-lg">Chicago Artist Atlas</h4>
           </a>
           <button
             @click="modalOpen = true"

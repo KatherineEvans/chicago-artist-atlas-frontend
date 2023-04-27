@@ -1,7 +1,7 @@
 <template>
   <BannerImage />
   <div class="home mx-auto text-center">
-    <div class="row ltblue py-3 px-4">
+    <div class="row bg-sky-100 py-3 px-4">
       <div class="col-8 m-auto my-3">
         <h4>
           <strong>Atlas is the ultimate destination for Chicago theatre artists and makers.</strong>
@@ -70,7 +70,7 @@
       </div>
     </div>
     <!-- COMING SOON -->
-    <div class="row my-3 pt-3 pb-4 mx-auto gr-bk mb-0">
+    <div class="row my-3 pt-3 pb-4 mx-auto bg-sky-100 mb-0">
       <h3 class="py-3">Atlas Resources</h3>
       <div class="row mb-3">
         <div class="mx-auto col-xl-7 col-lg-7 col-md-8 col-sm-12 col-xs-12">
@@ -172,14 +172,8 @@ export default {
 };
 </script>
 <style scoped>
-.ltblue {
-  background-color: #e6f4f7 !important;
-}
 img {
   max-width: 125px;
-}
-.gr-bk {
-  background-color: lightgray;
 }
 a {
   text-decoration: none;
