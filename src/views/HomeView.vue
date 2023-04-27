@@ -3,9 +3,7 @@
   <div class="home mx-auto text-center">
     <div class="row bg-sky-100 py-3 px-4">
       <div class="col-8 m-auto my-3">
-        <h4>
-          <strong>Atlas is the ultimate destination for Chicago theatre artists and makers.</strong>
-        </h4>
+        <p class="text-2xl font-bold">Atlas is the ultimate destination for Chicago theatre artists and makers.</p>
         <p style="font-size: 16px">
           We combine vital information in an easily navigated, one-stop-shop with original content from experts in our
           community to guide you on your journey.
@@ -15,7 +13,7 @@
     <!-- CURRENT RESOURCES -->
     <div class="row no-gutters my-2 py-4 mx-auto">
       <div class="col-12">
-        <h3 class="mb-4">Atlas Directories</h3>
+        <p class="lg:text-3xl text-2xl font-bold">Atlas Directories</p>
         <div class="row mb-3">
           <div class="mx-auto col-xl-7 col-lg-7 col-md-8 col-sm-12 col-xs-12">
             <p style="font-size: 16px">Explore opportunities in the Chicago Theater community!</p>
@@ -71,7 +69,7 @@
     </div>
     <!-- COMING SOON -->
     <div class="row my-3 pt-3 pb-4 mx-auto bg-sky-100 mb-0">
-      <h3 class="py-3">Atlas Resources</h3>
+      <p class="pt-3 lg:text-3xl text-2xl font-bold">Atlas Resources</p>
       <div class="row mb-3">
         <div class="mx-auto col-xl-7 col-lg-7 col-md-8 col-sm-12 col-xs-12">
           <p style="font-size: 16px">
