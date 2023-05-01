@@ -11,7 +11,7 @@
       </div>
     </div>
     <!-- CURRENT RESOURCES -->
-    <div class="row no-gutters my-2 py-4 mx-auto">
+    <div class="row no-gutters my-2 py-5 mx-auto mt-0">
       <div class="col-12">
         <p class="lg:text-3xl text-2xl font-bold">Atlas Directories</p>
         <div class="row mb-3">
@@ -66,8 +66,8 @@
       </div>
     </div>
     <!-- COMING SOON -->
-    <div class="row my-3 pt-3 pb-4 mx-auto bg-sky-100 mb-0">
-      <p class="pt-3 lg:text-3xl text-2xl font-bold">Atlas Resources</p>
+    <div class="row my-3 py-5 mx-auto bg-sky-100 mb-0">
+      <p class="lg:text-3xl text-2xl font-bold">Atlas Resources</p>
       <div class="row mb-3">
         <div class="mx-auto col-xl-7 col-lg-7 col-md-8 col-sm-12 col-xs-12">
           <p style="font-size: 16px">
