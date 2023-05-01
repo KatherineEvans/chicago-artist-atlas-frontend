@@ -2,7 +2,7 @@
   <BannerImage />
   <div class="home mx-auto text-center">
     <div class="row bg-sky-100 py-3 px-4">
-      <div class="col-8 m-auto my-3">
+      <div class="col-10 m-auto my-3">
         <p class="text-2xl font-bold">Atlas is the ultimate destination for Chicago theatre artists and makers.</p>
         <p style="font-size: 16px">
           We combine vital information in an easily navigated, one-stop-shop with original content from experts in our
@@ -24,10 +24,10 @@
         <a href="/theater-directory" class="shadow2 h-100 card mx-auto text-center">
           <img class="m-auto pb-2 pt-4" src="../assets/shore.png" alt="" />
           <div class="card-body">
-            <div class="card-title">
-              <h5>Theater Directory</h5>
+            <div class="card-title mb-1">
+              <p class="text-lg font-bold mb-1">Theater Directory</p>
               <div>
-                <p style="font-size: 14px">
+                <p class="mb-2">
                   Explore the wide and varried landscape of Chicago theater with our comprehensive directory.
                 </p>
               </div>
@@ -39,12 +39,10 @@
         <a href="/auditions" class="h-100 card mx-auto text-center shadow2">
           <img class="m-auto pb-2 pt-4" src="../assets/night.png" alt="" />
           <div class="card-body">
-            <div class="card-title">
-              <h5>Auditions</h5>
+            <div class="card-title mb-1">
+              <p class="text-lg font-bold mb-1">Auditions</p>
               <div>
-                <p style="font-size: 14px">
-                  Navigate available theater, television, and film auditions in the Chicagoand area.
-                </p>
+                <p class="mb-2">Navigate available theater, television, and film auditions in the Chicagoand area.</p>
               </div>
             </div>
           </div>
@@ -54,10 +52,10 @@
         <a href="/classes" class="shadow2 h-100 card mx-auto text-center">
           <img class="m-auto pb-2 pt-4" src="../assets/wheel.png" alt="" />
           <div class="card-body">
-            <div class="card-title">
-              <h5>Classes</h5>
+            <div class="card-title mb-1">
+              <p class="text-lg font-bold mb-1">Classes</p>
               <div>
-                <p style="font-size: 14px">
+                <p class="mb-2">
                   Delve into Atlas's exceptional classes for creatives, and perfect your craft with lessons from
                   industry leaders and experts.
                 </p>
@@ -80,14 +78,14 @@
           <a style="text-decoration: underline" href="/resources">View all resources</a>
         </div>
       </div>
-      <div class="mx-auto col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12 p-2">
+      <div class="mx-auto col-xl-3 col-lg-3 col-md-6 col-sm-12 col-xs-12 p-2">
         <a href="/resources" class="shadow2 h-100 card mx-auto text-center">
           <img class="m-auto pb-2 pt-4" src="../assets/bean.png" alt="" />
           <div class="card-body">
-            <div class="card-title">
-              <h5>Inclusivity Resources</h5>
+            <div class="card-title mb-1">
+              <p class="text-lg font-bold mb-1">Inclusivity Resources</p>
               <div>
-                <p style="font-size: 14px">
+                <p class="mb-2">
                   A collection of resources centered around diverse experiences, including: BIPOC, LGBTQA+,
                   Female-Identifying, and ADA resources.
                 </p>
@@ -96,14 +94,14 @@
           </div>
         </a>
       </div>
-      <div class="mx-auto col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12 p-2">
+      <div class="mx-auto col-xl-3 col-lg-3 col-md-6 col-sm-12 col-xs-12 p-2">
         <a href="/resources" class="shadow2 h-100 card mx-auto text-center">
           <img class="m-auto pb-2 pt-4" src="../assets/lion.png" alt="" />
           <div class="card-body">
-            <div class="card-title">
-              <h5>Eco & Sustainability Resources</h5>
+            <div class="card-title mb-1">
+              <p class="text-lg font-bold mb-1">Eco & Sustainability Resources</p>
               <div>
-                <p style="font-size: 14px">
+                <p class="mb-2">
                   A collection of resources focused on improved sustainability and addressing ecological issues in the
                   theater community.
                 </p>
@@ -112,14 +110,14 @@
           </div>
         </a>
       </div>
-      <div class="mx-auto col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12 p-2">
+      <div class="mx-auto col-xl-3 col-lg-3 col-md-6 col-sm-12 col-xs-12 p-2">
         <a href="/resources" class="shadow2 h-100 card mx-auto text-center">
           <img class="m-auto pb-2 pt-4" src="../assets/park.png" alt="" />
           <div class="card-body">
-            <div class="card-title">
-              <h5>Theater Resources</h5>
+            <div class="card-title mb-1">
+              <p class="text-lg font-bold mb-1">Theater Resources</p>
               <div>
-                <p style="font-size: 14px">
+                <p class="mb-2">
                   Keep your theatre company in the know with this collection of resources focused on theater production
                   and the business side of art.
                 </p>
@@ -182,9 +180,6 @@ a:hover {
 }
 .card {
   max-width: 350px !important;
-}
-.card-title {
-  font-size: 14px;
 }
 .card-text {
   text-align: left;
