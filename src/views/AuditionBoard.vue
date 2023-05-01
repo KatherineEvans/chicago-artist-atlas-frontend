@@ -118,7 +118,7 @@
                 <p>
                   <span class="strong">Cast Breakdown:</span>
                 </p>
-                <div id="accordion" class="mt-3 row">
+                <div class="mt-3 row">
                   <div
                     v-for="character in audition.characters"
                     v-bind:key="character.id"
@@ -150,17 +150,16 @@
                         :id="`collapse-${character.id}`"
                         class="collapse"
                         :aria-labelledby="`heading-${character.id}`"
-                        data-parent="#accordion"
                       >
                         <div class="card-body">
                           <div class="row mb-2">
-                            <div class="col-11">
+                            <div class="col-10">
                               <p>
                                 <span class="strong">Character Description:</span>
                                 {{ character.description }}
                               </p>
                             </div>
-                            <div class="col-1">
+                            <div class="col-2">
                               <i @click="heart = false" class="fa-solid fa-heart fa-lg" v-if="heart"></i>
                               <i @click="heart = true" class="fa-regular fa-heart fa-lg" v-else></i>
                             </div>
@@ -182,9 +181,6 @@
                     </div>
                   </div>
                 </div>
-                <!-- <div class="card" v-for="character in audition.characters" v-bind:key="character.id">
-                  {{ character.name }}
-                </div> -->
               </div>
               <br />
               <div class="row">
@@ -321,7 +317,6 @@ export default {
       }
     },
     getAuditions(link) {
-      console.log("hi");
       axios
         .get(link)
         .then((response) => {
@@ -339,6 +334,9 @@ export default {
 .character-title {
   display: flex;
   justify-content: space-between;
+}
+.show {
+  visibility: visible !important;
 }
 .collapsed {
   border-radius: 5px !important;
