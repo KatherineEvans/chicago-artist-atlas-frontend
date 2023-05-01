@@ -106,8 +106,8 @@
               </div>
             </div>
           </div>
-          <div class="w-full md:w-1/2 grid flex flex-wrap flex">
-            <div class="col-span-full">
+          <div class="w-full grid flex flex-wrap flex">
+            <div class="col-span-full px-3">
               <label for="about" class="block text-base font-medium leading-6 text-gray-900">About</label>
               <div class="mt-2">
                 <textarea
