@@ -31,7 +31,7 @@
           <div class="card-body" v-on:click="currentTheater = theater">
             <div class="mb-2">
               <h5 class="card-title d-inline">{{ theater.name }}</h5>
-              <a target="_blank" :href="'http://' + theater.website" class="hover-text float-right card-link">
+              <a target="_blank" :href="theater.website" class="hover-text float-right card-link">
                 <i class="fa-solid fa-square-up-right"></i>
                 <span class="tooltip-text" id="top">Visit Site</span>
               </a>
