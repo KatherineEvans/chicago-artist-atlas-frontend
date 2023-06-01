@@ -17,7 +17,7 @@
     <div class="container pb-5 px-5 m-auto">
       <div class="row">
         <div class="mt-5">
-          <h5 class="text-xl font-bold">Top Inclusivity Resources</h5>
+          <h5 class="text-xl font-bold text-center">Top Inclusivity Resources</h5>
           <div class="resource-container">
             <div class="img-desc">
               <img class="lf-img mx-auto mb-3" src="../assets/inclusivity.png" />
@@ -75,7 +75,7 @@
       </div>
       <div class="row">
         <div class="mt-5">
-          <h5 class="text-xl font-bold">Top Eco & Sustainability Resources</h5>
+          <h5 class="text-xl font-bold text-center">Top Eco & Sustainability Resources</h5>
           <div class="resource-container">
             <div class="img-desc">
               <img class="lf-img mx-auto mb-3" src="../assets/eco_sustainability.png" />
@@ -121,7 +121,7 @@
       </div>
       <div class="row">
         <div class="mt-5">
-          <h5 class="text-xl font-bold">Top Theater Resources</h5>
+          <h5 class="text-xl font-bold text-center">Top Theater Resources</h5>
           <div class="resource-container">
             <div class="img-desc">
               <img class="lf-img mx-auto mb-3" src="../assets/theater.png" />
