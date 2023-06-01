@@ -2,9 +2,7 @@
   <div class="container-fluid">
     <div class="row ltblue py-3 px-4 text-center">
       <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 col-xl-8 m-auto my-3">
-        <h2>
-          <strong>Resources</strong>
-        </h2>
+        <h2 class="text-2xl font-bold">Resources</h2>
         <p style="font-size: 16px">
           Here at Atlas, we're focused on providing our users with the latest resources on topics that matter -
           inclusivity, diversity, sustainability, and the business of theater! We strive to continually improve and grow
@@ -19,7 +17,7 @@
     <div class="container pb-5 px-5 m-auto">
       <div class="row">
         <div class="mt-5">
-          <h5 class="resource-title">Top Inclusivity Resources</h5>
+          <h5 class="text-xl font-bold">Top Inclusivity Resources</h5>
           <div class="resource-container">
             <div class="img-desc">
               <img class="lf-img mx-auto mb-3" src="../assets/inclusivity.png" />
@@ -77,7 +75,7 @@
       </div>
       <div class="row">
         <div class="mt-5">
-          <h5 class="resource-title">Top Eco & Sustainability Resources</h5>
+          <h5 class="text-xl font-bold">Top Eco & Sustainability Resources</h5>
           <div class="resource-container">
             <div class="img-desc">
               <img class="lf-img mx-auto mb-3" src="../assets/eco_sustainability.png" />
@@ -123,7 +121,7 @@
       </div>
       <div class="row">
         <div class="mt-5">
-          <h5 class="resource-title">Top Theater Resources</h5>
+          <h5 class="text-xl font-bold">Top Theater Resources</h5>
           <div class="resource-container">
             <div class="img-desc">
               <img class="lf-img mx-auto mb-3" src="../assets/theater.png" />
@@ -217,10 +215,6 @@
   .resource-container {
     flex-direction: column;
   }
-}
-.resource-title {
-  font-weight: 700;
-  text-align: center;
 }
 .resource-cards {
   flex: 3;

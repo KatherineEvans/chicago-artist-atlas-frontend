@@ -21,7 +21,7 @@
         </div>
       </div>
       <div class="mx-auto col-xl-3 col-lg-3 col-md-6 col-sm-12 col-xs-12 p-2">
-        <a href="/theater-directory" class="shadow2 h-100 card mx-auto text-center">
+        <a href="/directory" class="shadow2 h-100 card mx-auto text-center">
           <img class="m-auto pb-2 pt-4" src="../assets/shore.png" alt="" />
           <div class="card-body">
             <div class="card-title mb-1">

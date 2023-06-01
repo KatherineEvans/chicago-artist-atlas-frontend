@@ -2,9 +2,7 @@
   <div class="container-fluid">
     <div class="row ltblue py-3 px-4 text-center">
       <div class="col-8 m-auto my-3">
-        <h2>
-          <strong>Auditions</strong>
-        </h2>
+        <h2 class="text-2xl font-bold">Auditions</h2>
         <p style="font-size: 16px">
           ATLAS strives to deliver accurate, timely, and transparent audition information for Chicago and the greater
           Chicagoland area. Theatres and creative who would like to post an audition, please fill out the form here!
