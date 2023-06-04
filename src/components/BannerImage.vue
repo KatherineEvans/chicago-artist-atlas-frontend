@@ -16,13 +16,16 @@ export default {
     let now = new Date();
     let hours = now.getHours();
     if (hours >= 6 && hours <= 14) {
-      this.imageUrl = require("../assets/hero/morning/morning-banner.jpg");
+      // this.imageUrl = require("../assets/hero/morning/morning-banner.jpg");
+      this.imageUrl = "https://res.cloudinary.com/dzlaaytu7/image/upload/v1685903849/morning-banner_o1yk9m.jpg";
       this.logoUrl = require("../assets/hero/morning/morning-logo.png");
     } else if (hours >= 15 && hours <= 18) {
-      this.imageUrl = require("../assets/hero/afternoon/afternoon-banner.jpg");
+      // this.imageUrl = require("../assets/hero/afternoon/afternoon-banner.jpg");
+      this.imageUrl = "https://res.cloudinary.com/dzlaaytu7/image/upload/v1685903864/afternoon-banner_twgiwt.jpg";
       this.logoUrl = require("../assets/hero/afternoon/afternoon-logo.png");
     } else {
-      this.imageUrl = require("../assets/hero/evening/evening-banner.jpg");
+      // this.imageUrl = require("../assets/hero/evening/evening-banner.jpg");
+      this.imageUrl = "https://res.cloudinary.com/dzlaaytu7/image/upload/v1685903872/evening-banner_y5mvdg.jpg";
       this.logoUrl = require("../assets/hero/evening/evening-logo.png");
     }
   },
