@@ -12,29 +12,43 @@ export default {
     };
   },
   watch: {},
+  created() {
+    let now = new Date();
+    let hours = now.getHours();
+    if (hours >= 6 && hours <= 14) {
+      this.imageUrl = require("../assets/hero/morning/morning-banner.jpg");
+      this.logoUrl = require("../assets/hero/morning/morning-logo.png");
+    } else if (hours >= 15 && hours <= 18) {
+      this.imageUrl = require("../assets/hero/afternoon/afternoon-banner.jpg");
+      this.logoUrl = require("../assets/hero/afternoon/afternoon-logo.png");
+    } else {
+      this.imageUrl = require("../assets/hero/evening/evening-banner.jpg");
+      this.logoUrl = require("../assets/hero/evening/evening-logo.png");
+    }
+  },
   computed: {
-    logoUrl() {
-      let now = new Date();
-      let hours = now.getHours();
-      if (hours >= 6 && hours <= 14) {
-        return require("../assets/hero/morning/morning-logo.png");
-      } else if (hours >= 15 && hours <= 18) {
-        return require("../assets/hero/afternoon/afternoon-logo.png");
-      } else {
-        return require("../assets/hero/evening/evening-logo.png");
-      }
-    },
-    imageUrl() {
-      let now = new Date();
-      let hours = now.getHours();
-      if (hours >= 6 && hours <= 14) {
-        return require("../assets/hero/morning/morning-banner.jpg");
-      } else if (hours >= 15 && hours <= 18) {
-        return require("../assets/hero/afternoon/afternoon-banner.jpg");
-      } else {
-        return require("../assets/hero/evening/evening-banner.jpg");
-      }
-    },
+    // logoUrl() {
+    //   let now = new Date();
+    //   let hours = now.getHours();
+    //   if (hours >= 6 && hours <= 14) {
+    //     return require("../assets/hero/morning/morning-logo.png");
+    //   } else if (hours >= 15 && hours <= 18) {
+    //     return require("../assets/hero/afternoon/afternoon-logo.png");
+    //   } else {
+    //     return require("../assets/hero/evening/evening-logo.png");
+    //   }
+    // },
+    // imageUrl() {
+    //   let now = new Date();
+    //   let hours = now.getHours();
+    //   if (hours >= 6 && hours <= 14) {
+    //     return require("../assets/hero/morning/morning-banner.jpg");
+    //   } else if (hours >= 15 && hours <= 18) {
+    //     return require("../assets/hero/afternoon/afternoon-banner.jpg");
+    //   } else {
+    //     return require("../assets/hero/evening/evening-banner.jpg");
+    //   }
+    // },
   },
   methods: {},
 };
