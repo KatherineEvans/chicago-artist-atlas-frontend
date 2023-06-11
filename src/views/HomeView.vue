@@ -3,7 +3,7 @@
   <div class="home mx-auto text-center">
     <div class="bg-sky-100 p-4 md:p-2 sm:p-2">
       <div class="m-auto my-3">
-        <p class="text-2xl font-bold">Atlas is the ultimate destination for Chicago theatre artists and makers.</p>
+        <p class="text-2xl font-bold mb-1">Atlas is the ultimate destination for Chicago theatre artists and makers.</p>
         <p style="font-size: 16px">
           We combine vital information in an easily navigated, one-stop-shop with original content from experts in our
           community to guide you on your journey.
