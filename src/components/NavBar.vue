@@ -9,6 +9,10 @@
         ></SignUpOptions>
         <SignUpForm v-if="modalType == 'signup'" @modal-type="(type) => (modalType = type)"></SignUpForm>
         <LoginForm v-if="modalType == 'login'" @modal-type="(type) => (modalType = type)"></LoginForm>
+        <ForgotPassword
+          v-if="modalType == 'forgotPassword'"
+          @modal-type="(type) => (modalType = type)"
+        ></ForgotPassword>
       </template>
     </ModalContainer>
     <nav class="lg:mx-5 md:mx-3 sm:mx-1 flex items-center justify-between gap-x-6 p-2 lg:px-6" aria-label="Global">
@@ -108,9 +112,20 @@ import ModalContainer from "./ModalContainer.vue";
 import SignUpOptions from "@/views/Authentication/SignUpOptions.vue";
 import SignUpForm from "@/views/Authentication/SignUpForm.vue";
 import LoginForm from "@/views/Authentication/LoginForm.vue";
+import ForgotPassword from "@/views/Authentication/ForgotPassword.vue";
 export default {
   props: ["isLoggedIn"],
-  components: { Dialog, DialogPanel, Bars3Icon, XMarkIcon, ModalContainer, SignUpOptions, SignUpForm, LoginForm },
+  components: {
+    Dialog,
+    DialogPanel,
+    Bars3Icon,
+    XMarkIcon,
+    ModalContainer,
+    SignUpOptions,
+    SignUpForm,
+    LoginForm,
+    ForgotPassword,
+  },
   data: function () {
     return {
       mobileMenuOpen: false,

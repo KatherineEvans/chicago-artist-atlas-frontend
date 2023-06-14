@@ -74,7 +74,6 @@ export default {
   },
   watch: {
     open(newVal, oldVal) {
-      console.log(oldVal, newVal, "TEST");
       this.modalOpen = newVal;
     },
   },

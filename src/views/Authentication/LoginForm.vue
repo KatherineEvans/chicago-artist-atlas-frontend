@@ -25,7 +25,12 @@
           <div class="flex items-center justify-between">
             <label for="password" class="block text-sm font-medium leading-6 text-blue-950 mb-0">Password</label>
             <div class="text-sm">
-              <a href="#" class="font-semibold text-blue-800 hover:text-blue-700">Forgot password?</a>
+              <button
+                @click="$emit('modalType', 'forgotPassword')"
+                class="font-semibold text-blue-800 hover:text-blue-700"
+              >
+                Forgot password?
+              </button>
             </div>
           </div>
           <div class="mt-2">
@@ -35,7 +40,7 @@
               name="password"
               type="password"
               autocomplete="current-password"
-              required=""
+              required="true"
               class="block w-full rounded-md border-0 p-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
             />
           </div>

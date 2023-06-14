@@ -12,9 +12,13 @@ import "bootstrap-vue/dist/bootstrap-vue.css";
 axios.defaults.baseURL =
   process.env.NODE_ENV === "development" ? "http://localhost:3000" : "https://chi-artist-atlas-backend.herokuapp.com";
 
-var jwt = localStorage.getItem("auth_token");
-if (jwt) {
-  axios.defaults.headers.common["Authorization"] = `Bearer ${jwt}`;
+axios.defaults.headers.common = {
+  "X-Requested-With": "XMLHttpRequest",
+};
+
+var token = localStorage.getItem("auth_token");
+if (token) {
+  axios.defaults.headers.common["Authorization"] = `${token}`;
 }
 
 createApp(App).use(store).use(router).mount("#app");

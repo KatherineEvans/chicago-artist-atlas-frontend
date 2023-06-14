@@ -36,6 +36,9 @@ export default {
       axios.defaults.headers.common["Authorization"] = data.headers.authorization;
       localStorage.setItem("auth_token", data.headers.authorization);
     },
+    setDefaultUserInfo(state, data) {
+      state.defaultUser = data.data.user;
+    },
     resetUserInfo(state, payload) {
       state.user = state.defaultUser;
     },
@@ -57,7 +60,7 @@ export default {
     // },
     registerUser({ commit }, payload) {
       axios
-        .post("/users", payload)
+        .post("/users.json", payload)
         .then((response) => {
           console.log("signup posted w/response", response);
           // commit("setUserInfo", response);
@@ -70,10 +73,19 @@ export default {
     },
     loginUser({ commit }, payload) {
       axios
-        .post("/users/sign_in", payload)
+        .post("/users/sign_in.json", payload)
         .then((response) => {
-          commit("setUserInfo", response);
-          commit("setDefaultUserInfo", response);
+          console.log(response, "signin");
+          console.log(response.headers.authorization, "shit");
+          localStorage.setItem("auth_token", response.headers.authorization);
+          axios.defaults.headers.common["Authorization"] = response.headers.authorization;
+
+          // axios.defaults.headers.common["Authorization"] = `${response.headers.authorization}`;
+          axios.get("/theaters").then((response) => {
+            console.log(response, "theaters call to get current user");
+          });
+          // commit("setUserInfo", response);
+          // commit("setDefaultUserInfo", response);
         })
         .catch((error) => {
           console.log("posted w/errors", error);
@@ -88,7 +100,7 @@ export default {
       };
       new Promise((resolve, reject) => {
         axios
-          .delete("/users/sign_out", config)
+          .delete("/users/sign_out.json", config)
           .then(() => {
             commit("resetUserInfo");
             resolve();
@@ -97,6 +109,11 @@ export default {
             commit("setErrors", errors);
             reject(error);
           });
+      });
+    },
+    resetUserPassword(payload) {
+      axios.post("/users/password.json", payload).then((response) => {
+        console.log(response, "password email response from backend");
       });
     },
   },
