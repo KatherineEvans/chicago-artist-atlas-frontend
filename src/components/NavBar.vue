@@ -175,6 +175,14 @@ export default {
     isLoggedIn: function () {
       console.log(this.isLoggedIn);
     },
+    "$store.state.sessions.passwordResetToken": function () {
+      if (
+        typeof this.$store.state.sessions.passwordResetToken === "undefined" ||
+        this.$store.state.sessions.passwordResetToken === null
+      ) {
+        console.log(this.$store.state.sessions.passwordResetToken, "token set");
+      }
+    },
   },
 };
 </script>
