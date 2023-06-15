@@ -6,6 +6,7 @@ export default {
   state: {
     errors: [],
     auth_token: null,
+    passwordResetToken: null,
     user: {
       firstName: null,
       lastName: null,
@@ -44,6 +45,10 @@ export default {
     },
     setErrors(state, payload) {
       state.errors = payload;
+    },
+    setPasswordResetToken(state, payload) {
+      state.passwordResetToken = payload;
+      console.log("fart");
     },
   },
   actions: {
@@ -111,7 +116,7 @@ export default {
           });
       });
     },
-    resetUserPassword(payload) {
+    resetUserPassword({ commit }, payload) {
       axios.post("/users/password.json", payload).then((response) => {
         console.log(response, "password email response from backend");
       });

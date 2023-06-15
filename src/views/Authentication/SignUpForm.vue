@@ -18,7 +18,7 @@
                 type="text"
                 name="first-name"
                 id="first-name"
-                autocomplete="given-name"
+                required="true"
                 class="block w-full rounded-md border-0 p-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               />
             </div>
@@ -33,7 +33,7 @@
                 type="text"
                 name="last-name"
                 id="last-name"
-                autocomplete="family-name"
+                required="true"
                 class="block w-full rounded-md border-0 p-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               />
             </div>
@@ -47,8 +47,7 @@
               id="email"
               name="email"
               type="email"
-              autocomplete="email"
-              required=""
+              required="true"
               class="block w-full rounded-md border-0 p-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
             />
           </div>
@@ -63,8 +62,7 @@
               id="password"
               name="password"
               type="password"
-              autocomplete="current-password"
-              required=""
+              required="true"
               class="block w-full rounded-md border-0 p-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
             />
           </div>
@@ -81,8 +79,7 @@
               id="password"
               name="password"
               type="password"
-              autocomplete="current-password"
-              required=""
+              required="true"
               class="block w-full rounded-md border-0 p-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
             />
           </div>
