@@ -48,21 +48,10 @@ export default {
     },
     setPasswordResetToken(state, payload) {
       state.passwordResetToken = payload;
-      console.log("fart");
+      console.log(payload);
     },
   },
   actions: {
-    // async userRegistration({ commit }) {
-    //   let response = await api.post("/users", {
-    //     params: { user: state.user },
-    //   });
-    //   commit("setUserInfo", response.data);
-    //   // dispatch("userLogin", id);
-    // },
-    // async userLogin({ commit }) {
-    //   let response = await api.get("/users/sign_in");
-    //   commit("setExampleTwo", response.data);
-    // },
     registerUser({ commit }, payload) {
       axios
         .post("/users.json", payload)
@@ -84,7 +73,6 @@ export default {
           console.log(response.headers.authorization, "shit");
           localStorage.setItem("auth_token", response.headers.authorization);
           axios.defaults.headers.common["Authorization"] = response.headers.authorization;
-
           // axios.defaults.headers.common["Authorization"] = `${response.headers.authorization}`;
           axios.get("/theaters").then((response) => {
             console.log(response, "theaters call to get current user");
@@ -117,7 +105,7 @@ export default {
       });
     },
     resetUserPassword({ commit }, payload) {
-      axios.post("/users/password.json", payload).then((response) => {
+      axios.put("/users/password.json", payload).then((response) => {
         console.log(response, "password email response from backend");
       });
     },

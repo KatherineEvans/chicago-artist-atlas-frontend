@@ -62,6 +62,7 @@ export default {
       user: {
         password: null,
         password_confirmation: null,
+        reset_password_token: this.$store.state.sessions.passwordResetToken,
       },
     };
   },

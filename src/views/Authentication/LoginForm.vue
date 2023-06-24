@@ -7,7 +7,7 @@
     <div class="mt-6 sm:mx-auto sm:w-full sm:max-w-sm">
       <form class="space-y-6" @submit="submitLoginForm">
         <div>
-          <label for="email" class="block text-sm text-left font-medium leading-6 text-blue-950">Email address</label>
+          <label for="email" class="block text-sm text-left font-medium leading-6 text-blue-950">Email *</label>
           <div class="mt-2">
             <input
               v-model="user.email"
@@ -23,7 +23,7 @@
 
         <div>
           <div class="flex items-center justify-between">
-            <label for="password" class="block text-sm font-medium leading-6 text-blue-950 mb-0">Password</label>
+            <label for="password" class="block text-sm font-medium leading-6 text-blue-950 mb-0">Password *</label>
             <div class="text-sm">
               <button
                 @click="$emit('modalType', 'forgotPassword')"

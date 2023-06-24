@@ -13,6 +13,7 @@
           v-if="modalType == 'forgotPassword'"
           @modal-type="(type) => (modalType = type)"
         ></ForgotPassword>
+        <ResetPassword v-if="modalType == 'resetPassword'" @modal-type="(type) => (modalType = type)"></ResetPassword>
       </template>
     </ModalContainer>
     <nav class="lg:mx-5 md:mx-3 sm:mx-1 flex items-center justify-between gap-x-6 p-2 lg:px-6" aria-label="Global">
@@ -113,6 +114,9 @@ import SignUpOptions from "@/views/Authentication/SignUpOptions.vue";
 import SignUpForm from "@/views/Authentication/SignUpForm.vue";
 import LoginForm from "@/views/Authentication/LoginForm.vue";
 import ForgotPassword from "@/views/Authentication/ForgotPassword.vue";
+import ResetPassword from "@/views/Authentication/ResetPassword.vue";
+import { mapState } from "vuex";
+
 export default {
   props: ["isLoggedIn"],
   components: {
@@ -125,6 +129,7 @@ export default {
     SignUpForm,
     LoginForm,
     ForgotPassword,
+    ResetPassword,
   },
   data: function () {
     return {
@@ -159,6 +164,7 @@ export default {
       ],
     };
   },
+  computed: mapState("sessions", ["passwordResetToken"]),
   methods: {
     closeModal() {
       this.modalOpen = false;
@@ -175,13 +181,9 @@ export default {
     isLoggedIn: function () {
       console.log(this.isLoggedIn);
     },
-    "$store.state.sessions.passwordResetToken": function () {
-      if (
-        typeof this.$store.state.sessions.passwordResetToken === "undefined" ||
-        this.$store.state.sessions.passwordResetToken === null
-      ) {
-        console.log(this.$store.state.sessions.passwordResetToken, "token set");
-      }
+    passwordResetToken(newValue, oldValue) {
+      this.modalType = "resetPassword";
+      this.modalOpen = true;
     },
   },
 };
