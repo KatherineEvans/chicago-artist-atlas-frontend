@@ -58,7 +58,7 @@ export default {
       errors: [],
     };
   },
-  created: function () {
+  mounted: function () {
     this.isLoggedIn = !!localStorage.jwt;
   },
   watch: {

@@ -23,7 +23,7 @@
               <span v-if="tier?.price?.annually">{{ tier.price.annually }} per month if paid annually</span>
             </p>
             <button
-              @click="redirect(tier.href)"
+              @click="$emit('modalType', 'signup')"
               :aria-describedby="tier.id"
               :disabled="tier.disabled"
               class="mt-4 block rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:opacity-25 w-full"

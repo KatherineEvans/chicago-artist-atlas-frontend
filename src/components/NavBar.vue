@@ -1,9 +1,19 @@
 <template>
   <header class="bg-blue-950">
-    <ModalContainer :open="modalOpen" @close-modal="modalOpen = false">
+    <ModalContainer :open="modalOpen" @close-modal="closeModal">
       <template v-slot:content>
         <!-- content for the content slot -->
-        <SignUpOptions></SignUpOptions>
+        <SignUpOptions
+          v-if="modalType == 'signUpOptionsModal'"
+          @modal-type="(type) => (modalType = type)"
+        ></SignUpOptions>
+        <SignUpForm v-if="modalType == 'signup'" @modal-type="(type) => (modalType = type)"></SignUpForm>
+        <LoginForm v-if="modalType == 'login'" @modal-type="(type) => (modalType = type)"></LoginForm>
+        <ForgotPassword
+          v-if="modalType == 'forgotPassword'"
+          @modal-type="(type) => (modalType = type)"
+        ></ForgotPassword>
+        <ResetPassword v-if="modalType == 'resetPassword'" @modal-type="(type) => (modalType = type)"></ResetPassword>
       </template>
     </ModalContainer>
     <nav class="lg:mx-5 md:mx-3 sm:mx-1 flex items-center justify-between gap-x-6 p-2 lg:px-6" aria-label="Global">
@@ -24,14 +34,14 @@
         </a>
       </div>
       <div class="flex flex-1 items-center justify-end gap-x-6">
-        <a
-          href="/login"
+        <button
+          @click="openModal('login')"
           class="px-3 py-2 hidden lg:block lg:text-sm lg:font-semibold lg:leading-6 lg:text-blue-100 hover:no-underline no-underline hover:text-white rounded"
         >
           Log in
-        </a>
+        </button>
         <button
-          @click="modalOpen = true"
+          @click="openModal('signUpOptionsModal')"
           class="rounded-md bg-blue-800 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-800 no-underline hover:no-underline"
         >
           Sign up
@@ -101,13 +111,31 @@ import { Dialog, DialogPanel } from "@headlessui/vue";
 import { Bars3Icon, XMarkIcon } from "@heroicons/vue/24/outline";
 import ModalContainer from "./ModalContainer.vue";
 import SignUpOptions from "@/views/Authentication/SignUpOptions.vue";
+import SignUpForm from "@/views/Authentication/SignUpForm.vue";
+import LoginForm from "@/views/Authentication/LoginForm.vue";
+import ForgotPassword from "@/views/Authentication/ForgotPassword.vue";
+import ResetPassword from "@/views/Authentication/ResetPassword.vue";
+import { mapState } from "vuex";
+
 export default {
   props: ["isLoggedIn"],
-  components: { Dialog, DialogPanel, Bars3Icon, XMarkIcon, ModalContainer, SignUpOptions },
+  components: {
+    Dialog,
+    DialogPanel,
+    Bars3Icon,
+    XMarkIcon,
+    ModalContainer,
+    SignUpOptions,
+    SignUpForm,
+    LoginForm,
+    ForgotPassword,
+    ResetPassword,
+  },
   data: function () {
     return {
       mobileMenuOpen: false,
       modalOpen: false,
+      modalType: "signUpOptionsModal",
       navigation: [
         {
           name: "Home",
@@ -136,9 +164,26 @@ export default {
       ],
     };
   },
+  computed: mapState("sessions", ["passwordResetToken"]),
+  methods: {
+    closeModal() {
+      this.modalOpen = false;
+      setTimeout(() => {
+        this.modalType = "signUpOptionsModal";
+      }, 200);
+    },
+    openModal(type) {
+      this.modalOpen = true;
+      this.modalType = type;
+    },
+  },
   watch: {
     isLoggedIn: function () {
       console.log(this.isLoggedIn);
+    },
+    passwordResetToken(newValue, oldValue) {
+      this.modalType = "resetPassword";
+      this.modalOpen = true;
     },
   },
 };
