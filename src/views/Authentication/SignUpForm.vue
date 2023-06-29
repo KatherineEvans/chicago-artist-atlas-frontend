@@ -9,10 +9,10 @@
       <form class="space-y-6" @submit="submitRegestrationForm">
         <div class="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
           <div class="sm:col-span-3">
-            <label for="first-name" class="block text-sm font-medium leading-6 text-blue-950 text-left">
+            <label for="first-name" class="block text-sm font-medium leading-6 text-blue-950 text-left mb-0 mt-2">
               First name *
             </label>
-            <div class="mt-2">
+            <div class="mt-1">
               <input
                 v-model="user.first_name"
                 type="text"
@@ -24,10 +24,10 @@
             </div>
           </div>
           <div class="sm:col-span-3">
-            <label for="last-name" class="block text-sm font-medium leading-6 text-blue-950 text-left">
+            <label for="last-name" class="block text-sm font-medium leading-6 text-blue-950 text-left mb-0 mt-2">
               Last name *
             </label>
-            <div class="mt-2">
+            <div class="mt-1">
               <input
                 v-model="user.last_name"
                 type="text"
@@ -39,9 +39,11 @@
             </div>
           </div>
         </div>
-        <div class="mt-2">
-          <label for="email" class="block text-sm font-medium leading-6 text-blue-950 text-left">Email *</label>
-          <div class="mt-2">
+        <div class="mt-3">
+          <label for="email" class="block text-sm font-medium leading-6 text-blue-950 text-left mb-0 mt-2">
+            Email *
+          </label>
+          <div class="mt-1">
             <input
               v-model="user.email"
               id="email"
@@ -54,9 +56,9 @@
         </div>
         <div class="mt-2">
           <div class="flex items-center justify-between">
-            <label for="password" class="block text-sm font-medium leading-6 text-blue-950">Password *</label>
+            <label for="password" class="block text-sm font-medium leading-6 text-blue-950 mb-0 mt-2">Password *</label>
           </div>
-          <div class="mt-2">
+          <div class="mt-1">
             <input
               v-model="user.password"
               id="password"
@@ -69,11 +71,11 @@
         </div>
         <div class="mt-2">
           <div class="flex items-center justify-between">
-            <label for="password" class="block text-sm font-medium leading-6 text-blue-950">
+            <label for="password" class="block text-sm font-medium leading-6 text-blue-950 mb-0 mt-2">
               Password Confirmation *
             </label>
           </div>
-          <div class="mt-2">
+          <div class="mt-1">
             <input
               v-model="user.password_confirmation"
               id="password"
@@ -118,7 +120,7 @@ export default {
         password_confirmation: null,
       },
       userClone: {},
-      errors: [],
+      errors: null,
     };
   },
   mounted() {
@@ -127,6 +129,7 @@ export default {
       () => this.$store.state.sessions.errors,
       (newErrors) => {
         this.errors = newErrors;
+        console.log("watch", newErrors);
       }
     );
   },
@@ -134,8 +137,12 @@ export default {
     submitRegestrationForm() {
       this.errors = [];
       event.preventDefault();
-      this.$store.dispatch("sessions/registerUser", { user: this.user }).then(() => {
+      this.$store.dispatch("sessions/registerUser", { user: this.user }).then((response) => {
         this.user = this.userClone;
+        console.log(response);
+        if (this.errors) {
+          console.log("fuck", this.errors);
+        }
       });
     },
   },

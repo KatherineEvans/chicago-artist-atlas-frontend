@@ -59,27 +59,27 @@ export default {
     };
   },
   mounted: function () {
-    this.isLoggedIn = !!localStorage.jwt;
+    this.isLoggedIn = !!localStorage.authToken;
   },
   watch: {
     $route: function () {
-      this.isLoggedIn = !!localStorage.jwt;
+      this.isLoggedIn = !!localStorage.authToken;
     },
   },
   methods: {
     login: function () {
       axios
-        .post("/sessions", this.newSessionParams)
+        .post("/users/sign_in.json", { user: this.newSessionParams })
         .then((response) => {
-          axios.defaults.headers.common["Authorization"] = "Bearer " + response.data.jwt;
-          localStorage.setItem("jwt", response.data.jwt);
-          this.$router.go();
+          console.log(response, "signin");
+          console.log(response.headers.authorization);
+          localStorage.setItem("authToken", response.headers.authorization);
+          axios.defaults.headers.common["Authorization"] = response.headers.authorization;
+          this.isLoggedIn = true;
         })
         .catch((error) => {
-          console.log(error.response);
-          this.errors = ["Invalid email or password."];
-          this.email = "";
-          this.password = "";
+          console.log("posted w/errors", error.response.data.status.message);
+          this.errors = error;
         });
     },
   },

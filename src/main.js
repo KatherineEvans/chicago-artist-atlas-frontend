@@ -16,7 +16,7 @@ axios.defaults.headers.common = {
   "X-Requested-With": "XMLHttpRequest",
 };
 
-var token = localStorage.getItem("auth_token");
+var token = localStorage.getItem("authToken");
 if (token) {
   axios.defaults.headers.common["Authorization"] = `${token}`;
 }

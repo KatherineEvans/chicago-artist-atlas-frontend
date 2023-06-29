@@ -4,8 +4,8 @@ import axios from "axios";
 export default {
   namespaced: true,
   state: {
-    errors: [],
-    auth_token: null,
+    errors: null,
+    authToken: null,
     passwordResetToken: null,
     user: {
       firstName: null,
@@ -33,9 +33,9 @@ export default {
   mutations: {
     setUserInfo(state, data) {
       state.user = data.data.user;
-      state.auth_token = data.headers.authorization;
+      state.authToken = data.headers.authorization;
       axios.defaults.headers.common["Authorization"] = data.headers.authorization;
-      localStorage.setItem("auth_token", data.headers.authorization);
+      localStorage.setItem("authToken", data.headers.authorization);
     },
     setDefaultUserInfo(state, data) {
       state.defaultUser = data.data.user;
@@ -53,6 +53,7 @@ export default {
   },
   actions: {
     registerUser({ commit }, payload) {
+      commit("setErrors", null);
       axios
         .post("/users.json", payload)
         .then((response) => {
@@ -61,34 +62,32 @@ export default {
           // commit("setDefaultUserInfo", response);
         })
         .catch((error) => {
-          // commit("setErrors", error);
-          console.log("posted w/errors", error);
+          commit("setErrors", error.response.data.status.message);
+          console.log("signup posted w/errors", error.response.data.status.message);
+          return error.response.data.status.message;
         });
     },
     loginUser({ commit }, payload) {
+      commit("setErrors", null);
       axios
         .post("/users/sign_in.json", payload)
         .then((response) => {
           console.log(response, "signin");
-          console.log(response.headers.authorization, "shit");
-          localStorage.setItem("auth_token", response.headers.authorization);
+          console.log(response.headers.authorization);
+          localStorage.setItem("authToken", response.headers.authorization);
           axios.defaults.headers.common["Authorization"] = response.headers.authorization;
-          // axios.defaults.headers.common["Authorization"] = `${response.headers.authorization}`;
-          axios.get("/theaters").then((response) => {
-            console.log(response, "theaters call to get current user");
-          });
           // commit("setUserInfo", response);
           // commit("setDefaultUserInfo", response);
         })
         .catch((error) => {
-          console.log("posted w/errors", error);
-          // commit("setErrors", error);
+          console.log("posted w/errors", error.response.data.status.message);
+          commit("setErrors", error.response.data.status.message);
         });
     },
     logoutUser({ commit }) {
       const config = {
         headers: {
-          authorization: state.auth_token,
+          authorization: state.authToken,
         },
       };
       new Promise((resolve, reject) => {
@@ -99,7 +98,7 @@ export default {
             resolve();
           })
           .catch((error) => {
-            commit("setErrors", errors);
+            commit("setErrors", error);
             reject(error);
           });
       });
@@ -115,7 +114,7 @@ export default {
       return state.errors;
     },
     getAuthToken(state) {
-      return state.auth_token;
+      return state.authToken;
     },
     getFirstName(state) {
       return state.user?.firstName;
@@ -145,7 +144,7 @@ export default {
       return state.user?.tosAcceptedAt;
     },
     isLoggedIn(state) {
-      const loggedOut = state.auth_token == null || state.auth_token == JSON.stringify(null);
+      const loggedOut = state.authToken == null || state.authToken == JSON.stringify(null);
       return !loggedOut;
     },
   },
