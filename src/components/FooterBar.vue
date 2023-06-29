@@ -8,7 +8,7 @@
         </a>
       </div>
       <div class="mt-8 md:order-1 md:mt-0">
-        <p class="text-center text-xs leading-5 text-blue-100">
+        <p class="text-center text-xs leading-5 text-blue-100 m-0">
           &copy; 2022 Chicago Artist Atlas LLC, All rights reserved.
         </p>
       </div>
