@@ -33,7 +33,7 @@
           {{ item.name }}
         </a>
       </div>
-      <div class="flex flex-1 items-center justify-end gap-x-6">
+      <div v-if="!isLoggedIn" class="flex flex-1 items-center justify-end gap-x-6">
         <button
           @click="openModal('login')"
           class="px-3 py-2 hidden lg:block lg:text-sm lg:font-semibold lg:leading-6 lg:text-blue-100 hover:no-underline no-underline hover:text-white rounded"
@@ -47,6 +47,20 @@
           Sign up
         </button>
       </div>
+      <div v-else class="flex flex-1 items-center justify-end gap-x-6">
+        <div class="flex">
+          <button
+            type="button"
+            class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
+            @click="mobileUserMenuOpen = true"
+          >
+            <span class="sr-only">Open user menu</span>
+            <i
+              class="text-blue-100 lg:text-3xl md:text-2xl text-xl h-10 w-10 rounded-full fa-solid fa-user lg:pt-2 md:pt-3 pt-2"
+            ></i>
+          </button>
+        </div>
+      </div>
       <div class="flex lg:hidden">
         <button
           type="button"
@@ -54,10 +68,45 @@
           @click="mobileMenuOpen = true"
         >
           <span class="sr-only">Open main menu</span>
-          <Bars3Icon class="h-6 w-6" aria-hidden="true" />
+          <Bars3Icon class="text-blue-100 h-6 w-6" aria-hidden="true" />
         </button>
       </div>
     </nav>
+    <Dialog as="div" class="rt-side-nav bg-blue-950" @close="mobileUserMenuOpen = false" :open="mobileUserMenuOpen">
+      <div class="fixed inset-0 z-10"></div>
+      <DialogPanel
+        class="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto p-3 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10 bg-blue-950"
+      >
+        <div class="flex items-center gap-x-6">
+          <a href="/" class="-m-1.5 p-1.5 no-underline hover:no-underline text-blue-100">
+            <h4 class="text-blue-100 hover:text-white lg:text-3xl md:text-2xl text-lg">Chicago Artist Atlas</h4>
+          </a>
+          <button
+            type="button"
+            class="ml-auto -m-2.5 rounded-md p-2.5 text-gray-700"
+            @click="mobileUserMenuOpen = false"
+          >
+            <span class="sr-only">Close menu</span>
+            <XMarkIcon class="text-blue-100 h-6 w-6" aria-hidden="true" />
+          </button>
+        </div>
+        <div class="mt-6 flow-root">
+          <div class="-my-6 divide-y divide-gray-500/10">
+            <div class="space-y-2 py-6">
+              <a
+                v-for="item in userNavigation"
+                :key="item.name"
+                :href="item.href"
+                class="-mx-3 block p-3 text-base font-semibold leading-7 text-blue-100 hover:no-underline no-underline hover:text-white hover:bg-blue-900 rounded"
+                :class="{ active: $route.name == item.name.toLowerCase() }"
+              >
+                {{ item.name }}
+              </a>
+            </div>
+          </div>
+        </div>
+      </DialogPanel>
+    </Dialog>
     <Dialog as="div" class="rt-side-nav lg:hidden bg-blue-950" @close="mobileMenuOpen = false" :open="mobileMenuOpen">
       <div class="fixed inset-0 z-10"></div>
       <DialogPanel
@@ -69,13 +118,14 @@
           </a>
           <button
             @click="modalOpen = true"
+            v-if="!isLoggedIn"
             class="ml-auto rounded-md bg-blue-800 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-800 no-underline hover:no-underline"
           >
             Sign up
           </button>
-          <button type="button" class="-m-2.5 rounded-md p-2.5 text-gray-700" @click="mobileMenuOpen = false">
+          <button type="button" class="ml-auto -m-2.5 rounded-md p-2.5 text-gray-700" @click="mobileMenuOpen = false">
             <span class="sr-only">Close menu</span>
-            <XMarkIcon class="h-6 w-6" aria-hidden="true" />
+            <XMarkIcon class="text-blue-100 h-6 w-6" aria-hidden="true" />
           </button>
         </div>
         <div class="mt-6 flow-root">
@@ -91,7 +141,7 @@
                 {{ item.name }}
               </a>
             </div>
-            <div class="py-6">
+            <div class="py-6" v-if="!isLoggedIn">
               <a
                 href="/login"
                 class="-mx-3 block p-3 text-base font-semibold leading-7 text-blue-100 no-underline hover:no-underline hover:text-white hover:bg-blue-900 rounded"
@@ -134,6 +184,7 @@ export default {
   data: function () {
     return {
       mobileMenuOpen: false,
+      mobileUserMenuOpen: false,
       modalOpen: false,
       modalType: "signUpOptionsModal",
       navigation: [
@@ -160,6 +211,28 @@ export default {
         {
           name: "Contact",
           href: "/contact",
+        },
+      ],
+      userNavigation: [
+        {
+          name: "Account",
+          href: "/user/account",
+        },
+        {
+          name: "Profile",
+          href: "/user/profile",
+        },
+        {
+          name: "Saved Auditions",
+          href: "/users/auditions",
+        },
+        {
+          name: "Resume",
+          href: "/user/resume",
+        },
+        {
+          name: "Logout",
+          href: "/user/account",
         },
       ],
     };
