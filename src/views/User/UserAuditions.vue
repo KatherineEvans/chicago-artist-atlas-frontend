@@ -12,7 +12,7 @@
         src="https://res.cloudinary.com/dzlaaytu7/image/upload/v1688246189/iStock-1438367331_i5itmw.jpg"
         class="w-100 mx-auto mt-2"
         alt="Calender Under Construction"
-        style="max-width: 500px"
+        style="max-width: 550px"
       />
     </div>
   </div>
