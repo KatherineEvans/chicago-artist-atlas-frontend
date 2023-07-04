@@ -42,29 +42,47 @@
           <div class="w-full md:w-1/2 grid flex flex-wrap flex">
             <div class="flex-wrap flex">
               <div class="w-full lg:w-1/2 pt-3 px-3 pb-2">
+                <label for="gender" class="flex block text-sm font-medium leading-6 text-gray-900 mb-1">
+                  Union Status:
+                </label>
+                <DropdownSelect width="w-50 pr-2" :dropdownData="unionStatus"></DropdownSelect>
+              </div>
+              <div class="w-full lg:w-1/2 pt-3 px-3 pb-2">
+                <label for="gender" class="flex block text-sm font-medium leading-6 text-gray-900">Agnecy:</label>
+                <div class="mt-2">
+                  <input
+                    type="text"
+                    name="gender"
+                    id="gender"
+                    autocomplete="address-level2"
+                    class="pl-3 block w-full rounded-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  />
+                </div>
+              </div>
+              <div class="w-full lg:w-1/2 pt-2 px-3 pb-2">
                 <label for="gender" class="flex block text-sm font-medium leading-6 text-gray-900">
                   Gender:
                   <span class="ml-auto italic text-gray-400">(always private)</span>
                 </label>
                 <DropdownSelect width="w-50 pr-2" :dropdownData="gender"></DropdownSelect>
               </div>
-              <div class="w-full lg:w-1/2 pt-3 px-3 pb-2">
+              <div class="w-full lg:w-1/2 pt-2 px-3 pb-2">
                 <label for="age" class="block text-sm font-medium leading-6 text-gray-900">Age:</label>
                 <DropdownSelect width="w-50 pr-2" :dropdownData="age"></DropdownSelect>
               </div>
-              <div class="w-full lg:w-1/3 pt-0 px-3 pb-2">
+              <div class="w-full lg:w-1/3 pt-2 px-3 pb-2">
                 <label for="height" class="block text-sm font-medium leading-6 text-gray-900 mb-1">Height (ft):</label>
                 <DropdownSelect width="w-50 pr-2" :dropdownData="height"></DropdownSelect>
               </div>
-              <div class="w-full lg:w-1/3 pt-0 px-3 pb-2">
+              <div class="w-full lg:w-1/3 pt-2 px-3 pb-2">
                 <label for="hair-color" class="block text-sm font-medium leading-6 text-gray-900">Hair Color:</label>
                 <DropdownSelect width="w-50 pr-2" :dropdownData="hairColor"></DropdownSelect>
               </div>
-              <div class="w-full lg:w-1/3 pt-0 px-3 pb-2">
+              <div class="w-full lg:w-1/3 pt-2 px-3 pb-2">
                 <label for="eye_color" class="block text-sm font-medium leading-6 text-gray-900">Eye Color:</label>
                 <DropdownSelect width="w-50 pr-2" :dropdownData="eyeColor"></DropdownSelect>
               </div>
-              <div class="w-full grid flex flex-wrap flex">
+              <div class="w-full grid flex flex-wrap flex pt-2">
                 <div class="col-span-full px-3">
                   <label for="about" class="block text-sm font-medium leading-6 text-gray-900 mb-0">About:</label>
                   <p class="m-0 text-sm leading-6 italic text-gray-400">Write a few sentences about yourself!</p>
@@ -91,7 +109,7 @@
         <button type="submit" class="px-3 py-2 text-sm font-semibold underline">Save</button>
         <a
           href="/user/profile/talents"
-          class="ml-3 rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 no-underline"
+          class="ml-3 rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 no-underline hover:no-underline"
         >
           Next
         </a>
@@ -110,6 +128,10 @@ export default {
   data: function () {
     return {
       pronounOptions: ["She/Her/Hers", "He/Him/His", "They/Them/Their", "Ze/Zir/Zirs", "Ze/Hir/Hirs"],
+      unionStatus: {
+        selected: "Equity",
+        options: ["Equity", "Non Union"],
+      },
       height: {
         selected: "5' 6\"",
         options: [

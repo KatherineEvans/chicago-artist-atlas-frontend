@@ -9,7 +9,6 @@
           Donec eget magna hendrerit, rhoncus sem a, tempus ante. Morbi luctus consectetur purus molestie vulputate.
         </p>
 
-        <!-- goddamn.... -->
         <div class="mt-10 flex flex-wrap">
           <div class="w-full md:w-1/2 p-3">
             <label for="cover-photo" class="block text-base font-medium leading-6 text-gray-900">Headshot</label>
