@@ -87,7 +87,7 @@
             >
               <div class="px-4 pt-3 pb-2">
                 <p class="text-sm mb-1">Signed in as</p>
-                <p class="truncate text-sm font-medium text-gray-900 mb-1">tom@example.com</p>
+                <p class="truncate text-sm font-medium text-gray-900 mb-1">kat@test.com</p>
               </div>
               <div class="py-2">
                 <MenuItem v-slot="{ active }">
