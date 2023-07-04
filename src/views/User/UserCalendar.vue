@@ -6,15 +6,15 @@
         <p class="mt-1 text-lg leading-6 text-gray-600">
           Hey, thanks for dropping by! Just wanted to give you a heads up that this
           <strong>awesome feature</strong>
-          is still a work in progress. Don't worry though, we're working hard to make it even better! Make sure to swing
-          by again soon to see the final result. Cheers!
+          is still under construction. Don't worry though, we're working hard to make it the best it can be! Make sure
+          to swing by again soon to see the final result. Cheers!
         </p>
       </div>
       <img
-        src="https://res.cloudinary.com/dzlaaytu7/image/upload/v1688246190/iStock-1427672271_gvcifk.jpg"
+        src="https://res.cloudinary.com/dzlaaytu7/image/upload/v1688504388/iStock-1474080661_jy7kcw.jpg"
         class="w-100 mx-auto mt-2"
         alt="Calender Under Construction"
-        style="max-width: 500px"
+        style="max-width: 550px"
       />
     </div>
   </div>
