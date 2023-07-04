@@ -1,9 +1,8 @@
 <template>
-  <router-view></router-view>
-  <!-- <form>
+  <form>
     <div class="space-y-12">
       <div class="border-b border-gray-900/10 pb-12">
-        <h2 class="font-semibold leading-7 text-gray-900 py-3">Profile</h2>
+        <h2 class="font-semibold leading-7 text-gray-900 py-3">Performances</h2>
 
         <p class="mt-1 text-sm leading-6 text-gray-600">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur varius eros ex, a lacinia eros sodales nec.
@@ -133,11 +132,14 @@
         Save
       </button>
     </div>
-  </form> -->
+  </form>
 </template>
 
 <script>
+import { PhotoIcon } from "@heroicons/vue/24/solid";
+
 export default {
+  components: { PhotoIcon },
   data: function () {
     return {};
   },

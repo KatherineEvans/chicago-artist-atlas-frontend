@@ -12,13 +12,20 @@ import AuditionBoard from "../views/AuditionBoard.vue";
 import LogOut from "../views/Authentication/LogOut.vue";
 import Signup from "../views/SignUp.vue";
 
-// User Profile
+// Users
 import ArtistDashboard from "../views/User/ArtistDashboard.vue";
 import UserAccount from "../views/User/UserAccount.vue";
 import UserAuditions from "../views/User/UserAuditions.vue";
 import UserCalendar from "../views/User/UserCalendar.vue";
 import UserProfile from "../views/User/UserProfile.vue";
 import UserResume from "../views/User/UserResume.vue";
+
+// User Profile Pages
+import UserAwards from "../views/User/Profile/UserAwards.vue";
+import UserBio from "../views/User/Profile/UserBio.vue";
+import UserPerformances from "../views/User/Profile/UserPerformances.vue";
+import UserTalents from "../views/User/Profile/UserTalents.vue";
+import UserTraining from "../views/User/Profile/UserTraining.vue";
 
 const routes = [
   {
@@ -63,28 +70,60 @@ const routes = [
   },
   {
     path: "/user",
-    name: "user-dashboard",
     component: ArtistDashboard,
     redirect: "/user/account",
     children: [
       {
         path: "account",
+        name: "user-account",
         component: UserAccount,
       },
       {
         path: "auditions",
+        name: "user-auditions",
         component: UserAuditions,
       },
       {
         path: "calendar",
+        name: "user-calendar",
         component: UserCalendar,
       },
       {
         path: "profile",
+        name: "user-profile",
         component: UserProfile,
+        redirect: "/user/profile/bio",
+        children: [
+          {
+            path: "bio",
+            name: "user-profile-bio",
+            component: UserBio,
+          },
+          {
+            path: "awards",
+            name: "user-profile-awards",
+            component: UserAwards,
+          },
+          {
+            path: "performances",
+            name: "user-profile-performances",
+            component: UserPerformances,
+          },
+          {
+            path: "training",
+            name: "user-profile-training",
+            component: UserTraining,
+          },
+          {
+            path: "talents",
+            name: "user-profile-talents",
+            component: UserTalents,
+          },
+        ],
       },
       {
         path: "resume",
+        name: "user-resume",
         component: UserResume,
       },
     ],

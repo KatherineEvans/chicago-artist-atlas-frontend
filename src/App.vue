@@ -1,6 +1,6 @@
 <template>
   <NavBar :isLoggedIn="isLoggedIn" />
-  <router-view v-if="isLoggedIn" />
+  <router-view class="min-h-screen" v-if="isLoggedIn" />
   <div v-else class="container-fluid home mx-auto text-center">
     <div class="row ltblue py-3 px-4">
       <div class="col-8 m-auto my-3">

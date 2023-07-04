@@ -48,7 +48,7 @@
         </button>
       </div>
       <div v-else class="flex flex-1 items-center justify-end gap-x-6">
-        <div class="flex">
+        <!-- <div class="flex">
           <button
             type="button"
             class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
@@ -59,7 +59,83 @@
               class="text-blue-100 lg:text-3xl md:text-2xl text-xl h-10 w-10 rounded-full fa-solid fa-user lg:pt-2 md:pt-3 pt-2"
             ></i>
           </button>
-        </div>
+        </div> -->
+        <Menu as="div" class="relative inline-block text-left">
+          <div>
+            <MenuButton>
+              <span class="sr-only">Open user menu</span>
+              <span class="inline-block h-10 w-10 overflow-hidden rounded-full bg-gray-100">
+                <svg class="h-full w-full text-gray-300" fill="currentColor" viewBox="0 0 24 24">
+                  <path
+                    d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z"
+                  />
+                </svg>
+              </span>
+            </MenuButton>
+          </div>
+
+          <transition
+            enter-active-class="transition ease-out duration-100"
+            enter-from-class="transform opacity-0 scale-95"
+            enter-to-class="transform opacity-100 scale-100"
+            leave-active-class="transition ease-in duration-75"
+            leave-from-class="transform opacity-100 scale-100"
+            leave-to-class="transform opacity-0 scale-95"
+          >
+            <MenuItems
+              class="absolute right-0 z-10 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+            >
+              <div class="px-4 pt-3 pb-2">
+                <p class="text-sm mb-1">Signed in as</p>
+                <p class="truncate text-sm font-medium text-gray-900 mb-1">kat@test.com</p>
+              </div>
+              <div class="py-2">
+                <MenuItem v-slot="{ active }">
+                  <a
+                    href="/user/account"
+                    class="no-underline hover:no-underline"
+                    :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'block px-4 py-2 text-sm']"
+                  >
+                    Account settings
+                  </a>
+                </MenuItem>
+                <MenuItem v-slot="{ active }">
+                  <a
+                    href="/user/profile"
+                    class="no-underline hover:no-underline"
+                    :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'block px-4 py-2 text-sm']"
+                  >
+                    Artist Profile
+                  </a>
+                </MenuItem>
+                <MenuItem v-slot="{ active }">
+                  <a
+                    href="/user/auditions"
+                    class="no-underline hover:no-underline"
+                    :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'block px-4 py-2 text-sm']"
+                  >
+                    Saved Auditions
+                  </a>
+                </MenuItem>
+              </div>
+              <div class="py-2">
+                <form method="POST" action="#">
+                  <MenuItem v-slot="{ active }">
+                    <button
+                      type="submit"
+                      :class="[
+                        active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                        'block w-full px-4 py-2 text-left text-sm',
+                      ]"
+                    >
+                      Sign out
+                    </button>
+                  </MenuItem>
+                </form>
+              </div>
+            </MenuItems>
+          </transition>
+        </Menu>
       </div>
       <div class="flex lg:hidden">
         <button
@@ -72,41 +148,6 @@
         </button>
       </div>
     </nav>
-    <Dialog as="div" class="rt-side-nav bg-blue-950" @close="mobileUserMenuOpen = false" :open="mobileUserMenuOpen">
-      <div class="fixed inset-0 z-10"></div>
-      <DialogPanel
-        class="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto p-3 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10 bg-blue-950"
-      >
-        <div class="flex items-center gap-x-6">
-          <a href="/" class="-m-1.5 p-1.5 no-underline hover:no-underline text-blue-100">
-            <h4 class="text-blue-100 hover:text-white lg:text-3xl md:text-2xl text-lg">Chicago Artist Atlas</h4>
-          </a>
-          <button
-            type="button"
-            class="ml-auto -m-2.5 rounded-md p-2.5 text-gray-700"
-            @click="mobileUserMenuOpen = false"
-          >
-            <span class="sr-only">Close menu</span>
-            <XMarkIcon class="text-blue-100 h-6 w-6" aria-hidden="true" />
-          </button>
-        </div>
-        <div class="mt-6 flow-root">
-          <div class="-my-6 divide-y divide-gray-500/10">
-            <div class="space-y-2 py-6">
-              <a
-                v-for="item in userNavigation"
-                :key="item.name"
-                :href="item.href"
-                class="-mx-3 block p-3 text-base font-semibold leading-7 text-blue-100 hover:no-underline no-underline hover:text-white hover:bg-blue-900 rounded"
-                :class="{ active: $route.name == item.name.toLowerCase() }"
-              >
-                {{ item.name }}
-              </a>
-            </div>
-          </div>
-        </div>
-      </DialogPanel>
-    </Dialog>
     <Dialog as="div" class="rt-side-nav lg:hidden bg-blue-950" @close="mobileMenuOpen = false" :open="mobileMenuOpen">
       <div class="fixed inset-0 z-10"></div>
       <DialogPanel
@@ -157,6 +198,7 @@
 </template>
 
 <script>
+import { Menu, MenuItem, MenuItems, MenuButton } from "@headlessui/vue";
 import { Dialog, DialogPanel } from "@headlessui/vue";
 import { Bars3Icon, XMarkIcon } from "@heroicons/vue/24/outline";
 import ModalContainer from "./ModalContainer.vue";
@@ -180,6 +222,10 @@ export default {
     LoginForm,
     ForgotPassword,
     ResetPassword,
+    Menu,
+    MenuButton,
+    MenuItem,
+    MenuItems,
   },
   data: function () {
     return {
@@ -211,28 +257,6 @@ export default {
         {
           name: "Contact",
           href: "/contact",
-        },
-      ],
-      userNavigation: [
-        {
-          name: "Account",
-          href: "/user/account",
-        },
-        {
-          name: "Profile",
-          href: "/user/profile",
-        },
-        {
-          name: "Saved Auditions",
-          href: "/users/auditions",
-        },
-        {
-          name: "Resume",
-          href: "/user/resume",
-        },
-        {
-          name: "Logout",
-          href: "/user/account",
         },
       ],
     };

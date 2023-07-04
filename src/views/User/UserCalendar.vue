@@ -1,5 +1,24 @@
 <template>
-  <div class="lg:flex lg:h-full lg:flex-col">
+  <div v-if="underConstruction">
+    <div class="space-y-12">
+      <div class="pb-7">
+        <h2 class="font-semibold leading-7 text-gray-900 py-3">Calendar</h2>
+        <p class="mt-1 text-lg leading-6 text-gray-600">
+          Hey, thanks for dropping by! Just wanted to give you a heads up that this
+          <strong>awesome feature</strong>
+          is still a work in progress. Don't worry though, we're working hard to make it even better! Make sure to swing
+          by again soon to see the final result. Cheers!
+        </p>
+      </div>
+      <img
+        src="https://res.cloudinary.com/dzlaaytu7/image/upload/v1688246190/iStock-1427672271_gvcifk.jpg"
+        class="w-100 mx-auto mt-2"
+        alt="Calender Under Construction"
+        style="max-width: 500px"
+      />
+    </div>
+  </div>
+  <div v-else class="lg:flex lg:h-full lg:flex-col">
     <header class="flex items-center justify-between border-b border-gray-200 px-6 py-4 lg:flex-none">
       <h1 class="text-base font-semibold leading-6 text-gray-900">
         <time datetime="2022-01">May 2023</time>
@@ -335,6 +354,7 @@ export default {
   },
   data: function () {
     return {
+      underConstruction: true,
       days: [
         { date: "2023-05-01", isCurrentMonth: true, events: [] },
         { date: "2023-05-02", isCurrentMonth: true, events: [] },
