@@ -224,12 +224,12 @@ export default {
         },
         {
           name: "Saved Auditions",
-          href: "/users/auditions",
+          href: "/user/auditions",
         },
-        {
-          name: "Resume",
-          href: "/user/resume",
-        },
+        // {
+        //   name: "Resume",
+        //   href: "/user/resume",
+        // },
         {
           name: "Logout",
           href: "/user/account",

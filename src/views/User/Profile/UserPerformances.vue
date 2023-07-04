@@ -1,15 +1,15 @@
 <template>
-  <router-view></router-view>
-  <!-- <form>
+  <form>
     <div class="space-y-12">
       <div class="border-b border-gray-900/10 pb-12">
-        <h2 class="font-semibold leading-7 text-gray-900 py-3">Profile</h2>
+        <h2 class="font-semibold leading-7 text-gray-900 py-3">Performances</h2>
 
         <p class="mt-1 text-sm leading-6 text-gray-600">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur varius eros ex, a lacinia eros sodales nec.
           Donec eget magna hendrerit, rhoncus sem a, tempus ante. Morbi luctus consectetur purus molestie vulputate.
         </p>
 
+        <!-- goddamn.... -->
         <div class="mt-10 flex flex-wrap">
           <div class="w-full md:w-1/2 p-3">
             <label for="cover-photo" class="block text-base font-medium leading-6 text-gray-900">Headshot</label>
@@ -133,11 +133,14 @@
         Save
       </button>
     </div>
-  </form> -->
+  </form>
 </template>
 
 <script>
+import { PhotoIcon } from "@heroicons/vue/24/solid";
+
 export default {
+  components: { PhotoIcon },
   data: function () {
     return {};
   },

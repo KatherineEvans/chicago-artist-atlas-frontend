@@ -1,48 +1,68 @@
 <template>
-  <label v-if="menuLabel" for="postal-code" class="block text-sm font-medium leading-6 text-gray-900">
-    {{ menuLabel }}
-  </label>
-  <Menu as="div" class="relative inline-block text-left">
-    <div>
-      <MenuButton
-        class="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-inset focus:ring-indigo-600 hover:bg-gray-50"
+  <Listbox as="div" v-model="selected">
+    <ListboxLabel v-if="menuLabel" class="block text-sm font-medium leading-6 text-gray-900">
+      {{ menuLabel }}
+    </ListboxLabel>
+    <div class="relative mt-2">
+      <ListboxButton
+        class="relative w-full cursor-default rounded-md bg-white py-1.5 px-3 text-left text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-inset focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6"
       >
-        {{ placeholder }}
-        <ChevronDownIcon class="-mr-1 h-5 w-5 text-gray-400" aria-hidden="true" />
-      </MenuButton>
-    </div>
+        <span class="block truncate">{{ selected }}</span>
+        <span class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
+          <ChevronUpDownIcon class="h-5 w-5 text-gray-400" aria-hidden="true" />
+        </span>
+      </ListboxButton>
 
-    <transition
-      enter-active-class="transition ease-out duration-100"
-      enter-from-class="transform opacity-0 scale-95"
-      enter-to-class="transform opacity-100 scale-100"
-      leave-active-class="transition ease-in duration-75"
-      leave-from-class="transform opacity-100 scale-100"
-      leave-to-class="transform opacity-0 scale-95"
-    >
-      <MenuItems
-        class="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+      <transition
+        leave-active-class="transition ease-in duration-100"
+        leave-from-class="opacity-100"
+        leave-to-class="opacity-0"
       >
-        <div class="py-1">
-          <MenuItem v-for="option in options" v-bind:key="option" v-slot="{ active }">
-            <a href="#" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'block px-4 py-2 text-sm']">
-              {{ option }}
-            </a>
-          </MenuItem>
-        </div>
-      </MenuItems>
-    </transition>
-  </Menu>
+        <ListboxOptions
+          class="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm px-0"
+        >
+          <ListboxOption
+            as="template"
+            v-for="option in dropdownData.options"
+            :key="option"
+            v-bind:value="option"
+            v-slot="{ active, selected }"
+          >
+            <li
+              :class="[
+                active ? 'bg-indigo-600 text-white' : 'text-gray-900',
+                'relative cursor-default select-none py-2 pl-3 pr-9',
+              ]"
+            >
+              <span :class="[selected ? 'font-semibold' : 'font-normal', 'block truncate']">{{ option }}</span>
+
+              <span
+                v-if="selected"
+                :class="[
+                  active ? 'text-white' : 'text-indigo-600',
+                  'absolute inset-y-0 right-0 flex items-center pr-4',
+                ]"
+              >
+                <CheckIcon class="h-5 w-5" aria-hidden="true" />
+              </span>
+            </li>
+          </ListboxOption>
+        </ListboxOptions>
+      </transition>
+    </div>
+  </Listbox>
 </template>
 
 <script>
-import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/vue";
-import { ChevronDownIcon } from "@heroicons/vue/20/solid";
+import { Listbox, ListboxButton, ListboxOption, ListboxOptions } from "@headlessui/vue";
+import { CheckIcon, ChevronUpDownIcon } from "@heroicons/vue/20/solid";
 export default {
-  components: { Menu, MenuButton, MenuItem, MenuItems, ChevronDownIcon },
-  props: ["placeholder", "options", "menuLabel"],
+  components: { Listbox, ListboxButton, ListboxOption, ListboxOptions, CheckIcon, ChevronUpDownIcon },
+  props: ["dropdownData", "menuLabel", "width"],
   data: function () {
-    return {};
+    return {
+      selected: this.dropdownData.selected,
+    };
   },
   watch: {},
   computed: {},
