@@ -26,16 +26,14 @@
       class="sidebar divide-y w-64 bg-blue-950/95 text-blue-100 space-y-6 px-3 absolute inset-y-0 left-0 transform -translate-x-full transition duration-200 ease-in-out md:relative md:translate-x-0"
     >
       <!-- PROFILE PIC -->
-      <div class="py-3">
-        <svg
-          class="w-24 h-24 p-3 bg-white rounded-full m-auto mt-4 mb-3"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 448 512"
-        >
-          <path
-            d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"
-          />
-        </svg>
+      <div class="py-3 text-center">
+        <span class="inline-block w-24 h-24 overflow-hidden rounded-full bg-gray-100 m-auto mt-4 mb-3">
+          <svg class="h-full w-full text-gray-300" fill="currentColor" viewBox="0 0 24 24">
+            <path
+              d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z"
+            />
+          </svg>
+        </span>
         <div class="font-extrabold text-2xl text-center text-white">First Last</div>
       </div>
       <!-- NAVIGATION -->
