@@ -13,25 +13,78 @@
 
         <div class="mt-10 flex flex-wrap md:divide-x lg:divide-x">
           <div class="w-full md:w-1/2 p-3">
-            <label for="cover-photo" class="block text-base font-medium leading-6 text-gray-900">Headshot</label>
-            <div class="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
-              <div class="text-center">
-                <PhotoIcon class="mx-auto h-12 w-12 text-gray-300" aria-hidden="true" />
-                <div class="mt-4 flex text-sm leading-6 text-gray-600">
-                  <label
-                    for="file-upload"
-                    class="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500"
-                  >
-                    <span>Upload a file</span>
-                    <input id="file-upload" name="file-upload" type="file" class="sr-only" />
+            <div class="w-full grid flex flex-wrap">
+              <div class="flex-wrap flex">
+                <div class="w-full lg:w-1/2 p-3">
+                  <label for="institution" class="block text-base font-medium leading-6 text-gray-900">
+                    Institution:
                   </label>
-                  <p class="pl-1">or drag and drop</p>
+                  <div class="mt-2">
+                    <input
+                      type="text"
+                      name="institution"
+                      id="institution"
+                      autocomplete="address-level2"
+                      class="block w-full rounded-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    />
+                  </div>
                 </div>
-                <p class="text-xs leading-5 text-gray-600">PNG, JPG, GIF up to 10MB</p>
+                <div class="w-full lg:w-1/2 p-3">
+                  <label for="degree" class="block text-base font-medium leading-6 text-gray-900">Degree:</label>
+                  <div class="mt-2">
+                    <input
+                      type="text"
+                      name="degree"
+                      id="degree"
+                      autocomplete="address-level2"
+                      class="block w-full rounded-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    />
+                  </div>
+                </div>
+                <div class="w-full lg:w-1/2 p-3">
+                  <label for="city" class="block text-base font-medium leading-6 text-gray-900">City:</label>
+                  <div class="mt-2">
+                    <input
+                      type="text"
+                      name="city"
+                      id="city"
+                      autocomplete="address-level2"
+                      class="block w-full rounded-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    />
+                  </div>
+                </div>
+                <div class="w-full lg:w-1/2 p-3">
+                  <label for="state" class="block text-base font-medium leading-6 text-gray-900">State:</label>
+                  <div class="mt-2">
+                    <input
+                      type="text"
+                      name="state"
+                      id="state"
+                      autocomplete="address-level2"
+                      class="block w-full rounded-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    />
+                  </div>
+                </div>
               </div>
             </div>
+            <div class="w-full grid flex flex-wrap flex">
+              <div class="col-span-full px-3">
+                <label for="about" class="block text-base font-medium leading-6 text-gray-900">Note:</label>
+                <div class="mt-2">
+                  <textarea
+                    id="about"
+                    name="about"
+                    rows="3"
+                    class="block w-full rounded-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  />
+                </div>
+                <p class="mt-1 text-sm leading-6 text-gray-600 italic">More to tell? Go for it!</p>
+              </div>
+            </div>
+            <button class="text-sm float-right text-blue-700 font-bold">+ Add Training</button>
           </div>
-          <div class="w-full md:w-1/2 grid flex flex-wrap">
+          <div class="w-full md:w-1/2 grid flex flex-wrap justify-center content-center">
+            <h4 class="text-gray-400 italic text-center">No Trainings Added</h4>
             <img
               src="https://res.cloudinary.com/dzlaaytu7/image/upload/v1688246190/iStock-1449282058_1_udwnjo.jpg"
               class="w-100 mx-auto mt-2"
@@ -67,10 +120,7 @@
 </template>
 
 <script>
-import { PhotoIcon } from "@heroicons/vue/24/solid";
-
 export default {
-  components: { PhotoIcon },
   data: function () {
     return {};
   },

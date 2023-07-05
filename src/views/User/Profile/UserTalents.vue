@@ -5,7 +5,7 @@
         <h2 class="font-semibold leading-7 text-gray-900 py-3">Talents</h2>
 
         <p class="mt-1 text-base leading-6 text-gray-600">
-          We KNOW you're talented, and we want to celebrate your artistic brilliance. Share your theatrical gifts with
+          We know you're talented, and we want to celebrate your artistic brilliance. Share your theatrical gifts with
           us and let the spotlight shine on your achievements. Whether you're an actor, director, playwright, or
           involved in any other aspect of the theater world, we invite you to showcase your expertise.
         </p>
