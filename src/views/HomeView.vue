@@ -21,7 +21,7 @@
         </div>
       </div>
       <div class="mx-auto col-xl-3 col-lg-3 col-md-6 col-sm-12 col-xs-12 p-2">
-        <a href="/directory" class="shadow2 h-100 card mx-auto text-center">
+        <a href="/directory" class="drop-shadow-md h-100 card mx-auto text-center">
           <img class="m-auto pb-2 pt-4" src="../assets/shore.png" alt="" />
           <div class="card-body">
             <div class="card-title mb-1">
@@ -36,7 +36,7 @@
         </a>
       </div>
       <div class="mx-auto col-xl-3 col-lg-3 col-md-6 col-sm-12 col-xs-12 p-2">
-        <a href="/auditions" class="h-100 card mx-auto text-center shadow2">
+        <a href="/auditions" class="h-100 card mx-auto text-center drop-shadow-md">
           <img class="m-auto pb-2 pt-4" src="../assets/night.png" alt="" />
           <div class="card-body">
             <div class="card-title mb-1">
@@ -49,7 +49,7 @@
         </a>
       </div>
       <div class="mx-auto col-xl-3 col-lg-3 col-md-6 col-sm-12 col-xs-12 p-2">
-        <a href="/classes" class="shadow2 h-100 card mx-auto text-center">
+        <a href="/classes" class="drop-shadow-md h-100 card mx-auto text-center">
           <img class="m-auto pb-2 pt-4" src="../assets/wheel.png" alt="" />
           <div class="card-body">
             <div class="card-title mb-1">
@@ -79,7 +79,7 @@
         </div>
       </div>
       <div class="mx-auto col-xl-3 col-lg-3 col-md-6 col-sm-12 col-xs-12 p-2">
-        <a href="/resources" class="shadow2 h-100 card mx-auto text-center">
+        <a href="/resources" class="drop-shadow-md h-100 card mx-auto text-center">
           <img class="m-auto pb-2 pt-4" src="../assets/bean.png" alt="" />
           <div class="card-body">
             <div class="card-title mb-1">
@@ -95,7 +95,7 @@
         </a>
       </div>
       <div class="mx-auto col-xl-3 col-lg-3 col-md-6 col-sm-12 col-xs-12 p-2">
-        <a href="/resources" class="shadow2 h-100 card mx-auto text-center">
+        <a href="/resources" class="drop-shadow-md h-100 card mx-auto text-center">
           <img class="m-auto pb-2 pt-4" src="../assets/lion.png" alt="" />
           <div class="card-body">
             <div class="card-title mb-1">
@@ -111,7 +111,7 @@
         </a>
       </div>
       <div class="mx-auto col-xl-3 col-lg-3 col-md-6 col-sm-12 col-xs-12 p-2">
-        <a href="/resources" class="shadow2 h-100 card mx-auto text-center">
+        <a href="/resources" class="drop-shadow-md h-100 card mx-auto text-center">
           <img class="m-auto pb-2 pt-4" src="../assets/park.png" alt="" />
           <div class="card-body">
             <div class="card-title mb-1">
@@ -188,10 +188,5 @@ a:hover {
 }
 .card-text {
   text-align: left;
-}
-
-.shadow2 {
-  /* box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px; */
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 </style>

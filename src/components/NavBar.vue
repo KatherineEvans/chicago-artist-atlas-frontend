@@ -119,19 +119,17 @@
                 </MenuItem>
               </div>
               <div class="py-2">
-                <form method="POST" action="#">
-                  <MenuItem v-slot="{ active }">
-                    <button
-                      type="submit"
-                      :class="[
-                        active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                        'block w-full px-4 py-2 text-left text-sm',
-                      ]"
-                    >
-                      Sign out
-                    </button>
-                  </MenuItem>
-                </form>
+                <MenuItem v-slot="{ active }">
+                  <button
+                    @click="submitLogout()"
+                    :class="[
+                      active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                      'block w-full px-4 py-2 text-left text-sm',
+                    ]"
+                  >
+                    Sign out
+                  </button>
+                </MenuItem>
               </div>
             </MenuItems>
           </transition>
@@ -272,6 +270,14 @@ export default {
     openModal(type) {
       this.modalOpen = true;
       this.modalType = type;
+    },
+    submitLogout() {
+      console.log("hi");
+      event.preventDefault();
+      this.$store.dispatch("sessions/logoutUser").then(() => {
+        localStorage.removeItem("authToken");
+        console.log("bye");
+      });
     },
   },
   watch: {

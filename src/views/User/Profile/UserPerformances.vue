@@ -14,75 +14,147 @@
 
         <div class="mt-10 flex flex-wrap md:divide-x lg:divide-x">
           <div class="w-full md:w-1/2 p-3">
-            <div class="w-full grid flex flex-wrap">
+            <div class="w-full grid">
               <div class="flex-wrap flex">
-                <div class="w-full lg:w-1/2 p-3">
-                  <label for="institution" class="block text-base font-medium leading-6 text-gray-900">
-                    Institution:
+                <div class="w-full lg:w-1/2 p-2">
+                  <label for="title" class="block text-base font-medium leading-6 text-gray-900">Title:</label>
+                  <div class="mt-2">
+                    <input
+                      type="text"
+                      name="title"
+                      id="title"
+                      autocomplete="address-level2"
+                      class="block w-full rounded-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    />
+                  </div>
+                </div>
+                <div class="w-full lg:w-1/2 p-2">
+                  <label for="role" class="block text-base font-medium leading-6 text-gray-900">Role:</label>
+                  <div class="mt-2">
+                    <input
+                      type="text"
+                      name="role"
+                      id="role"
+                      autocomplete="address-level2"
+                      class="block w-full rounded-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    />
+                  </div>
+                </div>
+                <div class="w-full lg:w-1/2 p-2">
+                  <label for="theaterCompany" class="block text-base font-medium leading-6 text-gray-900">
+                    Theater Company:
                   </label>
                   <div class="mt-2">
                     <input
                       type="text"
-                      name="institution"
-                      id="institution"
+                      name="theaterCompany"
+                      id="theaterCompany"
                       autocomplete="address-level2"
                       class="block w-full rounded-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     />
                   </div>
                 </div>
-                <div class="w-full lg:w-1/2 p-3">
-                  <label for="degree" class="block text-base font-medium leading-6 text-gray-900">Degree:</label>
+                <div class="w-full lg:w-1/2 p-2">
+                  <label for="url" class="block text-base font-medium leading-6 text-gray-900">URL:</label>
                   <div class="mt-2">
                     <input
                       type="text"
-                      name="degree"
-                      id="degree"
+                      name="url"
+                      id="url"
                       autocomplete="address-level2"
                       class="block w-full rounded-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     />
                   </div>
                 </div>
-                <div class="w-full lg:w-1/2 p-3">
-                  <label for="city" class="block text-base font-medium leading-6 text-gray-900">City:</label>
+                <div class="w-full lg:w-1/2 p-2">
+                  <label for="director" class="block text-base font-medium leading-6 text-gray-900">Director:</label>
                   <div class="mt-2">
                     <input
                       type="text"
-                      name="city"
-                      id="city"
+                      name="director"
+                      id="director"
                       autocomplete="address-level2"
                       class="block w-full rounded-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     />
                   </div>
                 </div>
-                <div class="w-full lg:w-1/2 p-3">
-                  <label for="state" class="block text-base font-medium leading-6 text-gray-900">State:</label>
+                <div class="w-full lg:w-1/2 p-2">
+                  <label for="musicalDirector" class="block text-base font-medium leading-6 text-gray-900">
+                    Musical Director:
+                  </label>
                   <div class="mt-2">
                     <input
                       type="text"
-                      name="state"
-                      id="state"
+                      name="musicalDirector"
+                      id="musicalDirector"
                       autocomplete="address-level2"
                       class="block w-full rounded-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     />
+                  </div>
+                </div>
+                <div class="w-full lg:w-1/2 p-2">
+                  <label for="openingNight" class="block text-base font-medium leading-6 text-gray-900">
+                    Opening Night:
+                  </label>
+                  <div class="mt-2">
+                    <VueDatePicker
+                      input-class-name="block w-full rounded-md border-0 py-2 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                      v-model="openingNight"
+                      :enable-time-picker="false"
+                      ref="dpo"
+                    >
+                      <template #action-buttons>
+                        <p
+                          class="ml-3 rounded-md bg-indigo-600 p-2 text-sm font-semibold text-white hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 no-underline no-underline hover:no-underline"
+                          @click="selectOpeningDate"
+                        >
+                          Select
+                        </p>
+                      </template>
+                    </VueDatePicker>
+                  </div>
+                </div>
+                <div class="w-full lg:w-1/2 p-2">
+                  <label for="closingNight" class="block text-base font-medium leading-6 text-gray-900">
+                    Closing Night:
+                  </label>
+                  <div class="mt-2">
+                    <VueDatePicker
+                      input-class-name="block w-full rounded-md border-0 py-2 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                      :enable-time-picker="false"
+                      v-model="closingNight"
+                      ref="dpc"
+                    >
+                      <template #action-buttons>
+                        <p
+                          class="ml-3 rounded-md bg-indigo-600 p-2 text-sm font-semibold text-white hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 no-underline no-underline hover:no-underline"
+                          @click="selectClosingDate"
+                        >
+                          Select
+                        </p>
+                      </template>
+                    </VueDatePicker>
                   </div>
                 </div>
               </div>
             </div>
             <div class="w-full grid flex flex-wrap flex">
-              <div class="col-span-full px-3">
-                <label for="about" class="block text-base font-medium leading-6 text-gray-900">Note:</label>
+              <div class="col-span-full px-2">
+                <label for="description" class="block text-base font-medium leading-6 text-gray-900">
+                  Description:
+                </label>
                 <div class="mt-2">
                   <textarea
-                    id="about"
-                    name="about"
+                    id="description"
+                    name="description"
                     rows="3"
                     class="block w-full rounded-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
                 </div>
-                <p class="mt-1 text-sm leading-6 text-gray-600 italic">More to tell? Go for it!</p>
+                <p class="mt-1 text-sm leading-6 text-gray-600 italic">Tell us a little more about your performance</p>
               </div>
             </div>
-            <button class="text-sm float-right text-blue-700 font-bold">+ Add Training</button>
+            <button class="text-sm float-right text-blue-700 font-bold">+ Add Performance</button>
           </div>
           <div class="w-full md:w-1/2 grid flex flex-wrap justify-center content-center">
             <h4 class="text-gray-400 italic text-center">No Performances Added</h4>
@@ -121,12 +193,25 @@
 </template>
 
 <script>
+import VueDatePicker from "@vuepic/vue-datepicker";
+import "@vuepic/vue-datepicker/dist/main.css";
 export default {
+  components: { VueDatePicker },
   data: function () {
-    return {};
+    return {
+      openingNight: new Date(),
+      closingNight: new Date(),
+    };
   },
   watch: {},
   computed: {},
-  methods: {},
+  methods: {
+    selectClosingDate() {
+      this.$refs.dpc.selectDate();
+    },
+    selectOpeningDate() {
+      this.$refs.dpo.selectDate();
+    },
+  },
 };
 </script>
