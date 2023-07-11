@@ -12,7 +12,6 @@
           self!
         </p>
 
-        <!-- goddamn.... -->
         <div class="mt-10 flex flex-wrap">
           <div class="w-full md:w-1/2 p-3">
             <label for="cover-photo" class="block text-sm font-medium leading-6 text-gray-900">Headshot:</label>
@@ -37,7 +36,7 @@
               <!-- <span class="ml-auto italic text-gray-400">select all that apply</span> -->
             </label>
             <p class="m-0 text-sm leading-6 italic text-gray-400">Select all that apply</p>
-            <RadioButton name="pronouns" :options="pronounOptionsTwo"></RadioButton>
+            <RadioButton @update-checkbox="updateCheckbox" name="pronouns" :options="pronounOptionsTwo"></RadioButton>
           </div>
           <div class="w-full md:w-1/2 grid flex flex-wrap flex">
             <div class="flex-wrap flex">
@@ -127,7 +126,6 @@ export default {
   components: { PhotoIcon, RadioButton, DropdownSelect },
   data: function () {
     return {
-      pronounOptions: ["She/Her/Hers", "He/Him/His", "They/Them/Their", "Ze/Zir/Zirs", "Ze/Hir/Hirs"],
       unionStatus: {
         selected: "Equity",
         options: ["Equity", "Non Union"],
@@ -225,31 +223,30 @@ export default {
         options: ["18-22", "23-27", "28-32", "33-37", "38-42", "43-47", "48-52", "53-57", "58-65", "Above 65"],
       },
       pronounOptionsTwo: {
-        srTitle: "",
-        radioButtons: [
+        data: [
           {
             name: "She, Her, Hers",
-            description: null,
+            value: false,
           },
           {
             name: "He, Him, His",
-            description: null,
+            value: false,
           },
           {
             name: "They, Them, Their",
-            description: null,
+            value: false,
           },
           {
             name: "Ze, Zir, Zirs",
-            description: null,
+            value: false,
           },
           {
             name: "Ze, Hir, Hirs",
-            description: null,
+            value: false,
           },
           {
             name: "Prefer not to share",
-            description: null,
+            value: false,
           },
         ],
       },
@@ -272,6 +269,11 @@ export default {
   },
   watch: {},
   computed: {},
-  methods: {},
+  methods: {
+    updateCheckbox(option, index) {
+      this.pronounOptionsTwo.data.splice(index, 1, option);
+      console.log(this.pronounOptionsTwo.data);
+    },
+  },
 };
 </script>

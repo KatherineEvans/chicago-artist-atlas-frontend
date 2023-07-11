@@ -176,11 +176,9 @@ export default {
     if (this.$route.name.includes("user-profile")) {
       this.navOpen = true;
       this.rotate = true;
-      console.log("FUCK");
     } else {
       this.navOpen = false;
       this.rotate = false;
-      console.log("SHIT");
     }
   },
   watch: {
