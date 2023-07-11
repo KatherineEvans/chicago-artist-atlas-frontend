@@ -53,6 +53,7 @@
               <DisclosureButton
                 @click="rotate = !rotate"
                 class="w-100 text-white flex items-center block py-3 px-4 hover:no-underline no-underline text-lg hover:bg-blue-800 rounded transition duration-200 font-bold"
+                :class="{ 'bg-blue-900': $route.name.includes('user') }"
               >
                 <i class="mr-2" :class="link.icon"></i>
                 {{ link.name }}
@@ -68,7 +69,9 @@
                     as="a"
                     :href="subLink.href"
                     :class="
-                      $route.name == subLink.routeName.toLowerCase() ? 'underline' : 'no-underline hover:no-underline'
+                      $route.name == subLink.routeName.toLowerCase()
+                        ? 'underline font-bold'
+                        : 'no-underline hover:no-underline'
                     "
                     class="text-white flex items-center block py-3 px-4 sub-nav-text ml-3 hover:bg-blue-800 rounded transition duration-200"
                   >

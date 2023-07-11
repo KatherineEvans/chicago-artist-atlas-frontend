@@ -87,7 +87,7 @@ export default {
     logoutUser({ commit }) {
       const config = {
         headers: {
-          authorization: state.authToken,
+          authorization: localStorage.authToken,
         },
       };
       new Promise((resolve, reject) => {
