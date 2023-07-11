@@ -11,8 +11,20 @@
         </p>
 
         <div class="mt-10 flex flex-wrap">
-          <div class="w-full p-3">
-            <h3>Blah blah blah</h3>
+          <div class="w-full p-3 divide-y divide-gray-400" v-for="(talent, index) in talents" :key="index">
+            <span v-if="talent.type == 'checkbox'">
+              <label :for="talent.name" class="block text-base font-bold leading-6 text-gray-900 mb-0">
+                {{ talent.name }}
+              </label>
+              <p class="m-0 text-sm leading-6 italic text-gray-400">Select all that apply</p>
+              <RadioButton
+                colNumberClass="grid-cols-3"
+                @update-checkbox="updateCheckbox"
+                :name="talent.name"
+                :options="talent"
+              ></RadioButton>
+            </span>
+            <span v-else></span>
           </div>
         </div>
       </div>
@@ -42,22 +54,26 @@
 </template>
 
 <script>
+import RadioButton from "../../../form_elements/RadioButton.vue";
 export default {
+  components: { RadioButton },
   data: function () {
     return {
       talents: [
         {
           name: "Vocal",
+          srTitle: "Vocal",
           type: "checkbox",
-          options: [
+          data: [
             { name: "Singing", value: false },
             { name: "Rapping", value: false },
             { name: "Beat Boxing", value: false },
           ],
           additional: {
             name: "Vocal Range",
+            srTitle: "Vocal Range",
             type: "checkbox",
-            options: [
+            data: [
               { name: "Bass", value: false },
               { name: "Baritone", value: false },
               { name: "Tenor", value: false },
@@ -68,9 +84,10 @@ export default {
           },
         },
         {
-          name: "Dialectics",
+          name: "Dialects",
+          srTitle: "Dialects",
           type: "checkbox",
-          options: [
+          data: [
             { name: "Armenian", value: false },
             { name: "Australian", value: false },
             { name: "Boston", value: false },
@@ -91,25 +108,29 @@ export default {
             { name: "Other", value: false },
           ],
           additional: {
-            name: "Additional Dialectics",
+            name: "Additional Dialects",
+            srTitle: "Additional Dialects",
             type: "input",
-            options: [],
+            data: [],
           },
         },
         {
           name: "Languages (fluent)",
+          srTitle: "Languages (fluent)",
           type: "input",
-          options: [],
+          data: [],
         },
         {
           name: "Languages (familiar)",
+          srTitle: "Languages (familiar)",
           type: "input",
-          options: [],
+          data: [],
         },
         {
           name: "Dance",
+          srTitle: "Dance",
           type: "checkbox",
-          options: [
+          data: [
             { name: "Tap", value: false },
             { name: "Ballet", value: false },
             { name: "Jazz", value: false },
@@ -118,14 +139,16 @@ export default {
           ],
           additional: {
             name: "Dance (other)",
+            srTitle: "Dance (other)",
             type: "input",
-            options: [],
+            data: [],
           },
         },
         {
           name: "Stage Combat",
+          srTitle: "Stage Combat",
           type: "checkbox",
-          options: [
+          data: [
             { name: "Hand to Hand", value: false },
             { name: "Broadsword", value: false },
             { name: "Knife", value: false },
@@ -138,14 +161,16 @@ export default {
           ],
           additional: {
             name: "Stage Combat (other)",
+            srTitle: "Stage Combat (other)",
             type: "input",
-            options: [],
+            data: [],
           },
         },
         {
           name: "Instruments",
+          srTitle: "Instruments",
           type: "checkbox",
-          options: [
+          data: [
             { name: "Guitar", value: false },
             { name: "Piano", value: false },
             { name: "Drums", value: false },
@@ -155,14 +180,16 @@ export default {
           ],
           additional: {
             name: "Instruments (other)",
+            srTitle: "Instruments (other)",
             type: "input",
-            options: [],
+            data: [],
           },
         },
         {
           name: "Circus Arts",
+          srTitle: "Circus Arts",
           type: "checkbox",
-          options: [
+          data: [
             { name: "Aerial Silks", value: false },
             { name: "Acrobatics", value: false },
             { name: "Trapeze", value: false },
@@ -174,14 +201,16 @@ export default {
           ],
           additional: {
             name: "Circus Arts (other)",
+            srTitle: "Circus Arts (other)",
             type: "input",
-            options: [],
+            data: [],
           },
         },
         {
           name: "Misc.",
+          srTitle: "Misc.",
           type: "checkbox",
-          options: [
+          data: [
             { name: "Gymnastics", value: false },
             { name: "Magician", value: false },
             { name: "Puppetry", value: false },
@@ -194,8 +223,9 @@ export default {
           ],
           additional: {
             name: "Misc (other)",
+            srTitle: "Misc (other)",
             type: "input",
-            options: [],
+            data: [],
           },
         },
       ],
@@ -203,6 +233,11 @@ export default {
   },
   watch: {},
   computed: {},
-  methods: {},
+  methods: {
+    updateCheckbox(option, index) {
+      this.pronounOptionsTwo.data.splice(index, 1, option);
+      // console.log(this.pronounOptionsTwo.data);
+    },
+  },
 };
 </script>

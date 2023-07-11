@@ -129,7 +129,7 @@ export default {
       () => this.$store.state.sessions.errors,
       (newErrors) => {
         this.errors = newErrors;
-        console.log("watch", newErrors);
+        // console.log("watch", newErrors);
       }
     );
   },
@@ -139,7 +139,7 @@ export default {
       event.preventDefault();
       this.$store.dispatch("sessions/registerUser", { user: this.user }).then((response) => {
         this.user = this.userClone;
-        console.log(response);
+        // console.log(response);
         if (this.errors) {
           console.log(this.errors);
         }

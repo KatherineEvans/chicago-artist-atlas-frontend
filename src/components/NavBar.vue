@@ -272,11 +272,9 @@ export default {
       this.modalType = type;
     },
     submitLogout() {
-      console.log("hi");
       event.preventDefault();
       this.$store.dispatch("sessions/logoutUser").then(() => {
         localStorage.removeItem("authToken");
-        console.log("bye");
       });
     },
   },
