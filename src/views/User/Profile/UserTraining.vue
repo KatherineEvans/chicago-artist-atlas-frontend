@@ -7,8 +7,8 @@
         <p class="mt-1 text-base leading-6 text-gray-600">
           You've dedicated countless hours to honing your craft, and now it's time to showcase your hard-earned skills.
           We're eager to learn about the training that has shaped you as an artist and helped you reach new heights.
-          Share the workshops, classes, mentors, and experiences that have influenced your artistic journey. This is
-          your moment to shine!
+          Share the workshops, classes, mentors, and experiences that have influenced your artistic journey. Don't
+          forget that hard-earned BFA. This is your moment to shine!
         </p>
 
         <div class="mt-10 flex flex-wrap md:divide-x lg:divide-x">
@@ -30,7 +30,9 @@
                   </div>
                 </div>
                 <div class="w-full lg:w-1/2 p-3">
-                  <label for="degree" class="block text-base font-medium leading-6 text-gray-900">Degree:</label>
+                  <label for="degree" class="block text-base font-medium leading-6 text-gray-900">
+                    Degree/Certification:
+                  </label>
                   <div class="mt-2">
                     <input
                       type="text"

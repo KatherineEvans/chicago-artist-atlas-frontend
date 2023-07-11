@@ -36,7 +36,12 @@
               <!-- <span class="ml-auto italic text-gray-400">select all that apply</span> -->
             </label>
             <p class="m-0 text-sm leading-6 italic text-gray-400">Select all that apply</p>
-            <RadioButton @update-checkbox="updateCheckbox" name="pronouns" :options="pronounOptionsTwo"></RadioButton>
+            <RadioButton
+              @update-checkbox="updateCheckbox"
+              name="pronouns"
+              :options="pronounOptionsTwo"
+              colNumberClass="grid-cols-2"
+            ></RadioButton>
           </div>
           <div class="w-full md:w-1/2 grid flex flex-wrap flex">
             <div class="flex-wrap flex">
@@ -47,7 +52,7 @@
                 <DropdownSelect width="w-50 pr-2" :dropdownData="unionStatus"></DropdownSelect>
               </div>
               <div class="w-full lg:w-1/2 pt-3 px-3 pb-2">
-                <label for="gender" class="flex block text-sm font-medium leading-6 text-gray-900">Agnecy:</label>
+                <label for="gender" class="flex block text-sm font-medium leading-6 text-gray-900">Agency:</label>
                 <div class="mt-2">
                   <input
                     type="text"
@@ -128,7 +133,7 @@ export default {
     return {
       unionStatus: {
         selected: "Equity",
-        options: ["Equity", "Non Union"],
+        options: ["Equity", "Non Equity", "SAG-AFTRA"],
       },
       height: {
         selected: "5' 6\"",
@@ -272,7 +277,7 @@ export default {
   methods: {
     updateCheckbox(option, index) {
       this.pronounOptionsTwo.data.splice(index, 1, option);
-      console.log(this.pronounOptionsTwo.data);
+      // console.log(this.pronounOptionsTwo.data);
     },
   },
 };

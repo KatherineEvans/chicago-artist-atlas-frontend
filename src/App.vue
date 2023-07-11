@@ -71,14 +71,11 @@ export default {
       axios
         .post("/users/sign_in.json", { user: this.newSessionParams })
         .then((response) => {
-          console.log(response, "signin");
-          console.log(response.headers.authorization);
           localStorage.setItem("authToken", response.headers.authorization);
           axios.defaults.headers.common["Authorization"] = response.headers.authorization;
           this.isLoggedIn = true;
         })
         .catch((error) => {
-          console.log("posted w/errors", error.response.data.status.message);
           this.errors = error;
         });
     },

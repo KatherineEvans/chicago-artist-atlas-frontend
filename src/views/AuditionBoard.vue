@@ -319,7 +319,7 @@ export default {
         .get(link)
         .then((response) => {
           this.auditions = response.data;
-          console.log(this.auditions);
+          // console.log(this.auditions);
         })
         .catch((error) => {
           console.log(error);

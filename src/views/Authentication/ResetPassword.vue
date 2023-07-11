@@ -70,7 +70,7 @@ export default {
     submitPasswordReset() {
       event.preventDefault();
       this.$store.dispatch("sessions/resetUserPassword", { user: this.user }).then(() => {
-        console.log("password email request");
+        // console.log("password email request");
       });
     },
   },

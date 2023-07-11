@@ -171,7 +171,7 @@ export default {
   },
   watch: {
     currentPage(newPage, oldPage) {
-      console.log(newPage);
+      // console.log(newPage);
       if (newPage > this.endingPage) {
         this.startingPage = newPage;
         this.middlePage = newPage + 1;
@@ -193,7 +193,7 @@ export default {
     getTheaters(link) {
       axios.get(link).then((response) => {
         this.theaters = response.data;
-        console.log(this.theaters, "theaters");
+        // console.log(this.theaters, "theaters");
         this.currentTheater = this.theaters[0];
         let addressesForTooltip = [];
         let addressArray = this.theaters.map((theater) => {

@@ -1,7 +1,7 @@
 <template>
   <fieldset>
     <legend class="sr-only">{{ options.srTitle }}</legend>
-    <div class="space-y-5 grid grid-cols-2">
+    <div :class="colNumberClass" class="space-y-5 grid">
       <div v-for="(option, index) in options.data" :key="index" class="relative flex items-start mt-3">
         <div class="flex h-6 items-center">
           <input
@@ -27,7 +27,7 @@
 </template>
 <script>
 export default {
-  props: ["options"],
+  props: ["options", "colNumberClass"],
   data: function () {
     return {};
   },
