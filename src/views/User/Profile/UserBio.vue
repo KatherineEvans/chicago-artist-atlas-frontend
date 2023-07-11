@@ -39,7 +39,7 @@
             <RadioButton
               @update-checkbox="updateCheckbox"
               name="pronouns"
-              :options="pronounOptionsTwo"
+              :options="pronounOptions"
               colNumberClass="grid-cols-2"
             ></RadioButton>
           </div>
@@ -227,7 +227,9 @@ export default {
         selected: "28-32",
         options: ["18-22", "23-27", "28-32", "33-37", "38-42", "43-47", "48-52", "53-57", "58-65", "Above 65"],
       },
-      pronounOptionsTwo: {
+      pronounOptions: {
+        name: "Pronouns",
+        srTitle: "Pronouns",
         data: [
           {
             name: "She, Her, Hers",
@@ -276,8 +278,9 @@ export default {
   computed: {},
   methods: {
     updateCheckbox(option, index) {
-      this.pronounOptionsTwo.data.splice(index, 1, option);
-      // console.log(this.pronounOptionsTwo.data);
+      console.log(option, index);
+      this.pronounOptions.data.splice(index, 1, option);
+      // console.log(this.pronounOptions.data);
     },
   },
 };

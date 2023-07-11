@@ -11,8 +11,8 @@
         </p>
 
         <div class="mt-10 flex flex-wrap">
-          <div class="w-full p-3 divide-y divide-gray-400" v-for="(talent, index) in talents" :key="index">
-            <span v-if="talent.type == 'checkbox'">
+          <div class="w-full px-3" v-for="(talent, index) in talents" :key="index">
+            <div class="border-b border-gray-900/10 py-3" v-if="talent.type == 'checkbox'">
               <label :for="talent.name" class="block text-base font-bold leading-6 text-gray-900 mb-0">
                 {{ talent.name }}
               </label>
@@ -23,7 +23,7 @@
                 :name="talent.name"
                 :options="talent"
               ></RadioButton>
-            </span>
+            </div>
             <span v-else></span>
           </div>
         </div>
@@ -235,8 +235,8 @@ export default {
   computed: {},
   methods: {
     updateCheckbox(option, index) {
-      this.pronounOptionsTwo.data.splice(index, 1, option);
-      // console.log(this.pronounOptionsTwo.data);
+      // this.pronounOptionsTwo.data.splice(index, 1, option);
+      console.log(option, index);
     },
   },
 };
