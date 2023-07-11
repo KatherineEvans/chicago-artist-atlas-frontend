@@ -54,10 +54,10 @@
 </template>
 
 <script>
-import { Listbox, ListboxButton, ListboxOption, ListboxOptions } from "@headlessui/vue";
+import { Listbox, ListboxButton, ListboxOption, ListboxOptions, ListboxLabel } from "@headlessui/vue";
 import { CheckIcon, ChevronUpDownIcon } from "@heroicons/vue/20/solid";
 export default {
-  components: { Listbox, ListboxButton, ListboxOption, ListboxOptions, CheckIcon, ChevronUpDownIcon },
+  components: { ListboxLabel, Listbox, ListboxButton, ListboxOption, ListboxOptions, CheckIcon, ChevronUpDownIcon },
   props: ["dropdownData", "menuLabel", "width"],
   data: function () {
     return {

@@ -11,103 +11,8 @@
         </p>
 
         <div class="mt-10 flex flex-wrap">
-          <div class="w-full md:w-1/2 p-3">
-            <div class="w-full lg:w-1/2 p-3">
-              <p class="text-base">I can sing!</p>
-            </div>
-            <div class="w-full lg:w-1/2 p-3">
-              <p class="text-base">I can dance!</p>
-            </div>
-          </div>
-          <div class="w-full md:w-1/2 grid flex flex-wrap">
-            <div class="flex-wrap flex">
-              <div class="w-full lg:w-1/2 p-3">
-                <label for="pronouns" class="block text-base font-medium leading-6 text-gray-900">Pronouns:</label>
-                <div class="mt-2">
-                  <input
-                    type="text"
-                    name="pronouns"
-                    id="pronouns"
-                    autocomplete="address-level2"
-                    class="block w-full rounded-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                  />
-                </div>
-              </div>
-              <div class="w-full lg:w-1/2 p-3">
-                <label for="gender" class="block text-base font-medium leading-6 text-gray-900">Gender:</label>
-                <div class="mt-2">
-                  <input
-                    type="text"
-                    name="gender"
-                    id="gender"
-                    autocomplete="address-level2"
-                    class="block w-full rounded-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                  />
-                </div>
-              </div>
-              <div class="w-full lg:w-1/2 p-3">
-                <label for="age" class="block text-base font-medium leading-6 text-gray-900">Age:</label>
-                <div class="mt-2">
-                  <input
-                    type="text"
-                    name="age"
-                    id="age"
-                    autocomplete="address-level2"
-                    class="block w-full rounded-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                  />
-                </div>
-              </div>
-              <div class="w-full lg:w-1/2 p-3">
-                <label for="height" class="block text-base font-medium leading-6 text-gray-900">Height:</label>
-                <div class="mt-2">
-                  <input
-                    type="text"
-                    name="height"
-                    id="height"
-                    autocomplete="address-level2"
-                    class="block w-full rounded-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                  />
-                </div>
-              </div>
-              <div class="w-full lg:w-1/2 p-3">
-                <label for="hair-color" class="block text-base font-medium leading-6 text-gray-900">Hair Color:</label>
-                <div class="mt-2">
-                  <input
-                    type="text"
-                    name="hair-color"
-                    id="hair-color"
-                    autocomplete="address-level2"
-                    class="block w-full rounded-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                  />
-                </div>
-              </div>
-              <div class="w-full lg:w-1/2 p-3">
-                <label for="eye_color" class="block text-base font-medium leading-6 text-gray-900">Eye Color:</label>
-                <div class="mt-2">
-                  <input
-                    type="text"
-                    name="eye_color"
-                    id="eye_color"
-                    autocomplete="address-level2"
-                    class="block w-full rounded-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="w-full grid flex flex-wrap flex">
-            <div class="col-span-full px-3">
-              <label for="about" class="block text-base font-medium leading-6 text-gray-900">About</label>
-              <div class="mt-2">
-                <textarea
-                  id="about"
-                  name="about"
-                  rows="3"
-                  class="block w-full rounded-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                />
-              </div>
-              <p class="mt-3 text-sm leading-6 text-gray-600">Write a few sentences about yourself.</p>
-            </div>
+          <div class="w-full p-3">
+            <h3>Blah blah blah</h3>
           </div>
         </div>
       </div>
@@ -139,7 +44,162 @@
 <script>
 export default {
   data: function () {
-    return {};
+    return {
+      talents: [
+        {
+          name: "Vocal",
+          type: "checkbox",
+          options: [
+            { name: "Singing", value: false },
+            { name: "Rapping", value: false },
+            { name: "Beat Boxing", value: false },
+          ],
+          additional: {
+            name: "Vocal Range",
+            type: "checkbox",
+            options: [
+              { name: "Bass", value: false },
+              { name: "Baritone", value: false },
+              { name: "Tenor", value: false },
+              { name: "Alto", value: false },
+              { name: "Mezzo-Soprano", value: false },
+              { name: "Soprano", value: false },
+            ],
+          },
+        },
+        {
+          name: "Dialectics",
+          type: "checkbox",
+          options: [
+            { name: "Armenian", value: false },
+            { name: "Australian", value: false },
+            { name: "Boston", value: false },
+            { name: "British RP", value: false },
+            { name: "Cockney", value: false },
+            { name: "French", value: false },
+            { name: "German", value: false },
+            { name: "Irish", value: false },
+            { name: "Italian", value: false },
+            { name: "Minnesota", value: false },
+            { name: "Puerto Rican", value: false },
+            { name: "Russian", value: false },
+            { name: "Scottish", value: false },
+            { name: "South African", value: false },
+            { name: "Southern", value: false },
+            { name: "Spanish", value: false },
+            { name: "Swiss-German", value: false },
+            { name: "Other", value: false },
+          ],
+          additional: {
+            name: "Additional Dialectics",
+            type: "input",
+            options: [],
+          },
+        },
+        {
+          name: "Languages (fluent)",
+          type: "input",
+          options: [],
+        },
+        {
+          name: "Languages (familiar)",
+          type: "input",
+          options: [],
+        },
+        {
+          name: "Dance",
+          type: "checkbox",
+          options: [
+            { name: "Tap", value: false },
+            { name: "Ballet", value: false },
+            { name: "Jazz", value: false },
+            { name: "Hip Hop", value: false },
+            { name: "Other", value: false },
+          ],
+          additional: {
+            name: "Dance (other)",
+            type: "input",
+            options: [],
+          },
+        },
+        {
+          name: "Stage Combat",
+          type: "checkbox",
+          options: [
+            { name: "Hand to Hand", value: false },
+            { name: "Broadsword", value: false },
+            { name: "Knife", value: false },
+            { name: "Quarterstaff", value: false },
+            { name: "Single Sword", value: false },
+            { name: "Small Sword", value: false },
+            { name: "Rapier & Dagger", value: false },
+            { name: "Firearms Training/Handling", value: false },
+            { name: "Other", value: false },
+          ],
+          additional: {
+            name: "Stage Combat (other)",
+            type: "input",
+            options: [],
+          },
+        },
+        {
+          name: "Instruments",
+          type: "checkbox",
+          options: [
+            { name: "Guitar", value: false },
+            { name: "Piano", value: false },
+            { name: "Drums", value: false },
+            { name: "Violin", value: false },
+            { name: "Flute", value: false },
+            { name: "Other", value: false },
+          ],
+          additional: {
+            name: "Instruments (other)",
+            type: "input",
+            options: [],
+          },
+        },
+        {
+          name: "Circus Arts",
+          type: "checkbox",
+          options: [
+            { name: "Aerial Silks", value: false },
+            { name: "Acrobatics", value: false },
+            { name: "Trapeze", value: false },
+            { name: "Clowning", value: false },
+            { name: "Juggling", value: false },
+            { name: "Stilts", value: false },
+            { name: "Tightrope Walking", value: false },
+            { name: "Other", value: false },
+          ],
+          additional: {
+            name: "Circus Arts (other)",
+            type: "input",
+            options: [],
+          },
+        },
+        {
+          name: "Misc.",
+          type: "checkbox",
+          options: [
+            { name: "Gymnastics", value: false },
+            { name: "Magician", value: false },
+            { name: "Puppetry", value: false },
+            { name: "Improv / Stand Up", value: false },
+            { name: "Martial Arts", value: false },
+            { name: "Whistling", value: false },
+            { name: "Sign Language", value: false },
+            { name: "Yo-Yo", value: false },
+            { name: "Other", value: false },
+          ],
+          additional: {
+            name: "Misc (other)",
+            type: "input",
+            options: [],
+          },
+        },
+      ],
+    };
   },
   watch: {},
   computed: {},
