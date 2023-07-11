@@ -141,7 +141,7 @@ export default {
         this.user = this.userClone;
         console.log(response);
         if (this.errors) {
-          console.log("fuck", this.errors);
+          console.log(this.errors);
         }
       });
     },
