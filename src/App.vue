@@ -1,5 +1,6 @@
 <template>
   <NavBar :isLoggedIn="isLoggedIn" />
+  <AlertNotification></AlertNotification>
   <router-view class="min-h-screen" v-if="isLoggedIn" />
   <div v-else class="container-fluid home mx-auto text-center">
     <div class="row ltblue py-3 px-4">
@@ -44,12 +45,14 @@
 <script>
 import NavBar from "./components/NavBar.vue";
 import FooterBar from "./components/FooterBar.vue";
+import AlertNotification from "./components/AlertNotification.vue";
 import axios from "axios";
 
 export default {
   components: {
     NavBar,
     FooterBar,
+    AlertNotification,
   },
   data: function () {
     return {
