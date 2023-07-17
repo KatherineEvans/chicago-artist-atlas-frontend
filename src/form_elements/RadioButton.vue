@@ -7,7 +7,7 @@
           <input
             :id="option.name"
             aria-describedby="comments-description"
-            name="comments"
+            :name="option.name"
             type="checkbox"
             :value="option.value"
             v-model="option.value"
@@ -16,7 +16,7 @@
           />
         </div>
         <div class="ml-3 text-sm leading-6">
-          <label for="comments" class="font-medium text-gray-900 break-normal">{{ option.name }}</label>
+          <label :for="option.name" class="font-medium text-gray-900 break-normal">{{ option.name }}</label>
           <p v-if="option?.description" id="comments-description" class="text-gray-500">
             {{ option.description }}
           </p>
@@ -27,7 +27,7 @@
 </template>
 <script>
 export default {
-  props: ["options", "colNumberClass"],
+  props: ["options", "colNumberClass", "optionsName"],
   data: function () {
     return {};
   },
@@ -35,7 +35,7 @@ export default {
   computed: {},
   methods: {
     handleChange(option, index) {
-      this.$emit("update-checkbox", option, index);
+      this.$emit("update-checkbox", option, index, this.optionsName);
     },
   },
 };

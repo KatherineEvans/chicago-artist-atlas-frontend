@@ -20,7 +20,7 @@
               <RadioButton
                 colNumberClass="grid-cols-3"
                 @update-checkbox="updateCheckbox"
-                :name="talent.name"
+                :optionsName="talent.name"
                 :options="talent"
               ></RadioButton>
             </div>
@@ -234,9 +234,9 @@ export default {
   watch: {},
   computed: {},
   methods: {
-    updateCheckbox(option, index) {
+    updateCheckbox(option, index, name) {
       // this.pronounOptionsTwo.data.splice(index, 1, option);
-      console.log(option, index);
+      console.log(option, index, name);
     },
   },
 };

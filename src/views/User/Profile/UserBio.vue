@@ -38,7 +38,7 @@
             <p class="m-0 text-sm leading-6 italic text-gray-400">Select all that apply</p>
             <RadioButton
               @update-checkbox="updateCheckbox"
-              name="pronouns"
+              optionsName="Pronouns"
               :options="pronounOptions"
               colNumberClass="grid-cols-2"
             ></RadioButton>
@@ -228,7 +228,6 @@ export default {
         options: ["18-22", "23-27", "28-32", "33-37", "38-42", "43-47", "48-52", "53-57", "58-65", "Above 65"],
       },
       pronounOptions: {
-        name: "Pronouns",
         srTitle: "Pronouns",
         data: [
           {
