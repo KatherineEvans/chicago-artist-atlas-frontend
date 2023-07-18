@@ -65,6 +65,13 @@ export default {
     this.isLoggedIn = !!localStorage.authToken;
   },
   watch: {
+    "$store.state.sessions.authToken": function () {
+      if (this.$store.state.sessions.authToken) {
+        this.isLoggedIn = true;
+      } else {
+        this.isLoggedIn = false;
+      }
+    },
     $route: function () {
       this.isLoggedIn = !!localStorage.authToken;
     },

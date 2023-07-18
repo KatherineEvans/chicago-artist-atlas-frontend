@@ -31,6 +31,9 @@ export default {
     },
   },
   mutations: {
+    setAuthToken(state, data) {
+      state.authToken = data;
+    },
     setUserInfo(state, data) {
       state.user = data.data.user;
       state.authToken = data.headers.authorization;

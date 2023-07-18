@@ -8,7 +8,11 @@
           @modal-type="(type) => (modalType = type)"
         ></SignUpOptions>
         <SignUpForm v-if="modalType == 'signup'" @modal-type="(type) => (modalType = type)"></SignUpForm>
-        <LoginForm v-if="modalType == 'login'" @modal-type="(type) => (modalType = type)"></LoginForm>
+        <LoginForm
+          @close-modal="closeModal"
+          v-if="modalType == 'login'"
+          @modal-type="(type) => (modalType = type)"
+        ></LoginForm>
         <ForgotPassword
           v-if="modalType == 'forgotPassword'"
           @modal-type="(type) => (modalType = type)"
@@ -273,8 +277,10 @@ export default {
     },
     submitLogout() {
       event.preventDefault();
+      console.log("logout");
       this.$store.dispatch("sessions/logoutUser").then(() => {
         localStorage.removeItem("authToken");
+        this.$store.commit("sessions/setAuthToken", null);
       });
     },
   },

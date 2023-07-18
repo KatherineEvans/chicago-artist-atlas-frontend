@@ -50,7 +50,7 @@ export default {
   },
   data: function () {
     return {
-      show: true,
+      show: false,
       messageTitle: "Successfully saved!",
       messageBody: "Anyone with a link can now view this file.",
     };
