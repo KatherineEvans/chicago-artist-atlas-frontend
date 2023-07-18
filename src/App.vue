@@ -5,38 +5,43 @@
   <div v-else class="container-fluid home mx-auto text-center">
     <div class="row ltblue py-3 px-4">
       <div class="col-8 m-auto my-3">
-        <h2>
-          <strong>Chicago Artist Atlas Closed Beta</strong>
-        </h2>
-        <p style="font-size: 16px">
+        <h2 class="text-2xl font-bold">Chicago Artist Atlas - Closed Beta</h2>
+        <p class="mt-3" style="font-size: 16px">
           We combine vital information in an easily navigated, one-stop-shop with original content from experts in our
           community to guide you on your journey.
         </p>
       </div>
     </div>
-    <div class="row pb-5 px-5 m-auto">
-      <form v-on:submit.prevent="login()">
-        <div class="card mt-5 py-3 px-5">
-          <h1>Login</h1>
-          <ul>
-            <li v-for="error in errors" v-bind:key="error">{{ error }}</li>
-          </ul>
-          <div class="input-group row mb-3">
-            <label>Email:</label>
-            <input class="form-control" type="email" v-model="newSessionParams.email" />
-          </div>
-          <div class="input-group row mb-3">
-            <label>Password:</label>
-            <input class="form-control" type="password" v-model="newSessionParams.password" />
-          </div>
-          <input
-            style="max-width: 150px; background-color: #0b0b35; border-color: #0b0b35; color: white"
-            class="btn btn-primary my-4 mx-auto"
-            type="submit"
-            value="Login"
-          />
-        </div>
-      </form>
+    <div class="row p-5 m-auto container text-left">
+      <p class="mx-5 mb-4 text-lg">
+        Welcome! We're so glad you're here and excited to have you join us on the first leg of this journey as a
+        <em>beta tester!</em>
+      </p>
+      <p class="mx-5 text-base">
+        We've been hard at work to develop this site as a one-stop-shop for Chicago theatremakers to find jobs and
+        audition postings, resources, classes, and community without the tedious digging around of the past. Chicago
+        Artist Atlas,
+        <strong>Atlas</strong>
+        for short, aims to be streamlined and fun for users so more time can be spent on craft and creativity. We hope
+        you will keep this in mind as you navigate and explore the site, and encourage you to keep track of your
+        thoughts and reactions.
+      </p>
+      <p class="mx-5 text-base">
+        You are one of the
+        <strong>first</strong>
+        to use this 'work-in-progress', and we greatly appreciate your feedback to help us make it even better for our
+        full launch this fall!
+        <br />
+        Go ahead and create a profile and take a look around! We hope you like what you see.
+      </p>
+      <p class="mx-5 text-base italic">
+        (Please note, this is a closed, invite only beta test! If you're interested in being one of the first users of
+        Chicago Artist Atlas,
+        <a href="mailto:info@chiartistatlas.com?subject=I'm Interested in Beta Testing">let us know</a>
+        !)
+      </p>
+      <p class="mx-5 mt-4 text-base">Cheers,</p>
+      <p class="mx-5 text-base font-bold">Anna, Elise, and Katherine</p>
     </div>
   </div>
   <FooterBar />
