@@ -1,5 +1,6 @@
 <template>
   <NavBar :isLoggedIn="isLoggedIn" />
+  <AlertNotification></AlertNotification>
   <router-view class="min-h-screen" v-if="isLoggedIn" />
   <div v-else class="container-fluid home mx-auto text-center">
     <div class="row ltblue py-3 px-4">
@@ -44,12 +45,14 @@
 <script>
 import NavBar from "./components/NavBar.vue";
 import FooterBar from "./components/FooterBar.vue";
+import AlertNotification from "./components/AlertNotification.vue";
 import axios from "axios";
 
 export default {
   components: {
     NavBar,
     FooterBar,
+    AlertNotification,
   },
   data: function () {
     return {
@@ -62,6 +65,14 @@ export default {
     this.isLoggedIn = !!localStorage.authToken;
   },
   watch: {
+    "$store.state.sessions.authToken": function () {
+      // console.log(this.$store.state.sessions.authToken);
+      if (this.$store.state.sessions.authToken) {
+        this.isLoggedIn = true;
+      } else {
+        this.isLoggedIn = false;
+      }
+    },
     $route: function () {
       this.isLoggedIn = !!localStorage.authToken;
     },
@@ -73,7 +84,9 @@ export default {
         .then((response) => {
           localStorage.setItem("authToken", response.headers.authorization);
           axios.defaults.headers.common["Authorization"] = response.headers.authorization;
-          this.isLoggedIn = true;
+          this.$store.commit("sessions/setAuthToken", response.headers.authorization);
+          // Store user name to recall later
+          // localStorage.setItem("userName")
         })
         .catch((error) => {
           this.errors = error;

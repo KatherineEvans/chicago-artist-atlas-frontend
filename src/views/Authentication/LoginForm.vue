@@ -69,6 +69,7 @@
   </div>
 </template>
 <script>
+import axios from "axios";
 export default {
   data: function () {
     return {
@@ -93,9 +94,21 @@ export default {
     submitLoginForm() {
       this.errors = [];
       event.preventDefault();
-      this.$store.dispatch("sessions/loginUser", { user: this.user }).then(() => {
-        this.user = this.userClone;
-      });
+      axios
+        .post("/users/sign_in.json", { user: this.user })
+        .then((response) => {
+          localStorage.setItem("authToken", response.headers.authorization);
+          // Store user name to recall later
+          // localStorage.setItem("userName")
+          axios.defaults.headers.common["Authorization"] = response.headers.authorization;
+          this.$store.commit("sessions/setAuthToken", response.headers.authorization);
+          this.$emit("closeModal");
+          // Dispatch getUserProfile function
+        })
+        .catch((error) => {
+          console.log("posted w/errors", error.response.data.status.message);
+          this.errors = error.response.data.status.message;
+        });
     },
   },
 };
