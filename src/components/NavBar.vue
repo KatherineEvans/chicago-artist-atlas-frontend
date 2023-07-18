@@ -279,6 +279,7 @@ export default {
       this.$store.dispatch("sessions/logoutUser").then(() => {
         localStorage.removeItem("authToken");
         this.$store.commit("sessions/setAuthToken", null);
+        window.location.href = "/";
       });
     },
   },

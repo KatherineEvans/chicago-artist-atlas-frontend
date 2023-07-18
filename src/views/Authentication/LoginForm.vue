@@ -3,7 +3,9 @@
     <div class="sm:mx-auto sm:w-full sm:max-w-sm">
       <h2 class="mt-4 text-center text-2xl font-bold leading-9 tracking-tight text-blue-950">Log in to your account</h2>
     </div>
-
+    <Transition>
+      <div v-if="error" class="text-xs text-rose-700 w-52 m-auto">{{ error }}</div>
+    </Transition>
     <div class="mt-6 sm:mx-auto sm:w-full sm:max-w-sm">
       <form class="space-y-6" @submit="submitLoginForm">
         <div>
@@ -78,39 +80,46 @@ export default {
         password: null,
       },
       userClone: {},
-      errors: [],
+      error: null,
     };
   },
   mounted() {
     this.userClone = JSON.parse(JSON.stringify(this.user));
-    this.$store.watch(
-      () => this.$store.state.sessions.errors,
-      (newErrors) => {
-        this.errors = newErrors;
-      }
-    );
   },
   methods: {
     submitLoginForm() {
-      this.errors = [];
+      this.error = null;
       event.preventDefault();
       axios
         .post("/users/sign_in.json", { user: this.user })
         .then((response) => {
+          console.log({ loginResponse: response.data.data.user });
           localStorage.setItem("authToken", response.headers.authorization);
           // Store user name to recall later
-          // localStorage.setItem("userName")
+          localStorage.setItem("userFirstName", response.data.data.user.first_name);
+          localStorage.setItem("userLastName", response.data.data.user.last_name);
           axios.defaults.headers.common["Authorization"] = response.headers.authorization;
           this.$store.commit("sessions/setAuthToken", response.headers.authorization);
           this.$emit("closeModal");
+          console.log(localStorage);
           // Dispatch getUserProfile function
         })
         .catch((error) => {
-          console.log("posted w/errors", error.response.data.status.message);
-          this.errors = error.response.data.status.message;
+          console.log("posted w/errors", error.response.data.messages);
+          this.error = error.response.data.messages;
         });
     },
   },
 };
 </script>
-<style scoped></style>
+<style scoped>
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 0.8s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
+}
+</style>

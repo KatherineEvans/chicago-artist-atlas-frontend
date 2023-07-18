@@ -2,8 +2,8 @@
   <NavBar :isLoggedIn="isLoggedIn" />
   <AlertNotification></AlertNotification>
   <router-view class="min-h-screen" v-if="isLoggedIn" />
-  <div v-else class="container-fluid home mx-auto text-center h-5/6">
-    <div class="row ltblue py-3 px-4">
+  <div v-else class="container-fluid home mx-auto text-center h-screen">
+    <div class="row ltblue p-4">
       <div class="col-8 m-auto my-3">
         <h2 class="text-2xl font-bold">Chicago Artist Atlas - Closed Beta</h2>
         <p class="mt-3" style="font-size: 16px">
@@ -61,7 +61,7 @@ export default {
   },
   data: function () {
     return {
-      isLoggedIn: false,
+      isLoggedIn: !!localStorage.authToken,
       newSessionParams: {},
       errors: [],
     };
