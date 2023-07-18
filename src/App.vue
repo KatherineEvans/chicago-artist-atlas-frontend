@@ -66,6 +66,7 @@ export default {
   },
   watch: {
     "$store.state.sessions.authToken": function () {
+      // console.log(this.$store.state.sessions.authToken);
       if (this.$store.state.sessions.authToken) {
         this.isLoggedIn = true;
       } else {
@@ -83,7 +84,9 @@ export default {
         .then((response) => {
           localStorage.setItem("authToken", response.headers.authorization);
           axios.defaults.headers.common["Authorization"] = response.headers.authorization;
-          this.isLoggedIn = true;
+          this.$store.commit("sessions/setAuthToken", response.headers.authorization);
+          // Store user name to recall later
+          // localStorage.setItem("userName")
         })
         .catch((error) => {
           this.errors = error;

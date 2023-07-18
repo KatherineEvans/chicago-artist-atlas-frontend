@@ -276,8 +276,6 @@ export default {
       this.modalType = type;
     },
     submitLogout() {
-      event.preventDefault();
-      console.log("logout");
       this.$store.dispatch("sessions/logoutUser").then(() => {
         localStorage.removeItem("authToken");
         this.$store.commit("sessions/setAuthToken", null);
@@ -285,9 +283,6 @@ export default {
     },
   },
   watch: {
-    isLoggedIn: function () {
-      console.log(this.isLoggedIn);
-    },
     passwordResetToken(newValue, oldValue) {
       this.modalType = "resetPassword";
       this.modalOpen = true;
