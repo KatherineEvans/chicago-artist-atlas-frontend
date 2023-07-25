@@ -1,7 +1,7 @@
 <template>
   <NavBar :isLoggedIn="isLoggedIn" />
   <AlertNotification></AlertNotification>
-  <router-view class="min-h-screen" v-if="isLoggedIn" />
+  <router-view v-if="isLoggedIn" />
   <div v-else class="container-fluid home mx-auto text-center min-h-screen">
     <div class="row ltblue p-4">
       <div class="col-8 m-auto my-3">
@@ -13,7 +13,7 @@
       </div>
     </div>
     <div class="row p-5 m-auto container text-left">
-      <p class="mx-auto mb-4 text-lg">
+      <p class="mx-auto mb-4 text-lg text-center">
         Welcome! We're so glad you're here and excited to have you join us on the first leg of this journey as a
         <em>beta tester!</em>
       </p>

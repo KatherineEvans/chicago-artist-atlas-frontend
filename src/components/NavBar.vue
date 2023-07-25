@@ -172,7 +172,7 @@
           </button>
         </div>
         <div class="mt-6 flow-root">
-          <div class="-my-6 divide-y divide-gray-500/10">
+          <div class="-my-6 divide-y divide-gray-500/10 text-blue-100">
             <div class="space-y-2 py-6">
               <a
                 v-for="item in navigation"
@@ -186,7 +186,7 @@
             </div>
             <div class="py-6" v-if="!isLoggedIn">
               <a
-                href="/login"
+                @click="openModal('login')"
                 class="-mx-3 block p-3 text-base font-semibold leading-7 text-blue-100 no-underline hover:no-underline hover:text-white hover:bg-blue-900 rounded"
               >
                 Log in
