@@ -36,7 +36,7 @@
         >
           {{ item.name }}
         </a>
-        <Popover class="relative">
+        <Popover class="relative" v-if="isLoggedIn">
           <PopoverButton
             class="p-3 mx-2 text-base font-semibold leading-6 text-blue-100 hover:underline no-underline hover:text-white rounded"
           >
@@ -56,7 +56,7 @@
                 class="w-screen max-w-sm flex-auto rounded-md bg-white py-4 text-sm leading-6 shadow-lg ring-1 ring-gray-900/5"
               >
                 <div class="text-base font-semibold text-gray-900 text-center">Classes coming soon!</div>
-                <div v-for="item in solutions" :key="item.name" class="relative rounded-lg px-4 py-2 hover:bg-gray-50">
+                <div v-for="item in pdfLinks" :key="item.name" class="relative rounded-lg px-4 py-2 hover:bg-gray-50">
                   <a target="_blank" :href="item.href" class="text-base font-semibold text-gray-900 underline">
                     {{ item.name }}
                     <span class="absolute inset-0" />
@@ -206,6 +206,32 @@
               >
                 {{ item.name }}
               </a>
+              <Disclosure as="a" class="-mx-3 block" :defaultOpen="classNavOpen" v-slot="classNavOpen">
+                <DisclosureButton
+                  @click="rotate = !rotate"
+                  class="p-3 text-base font-semibold leading-7 text-blue-100 hover:no-underline no-underline hover:text-white hover:bg-blue-900 rounded w-full"
+                  style="display: flex"
+                >
+                  Classes
+                  <ChevronRightIcon
+                    class="ml-4 my-auto"
+                    :class="[rotate ? 'rotate-90 text-blue-100' : 'text-white', 'h-5 w-5 shrink-0']"
+                    aria-hidden="true"
+                  />
+                </DisclosureButton>
+                <DisclosurePanel as="ul" class="mt-1 px-2">
+                  <li class="text-right" v-for="subLink in pdfLinks" :key="subLink.name">
+                    <DisclosureButton
+                      as="a"
+                      target="_blank"
+                      :href="subLink.href"
+                      class="text-white flex items-center block py-3 px-4 sub-nav-text ml-3 hover:underline rounded transition duration-200 no-underline"
+                    >
+                      {{ subLink.name }}
+                    </DisclosureButton>
+                  </li>
+                </DisclosurePanel>
+              </Disclosure>
             </div>
             <div class="py-6" v-if="!isLoggedIn">
               <a
@@ -224,7 +250,17 @@
 
 <script>
 import { Menu, MenuItem, MenuItems, MenuButton } from "@headlessui/vue";
-import { Dialog, DialogPanel, Popover, PopoverButton, PopoverPanel } from "@headlessui/vue";
+import {
+  Dialog,
+  DialogPanel,
+  Popover,
+  PopoverButton,
+  PopoverPanel,
+  Disclosure,
+  DisclosureButton,
+  DisclosurePanel,
+} from "@headlessui/vue";
+import { ChevronRightIcon } from "@heroicons/vue/20/solid";
 import { Bars3Icon, XMarkIcon } from "@heroicons/vue/24/outline";
 import ModalContainer from "./ModalContainer.vue";
 import SignUpOptions from "@/views/Authentication/SignUpOptions.vue";
@@ -255,24 +291,30 @@ export default {
     Popover,
     PopoverButton,
     PopoverPanel,
+    Disclosure,
+    DisclosureButton,
+    DisclosurePanel,
+    ChevronRightIcon,
   },
   data: function () {
     return {
+      classNavOpen: false,
+      rotate: false,
       activeUser: `${localStorage.userFirstName} ${localStorage.userLastName}`,
       mobileMenuOpen: false,
       mobileUserMenuOpen: false,
       modalOpen: false,
       modalType: "signUpOptionsModal",
-      solutions: [
+      pdfLinks: [
         {
           name: "For Teachers",
           href: "/pdfs/Teacher_Pay_Structure.pdf",
-          description: "Are you a teacher in the performing arts? This is for you!",
+          description: "Are you a teacher in the performing arts? We're interested in working with you!",
         },
         {
           name: "For Coaches",
           href: "/pdfs/Coach_Pay_Structure.pdf",
-          description: "Are you a coach in the performing arts? This is for you!",
+          description: "Are you a coach in the performing arts? We're interested in working with you!",
         },
       ],
       navigation: [
