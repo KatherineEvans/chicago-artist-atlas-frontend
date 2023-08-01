@@ -93,15 +93,15 @@ export default {
       axios
         .post("/users/sign_in.json", { user: this.user })
         .then((response) => {
-          console.log({ loginResponse: response.data.data.user });
+          this.$emit("closeModal");
+
           localStorage.setItem("authToken", response.headers.authorization);
-          // Store user name to recall later
           localStorage.setItem("userFirstName", response.data.data.user.first_name);
           localStorage.setItem("userLastName", response.data.data.user.last_name);
+
           axios.defaults.headers.common["Authorization"] = response.headers.authorization;
           this.$store.commit("sessions/setAuthToken", response.headers.authorization);
-          this.$emit("closeModal");
-          console.log(localStorage);
+
           // Dispatch getUserProfile function
         })
         .catch((error) => {

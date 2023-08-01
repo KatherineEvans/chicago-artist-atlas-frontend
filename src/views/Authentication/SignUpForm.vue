@@ -259,15 +259,13 @@ export default {
         axios
           .post("/users.json", { user: this.user })
           .then((response) => {
-            // console.log("signup posted w/response", response);
-            // commit("setUserInfo", response);
-            // commit("setDefaultUserInfo", response);
+            console.log("signup posted w/response", response);
+            // open login screen
+            this.$emit("modalType", "login");
           })
           .catch((error) => {
             console.log(error);
-            // commit("setErrors", error.response.data.status.message);
-            // console.log("signup posted w/errors", error.response.data.status.message);
-            // return error.response.data.status.message;
+            console.log("signup posted w/errors", error.response.data.status.message);
           });
       } else {
         event.preventDefault();
