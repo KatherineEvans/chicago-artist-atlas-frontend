@@ -31,16 +31,48 @@
           v-for="item in navigation"
           :key="item.name"
           :href="item.href"
-          class="p-3 mx-2 text-sm font-semibold leading-6 text-blue-100 hover:underline no-underline hover:text-white rounded"
+          class="p-3 mx-2 text-base font-semibold leading-6 text-blue-100 hover:underline no-underline hover:text-white rounded"
           :class="{ 'active-test': $route.name == item.name.toLowerCase() }"
         >
           {{ item.name }}
         </a>
+        <Popover class="relative">
+          <PopoverButton
+            class="p-3 mx-2 text-base font-semibold leading-6 text-blue-100 hover:underline no-underline hover:text-white rounded"
+          >
+            <span>Classes</span>
+          </PopoverButton>
+
+          <transition
+            enter-active-class="transition ease-out duration-200"
+            enter-from-class="opacity-0 translate-y-1"
+            enter-to-class="opacity-100 translate-y-0"
+            leave-active-class="transition ease-in duration-150"
+            leave-from-class="opacity-100 translate-y-0"
+            leave-to-class="opacity-0 translate-y-1"
+          >
+            <PopoverPanel class="absolute left-1/2 z-10 mt-1 flex w-screen max-w-max -translate-x-1/2 px-4">
+              <div
+                class="w-screen max-w-sm flex-auto rounded-md bg-white py-4 text-sm leading-6 shadow-lg ring-1 ring-gray-900/5"
+              >
+                <div class="text-base font-semibold text-gray-900 text-center">Classes coming soon!</div>
+                <div v-for="item in solutions" :key="item.name" class="relative rounded-lg px-4 py-2 hover:bg-gray-50">
+                  <a target="_blank" :href="item.href" class="text-base font-semibold text-gray-900 underline">
+                    {{ item.name }}
+                    <span class="absolute inset-0" />
+                  </a>
+                  <p class="mt-1 text-gray-600">{{ item.description }}</p>
+                </div>
+              </div>
+            </PopoverPanel>
+          </transition>
+        </Popover>
       </div>
+
       <div v-if="!isLoggedIn" class="flex flex-1 items-center justify-end gap-x-6">
         <button
           @click="openModal('login')"
-          class="px-3 py-2 hidden lg:block lg:text-sm lg:font-semibold lg:leading-6 lg:text-blue-100 hover:no-underline no-underline hover:text-white rounded"
+          class="px-3 py-2 hidden lg:block text-base font-semibold leading-6 text-blue-100 hover:no-underline no-underline hover:text-white rounded"
         >
           Log in
         </button>
@@ -52,18 +84,7 @@
         </button>
       </div>
       <div v-else class="flex flex-1 items-center justify-end gap-x-6">
-        <!-- <div class="flex">
-          <button
-            type="button"
-            class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
-            @click="mobileUserMenuOpen = true"
-          >
-            <span class="sr-only">Open user menu</span>
-            <i
-              class="text-blue-100 lg:text-3xl md:text-2xl text-xl h-10 w-10 rounded-full fa-solid fa-user lg:pt-2 md:pt-3 pt-2"
-            ></i>
-          </button>
-        </div> -->
+        <!-- USER DROPDOWN MENU -->
         <Menu as="div" class="relative inline-block text-left">
           <div>
             <MenuButton>
@@ -91,7 +112,7 @@
             >
               <div class="px-4 pt-3 pb-2">
                 <p class="text-sm mb-1">Signed in as</p>
-                <p class="truncate text-sm font-medium text-gray-900 mb-1">kat@test.com</p>
+                <p class="truncate text-sm font-medium text-gray-900 mb-1">{{ activeUser }}</p>
               </div>
               <div class="py-2">
                 <MenuItem v-slot="{ active }">
@@ -150,6 +171,8 @@
         </button>
       </div>
     </nav>
+
+    <!-- RIGHT SIDE FLYOUT MENU -->
     <Dialog as="div" class="rt-side-nav lg:hidden bg-blue-950" @close="mobileMenuOpen = false" :open="mobileMenuOpen">
       <div class="fixed inset-0 z-10"></div>
       <DialogPanel
@@ -201,7 +224,7 @@
 
 <script>
 import { Menu, MenuItem, MenuItems, MenuButton } from "@headlessui/vue";
-import { Dialog, DialogPanel } from "@headlessui/vue";
+import { Dialog, DialogPanel, Popover, PopoverButton, PopoverPanel } from "@headlessui/vue";
 import { Bars3Icon, XMarkIcon } from "@heroicons/vue/24/outline";
 import ModalContainer from "./ModalContainer.vue";
 import SignUpOptions from "@/views/Authentication/SignUpOptions.vue";
@@ -210,6 +233,7 @@ import LoginForm from "@/views/Authentication/LoginForm.vue";
 import ForgotPassword from "@/views/Authentication/ForgotPassword.vue";
 import ResetPassword from "@/views/Authentication/ResetPassword.vue";
 import { mapState } from "vuex";
+import axios from "axios";
 
 export default {
   props: ["isLoggedIn"],
@@ -228,13 +252,29 @@ export default {
     MenuButton,
     MenuItem,
     MenuItems,
+    Popover,
+    PopoverButton,
+    PopoverPanel,
   },
   data: function () {
     return {
+      activeUser: `${localStorage.userFirstName} ${localStorage.userLastName}`,
       mobileMenuOpen: false,
       mobileUserMenuOpen: false,
       modalOpen: false,
       modalType: "signUpOptionsModal",
+      solutions: [
+        {
+          name: "For Teachers",
+          href: "/pdfs/Teacher_Pay_Structure.pdf",
+          description: "Are you a teacher in the performing arts? This is for you!",
+        },
+        {
+          name: "For Coaches",
+          href: "/pdfs/Coach_Pay_Structure.pdf",
+          description: "Are you a coach in the performing arts? This is for you!",
+        },
+      ],
       navigation: [
         {
           name: "Home",
@@ -248,10 +288,10 @@ export default {
           name: "Auditions",
           href: "/auditions",
         },
-        {
-          name: "Classes",
-          href: "/classes",
-        },
+        // {
+        //   name: "Classes",
+        //   href: "/classes",
+        // },
         {
           name: "Resources",
           href: "/resources",
@@ -277,7 +317,8 @@ export default {
     },
     submitLogout() {
       this.$store.dispatch("sessions/logoutUser").then(() => {
-        localStorage.removeItem("authToken");
+        localStorage.clear();
+        axios.defaults.headers.common["Authorization"] = null;
         this.$store.commit("sessions/setAuthToken", null);
         window.location.href = "/";
       });

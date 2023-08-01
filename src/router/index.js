@@ -48,11 +48,11 @@ const routes = [
     name: "contact",
     component: ContactView,
   },
-  {
-    path: "/classes",
-    name: "classes",
-    component: Classes,
-  },
+  // {
+  //   path: "/classes",
+  //   name: "classes",
+  //   component: Classes,
+  // },
   {
     path: "/resources",
     name: "resources",
