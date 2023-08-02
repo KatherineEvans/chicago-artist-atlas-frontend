@@ -338,10 +338,10 @@ export default {
           name: "Resources",
           href: "/resources",
         },
-        {
-          name: "Contact",
-          href: "/contact",
-        },
+        // {
+        //   name: "Contact",
+        //   href: "/contact",
+        // },
       ],
     };
   },

@@ -69,7 +69,7 @@ export default {
 @media only screen and (max-width: 576px) {
   .overlay {
     position: absolute;
-    top: 70px;
+    top: 75px;
     right: 5px;
     max-height: 75px;
   }

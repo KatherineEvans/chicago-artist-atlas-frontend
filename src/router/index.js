@@ -43,11 +43,11 @@ const routes = [
     name: "auditions",
     component: AuditionBoard,
   },
-  {
-    path: "/contact",
-    name: "contact",
-    component: ContactView,
-  },
+  // {
+  //   path: "/contact",
+  //   name: "contact",
+  //   component: ContactView,
+  // },
   // {
   //   path: "/classes",
   //   name: "classes",

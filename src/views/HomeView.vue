@@ -66,7 +66,7 @@
       </div>
     </div>
     <!-- COMING SOON -->
-    <div class="row my-3 py-4 mx-auto bg-sky-100 mb-0">
+    <div class="py-10 row mx-auto bg-sky-100 mb-0">
       <p class="text-2xl font-bold">Atlas Resources</p>
       <div class="row mb-3">
         <div class="mx-auto col-xl-7 col-lg-7 col-md-8 col-sm-12 col-xs-12">
