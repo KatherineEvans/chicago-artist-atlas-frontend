@@ -1,7 +1,7 @@
 <template>
   <BannerImage />
   <div class="home mx-auto text-center">
-    <div class="bg-sky-100 p-4 md:p-2 sm:p-2">
+    <div class="bg-blue-50 p-4 md:p-2 sm:p-2">
       <div class="m-auto my-3">
         <p class="text-2xl font-bold mb-1">Atlas is the ultimate destination for Chicago theatre artists and makers.</p>
         <p style="font-size: 16px">
@@ -11,7 +11,7 @@
       </div>
     </div>
     <!-- CURRENT RESOURCES -->
-    <div class="row no-gutters my-2 py-4 mx-auto mt-0">
+    <div class="row no-gutters my-2 py-10 mx-auto mt-0">
       <div class="col-12">
         <p class="text-2xl font-bold">Atlas Directories</p>
         <div class="row mb-3">
@@ -66,7 +66,7 @@
       </div>
     </div>
     <!-- COMING SOON -->
-    <div class="py-10 row mx-auto bg-sky-100 mb-0">
+    <div class="py-10 row mx-auto bg-blue-50 mb-0">
       <p class="text-2xl font-bold">Atlas Resources</p>
       <div class="row mb-3">
         <div class="mx-auto col-xl-7 col-lg-7 col-md-8 col-sm-12 col-xs-12">

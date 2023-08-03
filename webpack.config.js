@@ -1,4 +1,5 @@
 const HtmlWebPackPlugin = require("html-webpack-plugin");
+const CopyPlugin = require("copy-webpack-plugin");
 const path = require("path");
 const htmlPlugin = new HtmlWebPackPlugin({
   template: "./src/index.html",
@@ -11,7 +12,12 @@ module.exports = {
     filename: "main.js",
     publicPath: "dist",
   },
-  plugins: [htmlPlugin],
+  plugins: [
+    htmlPlugin,
+    new CopyPlugin({
+      patterns: [{ from: "public/pdfs", to: "pdfs" }],
+    }),
+  ],
   module: {
     rules: [
       {
