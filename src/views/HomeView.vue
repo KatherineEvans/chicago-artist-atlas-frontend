@@ -11,7 +11,7 @@
       </div>
     </div>
     <!-- CURRENT RESOURCES -->
-    <div class="row no-gutters my-2 py-4 mx-auto mt-0">
+    <div class="row no-gutters my-2 py-10 mx-auto mt-0">
       <div class="col-12">
         <p class="text-2xl font-bold">Atlas Directories</p>
         <div class="row mb-3">
