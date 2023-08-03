@@ -1,8 +1,8 @@
 <template>
   <div class="container-fluid">
-    <div class="row ltblue py-3 px-4 text-center">
+    <div class="row bg-blue-50 py-3 px-4 text-center">
       <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 col-xl-8 m-auto my-3">
-        <h2 class="text-2xl font-bold">Resources</h2>
+        <h2 class="text-3xl font-bold">Resources</h2>
         <p style="font-size: 16px">
           Here at Atlas, we're focused on providing our users with the latest resources on topics that matter -
           inclusivity, diversity, sustainability, and the business of theater! We strive to continually improve and grow
@@ -17,10 +17,10 @@
     <div class="container pb-5 px-5 m-auto">
       <div class="row">
         <div class="mt-5">
-          <h5 class="text-xl font-bold text-center">Top Inclusivity Resources</h5>
-          <div class="resource-container">
+          <div class="text-2xl font-bold text-center">Identity Based Resources</div>
+          <div class="resource-container drop-shadow-md bg-blue-100/25">
             <div class="img-desc">
-              <img class="lf-img mx-auto mb-3" src="../assets/inclusivity.png" />
+              <img class="lf-img mx-auto mb-3" src="../assets/resources/identity-based-resources.png" />
               <div class="resource-desc mb-3">
                 <p class="px-2 desc">
                   Here at Atlas, an inclusive community is paramount to our mission. We know that inclusive theater is
@@ -31,9 +31,13 @@
             </div>
             <div class="resource-cards">
               <div class="card resource-card">
-                <div>
+                <div class="mb-2">
                   <h6 class="d-inline">Resource Name</h6>
-                  <span class="float-right badge badge-pill mb-2 badge-primary">LGBTQIA+</span>
+                  <span
+                    class="inline-flex items-center rounded-full bg-blue-50 px-2 py-1 text-sm float-right font-medium text-blue-700 ring-1 ring-inset ring-blue-700/10"
+                  >
+                    BIPOC
+                  </span>
                 </div>
                 <p>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis at molestie ligula. Etiam id odio
@@ -43,9 +47,13 @@
                 <a href="#" class="text-right">Visit Resource</a>
               </div>
               <div class="card resource-card">
-                <div>
+                <div class="mb-2">
                   <h6 class="d-inline">Resource Name</h6>
-                  <span class="float-right badge badge-pill mb-2 badge-info">BIPOC</span>
+                  <span
+                    class="inline-flex items-center rounded-full bg-green-50 px-2 py-1 text-sm float-right font-medium text-green-700 ring-1 ring-inset ring-green-600/20"
+                  >
+                    Disability
+                  </span>
                 </div>
                 <p>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis at molestie ligula. Etiam id odio
@@ -55,9 +63,13 @@
                 <a href="#" class="text-right">Visit Resource</a>
               </div>
               <div class="card resource-card">
-                <div>
+                <div class="mb-2">
                   <h6 class="d-inline">Resource Name</h6>
-                  <span class="float-right badge badge-pill mb-2 badge-success">ADA</span>
+                  <span
+                    class="inline-flex items-center rounded-full rainbow-background px-2 py-1 text-sm float-right font-medium text-slate-700 ring-1 ring-inset ring-red-600/10"
+                  >
+                    LGBTQIA+
+                  </span>
                 </div>
                 <p>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis at molestie ligula. Etiam id odio
@@ -66,8 +78,27 @@
                 </p>
                 <a href="#" class="text-right">Visit Resource</a>
               </div>
-              <button class="btn btn-primary float-right px-4">
-                <strong>View All Inclusivity Resources</strong>
+
+              <div class="card resource-card">
+                <div class="mb-2">
+                  <h6 class="d-inline">Resource Name</h6>
+                  <span
+                    class="inline-flex items-center rounded-full bg-pink-50 px-2 py-1 text-sm float-right font-medium text-pink-700 ring-1 ring-inset ring-pink-700/10"
+                  >
+                    Women+
+                  </span>
+                </div>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis at molestie ligula. Etiam id odio
+                  scelerisque, euismod ante lacinia, commodo erat. Aliquam varius nec felis sed suscipit. Maecenas id
+                  ullamcorper sapien.
+                </p>
+                <a href="#" class="text-right">Visit Resource</a>
+              </div>
+              <button
+                class="flex-none rounded-md bg-blue-900 px-3.5 py-2.5 text-base float-right font-semibold text-blue-100 shadow-sm hover:bg-blue-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+              >
+                <strong>View All Identity Based Resources</strong>
               </button>
             </div>
           </div>
@@ -75,16 +106,17 @@
       </div>
       <div class="row">
         <div class="mt-5">
-          <h5 class="text-xl font-bold text-center">Top Eco & Sustainability Resources</h5>
-          <div class="resource-container">
+          <div class="text-2xl font-bold text-center">Business Resources for Artist</div>
+          <div class="resource-container drop-shadow-md bg-blue-100/25">
             <div class="img-desc">
-              <img class="lf-img mx-auto mb-3" src="../assets/eco_sustainability.png" />
+              <img class="lf-img mx-auto mb-3" src="../assets/resources/business-resources.png" />
               <div class="resource-desc mb-3">
                 <p class="px-2 desc">
                   Want to adopt more environmentally friendly theatre practices? Atlas is here to help! As we slip
                   further into climate crisis, more and more theaters are making efforts to have smaller carbon
                   footprints. See how your theater or production company can join in the efforts!
                 </p>
+                <a href="#" class="text-right">Visit Resource</a>
               </div>
             </div>
             <div class="resource-cards">
@@ -95,6 +127,7 @@
                   scelerisque, euismod ante lacinia, commodo erat. Aliquam varius nec felis sed suscipit. Maecenas id
                   ullamcorper sapien.
                 </p>
+                <a href="#" class="text-right">Visit Resource</a>
               </div>
               <div class="card resource-card">
                 <h6>Resource Name</h6>
@@ -111,9 +144,12 @@
                   scelerisque, euismod ante lacinia, commodo erat. Aliquam varius nec felis sed suscipit. Maecenas id
                   ullamcorper sapien.
                 </p>
+                <a href="#" class="text-right">Visit Resource</a>
               </div>
-              <button class="btn btn-primary float-right px-4">
-                <strong>View All Eco Resources</strong>
+              <button
+                class="flex-none rounded-md bg-blue-900 px-3.5 py-2.5 text-base float-right font-semibold text-blue-100 shadow-sm hover:bg-blue-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+              >
+                <strong>View All Business Resources</strong>
               </button>
             </div>
           </div>
@@ -121,15 +157,16 @@
       </div>
       <div class="row">
         <div class="mt-5">
-          <h5 class="text-xl font-bold text-center">Top Theater Resources</h5>
-          <div class="resource-container">
+          <div class="text-2xl font-bold text-center">#LifeHack Resources</div>
+          <div class="resource-container drop-shadow-md bg-blue-100/25">
             <div class="img-desc">
-              <img class="lf-img mx-auto mb-3" src="../assets/theater.png" />
+              <img class="lf-img mx-auto mb-3" src="../assets/resources/life-hack-resources.png" />
               <div class="resource-desc mb-3">
                 <p class="px-2 desc">
                   From finding rehearsal spaces to creating brave spaces, ATLAS makes it easy for theatre companies to
                   discover resources to create processes and productions that are streamlined and sustainable.
                 </p>
+                <a href="#" class="text-right">Visit Resource</a>
               </div>
             </div>
             <div class="resource-cards">
@@ -140,6 +177,7 @@
                   scelerisque, euismod ante lacinia, commodo erat. Aliquam varius nec felis sed suscipit. Maecenas id
                   ullamcorper sapien.
                 </p>
+                <a href="#" class="text-right">Visit Resource</a>
               </div>
               <div class="card resource-card">
                 <h6>Resource Name</h6>
@@ -148,6 +186,7 @@
                   scelerisque, euismod ante lacinia, commodo erat. Aliquam varius nec felis sed suscipit. Maecenas id
                   ullamcorper sapien.
                 </p>
+                <a href="#" class="text-right">Visit Resource</a>
               </div>
               <div class="card resource-card">
                 <h6>Resource Name</h6>
@@ -156,9 +195,12 @@
                   scelerisque, euismod ante lacinia, commodo erat. Aliquam varius nec felis sed suscipit. Maecenas id
                   ullamcorper sapien.
                 </p>
+                <a href="#" class="text-right">Visit Resource</a>
               </div>
-              <button class="btn btn-primary float-right px-4">
-                <strong>View All Theater Resources</strong>
+              <button
+                class="flex-none rounded-md bg-blue-900 px-3.5 py-2.5 text-base float-right font-semibold text-blue-100 shadow-sm hover:bg-blue-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+              >
+                <strong>View All LifeHacks</strong>
               </button>
             </div>
           </div>
@@ -168,12 +210,31 @@
   </div>
 </template>
 
-<script></script>
+<script>
+import axios from "axios";
+export default {
+  data: function () {
+    return {
+      resources: [],
+      groupedResources: {},
+    };
+  },
+  mounted() {
+    this.getResources();
+  },
+  methods: {
+    getResources() {
+      axios.get("/resources.json").then((response) => {
+        console.log(response.data);
+      });
+    },
+  },
+};
+</script>
 
 <style scoped>
 .resource-container {
-  background-color: #e5e5e5;
-  border-radius: 5px;
+  border-radius: 10px;
   display: flex;
   flex-direction: row;
   margin: 15px;
@@ -192,23 +253,20 @@
   font-weight: 900;
   border-radius: 12px !important;
 }
-.badge-primary {
-  font-size: 14px;
-  font-weight: 900;
-  border-radius: 12px !important;
+.rainbow-background {
   background: linear-gradient(
     90deg,
-    rgba(255, 0, 0, 1) 0%,
-    rgba(255, 154, 0, 1) 10%,
-    rgba(208, 222, 33, 1) 20%,
-    rgba(79, 220, 74, 1) 30%,
-    rgba(63, 218, 216, 1) 40%,
-    rgba(47, 201, 226, 1) 50%,
-    rgba(28, 127, 238, 1) 60%,
-    rgba(95, 21, 242, 1) 70%,
-    rgba(186, 12, 248, 1) 80%,
-    rgba(251, 7, 217, 1) 90%,
-    rgba(255, 0, 0, 1) 100%
+    rgba(255, 0, 0, 0.2) 0%,
+    rgba(255, 154, 0, 0.2) 10%,
+    rgba(208, 222, 33, 0.2) 20%,
+    rgba(79, 220, 74, 0.2) 30%,
+    rgba(63, 218, 216, 0.2) 40%,
+    rgba(47, 201, 226, 0.2) 50%,
+    rgba(28, 127, 238, 0.2) 60%,
+    rgba(95, 21, 242, 0.2) 70%,
+    rgba(186, 12, 248, 0.2) 80%,
+    rgba(251, 7, 217, 0.2) 90%,
+    rgba(255, 0, 0, 0.2) 100%
   ) !important;
 }
 @media only screen and (max-width: 768px) {
@@ -249,22 +307,4 @@ img {
 img {
   border-radius: 5px;
 }
-.btn-primary {
-  background-color: #157b9e;
-  border-color: #157b9e;
-}
-.btn-primary:hover {
-  background-color: #0b0b35;
-  border-color: #0b0b35;
-}
-/* .lf-img {
-  border-radius: 5px 0px 0px 5px;
-}
-
-.rt-img {
-  border-radius: 0px 5px 5px 0px;
-}
-.top-img {
-  border-radius: 5px 5px 0px 0px;
-} */
 </style>
