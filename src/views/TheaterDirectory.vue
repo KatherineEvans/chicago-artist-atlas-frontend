@@ -1,8 +1,8 @@
 <template>
   <div class="container-fluid">
-    <div class="row ltblue py-3 px-4 text-center">
+    <div class="row bg-blue-50 py-3 px-4 text-center">
       <div class="col-8 m-auto my-3">
-        <h2 class="text-2xl font-bold">{{ title }}</h2>
+        <h2 class="text-3xl font-bold">{{ title }}</h2>
         <p style="font-size: 16px">
           ATLAS provides the most comprehensive directory of theatres, agencies, and classes in the city of Chicago. Use
           this tool to explore the vast layout of the who, what, and where that makes up Chicago’s performing arts

@@ -37,14 +37,24 @@ export default {
   position: absolute;
   top: 95px;
   right: 50px;
-  max-height: 150px;
+  max-height: 250px;
 }
+
+@media only screen and (max-width: 1325px) {
+  .overlay {
+    position: absolute;
+    top: 95px;
+    right: 30px;
+    max-height: 150px;
+  }
+}
+
 @media only screen and (max-width: 1026px) {
   .overlay {
     position: absolute;
     top: 75px;
     right: 30px;
-    max-height: 125px;
+    max-height: 150px;
   }
 }
 
@@ -69,7 +79,7 @@ export default {
 @media only screen and (max-width: 576px) {
   .overlay {
     position: absolute;
-    top: 70px;
+    top: 75px;
     right: 5px;
     max-height: 75px;
   }
