@@ -20,7 +20,7 @@
           <div class="text-2xl font-bold text-center">Identity Based Resources</div>
           <div class="resource-container drop-shadow-md bg-blue-100/25">
             <div class="img-desc">
-              <img class="lf-img mx-auto mb-3" src="../assets/resources/identity-based-resources.png" />
+              <img class="lf-img mx-auto mb-3" src="../../assets/resources/identity-based-resources.png" />
               <div class="resource-desc mb-3">
                 <p class="px-2 desc">
                   Here at Atlas, an inclusive community is paramount to our mission. We know that inclusive theater is
@@ -95,11 +95,12 @@
                 </p>
                 <a href="#" class="text-right">Visit Resource</a>
               </div>
-              <button
-                class="flex-none rounded-md bg-blue-900 px-3.5 py-2.5 text-base float-right font-semibold text-blue-100 shadow-sm hover:bg-blue-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+              <router-link
+                class="no-underline hover:no-underline flex-none rounded-md bg-blue-900 px-3.5 py-2.5 text-base float-right font-semibold shadow-sm hover:bg-blue-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                to="/resources/identity"
               >
-                <strong>View All Identity Based Resources</strong>
-              </button>
+                <strong class="text-blue-100">View All Identity Based Resources</strong>
+              </router-link>
             </div>
           </div>
         </div>
@@ -109,14 +110,13 @@
           <div class="text-2xl font-bold text-center">Business Resources for Artist</div>
           <div class="resource-container drop-shadow-md bg-blue-100/25">
             <div class="img-desc">
-              <img class="lf-img mx-auto mb-3" src="../assets/resources/business-resources.png" />
+              <img class="lf-img mx-auto mb-3" src="../../assets/resources/business-resources.png" />
               <div class="resource-desc mb-3">
                 <p class="px-2 desc">
-                  Want to adopt more environmentally friendly theatre practices? Atlas is here to help! As we slip
-                  further into climate crisis, more and more theaters are making efforts to have smaller carbon
-                  footprints. See how your theater or production company can join in the efforts!
+                  From step-by-step guides on building a captivating website, to curated lists of reliable suppliers for
+                  costumes, props, and so much more... we've got you covered. Enhance your theater career with our
+                  extensive repository of practical tools and knowledge.
                 </p>
-                <a href="#" class="text-right">Visit Resource</a>
               </div>
             </div>
             <div class="resource-cards">
@@ -146,11 +146,12 @@
                 </p>
                 <a href="#" class="text-right">Visit Resource</a>
               </div>
-              <button
-                class="flex-none rounded-md bg-blue-900 px-3.5 py-2.5 text-base float-right font-semibold text-blue-100 shadow-sm hover:bg-blue-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+              <router-link
+                class="no-underline hover:no-underline flex-none rounded-md bg-blue-900 px-3.5 py-2.5 text-base float-right font-semibold shadow-sm hover:bg-blue-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                to="/resources/business"
               >
-                <strong>View All Business Resources</strong>
-              </button>
+                <strong class="text-blue-100">View All Business Resources</strong>
+              </router-link>
             </div>
           </div>
         </div>
@@ -160,13 +161,13 @@
           <div class="text-2xl font-bold text-center">#LifeHack Resources</div>
           <div class="resource-container drop-shadow-md bg-blue-100/25">
             <div class="img-desc">
-              <img class="lf-img mx-auto mb-3" src="../assets/resources/life-hack-resources.png" />
+              <img class="lf-img mx-auto mb-3" src="../../assets/resources/life-hack-resources.png" />
               <div class="resource-desc mb-3">
                 <p class="px-2 desc">
-                  From finding rehearsal spaces to creating brave spaces, ATLAS makes it easy for theatre companies to
-                  discover resources to create processes and productions that are streamlined and sustainable.
+                  Uncover innovative #LifeHacks designed to streamline your daily routine and boost productivity. With
+                  everything from cost and time-saving tips, to trick on navigating life in the city, we aim to empower
+                  you with simple yet effective strategies.
                 </p>
-                <a href="#" class="text-right">Visit Resource</a>
               </div>
             </div>
             <div class="resource-cards">
@@ -197,11 +198,12 @@
                 </p>
                 <a href="#" class="text-right">Visit Resource</a>
               </div>
-              <button
-                class="flex-none rounded-md bg-blue-900 px-3.5 py-2.5 text-base float-right font-semibold text-blue-100 shadow-sm hover:bg-blue-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+              <router-link
+                class="no-underline hover:no-underline flex-none rounded-md bg-blue-900 px-3.5 py-2.5 text-base float-right font-semibold shadow-sm hover:bg-blue-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                to="/resources/life-hacks"
               >
-                <strong>View All LifeHacks</strong>
-              </button>
+                <strong class="text-blue-100">View All LifeHack Resources</strong>
+              </router-link>
             </div>
           </div>
         </div>

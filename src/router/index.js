@@ -2,7 +2,6 @@ import { createRouter, createWebHistory } from "vue-router";
 import ContactView from "../views/ContactView.vue";
 import Classes from "../views/MasterClasses.vue";
 import HomeView from "../views/HomeView.vue";
-import Resources from "../views/ResourcesView.vue";
 import TheaterDirectory from "../views/TheaterDirectory.vue";
 
 // Auditions
@@ -26,6 +25,12 @@ import UserBio from "../views/User/Profile/UserBio.vue";
 import UserPerformances from "../views/User/Profile/UserPerformances.vue";
 import UserTalents from "../views/User/Profile/UserTalents.vue";
 import UserTraining from "../views/User/Profile/UserTraining.vue";
+
+// Resources
+import Resources from "../views/Resources/ResourcesView.vue";
+import BusinessResources from "../views/Resources/BusinessResources.vue";
+import IdentityResources from "../views/Resources/IdentityResources.vue";
+import LifeHackResources from "../views/Resources/LifeHackResources.vue";
 
 const routes = [
   {
@@ -57,6 +62,21 @@ const routes = [
     path: "/resources",
     name: "resources",
     component: Resources,
+  },
+  {
+    path: "/resources/identity",
+    name: "identity-resources",
+    component: IdentityResources,
+  },
+  {
+    path: "/resources/business",
+    name: "business-resources",
+    component: BusinessResources,
+  },
+  {
+    path: "/resources/life-hacks",
+    name: "life-hack-resources",
+    component: LifeHackResources,
   },
   {
     path: "/signup",
