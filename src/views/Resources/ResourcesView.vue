@@ -36,7 +36,7 @@
     </nav>
     <div class="container pb-5 px-5 m-auto">
       <div class="row">
-        <div class="mt-5">
+        <div>
           <div class="text-2xl font-bold text-center">Identity Based Resources</div>
           <div class="resource-container drop-shadow-md bg-blue-100/25">
             <div class="img-desc">

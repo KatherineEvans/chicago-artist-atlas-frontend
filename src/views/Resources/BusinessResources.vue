@@ -10,7 +10,7 @@
         </p>
       </div>
     </div>
-    <nav class="flex flex-wrap justify-between px-0" aria-label="Breadcrumb">
+    <nav class="flex flex-wrap justify-between px-0 pb-0" aria-label="Breadcrumb">
       <ol role="list" class="flex items-center space-x-4">
         <li>
           <div>
