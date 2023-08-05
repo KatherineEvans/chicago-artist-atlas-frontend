@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <div class="row bg-blue-50 py-3 px-4 text-center">
       <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 col-xl-8 m-auto my-3">
-        <h2 class="text-3xl font-bold">Resources</h2>
+        <div class="text-3xl font-bold">Resources</div>
         <p style="font-size: 16px">
           Here at Atlas, we're focused on providing our users with the latest resources on topics that matter -
           inclusivity, diversity, sustainability, and the business of theater! We strive to continually improve and grow
@@ -217,7 +217,6 @@ import axios from "axios";
 export default {
   data: function () {
     return {
-      resources: [],
       groupedResources: {},
     };
   },
@@ -227,7 +226,8 @@ export default {
   methods: {
     getResources() {
       axios.get("/resources.json").then((response) => {
-        console.log(response.data);
+        this.groupedResources = response.data;
+        console.log(this.groupedResources);
       });
     },
   },
