@@ -14,9 +14,29 @@
         </p>
       </div>
     </div>
+    <nav class="flex flex-wrap justify-between px-0" aria-label="Breadcrumb">
+      <ol role="list" class="flex items-center space-x-4">
+        <li>
+          <div>
+            <a href="/" class="text-gray-400 hover:text-gray-500">
+              <HomeIcon class="h-5 w-5 flex-shrink-0" aria-hidden="true" />
+              <span class="sr-only">Home</span>
+            </a>
+          </div>
+        </li>
+        <li>
+          <div class="flex items-center">
+            <ChevronRightIcon class="h-5 w-5 flex-shrink-0 text-gray-400" aria-hidden="true" />
+            <a href="/resources" class="ml-4 text-sm font-medium text-gray-500 hover:text-gray-700 underline">
+              Resources
+            </a>
+          </div>
+        </li>
+      </ol>
+    </nav>
     <div class="container pb-5 px-5 m-auto">
       <div class="row">
-        <div class="mt-5">
+        <div>
           <div class="text-2xl font-bold text-center">Identity Based Resources</div>
           <div class="resource-container drop-shadow-md bg-blue-100/25">
             <div class="img-desc">
@@ -214,7 +234,9 @@
 
 <script>
 import axios from "axios";
+import { ChevronRightIcon, HomeIcon } from "@heroicons/vue/20/solid";
 export default {
+  components: { ChevronRightIcon, HomeIcon },
   data: function () {
     return {
       groupedResources: {},
