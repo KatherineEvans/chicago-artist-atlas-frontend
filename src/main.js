@@ -3,6 +3,7 @@ import App from "./App.vue";
 import router from "./router";
 import axios from "axios";
 import store from "./store/index.js";
+import "vue-progressive-image/dist/style.css";
 
 // Import Bootstrap an BootstrapVue CSS files (order is important)
 import "./assets/styles/index.css";
