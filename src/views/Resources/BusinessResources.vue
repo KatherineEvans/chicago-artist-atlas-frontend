@@ -34,17 +34,42 @@
           </div>
         </li>
       </ol>
-      <!-- <div class="flex flex-wrap">
-        <a
-          class="rounded-full px-3.5 py-2 text-base font-semibold shadow-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 mx-3 sm:mx-auto no-underline hover:no-underline mb-3"
-          v-for="button in filterButtons"
-          :key="button.name"
-          :href="button.link"
-          :class="button.classes"
-        >
-          {{ button.name }}
-        </a>
-      </div> -->
+      <div class="flex flex-wrap px-6">
+        <Menu as="div" class="relative inline-block text-left">
+          <div>
+            <MenuButton
+              class="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-base font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+            >
+              Quick Links
+              <ChevronDownIcon class="-mr-1 h-5 w-5 text-gray-400" aria-hidden="true" />
+            </MenuButton>
+          </div>
+
+          <transition
+            enter-active-class="transition ease-out duration-100"
+            enter-from-class="transform opacity-0 scale-95"
+            enter-to-class="transform opacity-100 scale-100"
+            leave-active-class="transition ease-in duration-75"
+            leave-from-class="transform opacity-100 scale-100"
+            leave-to-class="transform opacity-0 scale-95"
+          >
+            <MenuItems
+              class="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+            >
+              <div class="py-1">
+                <MenuItem v-for="(value, name, index) in resources" :key="index">
+                  <a
+                    :href="'#' + name.replace(/\s/g, '')"
+                    class="text-gray-700 block px-4 py-2 text-base hover:no-underline no-underline"
+                  >
+                    {{ name }}
+                  </a>
+                </MenuItem>
+              </div>
+            </MenuItems>
+          </transition>
+        </Menu>
+      </div>
     </nav>
     <div class="container pb-5 px-5 m-auto">
       <div
@@ -102,9 +127,10 @@
 </template>
 <script>
 import axios from "axios";
-import { ChevronRightIcon, HomeIcon } from "@heroicons/vue/20/solid";
+import { ChevronRightIcon, ChevronDownIcon, HomeIcon } from "@heroicons/vue/20/solid";
+import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/vue";
 export default {
-  components: { ChevronRightIcon, HomeIcon },
+  components: { ChevronRightIcon, ChevronDownIcon, HomeIcon, Menu, MenuButton, MenuItem, MenuItems },
   data: function () {
     return {
       resources: [],

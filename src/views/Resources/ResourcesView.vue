@@ -52,7 +52,7 @@
             <div class="resource-cards">
               <div class="card resource-card">
                 <div class="mb-2">
-                  <h6 class="d-inline">Resource Name</h6>
+                  <h6 class="d-inline">{{ bipoc.organization_name }}</h6>
                   <span
                     class="inline-flex items-center rounded-full bg-blue-50 px-2 py-1 text-sm float-right font-medium text-blue-700 ring-1 ring-inset ring-blue-700/10"
                   >
@@ -60,15 +60,16 @@
                   </span>
                 </div>
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis at molestie ligula. Etiam id odio
-                  scelerisque, euismod ante lacinia, commodo erat. Aliquam varius nec felis sed suscipit. Maecenas id
-                  ullamcorper sapien.
+                  {{ bipoc.description }}
                 </p>
-                <a href="#" class="text-right">Visit Resource</a>
+                <a target="_blank" v-if="bipoc.website_url" :href="bipoc.website_url" class="text-right">
+                  View Resource
+                </a>
+                <a v-else target="_blank" :href="bipoc.pdf_url"></a>
               </div>
               <div class="card resource-card">
                 <div class="mb-2">
-                  <h6 class="d-inline">Resource Name</h6>
+                  <h6 class="d-inline">{{ disabilities.organization_name }}</h6>
                   <span
                     class="inline-flex items-center rounded-full bg-green-50 px-2 py-1 text-sm float-right font-medium text-green-700 ring-1 ring-inset ring-green-600/20"
                   >
@@ -76,15 +77,16 @@
                   </span>
                 </div>
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis at molestie ligula. Etiam id odio
-                  scelerisque, euismod ante lacinia, commodo erat. Aliquam varius nec felis sed suscipit. Maecenas id
-                  ullamcorper sapien.
+                  {{ disabilities.description }}
                 </p>
-                <a href="#" class="text-right">Visit Resource</a>
+                <a target="_blank" v-if="disabilities.website_url" :href="disabilities.website_url" class="text-right">
+                  View Resource
+                </a>
+                <a v-else target="_blank" :href="disabilities.pdf_url"></a>
               </div>
               <div class="card resource-card">
                 <div class="mb-2">
-                  <h6 class="d-inline">Resource Name</h6>
+                  <h6 class="d-inline bold">{{ lgbtqia.organization_name }}</h6>
                   <span
                     class="inline-flex items-center rounded-full rainbow-background px-2 py-1 text-sm float-right font-medium text-slate-700 ring-1 ring-inset ring-red-600/10"
                   >
@@ -92,16 +94,17 @@
                   </span>
                 </div>
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis at molestie ligula. Etiam id odio
-                  scelerisque, euismod ante lacinia, commodo erat. Aliquam varius nec felis sed suscipit. Maecenas id
-                  ullamcorper sapien.
+                  {{ lgbtqia.description }}
                 </p>
-                <a href="#" class="text-right">Visit Resource</a>
+                <a target="_blank" v-if="lgbtqia.website_url" :href="lgbtqia.website_url" class="text-right">
+                  View Resource
+                </a>
+                <a v-else target="_blank" :href="lgbtqia.pdf_url"></a>
               </div>
 
               <div class="card resource-card">
                 <div class="mb-2">
-                  <h6 class="d-inline">Resource Name</h6>
+                  <h6 class="d-inline">{{ women.organization_name }}</h6>
                   <span
                     class="inline-flex items-center rounded-full bg-pink-50 px-2 py-1 text-sm float-right font-medium text-pink-700 ring-1 ring-inset ring-pink-700/10"
                   >
@@ -109,11 +112,12 @@
                   </span>
                 </div>
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis at molestie ligula. Etiam id odio
-                  scelerisque, euismod ante lacinia, commodo erat. Aliquam varius nec felis sed suscipit. Maecenas id
-                  ullamcorper sapien.
+                  {{ women.description }}
                 </p>
-                <a href="#" class="text-right">Visit Resource</a>
+                <a target="_blank" v-if="women.website_url" :href="women.website_url" class="text-right">
+                  View Resource
+                </a>
+                <a v-else target="_blank" :href="women.pdf_url"></a>
               </div>
               <router-link
                 class="no-underline hover:no-underline flex-none rounded-md bg-blue-900 px-3.5 py-2.5 text-base float-right font-semibold shadow-sm hover:bg-blue-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
@@ -147,7 +151,7 @@
                   scelerisque, euismod ante lacinia, commodo erat. Aliquam varius nec felis sed suscipit. Maecenas id
                   ullamcorper sapien.
                 </p>
-                <a href="#" class="text-right">Visit Resource</a>
+                <a href="#" class="text-right">View Resource</a>
               </div>
               <div class="card resource-card">
                 <h6>Resource Name</h6>
@@ -164,7 +168,7 @@
                   scelerisque, euismod ante lacinia, commodo erat. Aliquam varius nec felis sed suscipit. Maecenas id
                   ullamcorper sapien.
                 </p>
-                <a href="#" class="text-right">Visit Resource</a>
+                <a href="#" class="text-right">View Resource</a>
               </div>
               <router-link
                 class="no-underline hover:no-underline flex-none rounded-md bg-blue-900 px-3.5 py-2.5 text-base float-right font-semibold shadow-sm hover:bg-blue-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
@@ -198,7 +202,7 @@
                   scelerisque, euismod ante lacinia, commodo erat. Aliquam varius nec felis sed suscipit. Maecenas id
                   ullamcorper sapien.
                 </p>
-                <a href="#" class="text-right">Visit Resource</a>
+                <a href="#" class="text-right">View Resource</a>
               </div>
               <div class="card resource-card">
                 <h6>Resource Name</h6>
@@ -207,7 +211,7 @@
                   scelerisque, euismod ante lacinia, commodo erat. Aliquam varius nec felis sed suscipit. Maecenas id
                   ullamcorper sapien.
                 </p>
-                <a href="#" class="text-right">Visit Resource</a>
+                <a href="#" class="text-right">View Resource</a>
               </div>
               <div class="card resource-card">
                 <h6>Resource Name</h6>
@@ -216,7 +220,7 @@
                   scelerisque, euismod ante lacinia, commodo erat. Aliquam varius nec felis sed suscipit. Maecenas id
                   ullamcorper sapien.
                 </p>
-                <a href="#" class="text-right">Visit Resource</a>
+                <a href="#" class="text-right">View Resource</a>
               </div>
               <router-link
                 class="no-underline hover:no-underline flex-none rounded-md bg-blue-900 px-3.5 py-2.5 text-base float-right font-semibold shadow-sm hover:bg-blue-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
@@ -240,6 +244,12 @@ export default {
   data: function () {
     return {
       groupedResources: {},
+      bipoc: {},
+      lgbtqia: {},
+      women: {},
+      disabilities: {},
+      businessResources: [],
+      lifeHackResources: [],
     };
   },
   mounted() {
@@ -249,7 +259,25 @@ export default {
     getResources() {
       axios.get("/resources.json").then((response) => {
         this.groupedResources = response.data;
-        console.log(this.groupedResources);
+        this.bipoc =
+          this.groupedResources["Identity Based"]["BIPOC"][
+            Math.floor(Math.random() * this.groupedResources["Identity Based"]["BIPOC"].length)
+          ];
+
+        this.lgbtqia =
+          this.groupedResources["Identity Based"]["LGBTQIA"][
+            Math.floor(Math.random() * this.groupedResources["Identity Based"]["LGBTQIA"].length)
+          ];
+
+        this.women =
+          this.groupedResources["Identity Based"]["Women+"][
+            Math.floor(Math.random() * this.groupedResources["Identity Based"]["Women+"].length)
+          ];
+
+        this.disabilities =
+          this.groupedResources["Identity Based"]["Artists with Disabilities"][
+            Math.floor(Math.random() * this.groupedResources["Identity Based"]["Artists with Disabilities"].length)
+          ];
       });
     },
   },
