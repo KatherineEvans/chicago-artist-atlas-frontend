@@ -10,15 +10,7 @@
       </div>
     </div>
     <div class="container main">
-      <div class="row">
-        <!-- <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 py-2 my-2">
-          <select class="h-100 w-100" name="performance-type" id="performance-type">
-            <option value="">Performance Type</option>
-            <option value="theatre">Theatre</option>
-            <option value="film">Film</option>
-            <option value="television">Television</option>
-          </select>
-        </div> -->
+      <!-- <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 py-2 my-2">
           <select class="h-100 w-100" name="audition-type" id="audition-type">
             <option value="">Union Status</option>
@@ -35,12 +27,22 @@
         <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 py-2 my-2">
           <a class="create-aud-btn h-100 w-100 btn" href="/create-auditions">Create New Audition</a>
         </div>
-      </div>
+      </div> -->
       <div class="row my-2 py-2 no-gutters">
         <h4>Top Results</h4>
         <div class="row my-2 py-2 pl-4">
+          <AuditionCard
+            v-for="audition in auditions"
+            v-bind:key="audition.id"
+            :audition="audition"
+            @expand-audition="expandAudition(audition)"
+          />
           <!-- START Audition Card -->
-          <div v-for="audition in auditions" v-bind:key="audition.id" class="aud-card card d-flex py-2 px-4">
+          <!-- <div
+            v-for="audition in auditions"
+            v-bind:key="audition.id"
+            class="aud-card card d-flex py-2 px-4 mb-3 text-base"
+          >
             <div class="row mb-1">
               <div class="col">
                 <div class="row float-right">
@@ -59,7 +61,7 @@
                   </p>
                 </div>
                 <br />
-                <div class="row">
+                <div v-if="audition?.theater?.name" class="row">
                   <p>
                     <span class="strong">Company:</span>
                     {{ audition.theater.name || audition.company }}
@@ -68,7 +70,7 @@
                 <div class="row">
                   <p>
                     <span class="strong">Audition Dates:</span>
-                    {{ formatDate(audition.date) }}
+                    {{ formatDate(audition.audition_date1) }}
                   </p>
                 </div>
                 <div class="row">
@@ -78,19 +80,19 @@
                   </p>
                 </div>
                 <span class="hide" :class="'audition' + audition.id">
-                  <div class="row">
+                  <div class="row" v-if="audition?.written_by">
                     <p>
                       <span class="strong">Written By:</span>
                       {{ audition.written_by }}
                     </p>
                   </div>
-                  <div class="row">
+                  <div class="row" v-if="audition?.director">
                     <p>
                       <span class="strong">Director:</span>
                       {{ audition.director }}
                     </p>
                   </div>
-                  <div class="row">
+                  <div class="row" v-if="audition?.in_the_room">
                     <p>
                       <span class="strong">In the Room for Auditions:</span>
                       {{ audition.in_the_room }}
@@ -102,16 +104,45 @@
                 <div class="float-right union-badge">{{ audition.union_status }}</div>
               </div>
             </div>
-            <div class="row description-row mt-3">
+            <div class="row description-row mt-3" v-if="audition?.show_description">
               <p>
                 <span class="strong">Description:</span>
-                "Sally's Shoe" is a heartwarming and inspiring play about Sally, a brilliant shoe designer, who is
-                diagnosed with cancer. Despite the challenges that she faces, Sally refuses to let the disease define
-                her or slow her down. She continues to work on her passion, designing beautiful and unique shoes that
-                have become her signature style.
+                {{ audition.show_description }}
               </p>
             </div>
-            <div class="hide mt-3" :class="'audition' + audition.id">
+            <div class="row">
+              <p>
+                <span class="strong">Materials to Prepare:</span>
+                {{ audition.materials_to_prepare }}
+              </p>
+            </div>
+            <div class="row">
+              <p>
+                <span class="strong">How to Submit:</span>
+                {{ audition.how_to_submit }}
+              </p>
+            </div>
+            <br />
+            <div class="row">
+              <p>
+                <span class="strong">Rehearsal Start Date:</span>
+                {{ formatDate(audition.rehearsal_startdate) }}
+              </p>
+            </div>
+            <div class="row">
+              <p>
+                <span class="strong">Show Opening:</span>
+                {{ formatDate(audition.show_startdate) }}
+              </p>
+            </div>
+            <div class="row">
+              <p>
+                <span class="strong">Show Closing:</span>
+                {{ formatDate(audition.show_enddate) }}
+              </p>
+            </div> -->
+          <!-- HIDDEN CAST BREAKDOWN -->
+          <!-- <div class="hide mt-3" :class="'audition' + audition.id">
               <div class="row">
                 <p>
                   <span class="strong">Cast Breakdown:</span>
@@ -180,17 +211,10 @@
                   </div>
                 </div>
               </div>
-              <br />
-              <div class="row">
+              <div class="row" v-if="audition?.show_warnings">
                 <p>
-                  <span class="strong">Materials to Prepare:</span>
-                  {{ audition.materials_to_prepare }}
-                </p>
-              </div>
-              <div class="row">
-                <p>
-                  <span class="strong">How to Submit:</span>
-                  {{ audition.how_to_submit }}
+                  <span class="strong">Show Warnings:</span>
+                  {{ audition.show_warnings }}
                 </p>
               </div>
               <div class="row" v-if="audition.additional_notes">
@@ -200,36 +224,6 @@
                 </p>
               </div>
               <br />
-              <div class="row">
-                <p>
-                  <span class="strong">Rehearsal Start Date:</span>
-                  {{ formatDate(audition.rehearsal_startdate) }}
-                </p>
-              </div>
-              <div class="row">
-                <p>
-                  <span class="strong">Show Opening:</span>
-                  {{ formatDate(audition.show_startdate) }}
-                </p>
-              </div>
-              <div class="row">
-                <p>
-                  <span class="strong">Show Closing:</span>
-                  {{ formatDate(audition.show_enddate) }}
-                </p>
-              </div>
-              <div class="row">
-                <p>
-                  <span class="strong">Show Location:</span>
-                  {{ audition.location }}
-                </p>
-              </div>
-              <div class="row">
-                <p>
-                  <span class="strong">Show Warnings:</span>
-                  {{ audition.show_warnings }}
-                </p>
-              </div>
             </div>
             <div class="d-flex flex-row-reverse">
               <button class="btn btn-link pt-0" style="text-decoration: none" @click="expandAudition(audition)">
@@ -237,7 +231,7 @@
               </button>
               <button class="btn btn-link pt-0" style="text-decoration: none">Save Audition</button>
             </div>
-          </div>
+          </div> -->
           <!-- END Audition Card -->
         </div>
       </div>
@@ -247,19 +241,16 @@
 <script>
 import axios from "axios";
 import moment from "moment";
+import AuditionCard from "./AuditionCard.vue";
 
 export default {
+  components: { AuditionCard },
   data: function () {
     return {
       title: "Audition Board",
       auditions: [],
       currentAuditionId: null,
       heart: false,
-      // totalPages: 28,
-      // startingPage: 1,
-      // middlePage: 2,
-      // endingPage: 3,
-      // currentPage: 1,
     };
   },
   computed: {
@@ -269,22 +260,7 @@ export default {
       };
     },
   },
-  watch: {
-    // currentPage(newPage, oldPage) {
-    //   console.log(newPage);
-    //   if (newPage > this.endingPage) {
-    //     this.startingPage = newPage;
-    //     this.middlePage = newPage + 1;
-    //     this.endingPage = newPage + 2;
-    //   }
-    //   if (newPage < this.startingPage) {
-    //     this.endingPage = newPage;
-    //     this.middlePage = newPage - 1;
-    //     this.startingPage = newPage - 2;
-    //   }
-    //   this.getAuditions(`/auditions?page_number=${newPage}`);
-    // },
-  },
+  watch: {},
   created: function () {
     this.getAuditions("/auditions");
   },
@@ -319,7 +295,7 @@ export default {
         .get(link)
         .then((response) => {
           this.auditions = response.data;
-          // console.log(this.auditions);
+          console.log(this.auditions);
         })
         .catch((error) => {
           console.log(error);
@@ -328,76 +304,3 @@ export default {
   },
 };
 </script>
-<style scoped>
-.character-title {
-  display: flex;
-  justify-content: space-between;
-}
-.show {
-  visibility: visible !important;
-}
-.collapsed {
-  border-radius: 5px !important;
-}
-.card {
-  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
-}
-.card-header {
-  background-color: #eff5f8;
-}
-p {
-  margin-bottom: 0;
-}
-.hide {
-  display: none;
-}
-.aud-btn {
-  background-color: #05788c;
-  color: white;
-  font-weight: 500;
-  border-color: #05788c;
-}
-.aud-btn:hover {
-  background-color: #0b0b35;
-  border-color: #0b0b35;
-}
-.posted-date {
-  color: #c4c4c4;
-  font-weight: bold;
-}
-.circle {
-  background-color: #ebdba1;
-  padding: 1em;
-  border-radius: 50%;
-  height: 65px;
-  width: 65px;
-}
-.union-badge {
-  background-color: #bff0f2;
-  padding: 4px 25px;
-  text-align: center;
-  border-radius: 5px;
-  max-width: 150px;
-}
-.strong {
-  font-weight: 700 !important;
-}
-
-.create-aud-btn {
-  background-color: #00c4cc;
-  color: white;
-  font-weight: 500;
-  border-color: #00c4cc;
-}
-.create-aud-btn:hover {
-  color: white;
-  background-color: #0b0b35;
-  border-color: #0b0b35;
-}
-.fa-heart {
-  color: #c385c0;
-}
-.character-card {
-  cursor: pointer;
-}
-</style>
