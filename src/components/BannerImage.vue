@@ -55,7 +55,7 @@ export default {
   top: 105px;
   right: 50px;
   max-height: 250px;
-  z-index: 10;
+  z-index: 1;
 }
 
 @media only screen and (max-width: 1325px) {

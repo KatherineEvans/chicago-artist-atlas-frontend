@@ -80,7 +80,27 @@
 
         <div class="hide border-t border-gray-100 px-4 py-4 sm:col-span-3 sm:px-0" :class="'audition' + audition.id">
           <dt class="text-sm leading-6 text-gray-900">Cast Breakdown</dt>
-          <div class="grid grid-cols-1 sm:grid-cols-2 mt-1">
+          <div class="mt-2 grid grid-cols-1 gap-8 sm:grid-cols-2">
+            <div
+              v-for="character in audition.characters"
+              :key="character.id"
+              class="space-x-3 rounded-lg border border-gray-300 bg-white p-3 shadow-sm focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:border-gray-400"
+            >
+              <div class="min-w-0 flex-1">
+                <div class="focus:outline-none">
+                  <span class="absolute inset-0" aria-hidden="true" />
+                  <p class="text-base font-bold text-gray-900">{{ character.name }}</p>
+                  <p class="truncate text-small text-gray-500">
+                    <span class="font-medium">Gender:</span>
+                    {{ character.gender }} /
+                    <span class="font-medium">Age:</span>
+                    {{ character.age }}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- <div class="grid grid-cols-1 sm:grid-cols-2 mt-1">
             <div v-for="character in audition.characters" v-bind:key="character.id" class="sm:col-span-1">
               <div class="card mx-3 mb-3">
                 <div
@@ -134,7 +154,7 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div> -->
         </div>
         <div class="hide border-t border-gray-100 px-4 py-4 sm:col-span-3 sm:px-0">
           <dt class="text-sm leading-6 text-gray-900">Show Warnings</dt>
@@ -185,5 +205,15 @@ export default {
 <style scoped>
 .hide {
   display: none;
+}
+/* we will explain what these classes do next! */
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
 }
 </style>
