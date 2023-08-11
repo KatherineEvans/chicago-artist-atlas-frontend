@@ -5,7 +5,7 @@ import HomeView from "../views/HomeView.vue";
 import TheaterDirectory from "../views/TheaterDirectory.vue";
 
 // Auditions
-import AuditionBoard from "../views/AuditionBoard.vue";
+import AuditionBoard from "../views/Auditions/AuditionBoard.vue";
 
 // Authentication
 import LogOut from "../views/Authentication/LogOut.vue";
