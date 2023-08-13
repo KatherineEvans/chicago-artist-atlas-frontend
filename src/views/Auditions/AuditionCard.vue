@@ -89,7 +89,7 @@
           <dt class="text-sm leading-6 text-gray-900">Cast Breakdown</dt>
           <ul role="list" class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 mt-2 pl-0">
             <!-- CHARACTER CARD -->
-            <CharacterCard v-for="character in audition.characters" :key="character.id" :character="character" />
+            <CharacterCardSlim v-for="character in audition.characters" :key="character.id" :character="character" />
           </ul>
         </div>
         <div class="hide border-t border-gray-100 px-4 py-3 sm:col-span-3 sm:px-0">
@@ -100,7 +100,6 @@
           <dt class="text-sm leading-6 text-gray-900">Additional Notes</dt>
           <dd class="mt-1 text-base leading-6 text-gray-700 sm:mt-2">{{ audition.additional_notes }}</dd>
         </div>
-
         <div class="border-t border-gray-100 px-4 py-3 sm:col-span-3 sm:px-0">
           <div class="d-flex flex-row-reverse">
             <button
@@ -108,29 +107,45 @@
               style="text-decoration: none"
               @click="$emit('expandAudition', audition)"
             >
-              {{ hidden ? "Hide" : "View" }} {{ audition.characters.length }}
+              {{ currentAuditionId.currentAuditionId == audition.id ? (hidden ? "Hide" : "View") : "View" }}
+              {{ audition.characters.length }}
               {{ audition.characters.length > 1 ? "Roles" : "Role" }}
             </button>
           </div>
         </div>
       </dl>
     </div>
+    <ModalContainer :open="modalOpen" @close-modal="closeModal">
+      <template v-slot:content>
+        <CharacterCardFull :character="character"></CharacterCardFull>
+      </template>
+    </ModalContainer>
   </div>
 </template>
 
 <script>
 import axios from "axios";
 import moment from "moment";
-import CharacterCard from "./CharacterCard";
+import CharacterCardSlim from "./CharacterCardSlim";
+import CharacterCardFull from "./CharacterCardFull";
 
 export default {
-  components: { CharacterCard },
-  props: ["audition", "hidden"],
+  components: { CharacterCardSlim, CharacterCardFull },
+  props: ["audition", "hidden", "currentAuditionId"],
   data: function () {
     return {
-      currentAuditionId: null,
       heart: false,
     };
+  },
+  watch: {
+    currentAuditionId() {
+      console.log(
+        this.audition.id,
+        this.currentAuditionId.currentAuditionId,
+        this.hidden,
+        this.currentAuditionId.currentAuditionId === this.audition.id
+      );
+    },
   },
   computed: {
     formatDate() {
