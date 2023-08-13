@@ -23,7 +23,6 @@
             </div>
           </dl>
         </div>
-        <!-- <p class="mt-1 truncate text-sm text-gray-500">{{ character.description }}</p> -->
       </div>
     </div>
     <div>

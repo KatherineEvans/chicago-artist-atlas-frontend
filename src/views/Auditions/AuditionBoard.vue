@@ -76,13 +76,13 @@
             </div>
           </div>
         </div>
-
         <!-- AUDITIONS -->
         <div class="row my-2 py-2 pl-4">
           <AuditionCard
             v-for="audition in auditions"
             v-bind:key="audition.id"
             :audition="audition"
+            :currentAuditionId="{ currentAuditionId }"
             :hidden="isHidden"
             @expand-audition="expandAudition(audition)"
           />
@@ -99,7 +99,15 @@ import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/vue";
 import { ChevronDownIcon, MagnifyingGlassIcon } from "@heroicons/vue/20/solid";
 
 export default {
-  components: { AuditionCard, Menu, MenuButton, MenuItem, MenuItems, ChevronDownIcon, MagnifyingGlassIcon },
+  components: {
+    AuditionCard,
+    Menu,
+    MenuButton,
+    MenuItem,
+    MenuItems,
+    ChevronDownIcon,
+    MagnifyingGlassIcon,
+  },
   data: function () {
     return {
       title: "Audition Board",
