@@ -39,9 +39,6 @@
               </div>
               <div>
                 <div class="mt-3 text-center sm:mt-5">
-                  <!-- <DialogTitle as="h3" class="text-base font-semibold leading-6 text-gray-900">
-                    <slot name="title"></slot>
-                  </DialogTitle> -->
                   <div class="mt-2">
                     <slot name="content"></slot>
                   </div>
