@@ -1,5 +1,5 @@
 <template>
-  <li class="col-span-1 divide-y divide-gray-200 rounded-lg bg-white border">
+  <li class="col-span-1 divide-y divide-gray-200 rounded-lg bg-white border flex flex-col justify-between">
     <div class="flex w-full items-center justify-between space-x-6 p-6">
       <div class="flex-1">
         <div class="items-center space-x-3">
@@ -28,22 +28,22 @@
     <div>
       <div class="-mt-px flex divide-x divide-gray-200">
         <div class="flex w-0 flex-1">
-          <a
-            href="#"
-            class="relative -mr-px inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-bl-lg border-top border-transparent py-3 text-sm font-semibold text-gray-900 no-underline hover:no-underline"
+          <button
+            @click="$emit('showFullCard', character)"
+            class="relative -mr-px inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-bl-lg border-top border-transparent py-3 text-sm font-semibold text-gray-900 no-underline hover:no-underline hover:bg-blue-50"
           >
-            <InformationCircleIcon class="h-5 w-5 text-green-700" aria-hidden="true" />
+            <InformationCircleIcon class="h-5 w-5" style="color: #2b58bc" aria-hidden="true" />
             More Info
-          </a>
+          </button>
         </div>
       </div>
       <div class="-mt-px flex divide-x divide-gray-200">
         <div class="-ml-px flex w-0 flex-1">
           <a
             href="#"
-            class="relative inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-br-lg border-top border-transparent py-3 text-md font-semibold text-gray-900 no-underline hover:no-underline hover:text-blue-900"
+            class="relative inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-br-lg border-top border-transparent py-3 text-md font-semibold text-gray-900 no-underline hover:no-underline hover:text-blue-900 hover:bg-purple-50"
           >
-            <HeartIcon class="h-5 w-5 text-gray-400" aria-hidden="true" />
+            <HeartIcon class="h-5 w-5" style="color: #b493d6" aria-hidden="true" />
             Save Role
           </a>
         </div>

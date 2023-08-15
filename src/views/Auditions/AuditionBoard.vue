@@ -83,7 +83,6 @@
             v-bind:key="audition.id"
             :audition="audition"
             :currentAuditionId="{ currentAuditionId }"
-            :hidden="isHidden"
             @expand-audition="expandAudition(audition)"
           />
         </div>
@@ -114,7 +113,6 @@ export default {
       auditions: [],
       currentAuditionId: null,
       heart: false,
-      isHidden: false,
     };
   },
   computed: {
@@ -130,7 +128,6 @@ export default {
   },
   methods: {
     expandAudition(audition) {
-      this.isHidden = !this.isHidden;
       if (this.currentAuditionId == audition.id) {
         document.querySelectorAll(`.audition` + audition.id).forEach((item) => {
           item.classList.add("hide");

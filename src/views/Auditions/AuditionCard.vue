@@ -1,6 +1,6 @@
 <template>
   <div class="overflow-hidden bg-white shadow-md sm:rounded-lg p-0 mb-10">
-    <div class="bg-blue-900">
+    <div class="bg-blue-950">
       <div class="px-4 py-6 sm:px-6 d-flex flex-row">
         <span>
           <div class="text-base font-bold leading-7 text-blue-100">Production</div>
@@ -85,18 +85,35 @@
           </dd>
         </div>
 
-        <div class="hide border-t border-gray-100 px-4 py-3 sm:col-span-3 sm:px-0" :class="'audition' + audition.id">
+        <div
+          class="hide border-t border-gray-100 px-4 py-3 sm:col-span-3 sm:px-0"
+          :class="'audition' + audition.id"
+          :id="audition.id"
+        >
           <dt class="text-sm leading-6 text-gray-900">Cast Breakdown</dt>
           <ul role="list" class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 mt-2 pl-0">
             <!-- CHARACTER CARD -->
-            <CharacterCardSlim v-for="character in audition.characters" :key="character.id" :character="character" />
+            <CharacterCardSlim
+              v-for="character in audition.characters"
+              :key="character.id"
+              :character="character"
+              @show-full-card="showFullCard(character)"
+            />
           </ul>
         </div>
-        <div class="hide border-t border-gray-100 px-4 py-3 sm:col-span-3 sm:px-0">
+        <div
+          v-if="audition.show_warnings"
+          class="hide border-t border-gray-100 px-4 py-3 sm:col-span-3 sm:px-0"
+          :class="'audition' + audition.id"
+        >
           <dt class="text-sm leading-6 text-gray-900">Show Warnings</dt>
           <dd class="mt-1 text-base leading-6 text-gray-700 sm:mt-2">{{ audition.show_warnings }}</dd>
         </div>
-        <div class="hide border-t border-gray-100 px-4 py-3 sm:col-span-3 sm:px-0">
+        <div
+          class="hide border-t border-gray-100 px-4 py-3 sm:col-span-3 sm:px-0"
+          :class="'audition' + audition.id"
+          v-if="audition.additional_notes"
+        >
           <dt class="text-sm leading-6 text-gray-900">Additional Notes</dt>
           <dd class="mt-1 text-base leading-6 text-gray-700 sm:mt-2">{{ audition.additional_notes }}</dd>
         </div>
@@ -107,7 +124,13 @@
               style="text-decoration: none"
               @click="$emit('expandAudition', audition)"
             >
-              {{ currentAuditionId.currentAuditionId == audition.id ? (hidden ? "Hide" : "View") : "View" }}
+              {{
+                currentAuditionId.currentAuditionId == audition.id
+                  ? cardElement.classList.contains("hide")
+                    ? "View"
+                    : "Hide"
+                  : "View"
+              }}
               {{ audition.characters.length }}
               {{ audition.characters.length > 1 ? "Roles" : "Role" }}
             </button>
@@ -128,24 +151,22 @@ import axios from "axios";
 import moment from "moment";
 import CharacterCardSlim from "./CharacterCardSlim";
 import CharacterCardFull from "./CharacterCardFull";
+import ModalContainer from "../../components/ModalContainer";
 
 export default {
-  components: { CharacterCardSlim, CharacterCardFull },
-  props: ["audition", "hidden", "currentAuditionId"],
+  components: { CharacterCardSlim, CharacterCardFull, ModalContainer },
+  props: ["audition", "currentAuditionId"],
   data: function () {
     return {
       heart: false,
+      modalOpen: false,
+      character: {},
+      cardElement: null,
     };
   },
-  watch: {
-    currentAuditionId() {
-      console.log(
-        this.audition.id,
-        this.currentAuditionId.currentAuditionId,
-        this.hidden,
-        this.currentAuditionId.currentAuditionId === this.audition.id
-      );
-    },
+  mounted() {
+    this.cardElement = document.getElementById(this.audition.id);
+    console.log(this.cardElement.classList.contains("hide"));
   },
   computed: {
     formatDate() {
@@ -155,7 +176,14 @@ export default {
     },
   },
   methods: {
+    closeModal() {
+      this.modalOpen = false;
+    },
     addToFavorites() {},
+    showFullCard(character) {
+      this.character = character;
+      this.modalOpen = true;
+    },
   },
 };
 </script>

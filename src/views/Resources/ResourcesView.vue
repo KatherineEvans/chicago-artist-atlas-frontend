@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid">
+  <span>
     <div class="row bg-blue-50 py-3 px-4 text-center">
       <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 col-xl-8 m-auto my-3">
         <div class="text-3xl font-bold">Resources</div>
@@ -189,7 +189,7 @@
               <div class="resource-desc mb-3">
                 <p class="px-2 desc">
                   Uncover innovative #LifeHacks designed to streamline your daily routine and boost productivity. With
-                  everything from cost and time-saving tips, to trick on navigating life in the city, we aim to empower
+                  everything from cost and time-saving tips, to tricks on navigating life in the city, we aim to empower
                   you with simple yet effective strategies.
                 </p>
               </div>
@@ -233,7 +233,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </span>
 </template>
 
 <script>
