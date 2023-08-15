@@ -73,7 +73,7 @@ import { HeartIcon } from "@heroicons/vue/20/solid";
 
 export default {
   components: { HeartIcon },
-  props: ["audition", "hidden", "currentAuditionId"],
+  props: ["character"],
   data: function () {
     return {
       heart: false,

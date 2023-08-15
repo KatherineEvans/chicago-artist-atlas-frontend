@@ -52,16 +52,16 @@ export default {
 <style scoped>
 .overlay {
   position: absolute;
-  top: 105px;
+  top: 115px;
   right: 50px;
-  max-height: 250px;
+  max-height: 185px;
   z-index: 1;
 }
 
 @media only screen and (max-width: 1325px) {
   .overlay {
     position: absolute;
-    top: 105px;
+    top: 110px;
     right: 30px;
     max-height: 150px;
   }

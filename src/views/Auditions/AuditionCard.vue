@@ -128,13 +128,16 @@ import axios from "axios";
 import moment from "moment";
 import CharacterCardSlim from "./CharacterCardSlim";
 import CharacterCardFull from "./CharacterCardFull";
+import ModalContainer from "../../components/ModalContainer";
 
 export default {
-  components: { CharacterCardSlim, CharacterCardFull },
+  components: { CharacterCardSlim, CharacterCardFull, ModalContainer },
   props: ["audition", "hidden", "currentAuditionId"],
   data: function () {
     return {
       heart: false,
+      modalOpen: false,
+      character: this.audition.characters[0],
     };
   },
   watch: {
@@ -147,6 +150,10 @@ export default {
       );
     },
   },
+  mounted() {
+    console.log("hi");
+    this.modalOpen = true;
+  },
   computed: {
     formatDate() {
       return (value) => {
@@ -155,6 +162,9 @@ export default {
     },
   },
   methods: {
+    closeModal() {
+      console.log("close");
+    },
     addToFavorites() {},
   },
 };

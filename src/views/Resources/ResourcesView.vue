@@ -189,7 +189,7 @@
               <div class="resource-desc mb-3">
                 <p class="px-2 desc">
                   Uncover innovative #LifeHacks designed to streamline your daily routine and boost productivity. With
-                  everything from cost and time-saving tips, to trick on navigating life in the city, we aim to empower
+                  everything from cost and time-saving tips, to tricks on navigating life in the city, we aim to empower
                   you with simple yet effective strategies.
                 </p>
               </div>
