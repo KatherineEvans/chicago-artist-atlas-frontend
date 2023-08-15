@@ -27,7 +27,7 @@
           <img class="m-auto pb-2 pt-4" src="../assets/illustrations/auditions.png" alt="" />
           <div class="card-body">
             <div class="mb-1">
-              <p class="text-xl font-bold mb-1">Auditions</p>
+              <p class="text-xl font-bold mb-3">Auditions</p>
               <div>
                 <p class="mb-2 text-base">
                   Navigate available theater, television, and film auditions in the Chicagoand area.
@@ -42,7 +42,7 @@
           <img class="m-auto pb-2 pt-4" src="../assets/illustrations/directories.png" alt="" />
           <div class="card-body">
             <div class="mb-1">
-              <div class="text-xl font-bold mb-1">Theaters</div>
+              <div class="text-xl font-bold mb-3">Theaters</div>
               <div>
                 <p class="mb-2 text-base">
                   Explore the wide and varried landscape of Chicago theater with our comprehensive directory.
@@ -57,7 +57,7 @@
           <img class="m-auto pb-2 pt-4" src="../assets/illustrations/classes.png" alt="" />
           <div class="card-body">
             <div class="mb-1">
-              <p class="text-xl font-bold mb-1">Classes</p>
+              <p class="text-xl font-bold mb-3">Classes</p>
               <div>
                 <p class="mb-2 text-base">
                   Delve into Atlas's exceptional classes for creatives, and perfect your craft with lessons from
@@ -87,7 +87,7 @@
           <img class="m-auto pb-2 pt-4" src="../assets/illustrations/identity.png" alt="" />
           <div class="card-body">
             <div class="mb-1">
-              <p class="text-xl font-bold mb-1">Identity Resources</p>
+              <p class="text-xl font-bold mb-3">Identity Resources</p>
               <div>
                 <p class="mb-2 text-base">
                   A collection of resources centered around diverse experiences, including: BIPOC, LGBTQA+,
@@ -103,7 +103,7 @@
           <img class="m-auto pb-2 pt-4" src="../assets/illustrations/business.png" alt="" />
           <div class="card-body">
             <div class="mb-1">
-              <p class="text-xl font-bold mb-1">Business Resources for Artist</p>
+              <p class="text-xl font-bold mb-3">Business Resources for Artist</p>
               <div>
                 <p class="mb-2 text-base">
                   Enhance your theater career with our extensive repository of practical tools and knowledge geared
@@ -119,7 +119,7 @@
           <img class="m-auto pb-2 pt-4" src="../assets/illustrations/lifehacks.png" alt="" />
           <div class="card-body">
             <div class="mb-1">
-              <p class="text-xl font-bold mb-1">#LifeHacks</p>
+              <p class="text-xl font-bold mb-3">#LifeHacks</p>
               <div>
                 <p class="mb-2 text-base">
                   Uncover innovative #LifeHacks designed to streamline your daily routine and boost productivity. We aim
