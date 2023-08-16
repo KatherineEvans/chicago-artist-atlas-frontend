@@ -1,6 +1,6 @@
 <template>
   <div class="overflow-hidden bg-white shadow-md sm:rounded-lg p-0 mb-10">
-    <div class="bg-blue-950">
+    <div class="bg-blue-900">
       <div class="px-4 py-6 sm:px-6 d-flex flex-row">
         <span>
           <div class="text-base font-bold leading-7 text-blue-100">Production</div>
@@ -13,13 +13,13 @@
         </div>
       </div>
     </div>
-    <div class="px-2">
+    <div>
       <dl class="grid grid-cols-1 sm:grid-cols-3 mb-0">
         <div class="border-t border-gray-100 px-4 py-3 sm:col-span-1 sm:px-0">
           <dt class="text-sm leading-6 text-gray-900">Company</dt>
           <dd class="mt-1 text-base leading-6 text-gray-700 sm:mt-2">{{ audition.name_of_company }}</dd>
         </div>
-        <div class="border-t border-gray-100 px-4 py-3 sm:col-span-1 sm:px-0">
+        <div class="border-t border-gray-100 px-4 py-3 sm:col-span-1 sm:px-0 max-sm:bg-blue-50/60">
           <dt class="text-sm leading-6 text-gray-900">Pay Scale</dt>
           <dd class="mt-1 text-base leading-6 text-gray-700 sm:mt-2">{{ audition.pay_scale }}</dd>
         </div>
@@ -27,7 +27,7 @@
           <dt class="text-sm leading-6 text-gray-900">Union Status</dt>
           <dd class="mt-1 text-base leading-6 text-gray-700 sm:mt-2">{{ audition.union_status }}</dd>
         </div>
-        <div class="border-t border-gray-100 px-4 py-3 sm:col-span-1 sm:px-0">
+        <div class="border-t border-gray-100 px-4 py-3 sm:col-span-1 sm:px-0 bg-blue-50/60">
           <dt class="text-sm leading-6 text-gray-900">Director</dt>
           <dd v-if="audition.director" class="mt-1 text-base leading-6 text-gray-700 sm:mt-2">
             {{ audition.director }}
@@ -36,7 +36,7 @@
             <i class="fa-solid fa-minus text-center"></i>
           </dd>
         </div>
-        <div class="border-t border-gray-100 px-4 py-3 sm:col-span-1 sm:px-0">
+        <div class="border-t border-gray-100 px-4 py-3 sm:col-span-1 sm:px-0 sm:bg-blue-50/60">
           <dt class="text-sm leading-6 text-gray-900">Musical Director</dt>
           <dd v-if="audition.musical_director" class="mt-1 text-base leading-6 text-gray-700 sm:mt-2">
             {{ audition.musical_director }}
@@ -45,7 +45,7 @@
             <i class="fa-solid fa-minus text-center"></i>
           </dd>
         </div>
-        <div class="border-t border-gray-100 px-4 py-3 sm:col-span-1 sm:px-0">
+        <div class="border-t border-gray-100 px-4 py-3 sm:col-span-1 sm:px-0 bg-blue-50/60">
           <dt class="text-sm leading-6 text-gray-900">Choreographer</dt>
           <dd v-if="audition.choreographer" class="mt-1 text-base leading-6 text-gray-700 sm:mt-2">
             {{ audition.choreographer }}
@@ -60,7 +60,7 @@
             {{ formatDate(audition.rehearsal_startdate) }}
           </dd>
         </div>
-        <div class="border-t border-gray-100 px-4 py-3 sm:col-span-1 sm:px-0">
+        <div class="border-t border-gray-100 px-4 py-3 sm:col-span-1 sm:px-0 max-sm:bg-blue-50/60">
           <dt class="text-sm leading-6 text-gray-900">Previews Start Date</dt>
           <dd v-if="audition.previews_startdate" class="mt-1 text-base leading-6 text-gray-700 sm:mt-2">
             {{ formatDate(audition.previews_startdate) }}
@@ -78,6 +78,33 @@
             <i class="fa-solid fa-minus text-center"></i>
           </dd>
         </div>
+        <div class="border-t border-gray-100 px-4 py-3 sm:col-span-1 sm:px-0 bg-blue-50/60">
+          <dt class="text-sm leading-6 text-gray-900">In the Room</dt>
+          <dd v-if="audition.in_the_room" class="mt-1 text-base leading-6 text-gray-700 sm:mt-2">
+            {{ audition.in_the_room }}
+          </dd>
+          <dd v-else class="mt-1 text-base leading-6 text-gray-700 sm:mt-2">
+            <i class="fa-solid fa-minus text-center"></i>
+          </dd>
+        </div>
+        <div class="border-t border-gray-100 px-4 py-3 sm:col-span-1 sm:px-0 sm:bg-blue-50/60">
+          <dt class="text-sm leading-6 text-gray-900">Materials to Prepare</dt>
+          <dd v-if="audition.materials_to_prepare" class="mt-1 text-base leading-6 text-gray-700 sm:mt-2">
+            {{ audition.materials_to_prepare }}
+          </dd>
+          <dd v-else class="mt-1 text-base leading-6 text-gray-700 sm:mt-2">
+            <i class="fa-solid fa-minus text-center"></i>
+          </dd>
+        </div>
+        <div class="border-t border-gray-100 px-4 py-3 sm:col-span-1 sm:px-0 bg-blue-50/60">
+          <dt class="text-sm leading-6 text-gray-900">How to Submit</dt>
+          <dd v-if="audition.how_to_submit" class="mt-1 text-base leading-6 text-gray-700 sm:mt-2">
+            {{ audition.how_to_submit }}
+          </dd>
+          <dd v-else class="mt-1 text-base leading-6 text-gray-700 sm:mt-2">
+            <i class="fa-solid fa-minus text-center"></i>
+          </dd>
+        </div>
         <div v-if="audition.show_description" class="border-t border-gray-100 px-4 py-3 sm:col-span-3 sm:px-0">
           <dt class="text-sm leading-6 text-gray-900">Description</dt>
           <dd class="mt-1 text-base leading-6 text-gray-700 sm:mt-2">
@@ -87,7 +114,7 @@
 
         <div
           class="hide border-t border-gray-100 px-4 py-3 sm:col-span-3 sm:px-0"
-          :class="'audition' + audition.id"
+          :class="characterCardClass"
           :id="audition.id"
         >
           <dt class="text-sm leading-6 text-gray-900">Cast Breakdown</dt>
@@ -169,6 +196,14 @@ export default {
     console.log(this.cardElement.classList.contains("hide"));
   },
   computed: {
+    characterCardClass() {
+      let string = `audition${this.audition.id}`;
+      if (this.audition.show_description) {
+        string = string + " bg-blue-50/60";
+      }
+      console.log(string);
+      return string;
+    },
     formatDate() {
       return (value) => {
         return moment(String(value)).format("MM/DD/YYYY");
