@@ -13,7 +13,7 @@
         </div>
       </div>
     </div>
-    <div class="px-2">
+    <div>
       <dl class="grid grid-cols-1 sm:grid-cols-3 mb-0">
         <div class="border-t border-gray-100 px-4 py-3 sm:col-span-1 sm:px-0">
           <dt class="text-sm leading-6 text-gray-900">Company</dt>
@@ -27,7 +27,7 @@
           <dt class="text-sm leading-6 text-gray-900">Union Status</dt>
           <dd class="mt-1 text-base leading-6 text-gray-700 sm:mt-2">{{ audition.union_status }}</dd>
         </div>
-        <div class="border-t border-gray-100 px-4 py-3 sm:col-span-1 sm:px-0">
+        <div class="border-t border-gray-100 px-4 py-3 sm:col-span-1 sm:px-0 bg-blue-50/75">
           <dt class="text-sm leading-6 text-gray-900">Director</dt>
           <dd v-if="audition.director" class="mt-1 text-base leading-6 text-gray-700 sm:mt-2">
             {{ audition.director }}
@@ -36,7 +36,7 @@
             <i class="fa-solid fa-minus text-center"></i>
           </dd>
         </div>
-        <div class="border-t border-gray-100 px-4 py-3 sm:col-span-1 sm:px-0">
+        <div class="border-t border-gray-100 px-4 py-3 sm:col-span-1 sm:px-0 bg-blue-50/75">
           <dt class="text-sm leading-6 text-gray-900">Musical Director</dt>
           <dd v-if="audition.musical_director" class="mt-1 text-base leading-6 text-gray-700 sm:mt-2">
             {{ audition.musical_director }}
@@ -45,7 +45,7 @@
             <i class="fa-solid fa-minus text-center"></i>
           </dd>
         </div>
-        <div class="border-t border-gray-100 px-4 py-3 sm:col-span-1 sm:px-0">
+        <div class="border-t border-gray-100 px-4 py-3 sm:col-span-1 sm:px-0 bg-blue-50/75">
           <dt class="text-sm leading-6 text-gray-900">Choreographer</dt>
           <dd v-if="audition.choreographer" class="mt-1 text-base leading-6 text-gray-700 sm:mt-2">
             {{ audition.choreographer }}
@@ -78,7 +78,7 @@
             <i class="fa-solid fa-minus text-center"></i>
           </dd>
         </div>
-        <div class="border-t border-gray-100 px-4 py-3 sm:col-span-1 sm:px-0">
+        <div class="border-t border-gray-100 px-4 py-3 sm:col-span-1 sm:px-0 bg-blue-50/75">
           <dt class="text-sm leading-6 text-gray-900">In the Room</dt>
           <dd v-if="audition.in_the_room" class="mt-1 text-base leading-6 text-gray-700 sm:mt-2">
             {{ audition.in_the_room }}
@@ -87,7 +87,7 @@
             <i class="fa-solid fa-minus text-center"></i>
           </dd>
         </div>
-        <div class="border-t border-gray-100 px-4 py-3 sm:col-span-1 sm:px-0">
+        <div class="border-t border-gray-100 px-4 py-3 sm:col-span-1 sm:px-0 bg-blue-50/75">
           <dt class="text-sm leading-6 text-gray-900">Materials to Prepare</dt>
           <dd v-if="audition.materials_to_prepare" class="mt-1 text-base leading-6 text-gray-700 sm:mt-2">
             {{ audition.materials_to_prepare }}
@@ -96,7 +96,7 @@
             <i class="fa-solid fa-minus text-center"></i>
           </dd>
         </div>
-        <div class="border-t border-gray-100 px-4 py-3 sm:col-span-1 sm:px-0">
+        <div class="border-t border-gray-100 px-4 py-3 sm:col-span-1 sm:px-0 bg-blue-50/75">
           <dt class="text-sm leading-6 text-gray-900">How to Submit</dt>
           <dd v-if="audition.how_to_submit" class="mt-1 text-base leading-6 text-gray-700 sm:mt-2">
             {{ audition.how_to_submit }}
