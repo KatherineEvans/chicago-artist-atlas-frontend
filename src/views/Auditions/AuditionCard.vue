@@ -29,71 +29,58 @@
         </div>
         <div class="border-t border-gray-100 px-4 py-3 sm:col-span-1 sm:px-0 bg-blue-50/60">
           <dt class="text-sm leading-6 text-gray-900">Director</dt>
-          <dd v-if="audition.director" class="mt-1 text-base leading-6 text-gray-700 sm:mt-2">
-            {{ audition.director }}
-          </dd>
-          <dd v-else class="mt-1 text-base leading-6 text-gray-700 sm:mt-2">
-            <i class="fa-solid fa-minus text-center"></i>
+          <dd class="mt-1 text-base leading-6 text-gray-700 sm:mt-2">
+            <span v-if="audition.director">{{ audition.director }}</span>
+            <i v-else class="fa-solid fa-minus text-center"></i>
           </dd>
         </div>
         <div class="border-t border-gray-100 px-4 py-3 sm:col-span-1 sm:px-0 sm:bg-blue-50/60">
           <dt class="text-sm leading-6 text-gray-900">Musical Director</dt>
-          <dd v-if="audition.musical_director" class="mt-1 text-base leading-6 text-gray-700 sm:mt-2">
-            {{ audition.musical_director }}
-          </dd>
-          <dd v-else class="mt-1 text-base leading-6 text-gray-700 sm:mt-2">
-            <i class="fa-solid fa-minus text-center"></i>
+          <dd class="mt-1 text-base leading-6 text-gray-700 sm:mt-2">
+            <span v-if="audition.musical_director">{{ audition.musical_director }}</span>
+            <i v-else class="fa-solid fa-minus text-center"></i>
           </dd>
         </div>
         <div class="border-t border-gray-100 px-4 py-3 sm:col-span-1 sm:px-0 bg-blue-50/60">
           <dt class="text-sm leading-6 text-gray-900">Choreographer</dt>
-          <dd v-if="audition.choreographer" class="mt-1 text-base leading-6 text-gray-700 sm:mt-2">
-            {{ audition.choreographer }}
-          </dd>
-          <dd v-else class="mt-1 text-base leading-6 text-gray-700 sm:mt-2">
-            <i class="fa-solid fa-minus text-center"></i>
+          <dd class="mt-1 text-base leading-6 text-gray-700 sm:mt-2">
+            <span v-if="audition.choreographer">{{ audition.choreographer }}</span>
+            <i v-else class="fa-solid fa-minus text-center"></i>
           </dd>
         </div>
         <div class="border-t border-gray-100 px-4 py-3 sm:col-span-1 sm:px-0">
           <dt class="text-sm leading-6 text-gray-900">Rehearsal Start Date</dt>
-          <dd v-if="audition.rehearsal_startdate" class="mt-1 text-base leading-6 text-gray-700 sm:mt-2">
-            {{ formatDate(audition.rehearsal_startdate) }}
+          <dd class="mt-1 text-base leading-6 text-gray-700 sm:mt-2">
+            <span v-if="audition.rehearsal_startdate">{{ formatDate(audition.rehearsal_startdate) }}</span>
+            <i v-else class="fa-solid fa-minus text-center"></i>
           </dd>
         </div>
         <div class="border-t border-gray-100 px-4 py-3 sm:col-span-1 sm:px-0 max-sm:bg-blue-50/60">
           <dt class="text-sm leading-6 text-gray-900">Previews Start Date</dt>
-          <dd v-if="audition.previews_startdate" class="mt-1 text-base leading-6 text-gray-700 sm:mt-2">
-            {{ formatDate(audition.previews_startdate) }}
-          </dd>
-          <dd v-else class="mt-1 text-base leading-6 text-gray-700 sm:mt-2">
-            <i class="fa-solid fa-minus text-center"></i>
+          <dd class="mt-1 text-base leading-6 text-gray-700 sm:mt-2">
+            <span v-if="audition.previews_startdate">{{ formatDate(audition.previews_startdate) }}</span>
+            <i v-else class="fa-solid fa-minus text-center"></i>
           </dd>
         </div>
         <div class="border-t border-gray-100 px-4 py-3 sm:col-span-1 sm:px-0">
           <dt class="text-sm leading-6 text-gray-900">Opening Night</dt>
-          <dd v-if="audition.show_startdate" class="mt-1 text-base leading-6 text-gray-700 sm:mt-2">
-            {{ formatDate(audition.show_startdate) }}
-          </dd>
-          <dd v-else class="mt-1 text-base leading-6 text-gray-700 sm:mt-2">
-            <i class="fa-solid fa-minus text-center"></i>
+          <dd class="mt-1 text-base leading-6 text-gray-700 sm:mt-2">
+            <span v-if="audition.show_startdate">{{ formatDate(audition.show_startdate) }}</span>
+            <i v-else class="fa-solid fa-minus text-center"></i>
           </dd>
         </div>
         <div class="border-t border-gray-100 px-4 py-3 sm:col-span-1 sm:px-0 bg-blue-50/60">
           <dt class="text-sm leading-6 text-gray-900">In the Room</dt>
-          <dd v-if="audition.in_the_room" class="mt-1 text-base leading-6 text-gray-700 sm:mt-2">
-            {{ audition.in_the_room }}
-          </dd>
-          <dd v-else class="mt-1 text-base leading-6 text-gray-700 sm:mt-2">
-            <i class="fa-solid fa-minus text-center"></i>
+          <dd class="mt-1 text-base leading-6 text-gray-700 sm:mt-2">
+            <span v-if="audition.in_the_room">{{ audition.in_the_room }}</span>
+            <i v-else class="fa-solid fa-minus text-center"></i>
           </dd>
         </div>
         <div class="border-t border-gray-100 px-4 py-3 sm:col-span-1 sm:px-0 sm:bg-blue-50/60">
           <dt class="text-sm leading-6 text-gray-900">Materials to Prepare</dt>
-          <dd v-if="audition.materials_to_prepare" class="mt-1 text-base leading-6 text-gray-700 sm:mt-2">
-            {{ audition.materials_to_prepare }}
-          </dd>
-          <dd v-else class="mt-1 text-base leading-6 text-gray-700 sm:mt-2">
-            <i class="fa-solid fa-minus text-center"></i>
+          <dd class="mt-1 text-base leading-6 text-gray-700 sm:mt-2">
+            <span v-if="audition.materials_to_prepare">{{ audition.materials_to_prepare }}</span>
+            <i v-else class="fa-solid fa-minus text-center"></i>
           </dd>
         </div>
         <div class="border-t border-gray-100 px-4 py-3 sm:col-span-1 sm:px-0 bg-blue-50/60">
@@ -111,10 +98,74 @@
             {{ audition.show_description }}
           </dd>
         </div>
+        <div class="hide border-t border-gray-100 px-4 py-3 sm:col-span-1 sm:px-0" :class="characterCardClass">
+          <dt class="text-sm leading-6 text-gray-900">Audition Dates</dt>
+          <dd class="mt-1 text-base text-left leading-6 text-gray-700 sm:mt-2">
+            <ul v-if="anyAuditionDate" class="pl-0">
+              <li v-if="audition.audition_date1">
+                Day 1: {{ formatDate(audition.audition_date1) }}
+                {{ audition.audition_time1 ? ` - ${audition.audition_time1}` : "" }}
+              </li>
+              <li v-if="audition.audition_date2">
+                Day 2: {{ formatDate(audition.audition_date2) }}
+                {{ audition.audition_time2 ? ` - ${audition.audition_time2}` : "" }}
+              </li>
+              <li v-if="audition.audition_date3">
+                Day 3: {{ formatDate(audition.audition_date3) }}
+                {{ audition.audition_time3 ? ` - ${audition.audition_time3}` : "" }}
+              </li>
+              <li v-if="audition.audition_date4">
+                Day 4: {{ formatDate(audition.audition_date4) }}
+                {{ audition.audition_time4 ? ` - ${audition.audition_time4}` : "" }}
+              </li>
+              <li v-if="audition.audition_date5">
+                Day 5: {{ formatDate(audition.audition_date5) }}
+                {{ audition.audition_time5 ? ` - ${audition.audition_time5}` : "" }}
+              </li>
+            </ul>
+            <span v-else>
+              <i class="fa-solid fa-minus text-center"></i>
+            </span>
+          </dd>
+        </div>
+        <div class="hide border-t border-gray-100 px-4 py-3 sm:col-span-1 sm:px-0" :class="characterCardClass">
+          <dt class="text-sm leading-6 text-gray-900">Callback Dates</dt>
+          <dd class="mt-1 text-base leading-6 text-gray-700 sm:mt-2">
+            <ul v-if="anyCallbackDate" class="pl-0">
+              <li v-if="audition.callback_date1">
+                Day 1: {{ formatDate(audition.callback_date1) }}
+                {{ audition.callback_time1 ? ` - ${audition.callback_time1}` : "" }}
+              </li>
+              <li v-if="audition.callback_date2">
+                Day 2: {{ formatDate(audition.callback_date2) }}
+                {{ audition.callback_time2 ? ` - ${audition.callback_time2}` : "" }}
+              </li>
+              <li v-if="audition.callback_date3">
+                Day 3: {{ formatDate(audition.callback_date3) }}
+                {{ audition.callback_time3 ? ` - ${audition.callback_time3}` : "" }}
+              </li>
+              <li v-if="audition.callback_date4">
+                Day 4: {{ formatDate(audition.callback_date4) }}
+                {{ audition.callback_time4 ? ` - ${audition.callback_time4}` : "" }}
+              </li>
+              <li v-if="audition.callback_date5">
+                Day 5: {{ formatDate(audition.callback_date5) }}
+                {{ audition.callback_time5 ? ` - ${audition.callback_time5}` : "" }}
+              </li>
+            </ul>
+            <span v-else>
+              <i class="fa-solid fa-minus text-center"></i>
+            </span>
+          </dd>
+        </div>
+        <div class="hide border-t border-gray-100 px-4 py-3 sm:col-span-1 sm:px-0" :class="characterCardClass">
+          <dt class="text-sm leading-6 text-gray-900">Audition Location</dt>
+          <dd class="mt-1 text-base leading-6 text-gray-700 sm:mt-2">LOCATION</dd>
+        </div>
 
         <div
           class="hide border-t border-gray-100 px-4 py-3 sm:col-span-3 sm:px-0"
-          :class="characterCardClass"
+          :class="'audition' + audition.id"
           :id="audition.id"
         >
           <dt class="text-sm leading-6 text-gray-900">Cast Breakdown</dt>
@@ -196,17 +247,41 @@ export default {
     console.log(this.cardElement.classList.contains("hide"));
   },
   computed: {
+    anyAuditionDate() {
+      if (
+        this.audition.audition_date1 ||
+        this.audition.audition_date2 ||
+        this.audition.audition_date3 ||
+        this.audition.audition_date4 ||
+        this.audition.audition_date5
+      ) {
+        return true;
+      }
+      return false;
+    },
+    anyCallbackDate() {
+      if (
+        this.audition.callback_date1 ||
+        this.audition.callback_date2 ||
+        this.audition.callback_date3 ||
+        this.audition.callback_date4 ||
+        this.audition.callback_date5
+      ) {
+        return true;
+      }
+      return false;
+    },
     characterCardClass() {
       let string = `audition${this.audition.id}`;
       if (this.audition.show_description) {
-        string = string + " bg-blue-50/60";
+        string = string + " sm:bg-blue-50/60";
       }
       console.log(string);
       return string;
     },
     formatDate() {
       return (value) => {
-        return moment(String(value)).format("MM/DD/YYYY");
+        return moment(String(value)).format("ll");
       };
     },
   },
