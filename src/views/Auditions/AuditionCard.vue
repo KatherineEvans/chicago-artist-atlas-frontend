@@ -85,11 +85,9 @@
         </div>
         <div class="border-t border-gray-100 px-4 py-3 sm:col-span-1 sm:px-0 bg-blue-50/60">
           <dt class="text-sm leading-6 text-gray-900">How to Submit</dt>
-          <dd v-if="audition.how_to_submit" class="mt-1 text-base leading-6 text-gray-700 sm:mt-2">
-            {{ audition.how_to_submit }}
-          </dd>
-          <dd v-else class="mt-1 text-base leading-6 text-gray-700 sm:mt-2">
-            <i class="fa-solid fa-minus text-center"></i>
+          <dd class="mt-1 text-base leading-6 text-gray-700 sm:mt-2">
+            <span v-if="audition.how_to_submit">{{ audition.how_to_submit }}</span>
+            <i v-else class="fa-solid fa-minus text-center"></i>
           </dd>
         </div>
         <div v-if="audition.show_description" class="border-t border-gray-100 px-4 py-3 sm:col-span-3 sm:px-0">
@@ -123,9 +121,7 @@
                 {{ audition.audition_time5 ? ` - ${audition.audition_time5}` : "" }}
               </li>
             </ul>
-            <span v-else>
-              <i class="fa-solid fa-minus text-center"></i>
-            </span>
+            <i v-else class="fa-solid fa-minus text-center"></i>
           </dd>
         </div>
         <div class="hide border-t border-gray-100 px-4 py-3 sm:col-span-1 sm:px-0" :class="characterCardClass">
@@ -153,16 +149,13 @@
                 {{ audition.callback_time5 ? ` - ${audition.callback_time5}` : "" }}
               </li>
             </ul>
-            <span v-else>
-              <i class="fa-solid fa-minus text-center"></i>
-            </span>
+            <i v-else class="fa-solid fa-minus text-center"></i>
           </dd>
         </div>
         <div class="hide border-t border-gray-100 px-4 py-3 sm:col-span-1 sm:px-0" :class="characterCardClass">
           <dt class="text-sm leading-6 text-gray-900">Audition Location</dt>
           <dd class="mt-1 text-base leading-6 text-gray-700 sm:mt-2">LOCATION</dd>
         </div>
-
         <div
           class="hide border-t border-gray-100 px-4 py-3 sm:col-span-3 sm:px-0"
           :class="'audition' + audition.id"
