@@ -1,6 +1,6 @@
 <template>
   <div class="overflow-hidden bg-white shadow-md sm:rounded-lg p-0 mb-10">
-    <div class="bg-blue-950">
+    <div class="bg-blue-900">
       <div class="px-4 py-6 sm:px-6 d-flex flex-row">
         <span>
           <div class="text-base font-bold leading-7 text-blue-100">Production</div>
@@ -73,6 +73,33 @@
           <dt class="text-sm leading-6 text-gray-900">Opening Night</dt>
           <dd v-if="audition.show_startdate" class="mt-1 text-base leading-6 text-gray-700 sm:mt-2">
             {{ formatDate(audition.show_startdate) }}
+          </dd>
+          <dd v-else class="mt-1 text-base leading-6 text-gray-700 sm:mt-2">
+            <i class="fa-solid fa-minus text-center"></i>
+          </dd>
+        </div>
+        <div class="border-t border-gray-100 px-4 py-3 sm:col-span-1 sm:px-0">
+          <dt class="text-sm leading-6 text-gray-900">In the Room</dt>
+          <dd v-if="audition.in_the_room" class="mt-1 text-base leading-6 text-gray-700 sm:mt-2">
+            {{ audition.in_the_room }}
+          </dd>
+          <dd v-else class="mt-1 text-base leading-6 text-gray-700 sm:mt-2">
+            <i class="fa-solid fa-minus text-center"></i>
+          </dd>
+        </div>
+        <div class="border-t border-gray-100 px-4 py-3 sm:col-span-1 sm:px-0">
+          <dt class="text-sm leading-6 text-gray-900">Materials to Prepare</dt>
+          <dd v-if="audition.materials_to_prepare" class="mt-1 text-base leading-6 text-gray-700 sm:mt-2">
+            {{ audition.materials_to_prepare }}
+          </dd>
+          <dd v-else class="mt-1 text-base leading-6 text-gray-700 sm:mt-2">
+            <i class="fa-solid fa-minus text-center"></i>
+          </dd>
+        </div>
+        <div class="border-t border-gray-100 px-4 py-3 sm:col-span-1 sm:px-0">
+          <dt class="text-sm leading-6 text-gray-900">How to Submit</dt>
+          <dd v-if="audition.how_to_submit" class="mt-1 text-base leading-6 text-gray-700 sm:mt-2">
+            {{ audition.how_to_submit }}
           </dd>
           <dd v-else class="mt-1 text-base leading-6 text-gray-700 sm:mt-2">
             <i class="fa-solid fa-minus text-center"></i>
