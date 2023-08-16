@@ -30,7 +30,7 @@
         <div class="flex w-0 flex-1">
           <button
             @click="$emit('showFullCard', character)"
-            class="relative -mr-px inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-bl-lg border-top border-transparent py-3 text-sm font-semibold text-gray-900 no-underline hover:no-underline hover:bg-blue-50"
+            class="relative -mr-px inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-bl-lg border-top py-3 text-sm font-semibold text-gray-900 no-underline hover:no-underline hover:bg-blue-50"
           >
             <InformationCircleIcon class="h-5 w-5" style="color: #2b58bc" aria-hidden="true" />
             More Info
