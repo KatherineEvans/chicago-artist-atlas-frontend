@@ -14,15 +14,24 @@
       <dl class="grid grid-cols-1 sm:grid-cols-3 mb-0">
         <div class="border-t border-gray-100 px-4 py-3 sm:col-span-1 sm:px-0">
           <dt class="text-base text-left leading-6 text-gray-900">Gender</dt>
-          <dd class="mt-1 text-left text-lg leading-6 text-gray-700 sm:mt-2">{{ character.gender }}</dd>
+          <dd class="mt-1 text-left text-lg leading-6 text-gray-700 sm:mt-2">
+            <span v-if="character.gender">{{ character.gender }}</span>
+            <i v-else class="ml-1 fa-solid fa-minus text-center"></i>
+          </dd>
         </div>
         <div class="border-t border-gray-100 px-4 py-3 sm:col-span-1 sm:px-0">
           <dt class="text-base text-left leading-6 text-gray-900">Age</dt>
-          <dd class="mt-1 text-left text-lg leading-6 text-gray-700 sm:mt-2">{{ character.age }}</dd>
+          <dd class="mt-1 text-left text-lg leading-6 text-gray-700 sm:mt-2">
+            <span v-if="character.age">{{ character.age }}</span>
+            <i v-else class="ml-1 fa-solid fa-minus text-center"></i>
+          </dd>
         </div>
         <div class="border-t border-gray-100 px-4 py-3 sm:col-span-1 sm:px-0">
           <dt class="text-base text-left leading-6 text-gray-900">Ethnicity</dt>
-          <dd class="mt-1 text-left text-lg leading-6 text-gray-700 sm:mt-2">{{ character.ethnicity }}</dd>
+          <dd class="mt-1 text-left text-lg leading-6 text-gray-700 sm:mt-2">
+            <span v-if="character.ethnicity">{{ character.ethnicity }}</span>
+            <i v-else class="ml-1 fa-solid fa-minus text-center"></i>
+          </dd>
         </div>
         <div v-if="character.description" class="border-t border-gray-100 px-4 py-3 sm:col-span-3 sm:px-0">
           <dt class="text-left text-base leading-6 text-gray-900">Description</dt>

@@ -12,6 +12,38 @@
         </p>
       </div>
     </div>
+    <ModalContainer :open="modalOpen" @close-modal="closeModal">
+      <template v-slot:content>
+        <div style="max-width: 500px">
+          <div class="text-xl font-bold mb-2">Classes coming soon!</div>
+          <div class="text-base">
+            Are you a teacher or a coach in the performing arts space? You've come to the right place! We need dedicated
+            professionals just like you to share your craft. For more info, visit the links below.
+          </div>
+          <div>
+            <div
+              class="mx-auto mt-4 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-8 border-t border-gray-200 pt-4 sm:mt-16 sm:pt-16 lg:mx-0 lg:max-w-none sm:grid-cols-2"
+            >
+              <article
+                v-for="link in pdfLinks"
+                :key="link.name"
+                class="flex max-w-xl flex-col items-start justify-between mx-auto"
+              >
+                <div class="group relative border rounded px-2">
+                  <h3 class="mt-3 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
+                    <a :href="link.href" target="_blank">
+                      <span class="absolute inset-0" />
+                      {{ link.name }}
+                    </a>
+                  </h3>
+                  <p class="mt-3 line-clamp-3 text-sm leading-6 text-gray-600">{{ link.description }}</p>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </template>
+    </ModalContainer>
     <!-- CURRENT RESOURCES -->
     <div class="row no-gutters my-2 py-10 mx-auto mt-0">
       <div class="col-12">
@@ -53,7 +85,7 @@
         </a>
       </div>
       <div class="mx-auto col-xl-3 col-lg-3 col-md-6 col-sm-12 col-xs-12 p-2">
-        <a href="/classes" class="drop-shadow-md h-100 card mx-auto text-center">
+        <a @click="modalOpen = true" class="drop-shadow-md h-100 card mx-auto text-center">
           <img class="m-auto pb-2 pt-4" src="../assets/illustrations/classes.png" alt="" />
           <div class="card-body">
             <div class="mb-1">
@@ -136,11 +168,26 @@
 
 <script>
 import BannerImage from "@/components/BannerImage.vue";
+import ModalContainer from "../components/ModalContainer.vue";
+
 export default {
-  components: { BannerImage },
+  components: { BannerImage, ModalContainer },
   data: function () {
     return {
       lightBlueDiv: "light-blue-div",
+      modalOpen: false,
+      pdfLinks: [
+        {
+          name: "For Teachers",
+          href: "/pdfs/Teacher_Pay_Structure.pdf",
+          description: "Are you a teacher in the performing arts? We're interested in working with you!",
+        },
+        {
+          name: "For Coaches",
+          href: "/pdfs/Coach_Pay_Structure.pdf",
+          description: "Are you a coach in the performing arts? We're interested in working with you!",
+        },
+      ],
       activeLinks: [
         {
           name: "Theater Directory",
@@ -173,6 +220,11 @@ export default {
     if (this.$route.query.reset_token) {
       this.$store.commit("sessions/setPasswordResetToken", this.$route.query.reset_token);
     }
+  },
+  methods: {
+    closeModal() {
+      this.modalOpen = false;
+    },
   },
 };
 </script>
