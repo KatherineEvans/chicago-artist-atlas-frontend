@@ -27,10 +27,10 @@
               <article
                 v-for="link in pdfLinks"
                 :key="link.name"
-                class="flex max-w-xl flex-col items-start justify-between mx-auto"
+                class="flex max-w-xl flex-col items-start justify-between mx-auto hover:bg-blue-50/50"
               >
                 <div class="group relative border rounded px-2">
-                  <h3 class="mt-3 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
+                  <h3 class="mt-3 text-lg font-semibold leading-6 text-blue-700">
                     <a :href="link.href" target="_blank">
                       <span class="absolute inset-0" />
                       {{ link.name }}
