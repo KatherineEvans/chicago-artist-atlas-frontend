@@ -5,8 +5,8 @@
         <h2 class="text-3xl font-bold">#LifeHacks</h2>
         <p style="font-size: 16px">
           Here at Atlas, we're focused on providing our users with the latest resources on topics that matter -
-          inclusivity, diversity, sustainability, and the business of theater! We strive to continually improve and grow
-          our resource respository to best serve the Chicago theater community.
+          inclusivity, diversity, sustainability, and the business of theatre! We strive to continually improve and grow
+          our resource respository to best serve the Chicago theatre community.
         </p>
         <p style="font-size: 16px">
           Are there resources you don't see here?

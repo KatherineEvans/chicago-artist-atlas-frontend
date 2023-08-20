@@ -9,7 +9,7 @@
           community is at the heart of what we here at Atlas! It doesn't matter how you identify, Atlas has your back.
           We're here to provide unwavering support and guide you through the ins and outs of the performing arts
           industry. You can count on us to provide customized resources tailored to fit your unique needs, challenges,
-          and concerns. Together, let's ignite the stage and make unforgettable theater.
+          and concerns. Together, let's ignite the stage and make unforgettable theatre.
         </p>
       </div>
     </div>

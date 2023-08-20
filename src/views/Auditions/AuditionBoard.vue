@@ -4,7 +4,7 @@
       <div class="col-8 m-auto my-3">
         <div class="text-3xl font-bold mb-3">Auditions</div>
         <p class="text-lg">
-          ATLAS strives to deliver accurate, timely, and transparent audition information for Chicago and the greater
+          Atlas strives to deliver accurate, timely, and transparent audition information for Chicago and the greater
           Chicagoland area. Theatres and creative who would like to post an audition, please fill out the form here!
         </p>
       </div>

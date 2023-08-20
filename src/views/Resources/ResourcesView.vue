@@ -5,8 +5,8 @@
         <div class="text-3xl font-bold">Resources</div>
         <p style="font-size: 16px">
           Here at Atlas, we're focused on providing our users with the latest resources on topics that matter -
-          inclusivity, diversity, sustainability, and the business of theater! We strive to continually improve and grow
-          our resource respository to best serve the Chicago theater community.
+          inclusivity, diversity, sustainability, and the business of theatre! We strive to continually improve and grow
+          our resource respository to best serve the Chicago theatre community.
         </p>
         <p style="font-size: 16px">
           Are there resources you don't see here?
@@ -41,8 +41,8 @@
               <img class="lf-img mx-auto mb-3" src="../../assets/resources/identity-based-resources.png" />
               <div class="resource-desc mb-3">
                 <p class="px-2 desc">
-                  Here at Atlas, an inclusive community is paramount to our mission. We know that inclusive theater is
-                  great theater! No matter how you identify, Atlias is here to offer support and help you navigate this
+                  Here at Atlas, an inclusive community is paramount to our mission. We know that inclusive theatre is
+                  great theatre! No matter how you identify, Atlias is here to offer support and help you navigate this
                   industry. We strive to offer resources to fit your specific needs, challenges and concerns.
                 </p>
               </div>
@@ -71,7 +71,7 @@
                   <span
                     class="inline-flex items-center rounded-full bg-green-50 px-2 py-1 text-sm float-right font-medium text-green-700 ring-1 ring-inset ring-green-600/20"
                   >
-                    Disability
+                    Artists of Disability
                   </span>
                 </div>
                 <p>
@@ -136,7 +136,7 @@
               <div class="resource-desc mb-3">
                 <p class="px-2 desc">
                   From step-by-step guides on building a captivating website, to curated lists of reliable suppliers for
-                  costumes, props, and so much more... we've got you covered. Enhance your theater career with our
+                  costumes, props, and so much more... we've got you covered. Enhance your theatre career with our
                   extensive repository of practical tools and knowledge.
                 </p>
               </div>
