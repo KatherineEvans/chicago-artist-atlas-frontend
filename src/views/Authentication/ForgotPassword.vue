@@ -1,14 +1,22 @@
 <template>
   <div class="flex min-h-full flex-1 flex-col justify-center px-12 pb-12 lg:px-8">
     <div class="sm:mx-auto sm:w-full sm:max-w-sm">
-      <h2 class="mt-4 text-center text-2xl font-bold leading-9 tracking-tight text-blue-950">Forgot Password?</h2>
-      <p class="text-sm text-center text-blue-950">
+      <h2 v-if="!emailSent" class="mt-4 text-center text-2xl font-bold leading-9 tracking-tight text-blue-950">
+        Forgot Password?
+      </h2>
+      <h2 v-else>
+        <div class="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-green-100">
+          <CheckIcon class="h-6 w-6 text-green-600" aria-hidden="true" />
+        </div>
+        Thank you!
+      </h2>
+      <p v-if="!emailSent" class="text-sm text-center text-blue-950">
         Enter your email address and we'll help you reset your password! If we find your account, you'll be emailed a
         password reset link.
       </p>
     </div>
 
-    <div class="mt-6 sm:mx-auto sm:w-full sm:max-w-sm">
+    <div v-if="!emailSent" class="mt-6 sm:mx-auto sm:w-full sm:max-w-sm">
       <form class="space-y-6" @submit="submitPasswordReset">
         <div>
           <label for="email" class="block text-sm text-left font-medium leading-6 text-blue-950">Email *</label>
@@ -44,12 +52,20 @@
         </button>
       </p>
     </div>
+    <div v-else class="mt-6 sm:mx-auto sm:w-full sm:max-w-sm">
+      If you have an account at {{ user.email }}, an password reset email has been sent to you!
+    </div>
   </div>
 </template>
 <script>
+import axios from "axios";
+import { CheckIcon } from "@heroicons/vue/24/outline";
+
 export default {
+  components: { CheckIcon },
   data: function () {
     return {
+      emailSent: false,
       user: {
         email: null,
       },
@@ -58,9 +74,15 @@ export default {
   methods: {
     submitPasswordReset() {
       event.preventDefault();
-      this.$store.dispatch("sessions/resetUserPassword", { user: this.user }).then(() => {
-        // console.log("password email request");
-      });
+      axios
+        .post("/users/password.json", { user: this.user })
+        .then((response) => {
+          console.log("password email request");
+          this.emailSent = true;
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     },
   },
 };

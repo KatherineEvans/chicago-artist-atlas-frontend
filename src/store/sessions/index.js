@@ -106,7 +106,7 @@ export default {
       });
     },
     resetUserPassword({ commit }, payload) {
-      axios.put("/users/password.json", payload).then((response) => {
+      axios.post("/users/password.json", payload).then((response) => {
         // console.log(response, "password email response from backend");
       });
     },
