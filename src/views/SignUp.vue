@@ -7,7 +7,7 @@
           <strong v-else>Signup</strong>
         </h2>
         <p style="font-size: 16px">
-          ATLAS strives to provide the best, most up to date resources to our community! [Coming soon...]
+          Atlas strives to provide the best, most up to date resources to our community! [Coming soon...]
         </p>
       </div>
     </div>

@@ -4,62 +4,45 @@
       <div class="col-8 m-auto my-3">
         <h2 class="text-3xl font-bold">{{ title }}</h2>
         <p style="font-size: 16px">
-          ATLAS provides the most comprehensive directory of theatres, agencies, and classes in the city of Chicago. Use
+          Atlas provides the most comprehensive directory of theatres, agencies, and classes in the city of Chicago. Use
           this tool to explore the vast layout of the who, what, and where that makes up Chicago’s performing arts
           scene.
         </p>
       </div>
     </div>
     <!-- SEARCH / FILTER BAR -->
-    <div class="d-flex flex-row-reverse p-4">
-      <div>
-        <label for="union-status" class="mr-2 sm:text-sm sm:leading-6">Union Status:</label>
-        <Menu id="union-status" as="div" class="relative inline-block text-left">
-          <div>
-            <MenuButton
-              class="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
-            >
-              Any
-              <ChevronDownIcon class="-mr-1 h-5 w-5 text-gray-400" aria-hidden="true" />
-            </MenuButton>
-          </div>
-
-          <transition
-            enter-active-class="transition ease-out duration-100"
-            enter-from-class="transform opacity-0 scale-95"
-            enter-to-class="transform opacity-100 scale-100"
-            leave-active-class="transition ease-in duration-75"
-            leave-from-class="transform opacity-100 scale-100"
-            leave-to-class="transform opacity-0 scale-95"
-          >
-            <MenuItems
-              class="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
-            >
-              <div class="py-1">
-                <MenuItem v-slot="{ active }">
-                  <button
-                    class="w-100 text-left"
-                    :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'block px-4 py-2']"
-                  >
-                    Non-Equity
-                  </button>
-                </MenuItem>
-                <MenuItem v-slot="{ active }">
-                  <button
-                    class="w-100 text-left"
-                    :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'block px-4 py-2']"
-                  >
-                    Equity
-                  </button>
-                </MenuItem>
-              </div>
-            </MenuItems>
-          </transition>
-        </Menu>
+    <div class="grid grid-cols-2 lg:grid-cols-3 justify-center p-4 gap-4">
+      <div class="col-span-1">
+        <label for="equity" class="mr-2 sm:text-sm sm:leading-6">Equity</label>
+        <select
+          id="equity"
+          name="equity"
+          v-model="equity"
+          @change="trackValue"
+          class="w-100 rounded-md border-0 py-1.5 pl-3 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6"
+        >
+          <option selected :value="null">Any</option>
+          <option value="Equity">Equity</option>
+          <option value="Non-Equity">Non-Equity</option>
+          <option value="AGMA">AGMA</option>
+        </select>
       </div>
-      <div class="flex flex-1 items-center justify-center pr-3 lg:ml-6 lg:justify-end">
-        <div class="w-full max-w-lg lg:max-w-xs">
-          <label for="search" class="sr-only">Search by Theater</label>
+      <div class="col-span-1">
+        <label for="seasonType" class="mr-2 sm:text-sm sm:leading-6">Season Type</label>
+        <select
+          id="seasonType"
+          name="seasonType"
+          v-model="seasonType"
+          @change="trackValue"
+          class="w-100 rounded-md border-0 py-1.5 pl-3 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6"
+        >
+          <option :value="null" selected>Any</option>
+          <option v-for="season in seasonTypes" :key="season" :value="season">{{ season }}</option>
+        </select>
+      </div>
+      <div class="col-span-2 lg:col-span-1">
+        <div>
+          <label for="search" class="mr-2 sm:text-sm sm:leading-6">Search by Theater</label>
           <div class="relative">
             <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
               <MagnifyingGlassIcon class="h-5 w-5 text-gray-400" aria-hidden="true" />
@@ -67,6 +50,7 @@
             <input
               id="search"
               name="search"
+              v-model="searchTerm"
               class="block w-full rounded-md border-0 bg-white py-1.5 pl-10 pr-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               placeholder="Search Production or Company"
               type="search"
@@ -84,126 +68,138 @@
           <div></div>
         </div>
       </div>
-      <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-xs-12 mx-auto my-2">
-        <div
-          v-for="theater in theaters"
-          v-bind:key="theater.id"
-          class="card text-left mb-3"
-          :class="theater.id === currentTheater.id ? activeClass : ''"
-        >
-          <div class="card-body" v-on:click="currentTheater = theater">
-            <div class="mb-2">
-              <h5 class="card-title d-inline">{{ theater.name }}</h5>
-              <a target="_blank" :href="theater.website" class="hover-text float-right card-link">
-                <i class="fa-solid fa-square-up-right"></i>
-                <span class="tooltip-text" id="top">Visit Site</span>
-              </a>
-            </div>
-            <p v-if="theater?.address?.full_address" class="card-subtitle mb-2 text-muted">
-              {{ theater.address.full_address }}
-            </p>
-            <p v-else><em>Various Addresses</em></p>
-            <div class="row">
-              <div class="col">
-                <i class="fa-solid fa-phone mr-2"></i>
-                <span v-if="theater.phone">{{ theater.phone }}</span>
-                <span v-else>-</span>
+      <div v-if="noTheatersToDisplay" class="text-center m-6">
+        <p class="text-xl">
+          We're sorry! It looks like you picked a combination of search terms that returned zero results!
+        </p>
+        <p class="text-xl">
+          Try a different combination, or if you believe this is a mistake, please
+          <a href="mailto:info@chiartistatlas.com?subject=Theatre Directory">reach out</a>
+          to the Atlas team.
+        </p>
+      </div>
+      <div class="row" v-else>
+        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-xs-12 mx-auto my-2">
+          <div
+            v-for="theater in theaters"
+            v-bind:key="theater.id"
+            class="card text-left mb-3"
+            :class="theater.id === currentTheater.id ? activeClass : ''"
+          >
+            <div class="card-body" v-on:click="currentTheater = theater">
+              <div class="mb-2">
+                <h5 class="card-title d-inline">{{ theater.name }}</h5>
+                <a target="_blank" :href="theater.website" class="hover-text float-right card-link">
+                  <i class="fa-solid fa-square-up-right"></i>
+                  <span class="tooltip-text" id="top">Visit Site</span>
+                </a>
               </div>
-            </div>
-            <div class="row">
-              <div class="col">
-                <i v-if="theater.contact_email" class="fa-solid fa-envelope mr-2"></i>
-                <i v-if="theater.contact_form" class="fa-solid fa-message mr-2"></i>
-                <span v-if="theater.contact_email">
-                  <a :href="'mailto:' + theater.contact_email">{{ theater.contact_email }}</a>
-                </span>
-                <span v-if="theater.contact_form" target="_blank">
-                  <a :href="theater.contact_form">Contact Form</a>
-                </span>
+              <p v-if="theater?.address?.full_address" class="card-subtitle mb-2 text-muted">
+                {{ theater.address.full_address }}
+              </p>
+              <p v-else><em>Various Addresses</em></p>
+              <div class="row">
+                <div class="col">
+                  <i class="fa-solid fa-phone mr-2"></i>
+                  <span v-if="theater.phone">{{ theater.phone }}</span>
+                  <span v-else>-</span>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <i v-if="theater.contact_email" class="fa-solid fa-envelope mr-2"></i>
+                  <i v-if="theater.contact_form" class="fa-solid fa-message mr-2"></i>
+                  <span v-if="theater.contact_email">
+                    <a :href="'mailto:' + theater.contact_email">{{ theater.contact_email }}</a>
+                  </span>
+                  <span v-if="theater.contact_form" target="_blank">
+                    <a :href="theater.contact_form">Contact Form</a>
+                  </span>
+                </div>
               </div>
             </div>
           </div>
+          <div class="row py-3">
+            <nav aria-label="Page navigation example">
+              <ul class="pagination justify-content-center">
+                <li :class="currentPage == 1 ? 'disabled' : ''" class="page-item link-blue">
+                  <a class="page-link" @click="currentPage--">Previous</a>
+                </li>
+                <li class="page-item link-blue" :class="currentPage == startingPage ? 'active' : ''">
+                  <a class="page-link" @click="currentPage = startingPage">{{ startingPage }}</a>
+                </li>
+                <li class="page-item link-blue" :class="currentPage == middlePage ? 'active' : ''">
+                  <a class="page-link" @click="currentPage = middlePage">{{ middlePage }}</a>
+                </li>
+                <li class="page-item link-blue" :class="currentPage == endingPage ? 'active' : ''">
+                  <a class="page-link" @click="currentPage = endingPage">{{ endingPage }}</a>
+                </li>
+                <li :class="currentPage == totalPages ? 'disabled' : ''" class="page-item link-blue">
+                  <a class="page-link" @click="currentPage++">Next</a>
+                </li>
+              </ul>
+            </nav>
+          </div>
         </div>
-        <div class="row py-3">
-          <nav aria-label="Page navigation example">
-            <ul class="pagination justify-content-center">
-              <li :class="currentPage == 1 ? 'disabled' : ''" class="page-item link-blue">
-                <a class="page-link" @click="currentPage--">Previous</a>
-              </li>
-              <li class="page-item link-blue" :class="currentPage == startingPage ? 'active' : ''">
-                <a class="page-link" @click="currentPage = startingPage">{{ startingPage }}</a>
-              </li>
-              <li class="page-item link-blue" :class="currentPage == middlePage ? 'active' : ''">
-                <a class="page-link" @click="currentPage = middlePage">{{ middlePage }}</a>
-              </li>
-              <li class="page-item link-blue" :class="currentPage == endingPage ? 'active' : ''">
-                <a class="page-link" @click="currentPage = endingPage">{{ endingPage }}</a>
-              </li>
-              <li :class="currentPage == totalPages ? 'disabled' : ''" class="page-item link-blue">
-                <a class="page-link" @click="currentPage++">Next</a>
-              </li>
-            </ul>
-          </nav>
-        </div>
-      </div>
-      <div class="col-xl-7 col-lg-7 col-md-7 col-sm-12 col-xs-12 mx-auto my-2">
-        <div id="map" class="mx-auto mb-4"></div>
-        <div class="mx-auto theater-highlight">
-          <div class="card">
-            <div class="card-header">
-              <h4 class="card-title d-inline mb-0">{{ currentTheater?.name }}</h4>
-              <h6 v-if="currentTheater?.address?.full_address" class="card-subtitle card-subtitle-color mt-1">
-                {{ currentTheater?.address?.full_address }}
-              </h6>
-              <h6 v-else class="card-subtitle card-subtitle-color mt-1"><em>Various Addresses</em></h6>
-            </div>
-            <div class="card-body">
-              <div class="row">
-                <p v-if="currentTheater.mission" class="card-text mb-3">
-                  {{ currentTheater.mission }}
-                </p>
+        <div class="col-xl-7 col-lg-7 col-md-7 col-sm-12 col-xs-12 mx-auto my-2">
+          <div id="map" class="mx-auto mb-4"></div>
+          <div class="mx-auto theater-highlight">
+            <div class="card">
+              <div class="card-header">
+                <h4 class="card-title d-inline mb-0">{{ currentTheater?.name }}</h4>
+                <h6 v-if="currentTheater?.address?.full_address" class="card-subtitle card-subtitle-color mt-1">
+                  {{ currentTheater?.address?.full_address }}
+                </h6>
+                <h6 v-else class="card-subtitle card-subtitle-color mt-1"><em>Various Addresses</em></h6>
               </div>
-              <div class="row">
-                <div class="col-4">
-                  <img
-                    v-if="currentTheater.image_url"
-                    :src="currentTheater.image_url"
-                    :alt="currentTheater.name"
-                    class="theater-highlight-img"
-                  />
-                  <img
-                    v-else
-                    class="theater-highlight-img"
-                    src="https://www.monaco-chicago.com/images/1700-960/istock-155341582-73776d3d.jpg"
-                  />
+              <div class="card-body">
+                <div class="row">
+                  <p v-if="currentTheater.mission" class="card-text mb-3">
+                    {{ currentTheater.mission }}
+                  </p>
                 </div>
-                <div class="col-8">
-                  <div class="row">
+                <div class="row">
+                  <div class="col-4">
+                    <img
+                      v-if="currentTheater.image_url"
+                      :src="currentTheater.image_url"
+                      :alt="currentTheater.name"
+                      class="theater-highlight-img"
+                    />
+                    <img
+                      v-else
+                      class="theater-highlight-img"
+                      src="https://www.monaco-chicago.com/images/1700-960/istock-155341582-73776d3d.jpg"
+                    />
+                  </div>
+                  <div class="col-8">
                     <div class="row">
-                      <p class="mb-0">
-                        <strong>Union Status:</strong>
-                        {{ currentTheater?.union_status }}
-                      </p>
-                    </div>
-                    <div class="row">
-                      <p>
-                        <strong>Season Type:</strong>
-                        {{ currentTheater?.season_type }}
-                      </p>
-                    </div>
-                    <div>
-                      <i v-if="currentTheater.phone" class="fa-solid fa-phone mr-2"></i>
-                      <span v-if="currentTheater.phone">{{ currentTheater.phone }}</span>
-                    </div>
-                    <div>
-                      <i v-if="currentTheater.contact_email" class="fa-solid fa-envelope mr-2"></i>
-                      <i v-if="currentTheater.contact_form" class="fa-solid fa-message mr-2"></i>
-                      <span v-if="currentTheater.contact_email">
-                        <a :href="'mailto:' + currentTheater.contact_email">{{ currentTheater.contact_email }}</a>
-                      </span>
-                      <span v-if="currentTheater.contact_form" target="_blank">
-                        <a :href="currentTheater.contact_form">Contact Form</a>
-                      </span>
+                      <div class="row">
+                        <p class="mb-0">
+                          <strong>Union Status:</strong>
+                          {{ currentTheater?.union_status }}
+                        </p>
+                      </div>
+                      <div class="row">
+                        <p>
+                          <strong>Season Type:</strong>
+                          {{ currentTheater?.season_type }}
+                        </p>
+                      </div>
+                      <div>
+                        <i v-if="currentTheater.phone" class="fa-solid fa-phone mr-2"></i>
+                        <span v-if="currentTheater.phone">{{ currentTheater.phone }}</span>
+                      </div>
+                      <div>
+                        <i v-if="currentTheater.contact_email" class="fa-solid fa-envelope mr-2"></i>
+                        <i v-if="currentTheater.contact_form" class="fa-solid fa-message mr-2"></i>
+                        <span v-if="currentTheater.contact_email">
+                          <a :href="'mailto:' + currentTheater.contact_email">{{ currentTheater.contact_email }}</a>
+                        </span>
+                        <span v-if="currentTheater.contact_form" target="_blank">
+                          <a :href="currentTheater.contact_form">Contact Form</a>
+                        </span>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -217,22 +213,17 @@
 </template>
 
 <script>
-import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/vue";
-import { ChevronDownIcon, MagnifyingGlassIcon } from "@heroicons/vue/20/solid";
+import { MagnifyingGlassIcon } from "@heroicons/vue/20/solid";
 import axios from "axios";
 
 export default {
   components: {
-    Menu,
-    MenuButton,
-    MenuItem,
-    MenuItems,
-    ChevronDownIcon,
     MagnifyingGlassIcon,
   },
   data: function () {
     return {
-      title: "Theater Directory",
+      title: "Theatre Directory",
+      noTheatersToDisplay: false,
       theaters: [],
       currentTheater: {},
       totalPages: 28,
@@ -242,11 +233,45 @@ export default {
       currentPage: 1,
       activeClass: "active",
       isLoading: true,
+      seasonType: null,
+      equity: null,
+      searchTerm: null,
+      seasonTypes: [
+        "Plays",
+        "Musicals",
+        "Comedy",
+        "Classical",
+        "Opera",
+        "Ballet",
+        "Children's Theater",
+        "Avant Garde",
+        "Theatre by Young Performers",
+      ],
     };
   },
   watch: {
-    currentPage(newPage, oldPage) {
-      // console.log(newPage);
+    searchTerm() {
+      this.noTheatersToDisplay = false;
+      this.isLoading = true;
+      this.getTheaters(
+        `/theaters?page_number=1&equity=${this.equity}&season=${this.seasonType}&search=${this.searchTerm}`
+      );
+    },
+    equity() {
+      this.noTheatersToDisplay = false;
+      this.isLoading = true;
+      this.getTheaters(
+        `/theaters?page_number=1&equity=${this.equity}&season=${this.seasonType}&search=${this.searchTerm}`
+      );
+    },
+    seasonType() {
+      this.noTheatersToDisplay = false;
+      this.isLoading = true;
+      this.getTheaters(
+        `/theaters?page_number=1&equity=${this.equity}&season=${this.seasonType}&search=${this.searchTerm}`
+      );
+    },
+    currentPage(newPage) {
       if (newPage > this.endingPage) {
         this.startingPage = newPage;
         this.middlePage = newPage + 1;
@@ -258,7 +283,9 @@ export default {
         this.middlePage = newPage - 1;
         this.startingPage = newPage - 2;
       }
-      this.getTheaters(`/theaters?page_number=${newPage}`);
+      this.getTheaters(
+        `/theaters?page_number=${newPage}&equity=${this.equity}&season=${this.seasonType}&search=${this.searchTerm}`
+      );
     },
   },
   created: function () {
@@ -267,34 +294,38 @@ export default {
   methods: {
     getTheaters(link) {
       axios.get(link).then((response) => {
-        this.theaters = response.data;
-        // console.log(this.theaters, "theaters");
-        this.currentTheater = this.theaters[0];
-        let addressesForTooltip = [];
-        let addressArray = this.theaters.map((theater) => {
-          addressesForTooltip.push({
-            name: theater.name,
-            address: theater?.address?.full_address,
-          });
-          return theater?.address?.full_address;
-        });
-        let addresses = addressArray.join(";");
-        axios
-          .get(
-            `https://api.mapbox.com/geocoding/v5/mapbox.places-permanent/${addresses}.json?access_token=${process.env.VUE_APP_MAP_KEY}&limit=1`
-          )
-          .then((response) => {
-            let centerArray = response.data.map((address) => {
-              if (address?.features[0]?.center) {
-                return address.features[0].center;
-              }
-              return;
+        if (response.data.length > 0) {
+          this.theaters = response.data;
+          this.currentTheater = this.theaters[0];
+          let addressesForTooltip = [];
+          let addressArray = this.theaters.map((theater) => {
+            addressesForTooltip.push({
+              name: theater.name,
+              address: theater?.address?.full_address,
             });
-            this.setMap(centerArray, addressesForTooltip);
-          })
-          .catch((error) => {
-            console.log(error);
+            return theater?.address?.full_address;
           });
+          let addresses = addressArray.join(";");
+          axios
+            .get(
+              `https://api.mapbox.com/geocoding/v5/mapbox.places-permanent/${addresses}.json?access_token=${process.env.VUE_APP_MAP_KEY}&limit=1`
+            )
+            .then((response) => {
+              let centerArray = response.data.map((address) => {
+                if (address?.features[0]?.center) {
+                  return address.features[0].center;
+                }
+                return;
+              });
+              this.setMap(centerArray, addressesForTooltip);
+            })
+            .catch((error) => {
+              console.log(error);
+            });
+        } else {
+          this.noTheatersToDisplay = true;
+          this.isLoading = false;
+        }
       });
     },
     setMap(data, addressesForTooltip) {

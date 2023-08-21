@@ -4,7 +4,7 @@
       <div class="col-8 m-auto my-3">
         <h2 class="text-3xl font-bold">Classes</h2>
         <p style="font-size: 16px">
-          ATLAS produces a wide array of classes for creatives, by creatives. ATLAS is here to help guide you on every
+          Atlas produces a wide array of classes for creatives, by creatives. Atlas is here to help guide you on every
           aspect of your journey from fitness to finance.
         </p>
       </div>

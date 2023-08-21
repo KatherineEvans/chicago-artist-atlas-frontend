@@ -8,7 +8,7 @@
           We want to hear all about the captivating performances you've been a part of, in the spotlight or behind the
           scenes! From grand stages to intimate venues, your artistic contributions have left a lasting impression.
           Share the exhilarating moments, unforgettable characters, and mesmerizing stories that you've helped bring to
-          life. Whether it's theater, film, dance, or any other productions, we're eager to learn about the stages
+          life. Whether it's theatre, film, dance, or any other productions, we're eager to learn about the stages
           you've graced and the audiences you've moved. Let your experiences take center stage!
         </p>
 
@@ -42,7 +42,7 @@
                 </div>
                 <div class="w-full lg:w-1/2 p-2">
                   <label for="theaterCompany" class="block text-base font-medium leading-6 text-gray-900">
-                    Theater Company:
+                    Theatre Company:
                   </label>
                   <div class="mt-2">
                     <input

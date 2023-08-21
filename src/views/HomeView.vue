@@ -50,7 +50,7 @@
         <p class="text-xl md:text-2xl lg:text-3xl font-bold mb-3">Atlas Directories</p>
         <div class="row mb-3">
           <div class="mx-auto col-xl-7 col-lg-7 col-md-8 col-sm-12 col-xs-12">
-            <p class="text-lg">Explore opportunities in the Chicago Theater community!</p>
+            <p class="text-lg">Explore opportunities in the Chicago Theatre community!</p>
           </div>
         </div>
       </div>
@@ -62,7 +62,7 @@
               <p class="text-xl font-bold mb-3">Auditions</p>
               <div>
                 <p class="mb-2 text-base">
-                  Navigate available theater, television, and film auditions in the Chicagoand area.
+                  Navigate available theatre, television, and film auditions in the Chicagoland area.
                 </p>
               </div>
             </div>
@@ -74,10 +74,10 @@
           <img class="m-auto pb-2 pt-4" src="../assets/illustrations/directories.png" alt="" />
           <div class="card-body">
             <div class="mb-1">
-              <div class="text-xl font-bold mb-3">Theaters</div>
+              <div class="text-xl font-bold mb-3">Theatres</div>
               <div>
                 <p class="mb-2 text-base">
-                  Explore the wide and varried landscape of Chicago theater with our comprehensive directory.
+                  Explore the wide and varied landscape of Chicago theatre with our comprehensive directory.
                 </p>
               </div>
             </div>
@@ -108,8 +108,8 @@
         <div class="mx-auto col-xl-7 col-lg-7 col-md-8 col-sm-12 col-xs-12">
           <p class="text-lg">
             Here at Atlas, we're focused on providing our users with the latest resources on topics that matter -
-            inclusivity, diversity, sustainability, and the business of theater! We strive to continually improve and
-            grow our resource respository to best serve the Chicago theater community.
+            inclusivity, diversity, sustainability, and the business of theatre! We strive to continually improve and
+            grow our resource respository to best serve the Chicago theatre community.
           </p>
           <!-- <a style="text-decoration: underline" href="/resources">View all resources</a> -->
         </div>
@@ -122,7 +122,7 @@
               <p class="text-xl font-bold mb-3">Identity Resources</p>
               <div>
                 <p class="mb-2 text-base">
-                  A collection of resources centered around diverse experiences, including: BIPOC, LGBTQA+,
+                  A collection of resources centered around diverse experiences, including: BIPOC, LGBTQIA+,
                   Female-Identifying, and ADA resources.
                 </p>
               </div>
@@ -138,7 +138,7 @@
               <p class="text-xl font-bold mb-3">Business Resources for Artist</p>
               <div>
                 <p class="mb-2 text-base">
-                  Enhance your theater career with our extensive repository of practical tools and knowledge geared
+                  Enhance your theatre career with our extensive collection of practical tools and knowledge geared
                   towards your business in show business.
                 </p>
               </div>
