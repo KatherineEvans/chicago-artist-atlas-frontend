@@ -140,11 +140,10 @@ export default {
   methods: {
     submitPasswordReset() {
       event.preventDefault();
-      console.log(this.user);
       axios
         .patch("/users/password.json", { user: this.user })
         .then((response) => {
-          // console.log(response, "password email response from backend");
+          this.$emit("modalType", "login");
         })
         .catch((error) => {
           console.log(error);
