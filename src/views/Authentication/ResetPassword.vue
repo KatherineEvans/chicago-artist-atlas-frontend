@@ -70,13 +70,14 @@
   </div>
 </template>
 <script>
+import axios from "axios";
 export default {
   data: function () {
     return {
       user: {
         password: null,
         password_confirmation: null,
-        reset_password_token: this.$store.state.sessions.passwordResetToken,
+        reset_password_token: this.$route.query.reset_token,
       },
       passwordValid: false,
       passwordConfirmValid: true,
@@ -139,9 +140,15 @@ export default {
   methods: {
     submitPasswordReset() {
       event.preventDefault();
-      this.$store.dispatch("sessions/resetUserPassword", { user: this.user }).then(() => {
-        // console.log("password email request");
-      });
+      console.log(this.user);
+      axios
+        .patch("/users/password.json", { user: this.user })
+        .then((response) => {
+          // console.log(response, "password email response from backend");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     },
     showPassRules() {
       this.showPasswordValidations = true;

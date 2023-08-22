@@ -216,11 +216,6 @@ export default {
       ],
     };
   },
-  mounted() {
-    if (this.$route.query.reset_token) {
-      this.$store.commit("sessions/setPasswordResetToken", this.$route.query.reset_token);
-    }
-  },
   methods: {
     closeModal() {
       this.modalOpen = false;
