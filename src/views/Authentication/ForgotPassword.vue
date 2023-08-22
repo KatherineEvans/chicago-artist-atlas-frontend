@@ -53,7 +53,7 @@
       </p>
     </div>
     <div v-else class="mt-6 sm:mx-auto sm:w-full sm:max-w-sm">
-      If you have an account at {{ user.email }}, an password reset email has been sent to you!
+      If you have an account at {{ user.email }}, a password reset email has been sent to you!
     </div>
   </div>
 </template>
