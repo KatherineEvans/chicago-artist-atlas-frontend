@@ -92,12 +92,12 @@ export default {
         },
         {
           regexExp: new RegExp("(?=.*[a-z])"),
-          error: "Must include one uppercase letter",
+          error: "Must include one lowercase letter",
           flagged: false,
         },
         {
           regexExp: new RegExp("(?=.*[A-Z])"),
-          error: "Must include one lowercase letter",
+          error: "Must include one uppercase letter",
           flagged: false,
         },
         {
