@@ -92,12 +92,12 @@ export default {
         },
         {
           regexExp: new RegExp("(?=.*[a-z])"),
-          error: "Must include one uppercase letter",
+          error: "Must include one lowercase letter",
           flagged: false,
         },
         {
           regexExp: new RegExp("(?=.*[A-Z])"),
-          error: "Must include one lowercase letter",
+          error: "Must include one uppercase letter",
           flagged: false,
         },
         {
@@ -140,11 +140,10 @@ export default {
   methods: {
     submitPasswordReset() {
       event.preventDefault();
-      console.log(this.user);
       axios
         .patch("/users/password.json", { user: this.user })
         .then((response) => {
-          // console.log(response, "password email response from backend");
+          this.$emit("modalType", "login");
         })
         .catch((error) => {
           console.log(error);

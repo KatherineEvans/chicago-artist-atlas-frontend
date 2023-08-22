@@ -74,14 +74,14 @@ export default {
   methods: {
     submitPasswordReset() {
       event.preventDefault();
+      this.emailSent = true;
       axios
         .post("/users/password.json", { user: this.user })
         .then((response) => {
-          console.log("password email request");
-          this.emailSent = true;
+          console.log("email sent");
         })
         .catch((error) => {
-          console.log(error);
+          console.log({ "email error": error });
         });
     },
   },
