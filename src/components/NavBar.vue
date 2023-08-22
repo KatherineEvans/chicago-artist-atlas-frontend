@@ -350,7 +350,11 @@ export default {
       ],
     };
   },
-  computed: mapState("sessions", ["passwordResetToken"]),
+  computed: {
+    passwordResetToken() {
+      return this.$route.query.reset_token;
+    },
+  },
   methods: {
     closeModal() {
       this.modalOpen = false;
