@@ -71,7 +71,6 @@ export default {
   },
   watch: {
     "$store.state.sessions.authToken": function () {
-      // console.log(this.$store.state.sessions.authToken);
       if (this.$store.state.sessions.authToken) {
         this.isLoggedIn = true;
       } else {

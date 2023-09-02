@@ -143,7 +143,6 @@ export default {
   methods: {
     addToSavedRoles(id) {
       this.savedRoles.push(id);
-      console.log(this.savedRoles);
     },
     getUserAuditions() {
       axios.get("/user_roles.json?type=pluck").then((response) => {
@@ -180,7 +179,6 @@ export default {
         .get(link)
         .then((response) => {
           this.auditions = response.data;
-          console.log(this.auditions);
           this.isLoading = false;
         })
         .catch((error) => {

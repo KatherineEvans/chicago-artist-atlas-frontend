@@ -119,7 +119,7 @@ export default {
       axios
         .get("/profile.json")
         .then((response) => {
-          console.log("got profile", response);
+          // console.log("got profile", response);
         })
         .catch((error) => {
           // commit("setErrors", error.response.data.status.message);

@@ -147,7 +147,6 @@ export default {
     getResources() {
       axios.get("/resources.json?primary_filter=Business%20for%20Actors").then((response) => {
         this.resources = response.data["Business for Actors"];
-        console.log(this.resources);
       });
     },
   },

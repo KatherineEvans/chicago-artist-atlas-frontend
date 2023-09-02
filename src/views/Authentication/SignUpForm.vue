@@ -259,7 +259,6 @@ export default {
         axios
           .post("/users.json", { user: this.user })
           .then((response) => {
-            console.log("signup posted w/response", response);
             // open login screen
             this.$emit("modalType", "login");
           })

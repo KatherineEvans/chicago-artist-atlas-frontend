@@ -54,7 +54,6 @@ export default {
   },
   mounted() {
     this.getUserAuditions();
-    console.log(localStorage.authToken);
   },
   watch: {},
   computed: {
@@ -76,15 +75,22 @@ export default {
     },
   },
   methods: {
-    removeRole(audition) {
-      // console.log(audition);
-      axios.delete(`/user_roles/${audition.role.id}.json`).then((response) => {
-        console.log(response);
+    removeRole(removedAudition) {
+      axios.delete(`/user_roles/${removedAudition.role.id}.json`).then((response) => {
+        for (const audition in this.auditions) {
+          this.auditions[audition].forEach((element) => {
+            if (element.role.id == removedAudition.role.id) {
+              let location = this.auditions[audition].indexOf(element);
+              this.auditions[audition].splice(location, 1);
+            }
+          });
+        }
       });
     },
     getUserAuditions() {
       axios.get("/user_roles.json").then((response) => {
         this.auditions = response.data;
+        console.log(this.auditions);
         this.isLoading = false;
       });
     },

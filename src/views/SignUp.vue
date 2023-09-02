@@ -165,7 +165,6 @@ export default {
           crossDomain: true,
         })
         .then((response) => {
-          // console.log(response.data);
           this.$router.push("/signup?path=login");
         })
         .catch((error) => {

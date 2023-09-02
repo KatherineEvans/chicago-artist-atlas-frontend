@@ -79,6 +79,7 @@ export default {
         .post("/users/password.json", { user: this.user })
         .then((response) => {
           console.log("email sent");
+          // send an announcement
         })
         .catch((error) => {
           console.log({ "email error": error });

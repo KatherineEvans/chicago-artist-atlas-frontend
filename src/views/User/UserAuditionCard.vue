@@ -2,10 +2,12 @@
   <div class="rounded-md p-4 col-span-1 border flex flex-col justify-between">
     <div>
       <div class="flex justify-between">
-        <div class="text-lg mb-2 d-inline">{{ audition.character.name }}</div>
-        <div class="text-gray-700 italic text-sm font-normal d-inline">
-          Saved {{ formatDate(audition.role.created_at) }}
-        </div>
+        <div class="text-lg font-bold">{{ audition.character.name }}</div>
+        <div class="text-gray-700 text-sm font-normal d-inline">Saved {{ formatDate(audition.role.created_at) }}</div>
+      </div>
+      <div class="mb-3">
+        <div class="text-base font-medium mb-2">{{ audition.audition.name_of_show }}</div>
+        <div class="text-base font-normal italic">Presented by: {{ audition.audition.name_of_company }}</div>
       </div>
       <p class="text-base font-normal">{{ audition.character.description }}</p>
     </div>

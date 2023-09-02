@@ -92,7 +92,6 @@ export default {
   },
   methods: {
     redirect(url) {
-      // console.log(url);
       window.location.href = url;
     },
   },
