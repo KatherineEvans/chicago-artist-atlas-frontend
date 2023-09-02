@@ -21,15 +21,12 @@
       <div v-else>
         <div v-if="auditionsExist">
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div class="rounded-md border p-4" v-for="audition in auditions.saved" :key="audition.role.id">
-              <div class="flex justify-between">
-                <div class="text-lg mb-2 d-inline">{{ audition.character.name }}</div>
-                <div class="text-gray-700 italic text-sm font-normal d-inline">
-                  Saved {{ formatDate(audition.role.created_at) }}
-                </div>
-              </div>
-              <p class="text-base font-normal">{{ audition.character.description }}</p>
-            </div>
+            <UserAuditionCard
+              v-for="audition in auditions.saved"
+              :audition="audition"
+              :key="audition.role.id"
+              @remove-role="removeRole"
+            />
           </div>
         </div>
         <img
@@ -46,7 +43,9 @@
 <script>
 import axios from "axios";
 import moment from "moment";
+import UserAuditionCard from "./UserAuditionCard";
 export default {
+  components: { UserAuditionCard },
   data: function () {
     return {
       auditions: [],
@@ -77,6 +76,12 @@ export default {
     },
   },
   methods: {
+    removeRole(audition) {
+      // console.log(audition);
+      axios.delete(`/user_roles/${audition.role.id}.json`).then((response) => {
+        console.log(response);
+      });
+    },
     getUserAuditions() {
       axios.get("/user_roles.json").then((response) => {
         this.auditions = response.data;
