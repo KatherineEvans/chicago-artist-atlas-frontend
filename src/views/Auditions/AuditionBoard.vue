@@ -91,8 +91,10 @@
             v-for="audition in auditions"
             v-bind:key="audition.id"
             :audition="audition"
+            :savedRoles="savedRoles"
             :currentAuditionId="{ currentAuditionId }"
             @expand-audition="expandAudition(audition)"
+            @add-to-saved-roles="addToSavedRoles"
           />
         </div>
       </div>
@@ -123,6 +125,7 @@ export default {
       currentAuditionId: null,
       heart: false,
       isLoading: true,
+      savedRoles: [],
     };
   },
   computed: {
@@ -133,10 +136,20 @@ export default {
     },
   },
   watch: {},
-  created: function () {
+  mounted: function () {
     this.getAuditions("/auditions");
+    this.getUserAuditions();
   },
   methods: {
+    addToSavedRoles(id) {
+      this.savedRoles.push(id);
+      console.log(this.savedRoles);
+    },
+    getUserAuditions() {
+      axios.get("/user_roles.json?type=pluck").then((response) => {
+        this.savedRoles = response.data;
+      });
+    },
     expandAudition(audition) {
       if (this.currentAuditionId == audition.id) {
         document.querySelectorAll(`.audition` + audition.id).forEach((item) => {

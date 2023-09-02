@@ -155,4 +155,21 @@ const router = createRouter({
   routes,
 });
 
+router.beforeEach((to, from, next) => {
+  if (localStorage.getItem("tokenGeneratedAt") && to.fullPath != "/logout") {
+    var date = new Date(localStorage.getItem("tokenGeneratedAt"));
+    var expDate = date.setMinutes(date.getMinutes() + 10079);
+    var today = new Date();
+    var todayDate = today.setMinutes(today.getMinutes());
+    if (todayDate > expDate) {
+      // redirect the user to the login page
+      next("/logout");
+    } else {
+      next();
+    }
+  } else {
+    next();
+  }
+});
+
 export default router;

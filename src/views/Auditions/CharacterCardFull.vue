@@ -61,9 +61,18 @@
         <div class="border-t border-gray-100 px-4 py-3 sm:col-span-3 sm:px-0">
           <div class="d-flex flex-row-reverse">
             <button
-              class="flex no-underline hover:no-underline flex-none rounded-md bg-blue-900 px-3.5 py-2.5 text-base float-right font-semibold shadow-sm hover:bg-blue-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white text-blue-50"
+              v-if="savedRoles.includes(character.id)"
+              disabled
+              class="flex no-underline hover:no-underline flex-none rounded-md px-3.5 py-2.5 text-base float-right font-semibold border focus-visible:outline focus-visible:outline-2 bg-purple-50 focus-visible:outline-offset-2 focus-visible:outline-white text-grey-900"
+            >
+              <HeartIcon class="my-auto mr-2 h-5 w-5" style="color: #b493d6" aria-hidden="true" />
+              Saved
+            </button>
+            <button
+              v-else
+              class="flex no-underline hover:no-underline flex-none rounded-md px-3.5 py-2.5 text-base float-right font-semibold border focus-visible:outline focus-visible:outline-2 hover:bg-gray-50 focus-visible:outline-offset-2 focus-visible:outline-white text-grey-900"
               style="text-decoration: none"
-              @click="$emit('expandAudition', audition)"
+              @click="$emit('saveCharacter', character)"
             >
               <HeartIcon class="my-auto mr-2 h-5 w-5 text-gray-400" aria-hidden="true" />
               Save Role
@@ -76,38 +85,25 @@
 </template>
 
 <script>
-import axios from "axios";
 import moment from "moment";
 import { HeartIcon } from "@heroicons/vue/20/solid";
 
 export default {
   components: { HeartIcon },
-  props: ["character"],
+  props: ["character", "savedRoles"],
   data: function () {
     return {
       heart: false,
     };
   },
-  watch: {
-    currentAuditionId() {
-      console.log(
-        this.audition.id,
-        this.currentAuditionId.currentAuditionId,
-        this.hidden,
-        this.currentAuditionId.currentAuditionId === this.audition.id
-      );
-    },
-  },
   computed: {
     formatDate() {
       return (value) => {
-        return moment(String(value)).format("MM/DD/YYYY");
+        return moment(String(value)).format("ll");
       };
     },
   },
-  methods: {
-    addToFavorites() {},
-  },
+  methods: {},
 };
 </script>
 <style scoped>

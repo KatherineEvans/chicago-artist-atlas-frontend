@@ -168,7 +168,9 @@
               v-for="character in audition.characters"
               :key="character.id"
               :character="character"
+              :savedRoles="savedRoles"
               @show-full-card="showFullCard(character)"
+              @save-character="addToFavorites"
             />
           </ul>
         </div>
@@ -211,7 +213,11 @@
     </div>
     <ModalContainer :open="modalOpen" @close-modal="closeModal">
       <template v-slot:content>
-        <CharacterCardFull :character="character"></CharacterCardFull>
+        <CharacterCardFull
+          :savedRoles="savedRoles"
+          :character="character"
+          @save-character="addToFavorites"
+        ></CharacterCardFull>
       </template>
     </ModalContainer>
   </div>
@@ -226,7 +232,7 @@ import ModalContainer from "../../components/ModalContainer";
 
 export default {
   components: { CharacterCardSlim, CharacterCardFull, ModalContainer },
-  props: ["audition", "currentAuditionId"],
+  props: ["audition", "currentAuditionId", "savedRoles"],
   data: function () {
     return {
       heart: false,
@@ -237,7 +243,6 @@ export default {
   },
   mounted() {
     this.cardElement = document.getElementById(this.audition.id);
-    console.log(this.cardElement.classList.contains("hide"));
   },
   computed: {
     anyAuditionDate() {
@@ -269,7 +274,6 @@ export default {
       if (this.audition.show_description) {
         string = string + " sm:bg-blue-50/60";
       }
-      console.log(string);
       return string;
     },
     formatDate() {
@@ -282,7 +286,34 @@ export default {
     closeModal() {
       this.modalOpen = false;
     },
-    addToFavorites() {},
+    addToFavorites(character) {
+      axios
+        .post("/user_roles.json", { character_id: character.id })
+        .then((response) => {
+          this.$emit("addToSavedRoles", character.id);
+          this.closeModal();
+          this.$store.commit("alerts/setMessage", {
+            title: "Successfully Saved!",
+            body: "Your audition has been successfully saved. To view all saved auditions, visit the link:",
+            icon: "success",
+            linkName: "View Saved Auditions",
+            linkValue: "/user/auditions",
+            isVisible: true,
+          });
+        })
+        .catch((error) => {
+          this.errors = error.response.data.errors;
+          this.closeModal();
+          this.$store.commit("alerts/setMessage", {
+            title: "Something Went Wrong",
+            body: "Sorry about that! Please try again, or reach out for assistance",
+            linkName: "Help",
+            linkValue: "mailto:info@chiartistatlas.com?subject=Assistance: Saving Auditions",
+            icon: "failure",
+            isVisible: true,
+          });
+        });
+    },
     showFullCard(character) {
       this.character = character;
       this.modalOpen = true;

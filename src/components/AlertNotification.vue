@@ -1,5 +1,8 @@
 <template>
-  <div aria-live="assertive" class="pointer-events-none fixed inset-0 flex items-end px-4 py-6 sm:items-start sm:p-6">
+  <div
+    aria-live="assertive"
+    class="pointer-events-none fixed inset-0 flex items-end px-4 py-6 sm:items-start sm:p-6 z-10"
+  >
     <div class="flex w-full flex-col items-center space-y-4 sm:items-end">
       <transition
         enter-active-class="transform ease-out duration-300 transition"
@@ -10,22 +13,29 @@
         leave-to-class="opacity-0"
       >
         <div
-          v-if="show"
+          v-if="message.isVisible"
           class="pointer-events-auto w-full max-w-sm overflow-hidden rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5"
         >
           <div class="p-4">
             <div class="flex items-start">
               <div class="flex-shrink-0">
-                <CheckCircleIcon class="h-6 w-6 text-green-400" aria-hidden="true" />
+                <CheckCircleIcon v-if="message.icon == 'success'" class="h-8 w-8 text-green-400" aria-hidden="true" />
+                <InformationCircleIcon v-if="message.icon == 'information'" />
+                <XCircleIcon v-if="message.icon == 'failure'" class="h-8 w-8 text-red-400" />
               </div>
               <div class="ml-3 w-0 flex-1 pt-0.5">
-                <p class="text-sm font-medium text-gray-900">{{ messageTitle }}</p>
-                <p class="mt-1 text-sm text-gray-500">{{ messageBody }}</p>
+                <p class="text-base font-medium text-gray-900">{{ message.title }}</p>
+                <p class="mt-1 text-base text-gray-500">
+                  {{ message.body }}
+                  <span v-if="message.linkName">
+                    <a :href="message.linkValue">{{ message.linkName }}</a>
+                  </span>
+                </p>
               </div>
               <div class="ml-4 flex flex-shrink-0">
                 <button
                   type="button"
-                  @click="show = false"
+                  @click="$store.commit('alerts/hideMessage')"
                   class="inline-flex rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                 >
                   <span class="sr-only">Close</span>
@@ -40,23 +50,21 @@
   </div>
 </template>
 <script>
-import { CheckCircleIcon } from "@heroicons/vue/24/outline";
+import { CheckCircleIcon, XCircleIcon, InformationCircleIcon } from "@heroicons/vue/24/outline";
 import { XMarkIcon } from "@heroicons/vue/20/solid";
 
 export default {
   components: {
+    InformationCircleIcon,
     CheckCircleIcon,
+    XCircleIcon,
     XMarkIcon,
   },
-  data: function () {
-    return {
-      show: false,
-      messageTitle: "Successfully saved!",
-      messageBody: "Anyone with a link can now view this file.",
-    };
+  computed: {
+    message() {
+      return this.$store.state.alerts.message;
+    },
   },
-  mounted() {},
-  watch: {},
   methods: {},
 };
 </script>

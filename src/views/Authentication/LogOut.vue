@@ -2,10 +2,13 @@
 import axios from "axios";
 
 export default {
-  created: function () {
-    delete axios.defaults.headers.common["Authorization"];
-    localStorage.removeItem("jwt");
+  created() {
     this.$router.push("/");
+    this.$store.dispatch("sessions/logoutUser").then(() => {
+      this.$store.commit("sessions/setAuthToken", null);
+      localStorage.clear();
+      axios.defaults.headers.common["Authorization"] = null;
+    });
   },
 };
 </script>

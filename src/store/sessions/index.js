@@ -1,4 +1,4 @@
-import api from "@/api.js";
+import router from "@/router";
 import axios from "axios";
 
 export default {
@@ -92,18 +92,16 @@ export default {
           authorization: localStorage.authToken,
         },
       };
-      new Promise((resolve, reject) => {
-        axios
-          .delete("/users/sign_out.json", config)
-          .then(() => {
-            commit("resetUserInfo");
-            resolve();
-          })
-          .catch((error) => {
-            commit("setErrors", error);
-            reject(error);
-          });
-      });
+      axios
+        .delete("/users/sign_out.json", config)
+        .then(() => {
+          // localStorage.clear();
+          // delete axios.defaults.headers.common["Authorization"];
+          // router.push("/");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     },
     resetUserPassword({ commit }, payload) {
       axios.post("/users/password.json", payload).then((response) => {

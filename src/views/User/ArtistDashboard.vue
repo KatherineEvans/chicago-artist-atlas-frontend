@@ -15,7 +15,9 @@
     <!-- MOBILE MENU BAR -->
     <div class="bg-white text-blue-900 flex justify-between md:hidden">
       <!-- USER NAME -->
-      <div href="#" class="text-blue-900 block px-5 py-3 font-extrabold text-lg no-underline">First Last</div>
+      <div href="#" class="text-blue-900 block px-5 py-3 font-extrabold text-lg no-underline">
+        {{ activeUser }}
+      </div>
       <!-- MOBILE MENU BUTTON -->
       <button @click="showNav = !showNav" class="mobile-menu-button text-lg px-5 py-3">
         <i class="fa-solid fa-bars text-blue-900"></i>
@@ -34,7 +36,7 @@
             />
           </svg>
         </span>
-        <div class="font-extrabold text-2xl text-center text-white">First Last</div>
+        <div class="font-extrabold text-2xl text-center text-white">{{ activeUser }}</div>
       </div>
       <!-- NAVIGATION -->
       <nav class="px-0">
@@ -53,7 +55,7 @@
               <DisclosureButton
                 @click="rotate = !rotate"
                 class="w-100 text-white flex items-center block py-3 px-4 hover:no-underline no-underline text-lg hover:bg-blue-800 rounded transition duration-200 font-bold"
-                :class="{ 'bg-blue-900': $route.name.includes('user') }"
+                :class="{ 'bg-blue-900': $route.name.includes('profile') }"
               >
                 <i class="mr-2" :class="link.icon"></i>
                 {{ link.name }}
@@ -111,6 +113,7 @@ export default {
       showNav: false,
       navOpen: false,
       rotate: false,
+      activeUser: `${localStorage.userFirstName} ${localStorage.userLastName}`,
       navigation: [
         {
           name: "Profile",

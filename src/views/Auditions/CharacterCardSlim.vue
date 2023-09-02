@@ -30,22 +30,31 @@
         <div class="flex w-0 flex-1">
           <button
             @click="$emit('showFullCard', character)"
-            class="relative -mr-px inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-bl-lg border-top py-3 text-sm font-semibold text-gray-900 no-underline hover:no-underline hover:bg-blue-50"
+            class="relative -mr-px inline-flex w-0 flex-1 items-center justify-center gap-x-3 border-top py-3 text-sm font-semibold text-gray-900 no-underline hover:no-underline hover:bg-blue-50 hover:border-r"
           >
-            <InformationCircleIcon class="h-5 w-5" style="color: #2b58bc" aria-hidden="true" />
+            <InformationCircleIcon class="h-5 w-5 text-blue-500" aria-hidden="true" />
             More Info
           </button>
         </div>
       </div>
       <div class="-mt-px flex divide-x divide-gray-200">
         <div class="-ml-px flex w-0 flex-1">
-          <a
-            href="#"
-            class="relative inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-br-lg border-top border-transparent py-3 text-md font-semibold text-gray-900 no-underline hover:no-underline hover:text-blue-900 hover:bg-purple-50"
+          <button
+            v-if="savedRoles.includes(character.id)"
+            disabled
+            class="relative inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-b-lg border-top py-3 text-md font-semibold text-gray-900 no-underline hover:no-underline bg-purple-50 border-l"
           >
             <HeartIcon class="h-5 w-5" style="color: #b493d6" aria-hidden="true" />
+            Saved
+          </button>
+          <button
+            v-else
+            @click="$emit('saveCharacter', character)"
+            class="relative inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-b-lg border-top py-3 text-md font-semibold text-gray-900 no-underline hover:no-underline hover:bg-gray-50 hover:border-l"
+          >
+            <HeartIcon class="h-5 w-5 text-gray-400" aria-hidden="true" />
             Save Role
-          </a>
+          </button>
         </div>
       </div>
     </div>
@@ -57,7 +66,7 @@ import { HeartIcon, InformationCircleIcon } from "@heroicons/vue/20/solid";
 
 export default {
   components: { HeartIcon, InformationCircleIcon },
-  props: ["character"],
+  props: ["character", "savedRoles"],
   data: function () {
     return {};
   },

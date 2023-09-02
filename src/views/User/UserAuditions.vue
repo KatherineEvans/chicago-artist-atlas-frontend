@@ -1,35 +1,89 @@
 <template>
-  <div v-if="auditions.length < 1">
-    <div class="space-y-12">
-      <div class="pb-7">
+  <div>
+    <div class="space-y-4">
+      <div class="pb-3">
         <h2 class="font-semibold leading-7 text-gray-900 py-3">Saved Auditions</h2>
-        <p class="mt-1 text-lg leading-6 text-gray-600">
-          It doesn't look like you have any saved auditions, let's change that! Visit the
-          <a href="/auditions" class="no-underline hover:no-underline text-blue-700">auditions board</a>
-        </p>
+        <span v-if="!isLoading">
+          <p v-if="auditionsExist" class="mt-1 text-lg leading-6 text-gray-600">Ready to take center stage?</p>
+          <p v-else class="mt-1 text-lg leading-6 text-gray-600">
+            It doesn't look like you have any saved auditions, let's change that! Visit the
+            <a href="/auditions" class="no-underline hover:no-underline text-blue-700">auditions board</a>
+          </p>
+        </span>
       </div>
-      <img
-        src="https://res.cloudinary.com/dzlaaytu7/image/upload/v1688246189/iStock-1438367331_i5itmw.jpg"
-        class="w-100 mx-auto mt-2"
-        alt="Calender Under Construction"
-        style="max-width: 550px"
-      />
+      <div class="loading-spinner-container" v-if="isLoading">
+        <div class="loading-spinner m-auto">
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+      </div>
+      <div v-else>
+        <div v-if="auditionsExist">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="rounded-md border p-4" v-for="audition in auditions.saved" :key="audition.role.id">
+              <div class="flex justify-between">
+                <div class="text-lg mb-2 d-inline">{{ audition.character.name }}</div>
+                <div class="text-gray-700 italic text-sm font-normal d-inline">
+                  Saved {{ formatDate(audition.role.created_at) }}
+                </div>
+              </div>
+              <p class="text-base font-normal">{{ audition.character.description }}</p>
+            </div>
+          </div>
+        </div>
+        <img
+          v-else
+          src="https://res.cloudinary.com/dzlaaytu7/image/upload/v1688246189/iStock-1438367331_i5itmw.jpg"
+          class="w-100 mx-auto mt-2"
+          alt="Calender Under Construction"
+          style="max-width: 550px"
+        />
+      </div>
     </div>
-  </div>
-  <div v-else>
-    <div>Fart</div>
   </div>
 </template>
 <script>
+import axios from "axios";
+import moment from "moment";
 export default {
   data: function () {
     return {
       auditions: [],
+      isLoading: true,
     };
   },
+  mounted() {
+    this.getUserAuditions();
+    console.log(localStorage.authToken);
+  },
   watch: {},
-  computed: {},
-  methods: {},
+  computed: {
+    formatDate() {
+      return (value) => {
+        return moment(String(value)).format("ll");
+      };
+    },
+    auditionsExist() {
+      if (
+        this.auditions.saved.length > 0 ||
+        this.auditions.submitted.length > 0 ||
+        this.auditions.callbacks.length > 0 ||
+        this.auditions.cast.length > 0
+      ) {
+        return true;
+      }
+      return false;
+    },
+  },
+  methods: {
+    getUserAuditions() {
+      axios.get("/user_roles.json").then((response) => {
+        this.auditions = response.data;
+        this.isLoading = false;
+      });
+    },
+  },
 };
 </script>
 <style></style>

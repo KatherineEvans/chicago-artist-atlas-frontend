@@ -1,4 +1,4 @@
-import api from "@/api.js";
+import axios from "axios";
 
 export default {
   namespaced: true,
@@ -115,19 +115,17 @@ export default {
     },
   },
   actions: {
-    async loadExample({ commit, dispatch }, id) {
-      let response = await api.get("example-url", {
-        params: { id: id },
-      });
-      commit("setExample", response.data);
-      dispatch("loadExampleTwo", id);
-    },
-    async loadExampleTwo({ commit }, id) {
-      let response = await api.get("example-url-two", {
-        params: { id: id },
-      });
-
-      commit("setExampleTwo", response.data);
+    getUserProfile({ commit }) {
+      axios
+        .get("/profile.json")
+        .then((response) => {
+          console.log("got profile", response);
+        })
+        .catch((error) => {
+          // commit("setErrors", error.response.data.status.message);
+          console.log("signup posted w/errors", error.response.data.status.message);
+          // return error.response.data.status.message;
+        });
     },
   },
   getters: {
