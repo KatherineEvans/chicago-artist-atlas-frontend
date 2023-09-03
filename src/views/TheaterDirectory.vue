@@ -1,7 +1,7 @@
 <template>
   <div>
-    <div class="bg-blue-50 p-10 mx-auto text-center">
-      <p class="text-2xl md:text-3xl font-bold mb-3">
+    <div class="bg-blue-50 px-10 py-8 mx-auto text-center">
+      <p class="text-2xl md:text-3xl font-bold mb-2">
         {{ title }}
       </p>
       <p class="text-lg max-w-3xl mx-auto">
@@ -20,7 +20,7 @@
       </div>
     </div> -->
     <!-- SEARCH / FILTER BAR -->
-    <div class="container-fluid">
+    <div class="container">
       <div class="grid grid-cols-2 lg:grid-cols-3 justify-center p-4 gap-4">
         <div class="col-span-1">
           <label for="equity" class="mr-2 sm:text-sm sm:leading-6">Equity</label>

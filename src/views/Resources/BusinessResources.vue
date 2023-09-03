@@ -1,14 +1,12 @@
 <template>
   <div class="container-fluid">
-    <div class="row bg-blue-50 py-3 px-4 text-center">
-      <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 col-xl-8 m-auto my-3">
-        <h2 class="text-3xl font-bold">Business Resources for Artists</h2>
-        <p style="font-size: 16px">
-          Here at Atlas, we're focused on providing our users with the latest resources on topics that matter -
-          inclusivity, diversity, sustainability, and the business of theatre! We strive to continually improve and grow
-          our resource respository to best serve the Chicago theatre community.
-        </p>
-      </div>
+    <div class="bg-blue-50 px-10 py-8 mx-auto text-center">
+      <p class="text-2xl md:text-3xl font-bold mb-2">Business Resources for Artists</p>
+      <p class="text-lg max-w-3xl mx-auto mb-2">
+        Here at Atlas, we're focused on providing our users with the latest resources on topics that matter -
+        inclusivity, diversity, sustainability, and the business of theatre! We strive to continually improve and grow
+        our resource respository to best serve the Chicago theatre community.
+      </p>
     </div>
     <nav class="flex flex-wrap justify-between text-base pb-0" aria-label="Breadcrumb">
       <ol role="list" class="flex items-center space-x-4">
@@ -96,15 +94,6 @@
               <div class="absolute inset-0 rounded-2xl ring-1 ring-inset ring-gray-900/10" />
             </div>
             <div class="max-w-xl">
-              <!-- <div class="mt-8 flex items-center gap-x-4 text-xs">
-                <a
-                  :href="post.website_url"
-                  class="relative z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100"
-                >
-                  <span v-if="post.document_name">{{ post.document_name }}</span>
-                  <span v-else>Visit site</span>
-                </a>
-              </div> -->
               <div class="group relative px-2">
                 <h3 class="mt-4 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
                   <a

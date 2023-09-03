@@ -1,17 +1,15 @@
 <template>
-  <div class="container-fluid">
-    <div class="row bg-blue-50 py-3 px-4 text-center">
-      <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 col-xl-8 m-auto my-3">
-        <h2 class="text-3xl font-bold">Identity Based Resources</h2>
-        <p style="font-size: 16px">
-          Creating an
-          <strong>inclusive</strong>
-          community is at the heart of what we here at Atlas! It doesn't matter how you identify, Atlas has your back.
-          We're here to provide unwavering support and guide you through the ins and outs of the performing arts
-          industry. You can count on us to provide customized resources tailored to fit your unique needs, challenges,
-          and concerns. Together, let's ignite the stage and make unforgettable theatre.
-        </p>
-      </div>
+  <div>
+    <div class="bg-blue-50 px-10 py-8 mx-auto text-center">
+      <p class="text-2xl md:text-3xl font-bold mb-2">Identity Based Resources</p>
+      <p class="text-lg max-w-3xl mx-auto mb-2">
+        Creating an
+        <strong>inclusive</strong>
+        community is at the heart of what we here at Atlas! It doesn't matter how you identify, Atlas has your back.
+        We're here to provide unwavering support and guide you through the ins and outs of the performing arts industry.
+        You can count on us to provide customized resources tailored to fit your unique needs, challenges, and concerns.
+        Together, let's ignite the stage and make unforgettable theatre.
+      </p>
     </div>
     <nav class="flex flex-wrap justify-between text-base pb-0" aria-label="Breadcrumb">
       <ol role="list" class="flex items-center space-x-4">
@@ -73,17 +71,6 @@
           </transition>
         </Menu>
       </div>
-      <!-- <div class="flex flex-wrap">
-        <a
-          class="rounded-full px-3.5 py-2 text-base font-semibold shadow-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 mx-3 sm:mx-auto no-underline hover:no-underline mb-3"
-          v-for="button in filterButtons"
-          :key="button.name"
-          :href="button.link"
-          :class="button.classes"
-        >
-          {{ button.name }}
-        </a>
-      </div> -->
     </nav>
     <div class="container pb-5 px-5 m-auto">
       <div
@@ -110,15 +97,6 @@
               <div class="absolute inset-0 rounded-2xl ring-1 ring-inset ring-gray-900/10" />
             </div>
             <div class="max-w-xl">
-              <!-- <div class="mt-8 flex items-center gap-x-4 text-xs">
-                <a
-                  :href="post.website_url"
-                  class="relative z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100"
-                >
-                  <span v-if="post.document_name">{{ post.document_name }}</span>
-                  <span v-else>Visit site</span>
-                </a>
-              </div> -->
               <div class="group relative px-2">
                 <h3 class="mt-4 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
                   <a

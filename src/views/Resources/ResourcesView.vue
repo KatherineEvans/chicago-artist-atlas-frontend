@@ -1,18 +1,18 @@
 <template>
-  <span>
-    <div class="row bg-blue-50 py-3 px-4 text-center">
-      <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 col-xl-8 m-auto my-3">
-        <div class="text-3xl font-bold">Resources</div>
-        <p style="font-size: 16px">
-          Here at Atlas, we're focused on providing our users with the latest resources on topics that matter -
-          inclusivity, diversity, sustainability, and the business of theatre! We strive to continually improve and grow
-          our resource respository to best serve the Chicago theatre community.
-        </p>
-        <p style="font-size: 16px">
-          Are there resources you don't see here?
-          <a href="mailto:info@chiartistatlas.com?subject=Inclusivity Resources">Let us know!</a>
-        </p>
-      </div>
+  <div>
+    <div class="bg-blue-50 px-10 py-8 mx-auto text-center">
+      <p class="text-2xl md:text-3xl font-bold mb-2">Resources</p>
+      <p class="text-lg max-w-3xl mx-auto mb-2">
+        Here at Atlas, we're focused on providing our users with the latest resources on topics that matter -
+        inclusivity, diversity, sustainability, and the business of theatre! We strive to continually improve and grow
+        our resource respository to best serve the Chicago theatre community.
+      </p>
+      <p class="text-base italic">
+        Are there resources you don't see here?
+        <a class="underline text-blue-700" href="mailto:info@chiartistatlas.com?subject=Inclusivity Resources">
+          Let us know!
+        </a>
+      </p>
     </div>
     <nav class="flex flex-wrap justify-between text-base pb-2" aria-label="Breadcrumb">
       <ol role="list" class="flex items-center space-x-4">
@@ -212,7 +212,7 @@
         </div>
       </div>
     </div>
-  </span>
+  </div>
 </template>
 
 <script>

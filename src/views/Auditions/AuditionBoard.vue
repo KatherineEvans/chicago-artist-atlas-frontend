@@ -1,13 +1,11 @@
 <template>
-  <div class="container-fluid">
-    <div class="row bg-blue-50 py-3 px-4 text-center">
-      <div class="col-8 m-auto my-3">
-        <div class="text-3xl font-bold mb-3">Auditions</div>
-        <p class="text-lg">
-          Atlas strives to deliver accurate, timely, and transparent audition information for Chicago and the greater
-          Chicagoland area. Theatres and creative who would like to post an audition, please fill out the form here!
-        </p>
-      </div>
+  <div>
+    <div class="bg-blue-50 px-10 py-8 mx-auto text-center">
+      <p class="text-2xl md:text-3xl font-bold mb-2">Auditions</p>
+      <p class="text-lg max-w-3xl mx-auto">
+        Atlas strives to deliver accurate, timely, and transparent audition information for Chicago and the greater
+        Chicagoland area. Theatres and creative who would like to post an audition, please fill out the form here!
+      </p>
     </div>
     <div class="container main">
       <!-- SEARCH / FILTER BAR -->
