@@ -174,8 +174,7 @@ export default {
   methods: {
     getResources() {
       axios.get("/resources.json?primary_filter=Identity%20Based").then((response) => {
-        this.resources = response.data["Identity Based"];
-        console.log(this.resources);
+        this.resources = response.data.grouped["Identity Based"];
       });
     },
   },

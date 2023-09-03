@@ -150,7 +150,7 @@ export default {
   methods: {
     getResources() {
       axios.get("/resources.json?primary_filter=Life%20Hack").then((response) => {
-        this.resources = response.data["Life Hack"];
+        this.resources = response.data.grouped["Life Hack"];
       });
     },
   },

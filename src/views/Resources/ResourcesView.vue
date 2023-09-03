@@ -142,31 +142,22 @@
               </div>
             </div>
             <div class="resource-cards">
-              <div class="card resource-card">
-                <h6>Resource Name</h6>
+              <div v-for="resource in businessResources" :key="resource.id" class="card resource-card">
+                <div class="mb-2">
+                  <h6 class="d-inline">{{ resource.organization_name }}</h6>
+                  <span
+                    class="inline-flex items-center rounded-full bg-orange-50 px-2 py-1 text-sm float-right font-medium text-orange-700 ring-1 ring-inset ring-orange-600/20"
+                  >
+                    {{ resource.secondary_type }}
+                  </span>
+                </div>
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis at molestie ligula. Etiam id odio
-                  scelerisque, euismod ante lacinia, commodo erat. Aliquam varius nec felis sed suscipit. Maecenas id
-                  ullamcorper sapien.
+                  {{ resource.description }}
                 </p>
-                <a href="#" class="text-right">View Resource</a>
-              </div>
-              <div class="card resource-card">
-                <h6>Resource Name</h6>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis at molestie ligula. Etiam id odio
-                  scelerisque, euismod ante lacinia, commodo erat. Aliquam varius nec felis sed suscipit. Maecenas id
-                  ullamcorper sapien.
-                </p>
-              </div>
-              <div class="card resource-card">
-                <h6>Resource Name</h6>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis at molestie ligula. Etiam id odio
-                  scelerisque, euismod ante lacinia, commodo erat. Aliquam varius nec felis sed suscipit. Maecenas id
-                  ullamcorper sapien.
-                </p>
-                <a href="#" class="text-right">View Resource</a>
+                <a target="_blank" v-if="resource.website_url" :href="resource.website_url" class="text-right">
+                  View Resource
+                </a>
+                <a v-else target="_blank" :href="resource.pdf_url"></a>
               </div>
               <router-link
                 class="no-underline hover:no-underline flex-none rounded-md bg-blue-900 px-3.5 py-2.5 text-base float-right font-semibold shadow-sm hover:bg-blue-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
@@ -193,32 +184,22 @@
               </div>
             </div>
             <div class="resource-cards">
-              <div class="card resource-card">
-                <h6>Resource Name</h6>
+              <div v-for="resource in lifeHackResources" :key="resource.id" class="card resource-card">
+                <div class="mb-2">
+                  <h6 class="d-inline">{{ resource.organization_name }}</h6>
+                  <span
+                    class="inline-flex items-center rounded-full bg-purple-50 px-2 py-1 text-sm float-right font-medium text-purple-700 ring-1 ring-inset ring-purple-600/20"
+                  >
+                    {{ resource.secondary_type }}
+                  </span>
+                </div>
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis at molestie ligula. Etiam id odio
-                  scelerisque, euismod ante lacinia, commodo erat. Aliquam varius nec felis sed suscipit. Maecenas id
-                  ullamcorper sapien.
+                  {{ resource.description }}
                 </p>
-                <a href="#" class="text-right">View Resource</a>
-              </div>
-              <div class="card resource-card">
-                <h6>Resource Name</h6>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis at molestie ligula. Etiam id odio
-                  scelerisque, euismod ante lacinia, commodo erat. Aliquam varius nec felis sed suscipit. Maecenas id
-                  ullamcorper sapien.
-                </p>
-                <a href="#" class="text-right">View Resource</a>
-              </div>
-              <div class="card resource-card">
-                <h6>Resource Name</h6>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis at molestie ligula. Etiam id odio
-                  scelerisque, euismod ante lacinia, commodo erat. Aliquam varius nec felis sed suscipit. Maecenas id
-                  ullamcorper sapien.
-                </p>
-                <a href="#" class="text-right">View Resource</a>
+                <a target="_blank" v-if="resource.website_url" :href="resource.website_url" class="text-right">
+                  View Resource
+                </a>
+                <a v-else target="_blank" :href="resource.pdf_url"></a>
               </div>
               <router-link
                 class="no-underline hover:no-underline flex-none rounded-md bg-blue-900 px-3.5 py-2.5 text-base float-right font-semibold shadow-sm hover:bg-blue-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
@@ -256,7 +237,10 @@ export default {
   methods: {
     getResources() {
       axios.get("/resources.json").then((response) => {
-        this.groupedResources = response.data;
+        this.groupedResources = response.data.grouped;
+        this.businessResources = response.data.business;
+        this.lifeHackResources = response.data.lifehack;
+
         this.bipoc =
           this.groupedResources["Identity Based"]["BIPOC"][
             Math.floor(Math.random() * this.groupedResources["Identity Based"]["BIPOC"].length)
