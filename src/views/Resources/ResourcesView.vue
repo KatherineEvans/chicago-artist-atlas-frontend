@@ -14,7 +14,7 @@
         </p>
       </div>
     </div>
-    <nav class="flex flex-wrap justify-between px-0 text-base" aria-label="Breadcrumb">
+    <nav class="flex flex-wrap justify-between text-base pb-2" aria-label="Breadcrumb">
       <ol role="list" class="flex items-center space-x-4">
         <li>
           <div>

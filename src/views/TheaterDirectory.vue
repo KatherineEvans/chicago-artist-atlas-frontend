@@ -1,6 +1,15 @@
 <template>
-  <div class="container-fluid">
-    <div class="row bg-blue-50 py-3 px-4 text-center">
+  <div>
+    <div class="bg-blue-50 p-10 mx-auto text-center">
+      <p class="text-2xl md:text-3xl font-bold mb-3">
+        {{ title }}
+      </p>
+      <p class="text-lg max-w-3xl mx-auto">
+        Atlas provides the most comprehensive directory of theatres, agencies, and classes in the city of Chicago. Use
+        this tool to explore the vast layout of the who, what, and where that makes up Chicago’s performing arts scene.
+      </p>
+    </div>
+    <!-- <div class="row bg-blue-50 py-3 px-4 text-center">
       <div class="col-8 m-auto my-3">
         <h2 class="text-3xl font-bold">{{ title }}</h2>
         <p style="font-size: 16px">
@@ -9,196 +18,196 @@
           scene.
         </p>
       </div>
-    </div>
+    </div> -->
     <!-- SEARCH / FILTER BAR -->
-    <div class="grid grid-cols-2 lg:grid-cols-3 justify-center p-4 gap-4">
-      <div class="col-span-1">
-        <label for="equity" class="mr-2 sm:text-sm sm:leading-6">Equity</label>
-        <select
-          id="equity"
-          name="equity"
-          v-model="equity"
-          @change="trackValue"
-          class="w-100 rounded-md border-0 py-1.5 pl-3 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6"
-        >
-          <option selected :value="null">Any</option>
-          <option value="Equity">Equity</option>
-          <option value="Non-Equity">Non-Equity</option>
-          <option value="AGMA">AGMA</option>
-        </select>
-      </div>
-      <div class="col-span-1">
-        <label for="seasonType" class="mr-2 sm:text-sm sm:leading-6">Season Type</label>
-        <select
-          id="seasonType"
-          name="seasonType"
-          v-model="seasonType"
-          @change="trackValue"
-          class="w-100 rounded-md border-0 py-1.5 pl-3 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6"
-        >
-          <option :value="null" selected>Any</option>
-          <option v-for="season in seasonTypes" :key="season" :value="season">{{ season }}</option>
-        </select>
-      </div>
-      <div class="col-span-2 lg:col-span-1">
-        <div>
-          <label for="search" class="mr-2 sm:text-sm sm:leading-6">Search by Theater</label>
-          <div class="relative">
-            <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-              <MagnifyingGlassIcon class="h-5 w-5 text-gray-400" aria-hidden="true" />
-            </div>
-            <input
-              id="search"
-              name="search"
-              v-model="searchTerm"
-              class="block w-full rounded-md border-0 bg-white py-1.5 pl-10 pr-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-              placeholder="Search Production or Company"
-              type="search"
-            />
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- <h1 class="text-center my-3">{{ title }}</h1> -->
-    <div class="row my-4 mx-auto">
-      <div class="loading-spinner-container" v-if="isLoading">
-        <div class="loading-spinner m-auto">
-          <div></div>
-          <div></div>
-          <div></div>
-        </div>
-      </div>
-      <div v-if="noTheatersToDisplay" class="text-center m-6">
-        <p class="text-xl">
-          We're sorry! It looks like you picked a combination of search terms that returned zero results!
-        </p>
-        <p class="text-xl">
-          Try a different combination, or if you believe this is a mistake, please
-          <a href="mailto:info@chiartistatlas.com?subject=Theatre Directory">reach out</a>
-          to the Atlas team.
-        </p>
-      </div>
-      <div class="row" v-else>
-        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-xs-12 mx-auto my-2">
-          <div
-            v-for="theater in theaters"
-            v-bind:key="theater.id"
-            class="card text-left mb-3"
-            :class="theater.id === currentTheater.id ? activeClass : ''"
+    <div class="container-fluid">
+      <div class="grid grid-cols-2 lg:grid-cols-3 justify-center p-4 gap-4">
+        <div class="col-span-1">
+          <label for="equity" class="mr-2 sm:text-sm sm:leading-6">Equity</label>
+          <select
+            id="equity"
+            name="equity"
+            v-model="equity"
+            @change="trackValue"
+            class="w-100 rounded-md border-0 py-1.5 pl-3 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6"
           >
-            <div class="card-body" v-on:click="currentTheater = theater">
-              <div class="mb-2">
-                <h5 class="card-title d-inline">{{ theater.name }}</h5>
-                <a target="_blank" :href="theater.website" class="hover-text float-right card-link">
-                  <i class="fa-solid fa-square-up-right"></i>
-                  <span class="tooltip-text" id="top">Visit Site</span>
-                </a>
+            <option selected :value="null">Any</option>
+            <option value="Equity">Equity</option>
+            <option value="Non-Equity">Non-Equity</option>
+            <option value="AGMA">AGMA</option>
+          </select>
+        </div>
+        <div class="col-span-1">
+          <label for="seasonType" class="mr-2 sm:text-sm sm:leading-6">Season Type</label>
+          <select
+            id="seasonType"
+            name="seasonType"
+            v-model="seasonType"
+            @change="trackValue"
+            class="w-100 rounded-md border-0 py-1.5 pl-3 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6"
+          >
+            <option :value="null" selected>Any</option>
+            <option v-for="season in seasonTypes" :key="season" :value="season">{{ season }}</option>
+          </select>
+        </div>
+        <div class="col-span-2 lg:col-span-1">
+          <div>
+            <label for="search" class="mr-2 sm:text-sm sm:leading-6">Search by Theater</label>
+            <div class="relative">
+              <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+                <MagnifyingGlassIcon class="h-5 w-5 text-gray-400" aria-hidden="true" />
               </div>
-              <p v-if="theater?.address?.full_address" class="card-subtitle mb-2 text-muted">
-                {{ theater.address.full_address }}
-              </p>
-              <p v-else><em>Various Addresses</em></p>
-              <div class="row">
-                <div class="col">
-                  <i class="fa-solid fa-phone mr-2"></i>
-                  <span v-if="theater.phone">{{ theater.phone }}</span>
-                  <span v-else>-</span>
+              <input
+                id="search"
+                name="search"
+                v-model="searchTerm"
+                class="block w-full rounded-md border-0 bg-white py-1.5 pl-10 pr-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                placeholder="Search Production or Company"
+                type="search"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- <h1 class="text-center my-3">{{ title }}</h1> -->
+      <div class="my-4">
+        <div class="loading-spinner-container" v-if="isLoading">
+          <div class="loading-spinner m-auto">
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        </div>
+        <div v-if="noTheatersToDisplay" class="text-center m-6">
+          <p class="text-xl">
+            We're sorry! It looks like you picked a combination of search terms that returned zero results!
+          </p>
+          <p class="text-xl">
+            Try a different combination, or if you believe this is a mistake, please
+            <a href="mailto:info@chiartistatlas.com?subject=Theatre Directory">reach out</a>
+            to the Atlas team.
+          </p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6" v-else>
+          <div class="col-span-1 mx-4 md:ml-6 md:mr-0">
+            <div
+              v-for="theater in theaters"
+              v-bind:key="theater.id"
+              class="card text-left mb-3"
+              :class="theater.id === currentTheater.id ? activeClass : ''"
+            >
+              <div class="card-body" v-on:click="currentTheater = theater">
+                <div class="mb-2">
+                  <h5 class="card-title d-inline">{{ theater.name }}</h5>
+                  <a target="_blank" :href="theater.website" class="hover-text float-right card-link">
+                    <i class="fa-solid fa-square-up-right"></i>
+                    <span class="tooltip-text" id="top">Visit Site</span>
+                  </a>
                 </div>
-              </div>
-              <div class="row">
-                <div class="col">
-                  <i v-if="theater.contact_email" class="fa-solid fa-envelope mr-2"></i>
-                  <i v-if="theater.contact_form" class="fa-solid fa-message mr-2"></i>
-                  <span v-if="theater.contact_email">
-                    <a :href="'mailto:' + theater.contact_email">{{ theater.contact_email }}</a>
-                  </span>
-                  <span v-if="theater.contact_form" target="_blank">
-                    <a :href="theater.contact_form">Contact Form</a>
-                  </span>
+                <p v-if="theater?.address?.full_address" class="card-subtitle mb-2 text-muted">
+                  {{ theater.address.full_address }}
+                </p>
+                <p v-else><em>Various Addresses</em></p>
+                <div class="row">
+                  <div class="col">
+                    <i class="fa-solid fa-phone mr-2"></i>
+                    <span v-if="theater.phone">{{ theater.phone }}</span>
+                    <span v-else>-</span>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <i v-if="theater.contact_email" class="fa-solid fa-envelope mr-2"></i>
+                    <i v-if="theater.contact_form" class="fa-solid fa-message mr-2"></i>
+                    <span v-if="theater.contact_email">
+                      <a :href="'mailto:' + theater.contact_email">{{ theater.contact_email }}</a>
+                    </span>
+                    <span v-if="theater.contact_form" target="_blank">
+                      <a :href="theater.contact_form">Contact Form</a>
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>
+            <div class="row py-3">
+              <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-center">
+                  <li :class="currentPage == 1 ? 'disabled' : ''" class="page-item link-blue">
+                    <a class="page-link" @click="currentPage--">Previous</a>
+                  </li>
+                  <li class="page-item link-blue" :class="currentPage == startingPage ? 'active' : ''">
+                    <a class="page-link" @click="currentPage = startingPage">{{ startingPage }}</a>
+                  </li>
+                  <li class="page-item link-blue" :class="currentPage == middlePage ? 'active' : ''">
+                    <a class="page-link" @click="currentPage = middlePage">{{ middlePage }}</a>
+                  </li>
+                  <li class="page-item link-blue" :class="currentPage == endingPage ? 'active' : ''">
+                    <a class="page-link" @click="currentPage = endingPage">{{ endingPage }}</a>
+                  </li>
+                  <li :class="currentPage == totalPages ? 'disabled' : ''" class="page-item link-blue">
+                    <a class="page-link" @click="currentPage++">Next</a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
           </div>
-          <div class="row py-3">
-            <nav aria-label="Page navigation example">
-              <ul class="pagination justify-content-center">
-                <li :class="currentPage == 1 ? 'disabled' : ''" class="page-item link-blue">
-                  <a class="page-link" @click="currentPage--">Previous</a>
-                </li>
-                <li class="page-item link-blue" :class="currentPage == startingPage ? 'active' : ''">
-                  <a class="page-link" @click="currentPage = startingPage">{{ startingPage }}</a>
-                </li>
-                <li class="page-item link-blue" :class="currentPage == middlePage ? 'active' : ''">
-                  <a class="page-link" @click="currentPage = middlePage">{{ middlePage }}</a>
-                </li>
-                <li class="page-item link-blue" :class="currentPage == endingPage ? 'active' : ''">
-                  <a class="page-link" @click="currentPage = endingPage">{{ endingPage }}</a>
-                </li>
-                <li :class="currentPage == totalPages ? 'disabled' : ''" class="page-item link-blue">
-                  <a class="page-link" @click="currentPage++">Next</a>
-                </li>
-              </ul>
-            </nav>
-          </div>
-        </div>
-        <div class="col-xl-7 col-lg-7 col-md-7 col-sm-12 col-xs-12 mx-auto my-2">
-          <div id="map" class="mx-auto mb-4"></div>
-          <div class="mx-auto theater-highlight">
-            <div class="card">
-              <div class="card-header">
-                <h4 class="card-title d-inline mb-0">{{ currentTheater?.name }}</h4>
-                <h6 v-if="currentTheater?.address?.full_address" class="card-subtitle card-subtitle-color mt-1">
-                  {{ currentTheater?.address?.full_address }}
-                </h6>
-                <h6 v-else class="card-subtitle card-subtitle-color mt-1"><em>Various Addresses</em></h6>
-              </div>
-              <div class="card-body">
-                <div class="row">
+          <div class="col-span-1 md:col-span-2 px-2">
+            <div id="map" class="mx-auto mb-4 rounded-md"></div>
+            <div class="mx-auto theater-highlight">
+              <div class="border rounded-md">
+                <div class="bg-blue-950 text-white py-2 px-4 rounded-t">
+                  <h4 class="font-bold text-xl">{{ currentTheater?.name }}</h4>
+                  <h6 v-if="currentTheater?.address?.full_address" class="text-lg">
+                    {{ currentTheater?.address?.full_address }}
+                  </h6>
+                  <h6 v-else class="text-lg"><em>Various Addresses</em></h6>
+                </div>
+                <div class="py-3 px-4 text-base">
                   <p v-if="currentTheater.mission" class="card-text mb-3">
                     {{ currentTheater.mission }}
                   </p>
-                </div>
-                <div class="row">
-                  <div class="col-4">
-                    <img
-                      v-if="currentTheater.image_url"
-                      :src="currentTheater.image_url"
-                      :alt="currentTheater.name"
-                      class="theater-highlight-img"
-                    />
-                    <img
-                      v-else
-                      class="theater-highlight-img"
-                      src="https://www.monaco-chicago.com/images/1700-960/istock-155341582-73776d3d.jpg"
-                    />
-                  </div>
-                  <div class="col-8">
-                    <div class="row">
-                      <div class="row">
-                        <p class="mb-0">
-                          <strong>Union Status:</strong>
-                          {{ currentTheater?.union_status }}
-                        </p>
-                      </div>
-                      <div class="row">
-                        <p>
-                          <strong>Season Type:</strong>
-                          {{ currentTheater?.season_type }}
-                        </p>
-                      </div>
+                  <div class="grid grid-cols-1 md:grid-cols-3 justify-center pb-3 gap-6">
+                    <div class="col-span-1">
+                      <img
+                        v-if="currentTheater.image_url"
+                        :src="currentTheater.image_url"
+                        :alt="currentTheater.name"
+                        class="theater-highlight-img"
+                      />
+                      <img
+                        v-else
+                        class="theater-highlight-img"
+                        src="https://www.monaco-chicago.com/images/1700-960/istock-155341582-73776d3d.jpg"
+                      />
+                    </div>
+                    <div class="col-span-1 md:col-span-2">
                       <div>
-                        <i v-if="currentTheater.phone" class="fa-solid fa-phone mr-2"></i>
-                        <span v-if="currentTheater.phone">{{ currentTheater.phone }}</span>
-                      </div>
-                      <div>
-                        <i v-if="currentTheater.contact_email" class="fa-solid fa-envelope mr-2"></i>
-                        <i v-if="currentTheater.contact_form" class="fa-solid fa-message mr-2"></i>
-                        <span v-if="currentTheater.contact_email">
-                          <a :href="'mailto:' + currentTheater.contact_email">{{ currentTheater.contact_email }}</a>
-                        </span>
-                        <span v-if="currentTheater.contact_form" target="_blank">
-                          <a :href="currentTheater.contact_form">Contact Form</a>
-                        </span>
+                        <div class="mb-2">
+                          <p class="mb-0">
+                            <strong>Union Status:</strong>
+                            {{ currentTheater?.union_status }}
+                          </p>
+                        </div>
+                        <div class="mb-2">
+                          <p>
+                            <strong>Season Type:</strong>
+                            {{ currentTheater?.season_type }}
+                          </p>
+                        </div>
+                        <div class="mb-2">
+                          <i v-if="currentTheater.phone" class="fa-solid fa-phone mr-2"></i>
+                          <span v-if="currentTheater.phone">{{ currentTheater.phone }}</span>
+                        </div>
+                        <div class="mb-2">
+                          <i v-if="currentTheater.contact_email" class="fa-solid fa-envelope mr-2"></i>
+                          <i v-if="currentTheater.contact_form" class="fa-solid fa-message mr-2"></i>
+                          <span v-if="currentTheater.contact_email">
+                            <a :href="'mailto:' + currentTheater.contact_email">{{ currentTheater.contact_email }}</a>
+                          </span>
+                          <span v-if="currentTheater.contact_form" target="_blank">
+                            <a :href="currentTheater.contact_form">Contact Form</a>
+                          </span>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -362,34 +371,15 @@ export default {
 </script>
 
 <style scoped>
-.card-header {
-  background-color: #0b0b35;
-  color: #fff;
-}
-.card-subtitle-color {
-  color: #e6e6e6;
-}
-.card {
-  /* box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px; */
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
-  /* border: solid 1px #e9ecef; */
-  border: none;
-}
 .active {
   background-color: #f5f5f5;
 }
 .link-blue {
   color: #0d6efd !important;
 }
-.link-blue {
-  color: red;
-}
 #map {
-  max-width: 700px;
+  width: 100%;
   height: 500px;
-}
-.theater-highlight {
-  max-width: 700px;
 }
 .card-link {
   font-size: 18px;

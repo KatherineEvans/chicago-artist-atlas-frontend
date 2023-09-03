@@ -13,7 +13,7 @@
         </p>
       </div>
     </div>
-    <nav class="flex flex-wrap justify-between px-0" aria-label="Breadcrumb">
+    <nav class="flex flex-wrap justify-between text-base pb-0" aria-label="Breadcrumb">
       <ol role="list" class="flex items-center space-x-4">
         <li>
           <div>
@@ -28,7 +28,7 @@
             <ChevronRightIcon class="h-5 w-5 flex-shrink-0 text-gray-400" aria-hidden="true" />
             <a
               :href="page.href"
-              class="ml-4 text-sm font-medium text-gray-500 hover:text-gray-700"
+              class="ml-4 font-medium text-gray-500 hover:text-gray-700"
               :aria-current="page.current ? 'page' : undefined"
               :class="[page.current ? 'underline' : 'no-underline']"
             >

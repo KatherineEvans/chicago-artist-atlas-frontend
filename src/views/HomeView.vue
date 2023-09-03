@@ -1,16 +1,14 @@
 <template>
   <BannerImage />
   <div class="home mx-auto text-center">
-    <div class="bg-blue-50 p-4 md:p-2 sm:p-2">
-      <div class="m-auto my-3">
-        <p class="text-2xl md:text-3xl font-bold mb-1">
-          Atlas is the ultimate destination for Chicago theatre artists and makers.
-        </p>
-        <p class="text-lg">
-          We combine vital information in an easily navigated, one-stop-shop with original content from experts in our
-          community to guide you on your journey.
-        </p>
-      </div>
+    <div class="bg-blue-50 p-10">
+      <p class="text-2xl md:text-3xl font-bold mb-3">
+        Atlas is the ultimate destination for Chicago theatre artists and makers.
+      </p>
+      <p class="text-lg">
+        We combine vital information in an easily navigated, one-stop-shop with original content from experts in our
+        community to guide you on your journey.
+      </p>
     </div>
     <ModalContainer :open="modalOpen" @close-modal="closeModal">
       <template v-slot:content>
@@ -45,122 +43,124 @@
       </template>
     </ModalContainer>
     <!-- CURRENT RESOURCES -->
-    <div class="row no-gutters my-2 py-10 mx-auto mt-0">
-      <div class="col-12">
-        <p class="text-xl md:text-2xl lg:text-3xl font-bold mb-3">Atlas Directories</p>
-        <div class="row mb-3">
+    <div class="py-10">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 container">
+        <div class="col-span-1 md:col-span-3">
+          <p class="text-xl md:text-2xl lg:text-3xl font-bold mb-1">Atlas Directories</p>
           <div class="mx-auto col-xl-7 col-lg-7 col-md-8 col-sm-12 col-xs-12">
             <p class="text-lg">Explore opportunities in the Chicago Theatre community!</p>
           </div>
         </div>
-      </div>
-      <div class="mx-auto col-xl-3 col-lg-3 col-md-6 col-sm-12 col-xs-12 p-2">
-        <a href="/auditions" class="h-100 card mx-auto text-center drop-shadow-md">
-          <img class="m-auto pb-2 pt-4" src="../assets/illustrations/auditions.png" alt="" />
-          <div class="card-body">
-            <div class="mb-1">
-              <p class="text-xl font-bold mb-3">Auditions</p>
-              <div>
-                <p class="mb-2 text-base">
-                  Navigate available theatre, television, and film auditions in the Chicagoland area.
-                </p>
+        <div class="col-span-1 p-2">
+          <a href="/auditions" class="h-100 card mx-auto text-center drop-shadow-md">
+            <img class="m-auto pb-2 pt-4" src="../assets/illustrations/auditions.png" alt="" />
+            <div class="card-body">
+              <div class="mb-1">
+                <p class="text-xl font-bold mb-3">Auditions</p>
+                <div>
+                  <p class="mb-2 text-base">
+                    Navigate available theatre, television, and film auditions in the Chicagoland area.
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
-        </a>
-      </div>
-      <div class="mx-auto col-xl-3 col-lg-3 col-md-6 col-sm-12 col-xs-12 p-2">
-        <a href="/directory" class="drop-shadow-md h-100 card mx-auto text-center">
-          <img class="m-auto pb-2 pt-4" src="../assets/illustrations/directories.png" alt="" />
-          <div class="card-body">
-            <div class="mb-1">
-              <div class="text-xl font-bold mb-3">Theatres</div>
-              <div>
-                <p class="mb-2 text-base">
-                  Explore the wide and varied landscape of Chicago theatre with our comprehensive directory.
-                </p>
+          </a>
+        </div>
+        <div class="col-span-1 p-2">
+          <a href="/directory" class="drop-shadow-md h-100 card mx-auto text-center">
+            <img class="m-auto pb-2 pt-4" src="../assets/illustrations/directories.png" alt="" />
+            <div class="card-body">
+              <div class="mb-1">
+                <div class="text-xl font-bold mb-3">Theatres</div>
+                <div>
+                  <p class="mb-2 text-base">
+                    Explore the wide and varied landscape of Chicago theatre with our comprehensive directory.
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
-        </a>
-      </div>
-      <div class="mx-auto col-xl-3 col-lg-3 col-md-6 col-sm-12 col-xs-12 p-2">
-        <a @click="modalOpen = true" class="drop-shadow-md h-100 card mx-auto text-center">
-          <img class="m-auto pb-2 pt-4" src="../assets/illustrations/classes.png" alt="" />
-          <div class="card-body">
-            <div class="mb-1">
-              <p class="text-xl font-bold mb-3">Classes</p>
-              <div>
-                <p class="mb-2 text-base">
-                  Delve into Atlas's exceptional classes for creatives, and perfect your craft with lessons from
-                  industry leaders and experts.
-                </p>
+          </a>
+        </div>
+        <div class="col-span-1 p-2">
+          <a @click="modalOpen = true" class="drop-shadow-md h-100 card mx-auto text-center">
+            <img class="m-auto pb-2 pt-4" src="../assets/illustrations/classes.png" alt="" />
+            <div class="card-body">
+              <div class="mb-1">
+                <p class="text-xl font-bold mb-3">Classes</p>
+                <div>
+                  <p class="mb-2 text-base">
+                    Delve into Atlas's exceptional classes for creatives, and perfect your craft with lessons from
+                    industry leaders and experts.
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
-        </a>
+          </a>
+        </div>
       </div>
     </div>
     <!-- COMING SOON -->
-    <div class="py-10 row mx-auto bg-blue-50 mb-0">
-      <p class="text-3xl font-bold">Atlas Resources</p>
-      <div class="row mb-3">
-        <div class="mx-auto col-xl-7 col-lg-7 col-md-8 col-sm-12 col-xs-12">
-          <p class="text-lg">
-            Here at Atlas, we're focused on providing our users with the latest resources on topics that matter -
-            inclusivity, diversity, sustainability, and the business of theatre! We strive to continually improve and
-            grow our resource respository to best serve the Chicago theatre community.
-          </p>
-          <!-- <a style="text-decoration: underline" href="/resources">View all resources</a> -->
+    <div class="py-10 bg-blue-50 mb-0">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 container">
+        <div class="col-span-1 md:col-span-3">
+          <p class="text-xl md:text-2xl lg:text-3xl font-bold mb-1">Atlas Resources</p>
+          <div class="mx-auto col-xl-7 col-lg-7 col-md-8 col-sm-12 col-xs-12">
+            <p class="text-lg">
+              Here at Atlas, we're focused on providing our users with the latest resources on topics that matter -
+              inclusivity, diversity, sustainability, and the business of theatre! We strive to continually improve and
+              grow our resource respository to best serve the Chicago theatre community.
+            </p>
+            <!-- <a style="text-decoration: underline" href="/resources">View all resources</a> -->
+          </div>
         </div>
-      </div>
-      <div class="mx-auto col-xl-3 col-lg-3 col-md-6 col-sm-12 col-xs-12 p-2">
-        <a href="/resources" class="drop-shadow-md h-100 card mx-auto text-center">
-          <img class="m-auto pb-2 pt-4" src="../assets/illustrations/identity.png" alt="" />
-          <div class="card-body">
-            <div class="mb-1">
-              <p class="text-xl font-bold mb-3">Identity Resources</p>
-              <div>
-                <p class="mb-2 text-base">
-                  A collection of resources centered around diverse experiences, including: BIPOC, LGBTQIA+,
-                  Female-Identifying, and ADA resources.
-                </p>
+        <div class="col-span-1 p-2">
+          <a href="/resources" class="drop-shadow-md h-100 card mx-auto text-center">
+            <img class="m-auto pb-2 pt-4" src="../assets/illustrations/identity.png" alt="" />
+            <div class="card-body">
+              <div class="mb-1">
+                <p class="text-xl font-bold mb-3">Identity Resources</p>
+                <div>
+                  <p class="mb-2 text-base">
+                    A collection of resources centered around diverse experiences, including: BIPOC, LGBTQIA+,
+                    Female-Identifying, and ADA resources.
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
-        </a>
-      </div>
-      <div class="mx-auto col-xl-3 col-lg-3 col-md-6 col-sm-12 col-xs-12 p-2">
-        <a href="/resources" class="drop-shadow-md h-100 card mx-auto text-center">
-          <img class="m-auto pb-2 pt-4" src="../assets/illustrations/business.png" alt="" />
-          <div class="card-body">
-            <div class="mb-1">
-              <p class="text-xl font-bold mb-3">Business Resources for Artist</p>
-              <div>
-                <p class="mb-2 text-base">
-                  Enhance your theatre career with our extensive collection of practical tools and knowledge geared
-                  towards your business in show business.
-                </p>
+          </a>
+        </div>
+        <div class="col-span-1 p-2">
+          <a href="/resources" class="drop-shadow-md h-100 card mx-auto text-center">
+            <img class="m-auto pb-2 pt-4" src="../assets/illustrations/business.png" alt="" />
+            <div class="card-body">
+              <div class="mb-1">
+                <p class="text-xl font-bold mb-3">Business Resources for Artist</p>
+                <div>
+                  <p class="mb-2 text-base">
+                    Enhance your theatre career with our extensive collection of practical tools and knowledge geared
+                    towards your business in show business.
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
-        </a>
-      </div>
-      <div class="mx-auto col-xl-3 col-lg-3 col-md-6 col-sm-12 col-xs-12 p-2">
-        <a href="/resources" class="drop-shadow-md h-100 card mx-auto text-center">
-          <img class="m-auto pb-2 pt-4" src="../assets/illustrations/lifehacks.png" alt="" />
-          <div class="card-body">
-            <div class="mb-1">
-              <p class="text-xl font-bold mb-3">#LifeHacks</p>
-              <div>
-                <p class="mb-2 text-base">
-                  Uncover innovative #LifeHacks designed to streamline your daily routine and boost productivity. We aim
-                  to empower you with simple yet effective strategies for success!
-                </p>
+          </a>
+        </div>
+        <div class="col-span-1 p-2">
+          <a href="/resources" class="drop-shadow-md h-100 card mx-auto text-center">
+            <img class="m-auto pb-2 pt-4" src="../assets/illustrations/lifehacks.png" alt="" />
+            <div class="card-body">
+              <div class="mb-1">
+                <p class="text-xl font-bold mb-3">#LifeHacks</p>
+                <div>
+                  <p class="mb-2 text-base">
+                    Uncover innovative #LifeHacks designed to streamline your daily routine and boost productivity. We
+                    aim to empower you with simple yet effective strategies for success!
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
-        </a>
+          </a>
+        </div>
       </div>
     </div>
   </div>
