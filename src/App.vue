@@ -2,22 +2,20 @@
   <NavBar :isLoggedIn="isLoggedIn" />
   <AlertNotification></AlertNotification>
   <router-view v-if="isLoggedIn" />
-  <div v-else class="container-fluid home mx-auto text-center min-h-screen">
-    <div class="row ltblue p-4">
-      <div class="col-8 m-auto my-3">
-        <h2 class="text-2xl font-bold">Chicago Artist Atlas - Closed Beta</h2>
-        <p class="mt-3" style="font-size: 16px">
-          We combine vital information in an easily navigated, one-stop-shop with original content from experts in our
-          community to guide you on your journey.
-        </p>
-      </div>
+  <div v-else>
+    <div class="bg-blue-50 px-10 py-8 mx-auto text-center">
+      <p class="text-2xl md:text-3xl font-bold mb-2">Chicago Artist Atlas - Closed Beta</p>
+      <p class="text-lg max-w-3xl mx-auto">
+        We combine vital information in an easily navigated, one-stop-shop with original content from experts in our
+        community to guide you on your journey.
+      </p>
     </div>
-    <div class="row p-5 m-auto container text-left">
-      <p class="mx-auto mb-4 text-lg text-center">
+    <div class="container p-5 m-auto text-left">
+      <p class="mx-auto mb-4 text-lg text-center font-bold">
         Welcome! We're so glad you're here and excited to have you join us on the first leg of this journey as a
         <em>beta tester!</em>
       </p>
-      <p class="mx-auto text-base">
+      <p class="text-base">
         We've been hard at work to develop this site as a one-stop-shop for Chicago theatremakers to find jobs and
         audition postings, resources, classes, and community without the tedious digging around of the past. Chicago
         Artist Atlas,
@@ -26,7 +24,7 @@
         you will keep this in mind as you navigate and explore the site, and encourage you to keep track of your
         thoughts and reactions.
       </p>
-      <p class="mx-auto text-base">
+      <p class="text-base mt-2">
         You are one of the
         <strong>first</strong>
         to use this 'work-in-progress', and we greatly appreciate your feedback to help us make it even better for our
@@ -34,14 +32,16 @@
         <br />
         Go ahead and create a profile and take a look around! We hope you like what you see.
       </p>
-      <p class="mx-auto text-base italic">
+      <p class="text-base italic mt-2">
         (Please note, this is a closed, invite only beta test! If you're interested in being one of the first users of
         Chicago Artist Atlas,
         <a href="mailto:info@chiartistatlas.com?subject=I'm Interested in Beta Testing">let us know</a>
         !)
       </p>
-      <p class="mx-auto mt-4 text-base">Cheers,</p>
-      <p class="mx-auto text-base font-bold">Anna, Elise, and Katherine</p>
+      <div class="w-100 text-left mt-2">
+        <p class="mt-4 text-base">Cheers,</p>
+        <p class="text-base font-bold">Anna, Elise, and Katherine</p>
+      </div>
     </div>
   </div>
   <FooterBar />
