@@ -1,17 +1,28 @@
 <template>
   <div class="rounded-md p-4 col-span-1 border flex flex-col justify-between">
-    <div>
+    <div class="mb-2">
       <div class="flex justify-between">
-        <div class="text-lg font-bold">{{ audition.character.name }}</div>
-        <div class="text-gray-700 text-sm font-normal d-inline">Saved {{ formatDate(audition.role.created_at) }}</div>
+        <div class="text-xl font-bold">{{ audition.character.name }}</div>
+        <div class="text-gray-400 text-sm font-normal d-inline">Saved {{ formatDate(audition.role.created_at) }}</div>
       </div>
-      <div class="mb-3">
-        <div class="text-base font-medium mb-2">{{ audition.audition.name_of_show }}</div>
+      <div class="mb-3 border-b pb-3">
+        <div class="text-base font-medium">{{ audition.audition.name_of_show }}</div>
         <div class="text-base font-normal italic">Presented by: {{ audition.audition.name_of_company }}</div>
       </div>
-      <p class="text-base font-normal">{{ audition.character.description }}</p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-x-4 divide-x">
+        <div class="col-span-1">
+          <div class="text-sm font-normal mb-2">Auditions Start</div>
+          <div class="font-medium text-lg">{{ formatDate(audition.audition.audition_date1) }}</div>
+          <div class="text-lg" v-if="audition.audition.audition_time1"></div>
+        </div>
+        <div class="col-span-2 pl-3">
+          <div class="text-sm font-normal mb-2">Pay Scale</div>
+          <div class="font-medium text-lg">{{ audition.audition.pay_scale }}</div>
+        </div>
+      </div>
+      <!-- <p class="text-base font-normal">{{ audition.character.description }}</p> -->
     </div>
-    <div class="flex ml-auto">
+    <div class="flex ml-auto mt-1">
       <button
         class="inline-flex items-center gap-x-1.5 rounded-full px-4 py-1 text-base font-medium text-gray-900 ring-1 ring-inset ring-gray-200"
       >
