@@ -5,17 +5,17 @@
         <div class="text-xl font-bold">{{ audition.character.name }}</div>
         <div class="text-gray-400 text-sm font-normal d-inline">Saved {{ formatDate(audition.role.created_at) }}</div>
       </div>
-      <div class="border-b pb-3">
+      <div class="border-b mb-2 pb-1">
         <div class="text-base font-medium">{{ audition.audition.name_of_show }}</div>
         <div class="text-base font-normal italic">Presented by: {{ audition.audition.name_of_company }}</div>
       </div>
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-x-4 lg:divide-x">
-        <div class="col-span-1 border-b lg:border-0 pb-3 sm:pt-4">
+        <div class="col-span-1 border-b lg:border-0 pb-2 sm:pt-3">
           <div class="text-sm font-normal mb-2">Auditions Start</div>
           <div class="font-medium text-lg">{{ formatDate(audition.audition.audition_date1) }}</div>
           <div class="text-lg" v-if="audition.audition.audition_time1"></div>
         </div>
-        <div class="col-span-1 lg:col-span-2 lg:pl-3 py-3">
+        <div class="col-span-1 lg:col-span-2 lg:pl-3 py-2">
           <div class="text-sm font-normal mb-2">Pay Scale</div>
           <div class="font-medium text-lg">{{ audition.audition.pay_scale }}</div>
         </div>
