@@ -5,7 +5,7 @@
         <div class="text-xl font-bold">{{ audition.character.name }}</div>
         <div class="text-gray-400 text-sm font-normal d-inline">Saved {{ formatDate(audition.role.created_at) }}</div>
       </div>
-      <div class="mb-3 border-b pb-3">
+      <div class="border-b pb-3">
         <div class="text-base font-medium">{{ audition.audition.name_of_show }}</div>
         <div class="text-base font-normal italic">Presented by: {{ audition.audition.name_of_company }}</div>
       </div>
