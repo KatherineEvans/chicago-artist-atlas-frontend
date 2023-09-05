@@ -28,7 +28,7 @@
       class="sidebar divide-y w-64 bg-blue-950/95 text-blue-100 space-y-6 px-3 absolute inset-y-0 left-0 transform -translate-x-full transition duration-200 ease-in-out md:relative md:translate-x-0"
     >
       <!-- PROFILE PIC -->
-      <div class="py-3 text-center">
+      <div class="pt-3 text-center">
         <span class="inline-block w-24 h-24 overflow-hidden rounded-full bg-gray-100 m-auto mt-4 mb-3">
           <svg class="h-full w-full text-gray-300" fill="currentColor" viewBox="0 0 24 24">
             <path
@@ -36,7 +36,7 @@
             />
           </svg>
         </span>
-        <div class="font-extrabold text-2xl text-center text-white">{{ activeUser }}</div>
+        <div class="font-extrabold text-2xl text-center text-white mt-3">{{ activeUser }}</div>
       </div>
       <!-- NAVIGATION -->
       <nav class="px-0">

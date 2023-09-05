@@ -238,10 +238,10 @@ export default {
       profile: {
         id: null,
         bio: null,
-        age: null,
+        age: "18-22",
         keep_private: false,
         union_status: "Equity",
-        ethnicity: null,
+        ethnicity: "Multiple ethnicity / Other",
         pronouns: null,
         gender: "Female",
         height: "5' 7\"",
@@ -411,12 +411,14 @@ export default {
       axios
         .get("/profile.json")
         .then((response) => {
-          this.profile = response.data.profiles[0];
-          console.log("Headshot", response.data.profiles[0].headshot_url);
-          this.imgFile = response.data.profiles[0].headshot_url;
-          if (response.data.profiles[0].pronouns) {
-            let data = JSON.parse(response.data.profiles[0].pronouns);
-            this.pronounOptions = data;
+          if (response.data.profiles.length > 0) {
+            this.profile = response.data.profiles[0];
+            console.log("Headshot", response.data.profiles[0].headshot_url);
+            this.imgFile = response.data.profiles[0].headshot_url;
+            if (response.data.profiles[0].pronouns) {
+              let data = JSON.parse(response.data.profiles[0].pronouns);
+              this.pronounOptions = data;
+            }
           }
           this.isLoading = false;
         })
@@ -437,6 +439,7 @@ export default {
       axios.patch(`/profiles/${this.profile.id}.json`, data).then((response) => {
         console.log(response);
         this.$store.commit("users/setProfile", response.data);
+        this.alertMessage();
       });
     },
     createProfile(data) {
@@ -444,6 +447,15 @@ export default {
       axios.post("/profiles.json", data).then((response) => {
         console.log(response);
         this.$store.commit("users/setProfile", response.data);
+        this.alertMessage();
+      });
+    },
+    alertMessage() {
+      this.$store.commit("alerts/setMessage", {
+        title: "Successfully Saved!",
+        body: "Your Artist Bio has been successfully saved.",
+        icon: "success",
+        isVisible: true,
       });
     },
     handleSetFile(event) {
