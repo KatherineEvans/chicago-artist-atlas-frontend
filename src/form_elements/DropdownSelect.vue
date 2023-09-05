@@ -58,13 +58,18 @@ import { Listbox, ListboxButton, ListboxOption, ListboxOptions, ListboxLabel } f
 import { CheckIcon, ChevronUpDownIcon } from "@heroicons/vue/20/solid";
 export default {
   components: { ListboxLabel, Listbox, ListboxButton, ListboxOption, ListboxOptions, CheckIcon, ChevronUpDownIcon },
-  props: ["dropdownData", "menuLabel", "width"],
+  props: ["dropdownData", "selectedData", "menuLabel", "width"],
   data: function () {
     return {
-      selected: this.dropdownData.selected,
+      selected: this.selectedData,
     };
   },
-  watch: {},
+  watch: {
+    selected(newVal) {
+      console.log(newVal);
+      this.$emit("setSelected", newVal);
+    },
+  },
   computed: {},
   methods: {},
 };
