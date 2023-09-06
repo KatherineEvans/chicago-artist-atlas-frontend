@@ -206,13 +206,14 @@
     <div class="mt-10 flex items-center justify-between gap-x-6">
       <button type="button" class="text-sm font-semibold leading-6 text-gray-900">Cancel</button>
       <span>
-        <button type="submit" class="px-3 py-2 text-sm font-semibold underline">Save</button>
-        <a
-          href="/user/profile/talents"
+        <button type="submit" @click="next = false" class="px-3 py-2 text-sm font-semibold underline">Save</button>
+        <button
+          type="submit"
+          @click="next = true"
           class="ml-3 rounded-md bg-indigo-600 pl-2 pr-3 py-2 text-sm font-semibold text-white hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 no-underline hover:no-underline"
         >
           Save and Next
-        </a>
+        </button>
       </span>
     </div>
   </form>
@@ -228,6 +229,7 @@ export default {
   components: { PhotoIcon, RadioButton, DropdownSelect },
   data: function () {
     return {
+      next: false,
       isLoading: true,
       imgFile: null,
       imgUpload: null,
@@ -439,7 +441,11 @@ export default {
       axios.patch(`/profiles/${this.profile.id}.json`, data).then((response) => {
         console.log(response);
         this.$store.commit("users/setProfile", response.data);
-        this.alertMessage();
+        if (this.next) {
+          this.$router.push("/user/profile/talents");
+        } else {
+          this.alertMessage();
+        }
       });
     },
     createProfile(data) {
@@ -447,7 +453,11 @@ export default {
       axios.post("/profiles.json", data).then((response) => {
         console.log(response);
         this.$store.commit("users/setProfile", response.data);
-        this.alertMessage();
+        if (this.next) {
+          this.$router.push("/user/profile/talents");
+        } else {
+          this.alertMessage();
+        }
       });
     },
     alertMessage() {
