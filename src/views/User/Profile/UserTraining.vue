@@ -116,7 +116,7 @@
                     </button>
                   </div>
                 </div>
-                <div class="flex ml-3">
+                <div class="flex ml-3" :class="training.note ? '' : 'mb-3'">
                   <div class="text-base font-medium mr-2">{{ training.institution }}</div>
                   <div class="text-base font-normal italic">{{ training.city }}, {{ training.state }}</div>
                 </div>
@@ -180,9 +180,14 @@ export default {
     saveTraining() {
       event.preventDefault();
       let data = new FormData(event.target);
-      axios.post("/trainings.json", data).then((response) => {
-        console.log(response);
-      });
+      axios
+        .post("/trainings.json", data)
+        .then((response) => {
+          this.trainings.push(response.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     },
     getTrainings() {
       axios
