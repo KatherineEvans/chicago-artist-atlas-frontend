@@ -12,7 +12,7 @@
         </p>
 
         <div class="mt-10 flex flex-wrap lg:divide-x lg:divide-x">
-          <div class="w-full lg:w-1/2 px-3 order-2 lg:order-1 sm:md:pt-5 lg:pt-0">
+          <div class="w-full lg:w-1/2 px-3 order-2 lg:order-1 pt-3 lg:pt-0">
             <div class="w-full grid flex flex-wrap">
               <div class="flex-wrap flex">
                 <div class="w-full lg:w-1/2 pb-3 px-2">
@@ -98,11 +98,11 @@
             <button type="submit" class="text-sm float-right text-blue-700 font-bold">+ Add Training</button>
           </div>
           <div
-            class="w-full lg:w-1/2 grid flex flex-wrap order-1 lg:order-2 sm:md:border-b lg:border-0 sm:md:pb-6 lg:pb-3"
+            class="w-full lg:w-1/2 grid flex flex-wrap order-1 lg:order-2 border-b lg:border-0 pb-3"
             :class="trainings.length > 0 ? '' : 'justify-center content-center'"
           >
             <div class="px-4 mx-1" v-if="trainings.length > 0">
-              <div class="rounded-md p-2 border" v-for="training in trainings" :key="training.id">
+              <div class="rounded-md p-2 border mb-3" v-for="training in trainings" :key="training.id">
                 <div class="relative">
                   <div class="text-lg font-bold pt-2 mx-3">{{ training.degree }}</div>
                   <div class="absolute right-0 top-0">
