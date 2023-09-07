@@ -109,7 +109,7 @@
                     <button
                       type="button"
                       class="rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-                      @click="open = false"
+                      @click="removeTraining(training.id)"
                     >
                       <span class="sr-only">Close</span>
                       <XMarkIcon class="h-6 w-6" aria-hidden="true" />
@@ -177,6 +177,11 @@ export default {
   },
   computed: {},
   methods: {
+    removeTraining(id) {
+      axios.delete(`/trainings/${id}.json`).then((response) => {
+        this.trainings = this.trainings.filter((t) => t.id !== id);
+      });
+    },
     saveTraining() {
       event.preventDefault();
       let data = new FormData(event.target);
