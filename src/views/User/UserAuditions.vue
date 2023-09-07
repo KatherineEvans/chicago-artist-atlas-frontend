@@ -57,11 +57,6 @@ export default {
   },
   watch: {},
   computed: {
-    formatDate() {
-      return (value) => {
-        return moment(String(value)).format("ll");
-      };
-    },
     auditionsExist() {
       if (
         this.auditions.saved.length > 0 ||

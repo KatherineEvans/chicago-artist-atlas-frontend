@@ -96,14 +96,6 @@ export default {
       heart: false,
     };
   },
-  computed: {
-    formatDate() {
-      return (value) => {
-        return moment(String(value)).format("ll");
-      };
-    },
-  },
-  methods: {},
 };
 </script>
 <style scoped>

@@ -126,13 +126,6 @@ export default {
       savedRoles: [],
     };
   },
-  computed: {
-    formatDate() {
-      return (value) => {
-        return moment(String(value)).format("MM/DD/YYYY");
-      };
-    },
-  },
   watch: {},
   mounted: function () {
     this.getAuditions("/auditions");

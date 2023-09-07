@@ -413,12 +413,11 @@ export default {
       axios
         .get("/profile.json")
         .then((response) => {
-          if (response.data.profiles.length > 0) {
-            this.profile = response.data.profiles[0];
-            console.log("Headshot", response.data.profiles[0].headshot_url);
-            this.imgFile = response.data.profiles[0].headshot_url;
-            if (response.data.profiles[0].pronouns) {
-              let data = JSON.parse(response.data.profiles[0].pronouns);
+          if (response.data) {
+            this.profile = response.data;
+            this.imgFile = response.data.headshot_url;
+            if (response.data.pronouns) {
+              let data = JSON.parse(response.data.pronouns);
               this.pronounOptions = data;
             }
           }
