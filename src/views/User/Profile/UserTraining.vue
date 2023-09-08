@@ -101,36 +101,45 @@
             class="w-full lg:w-1/2 grid flex flex-wrap order-1 lg:order-2 border-b lg:border-0 pb-3"
             :class="trainings.length > 0 ? '' : 'justify-center content-center'"
           >
-            <div class="px-4 mx-1" v-if="trainings.length > 0">
-              <div class="rounded-md p-2 border mb-3" v-for="training in trainings" :key="training.id">
-                <div class="relative">
-                  <div class="text-lg font-bold pt-2 mx-3">{{ training.degree }}</div>
-                  <div class="absolute right-0 top-0">
-                    <button
-                      type="button"
-                      class="rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-                      @click="removeTraining(training.id)"
-                    >
-                      <span class="sr-only">Close</span>
-                      <XMarkIcon class="h-6 w-6" aria-hidden="true" />
-                    </button>
-                  </div>
-                </div>
-                <div class="flex ml-3" :class="training.note ? '' : 'mb-3'">
-                  <div class="text-base font-medium mr-2">{{ training.institution }}</div>
-                  <div class="text-base font-normal italic">{{ training.city }}, {{ training.state }}</div>
-                </div>
-                <div class="text-base font-normal ml-3 mb-3 mt-3" v-if="training.note">{{ training.note }}</div>
+            <div class="loading-spinner-container" v-if="isLoading">
+              <div class="loading-spinner m-auto">
+                <div></div>
+                <div></div>
+                <div></div>
               </div>
             </div>
             <div v-else>
-              <h4 class="text-gray-400 italic text-center">No Trainings Added</h4>
-              <img
-                src="https://res.cloudinary.com/dzlaaytu7/image/upload/v1688246190/iStock-1449282058_1_udwnjo.jpg"
-                class="w-100 mx-auto mt-2"
-                alt="Calender Under Construction"
-                style="max-width: 400px"
-              />
+              <div class="px-4 mx-1" v-if="trainings.length > 0">
+                <div class="rounded-md p-2 border mb-3" v-for="training in trainings" :key="training.id">
+                  <div class="relative">
+                    <div class="text-lg font-bold pt-2 mx-3">{{ training.degree }}</div>
+                    <div class="absolute right-0 top-0">
+                      <button
+                        type="button"
+                        class="rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                        @click="removeTraining(training.id)"
+                      >
+                        <span class="sr-only">Close</span>
+                        <XMarkIcon class="h-6 w-6" aria-hidden="true" />
+                      </button>
+                    </div>
+                  </div>
+                  <div class="flex ml-3" :class="training.note ? '' : 'mb-3'">
+                    <div class="text-base font-medium mr-2">{{ training.institution }}</div>
+                    <div class="text-base font-normal italic">{{ training.city }}, {{ training.state }}</div>
+                  </div>
+                  <div class="text-base font-normal ml-3 mb-3 mt-3" v-if="training.note">{{ training.note }}</div>
+                </div>
+              </div>
+              <div v-else>
+                <h4 class="text-gray-400 italic text-center">No Trainings Added</h4>
+                <img
+                  src="https://res.cloudinary.com/dzlaaytu7/image/upload/v1688246190/iStock-1449282058_1_udwnjo.jpg"
+                  class="w-100 mx-auto mt-2"
+                  alt="Calender Under Construction"
+                  style="max-width: 400px"
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -189,6 +198,7 @@ export default {
         .post("/trainings.json", data)
         .then((response) => {
           this.trainings.push(response.data);
+          event.target.reset();
         })
         .catch((error) => {
           console.log(error);

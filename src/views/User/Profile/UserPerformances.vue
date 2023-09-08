@@ -1,5 +1,5 @@
 <template>
-  <form>
+  <form v-on:submit="savePerformance">
     <div class="space-y-12">
       <div class="border-b border-gray-900/10 pb-12">
         <h2 class="font-semibold leading-7 text-gray-900 py-3">Performances</h2>
@@ -12,44 +12,41 @@
           you've graced and the audiences you've moved. Let your experiences take center stage!
         </p>
 
-        <div class="mt-10 flex flex-wrap md:divide-x lg:divide-x">
-          <div class="w-full md:w-1/2 p-3">
+        <div class="mt-10 flex flex-wrap lg:divide-x">
+          <div class="w-full lg:w-1/2 px-3 order-2 lg:order-1 pt-3 lg:pg-0">
             <div class="w-full grid">
               <div class="flex-wrap flex">
-                <div class="w-full lg:w-1/2 p-2">
+                <div class="w-full lg:w-1/2 px-2 pb-2 pt-2 lg:pt-0">
                   <label for="title" class="block text-base font-medium leading-6 text-gray-900">Title:</label>
                   <div class="mt-2">
                     <input
                       type="text"
                       name="title"
                       id="title"
-                      autocomplete="address-level2"
                       class="block w-full rounded-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     />
                   </div>
                 </div>
-                <div class="w-full lg:w-1/2 p-2">
+                <div class="w-full lg:w-1/2 px-2 pb-2 pt-2 lg:pt-0">
                   <label for="role" class="block text-base font-medium leading-6 text-gray-900">Role:</label>
                   <div class="mt-2">
                     <input
                       type="text"
                       name="role"
                       id="role"
-                      autocomplete="address-level2"
                       class="block w-full rounded-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     />
                   </div>
                 </div>
                 <div class="w-full lg:w-1/2 p-2">
-                  <label for="theaterCompany" class="block text-base font-medium leading-6 text-gray-900">
+                  <label for="theater_group" class="block text-base font-medium leading-6 text-gray-900">
                     Theatre Company:
                   </label>
                   <div class="mt-2">
                     <input
                       type="text"
-                      name="theaterCompany"
-                      id="theaterCompany"
-                      autocomplete="address-level2"
+                      name="theater_group"
+                      id="theater_group"
                       class="block w-full rounded-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     />
                   </div>
@@ -61,7 +58,6 @@
                       type="text"
                       name="url"
                       id="url"
-                      autocomplete="address-level2"
                       class="block w-full rounded-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     />
                   </div>
@@ -73,32 +69,31 @@
                       type="text"
                       name="director"
                       id="director"
-                      autocomplete="address-level2"
                       class="block w-full rounded-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     />
                   </div>
                 </div>
                 <div class="w-full lg:w-1/2 p-2">
-                  <label for="musicalDirector" class="block text-base font-medium leading-6 text-gray-900">
+                  <label for="musical_director" class="block text-base font-medium leading-6 text-gray-900">
                     Musical Director:
                   </label>
                   <div class="mt-2">
                     <input
                       type="text"
-                      name="musicalDirector"
-                      id="musicalDirector"
-                      autocomplete="address-level2"
+                      name="musical_director"
+                      id="musical_director"
                       class="block w-full rounded-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     />
                   </div>
                 </div>
                 <div class="w-full lg:w-1/2 p-2">
-                  <label for="openingNight" class="block text-base font-medium leading-6 text-gray-900">
+                  <label for="running_date_start" class="block text-base font-medium leading-6 text-gray-900">
                     Opening Night:
                   </label>
                   <div class="mt-2">
                     <VueDatePicker
                       input-class-name="block w-full rounded-md border-0 py-2 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                      name="running_date_start"
                       v-model="openingNight"
                       :enable-time-picker="false"
                       ref="dpo"
@@ -115,7 +110,7 @@
                   </div>
                 </div>
                 <div class="w-full lg:w-1/2 p-2">
-                  <label for="closingNight" class="block text-base font-medium leading-6 text-gray-900">
+                  <label for="running_date_end" class="block text-base font-medium leading-6 text-gray-900">
                     Closing Night:
                   </label>
                   <div class="mt-2">
@@ -123,6 +118,7 @@
                       input-class-name="block w-full rounded-md border-0 py-2 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                       :enable-time-picker="false"
                       v-model="closingNight"
+                      name="running_date_end"
                       ref="dpc"
                     >
                       <template #action-buttons>
@@ -154,16 +150,100 @@
                 <p class="mt-1 text-sm leading-6 text-gray-600 italic">Tell us a little more about your performance</p>
               </div>
             </div>
-            <button class="text-sm float-right text-blue-700 font-bold">+ Add Performance</button>
+            <button type="submit" class="text-sm float-right text-blue-700 font-bold">+ Add Performance</button>
           </div>
-          <div class="w-full md:w-1/2 grid flex flex-wrap justify-center content-center">
-            <h4 class="text-gray-400 italic text-center">No Performances Added</h4>
-            <img
-              src="https://res.cloudinary.com/dzlaaytu7/image/upload/v1688246189/iStock-1438367331_i5itmw.jpg"
-              class="w-100 mx-auto mt-2"
-              alt="Calender Under Construction"
-              style="max-width: 400px"
-            />
+          <div
+            class="w-full lg:w-1/2 grid flex flex-wrap order-1 lg:order-2 border-b lg:border-0 pb-3"
+            :class="performances.length > 0 ? '' : 'justify-center content-center'"
+          >
+            <div class="loading-spinner-container" v-if="isLoading">
+              <div class="loading-spinner m-auto">
+                <div></div>
+                <div></div>
+                <div></div>
+              </div>
+            </div>
+            <div v-else>
+              <div class="px-4 mx-1" v-if="performances.length > 0">
+                <div class="rounded-md border mb-3" v-for="performance in performances" :key="performance.id">
+                  <div class="border-b border-gray-900/5 bg-gray-50 rounded-t">
+                    <div class="relative">
+                      <div class="text-xl font-bold pt-2 mx-3">{{ performance.role }}</div>
+                      <div class="absolute right-0 top-0">
+                        <button
+                          type="button"
+                          class="rounded-md p-2 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                          @click="removePerformance(performance.id)"
+                        >
+                          <span class="sr-only">Close</span>
+                          <XMarkIcon class="h-6 w-6" aria-hidden="true" />
+                        </button>
+                      </div>
+                    </div>
+                    <div class="ml-3 mb-2">
+                      <a v-if="performance.url" :href="performance.url">
+                        <div class="text-base font-medium mr-2 text-blue-700 hover:text-blue-700">
+                          {{ performance.title }}
+                        </div>
+                      </a>
+                      <div v-else class="text-base font-medium mr-2">{{ performance.title }}</div>
+                      <div class="text-base font-normal mr-2 italic w-100">
+                        Presented by: {{ performance.theater_group }}
+                      </div>
+                    </div>
+                  </div>
+                  <dl
+                    v-if="performance.musical_director || performance.director"
+                    class="divide-y divide-gray-100 px-3 py-2 text-sm leading-6"
+                  >
+                    <div v-if="performance.director" class="flex justify-between gap-x-4 py-3">
+                      <dt class="text-gray-500 text-sm font-bold">Director</dt>
+                      <dd class="text-gray-700 text-base">
+                        <div>{{ performance.director }}</div>
+                      </dd>
+                    </div>
+                    <div v-if="performance.musical_director" class="flex justify-between gap-x-4 py-3">
+                      <dt class="text-gray-500 text-sm font-bold">Musical Director</dt>
+                      <dd class="text-gray-700 text-base">
+                        <div>{{ performance.musical_director }}</div>
+                      </dd>
+                    </div>
+                    <div
+                      v-if="performance.running_date_start || performance.running_date_end"
+                      class="flex justify-between gap-x-4 py-3"
+                    >
+                      <dt class="text-gray-500 text-sm font-bold">Run Dates</dt>
+                      <dd class="text-gray-700 text-base">
+                        <div>
+                          {{ formatDate(performance.running_date_start) }}
+                          <span v-if="performance.running_date_end">
+                            - {{ formatDate(performance.running_date_end) }}
+                          </span>
+                        </div>
+                      </dd>
+                    </div>
+                  </dl>
+
+                  <!-- <div class="ml-3 mb-3">
+                    <div class="text-base font-normal">
+                      {{ performance.director }}, {{ performance.musical_director }}
+                    </div>
+                  </div> -->
+                  <!-- <div class="text-base font-normal ml-3 mb-3 mt-3" v-if="performance.description">
+                    {{ performance.description }}
+                  </div> -->
+                </div>
+              </div>
+              <div v-else>
+                <h4 class="text-gray-400 italic text-center">No Performances Added</h4>
+                <img
+                  src="https://res.cloudinary.com/dzlaaytu7/image/upload/v1688246189/iStock-1438367331_i5itmw.jpg"
+                  class="w-100 mx-auto mt-2"
+                  alt="Calender Under Construction"
+                  style="max-width: 400px"
+                />
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -193,19 +273,57 @@
 </template>
 
 <script>
+import axios from "axios";
+import moment from "moment";
+import { XMarkIcon } from "@heroicons/vue/24/outline";
 import VueDatePicker from "@vuepic/vue-datepicker";
 import "@vuepic/vue-datepicker/dist/main.css";
 export default {
-  components: { VueDatePicker },
+  components: { VueDatePicker, XMarkIcon },
   data: function () {
     return {
       openingNight: new Date(),
       closingNight: new Date(),
+      performances: [],
+      isLoading: true,
     };
   },
-  watch: {},
-  computed: {},
+  computed: {
+    formatDate() {
+      return (value) => {
+        return moment(String(value)).format("ll");
+      };
+    },
+  },
+  mounted() {
+    this.getPerformances();
+  },
   methods: {
+    removePerformance(id) {
+      axios.delete(`/performances/${id}.json`).then((response) => {
+        this.performances = this.performances.filter((p) => p.id !== id);
+      });
+    },
+    savePerformance() {
+      event.preventDefault();
+      let data = new FormData(event.target);
+      axios
+        .post("/performances.json", data)
+        .then((response) => {
+          this.performances.push(response.data);
+          event.target.reset();
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+    getPerformances() {
+      axios.get("/performances.json").then((response) => {
+        console.log(response.data);
+        this.performances = response.data;
+        this.isLoading = false;
+      });
+    },
     selectClosingDate() {
       this.$refs.dpc.selectDate();
     },
