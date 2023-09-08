@@ -1,5 +1,5 @@
 <template>
-  <form v-on:submit="saveTraining">
+  <form v-on:submit="saveTraining($event)">
     <div class="space-y-12">
       <div class="border-b border-gray-900/10 pb-12">
         <h2 class="font-semibold leading-7 text-gray-900 py-3">Trainings</h2>
@@ -180,18 +180,16 @@ export default {
       isLoading: true,
     };
   },
-  watch: {},
   mounted() {
     this.getTrainings();
   },
-  computed: {},
   methods: {
     removeTraining(id) {
       axios.delete(`/trainings/${id}.json`).then((response) => {
         this.trainings = this.trainings.filter((t) => t.id !== id);
       });
     },
-    saveTraining() {
+    saveTraining(event) {
       event.preventDefault();
       let data = new FormData(event.target);
       axios

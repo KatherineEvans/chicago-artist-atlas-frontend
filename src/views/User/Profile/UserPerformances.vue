@@ -1,5 +1,5 @@
 <template>
-  <form v-on:submit="savePerformance">
+  <form v-on:submit="savePerformance($event)">
     <div class="space-y-12">
       <div class="border-b border-gray-900/10 pb-12">
         <h2 class="font-semibold leading-7 text-gray-900 py-3">Performances</h2>
@@ -304,7 +304,7 @@ export default {
         this.performances = this.performances.filter((p) => p.id !== id);
       });
     },
-    savePerformance() {
+    savePerformance(event) {
       event.preventDefault();
       let data = new FormData(event.target);
       axios
