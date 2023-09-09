@@ -26,9 +26,7 @@
     >
       <div class="flex lg:flex">
         <a href="/" class="-m-1.5 p-1.5 no-underline hover:no-underline text-blue-100">
-          <p class="xl:text-4xl lg:text-3xl md:text-2xl text-xl text-blue-100 hover:text-white m-0">
-            Chicago Artist Atlas
-          </p>
+          <p class="xl:text-3xl lg:text-2xl text-xl text-blue-100 hover:text-white m-0">Chicago Artist Atlas</p>
         </a>
       </div>
       <div class="hidden lg:flex">

@@ -54,24 +54,25 @@
                   name="headline"
                   id="headline"
                   placeholder="Actor Extraordinaire"
-                  autocomplete="address-level2"
                   class="pl-3 block w-full rounded-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
               </div>
             </div>
-            <div class="pl-1">
-              <label for="pronouns" class="block text-sm font-medium leading-6 text-gray-900 mb-0">
-                Pronouns:
-                <!-- <span class="ml-auto italic text-gray-400">select all that apply</span> -->
-              </label>
-              <p class="m-0 text-sm leading-6 italic text-gray-400">Select all that apply</p>
-              <RadioButton
-                id="pronouns"
-                @update-checkbox="updateCheckbox"
-                optionsName="Pronouns"
-                :options="pronounOptions"
-                colNumberClass="grid-cols-2"
-              ></RadioButton>
+            <div class="w-full grid flex flex-wrap flex pt-2">
+              <div class="col-span-full">
+                <label for="bio" class="block text-sm font-medium leading-6 text-gray-900 mb-0">About:</label>
+                <p class="m-0 text-sm leading-6 italic text-gray-400">Write a few sentences about yourself!</p>
+                <div class="mt-2">
+                  <textarea
+                    v-model="profile.bio"
+                    id="bio"
+                    name="bio"
+                    rows="3"
+                    style="min-height: 200px"
+                    class="block w-full rounded-md border-0 p-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  />
+                </div>
+              </div>
             </div>
           </div>
           <div class="w-full md:w-1/2 grid flex flex-wrap">
@@ -84,7 +85,6 @@
                     v-model="profile.manager"
                     name="manager"
                     id="manager"
-                    autocomplete="address-level2"
                     class="pl-3 block w-full rounded-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
                 </div>
@@ -97,7 +97,6 @@
                     v-model="profile.agency"
                     name="agency"
                     id="agency"
-                    autocomplete="address-level2"
                     class="pl-3 block w-full rounded-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
                 </div>
@@ -181,22 +180,23 @@
                   name="eye_color"
                 ></DropdownSelect>
               </div>
-              <div class="w-full grid flex flex-wrap flex pt-2">
-                <div class="col-span-full px-3">
-                  <label for="bio" class="block text-sm font-medium leading-6 text-gray-900 mb-0">About:</label>
-                  <p class="m-0 text-sm leading-6 italic text-gray-400">Write a few sentences about yourself!</p>
-                  <div class="mt-2">
-                    <textarea
-                      v-model="profile.bio"
-                      id="bio"
-                      name="bio"
-                      rows="3"
-                      style="min-height: 200px"
-                      class="block w-full rounded-md border-0 p-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                    />
-                  </div>
-                </div>
-              </div>
+              <!-- <div class="w-full pl-1 px-3">
+                <label
+                  for="pronouns"
+                  class="block text-sm font-medium leading-6 text-gray-900 mb-0 flex justify-between"
+                >
+                  <span>Pronouns:</span>
+                  <span class="ml-auto italic text-gray-400">select all that apply</span>
+                </label>
+                <RadioButton
+                  class="pl-1"
+                  id="pronouns"
+                  @update-checkbox="updateCheckbox"
+                  optionsName="Pronouns"
+                  :options="pronounOptions"
+                  colNumberClass="grid-cols-2"
+                ></RadioButton>
+              </div> -->
             </div>
           </div>
         </div>
@@ -222,11 +222,11 @@
 <script>
 import { PhotoIcon } from "@heroicons/vue/24/solid";
 import DropdownSelect from "../../../form_elements/DropdownSelect.vue";
-import RadioButton from "../../../form_elements/RadioButton.vue";
+// import RadioButton from "../../../form_elements/RadioButton.vue";
 import axios from "axios";
 
 export default {
-  components: { PhotoIcon, RadioButton, DropdownSelect },
+  components: { PhotoIcon, DropdownSelect },
   data: function () {
     return {
       next: false,

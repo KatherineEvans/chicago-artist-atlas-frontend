@@ -60,7 +60,7 @@
                 <p>
                   {{ bipoc.description }}
                 </p>
-                <a target="_blank" v-if="bipoc.website_url" :href="bipoc.website_url" class="text-right">
+                <a target="_blank" v-if="bipoc.website_url" :href="bipoc.website_url" class="text-right text-blue-700">
                   View Resource
                 </a>
                 <a v-else target="_blank" :href="bipoc.pdf_url"></a>
@@ -77,7 +77,12 @@
                 <p>
                   {{ disabilities.description }}
                 </p>
-                <a target="_blank" v-if="disabilities.website_url" :href="disabilities.website_url" class="text-right">
+                <a
+                  target="_blank"
+                  v-if="disabilities.website_url"
+                  :href="disabilities.website_url"
+                  class="text-right text-blue-700"
+                >
                   View Resource
                 </a>
                 <a v-else target="_blank" :href="disabilities.pdf_url"></a>
@@ -94,7 +99,12 @@
                 <p>
                   {{ lgbtqia.description }}
                 </p>
-                <a target="_blank" v-if="lgbtqia.website_url" :href="lgbtqia.website_url" class="text-right">
+                <a
+                  target="_blank"
+                  v-if="lgbtqia.website_url"
+                  :href="lgbtqia.website_url"
+                  class="text-right text-blue-700"
+                >
                   View Resource
                 </a>
                 <a v-else target="_blank" :href="lgbtqia.pdf_url"></a>
@@ -112,7 +122,7 @@
                 <p>
                   {{ women.description }}
                 </p>
-                <a target="_blank" v-if="women.website_url" :href="women.website_url" class="text-right">
+                <a target="_blank" v-if="women.website_url" :href="women.website_url" class="text-right text-blue-700">
                   View Resource
                 </a>
                 <a v-else target="_blank" :href="women.pdf_url"></a>
@@ -154,7 +164,12 @@
                 <p>
                   {{ resource.description }}
                 </p>
-                <a target="_blank" v-if="resource.website_url" :href="resource.website_url" class="text-right">
+                <a
+                  target="_blank"
+                  v-if="resource.website_url"
+                  :href="resource.website_url"
+                  class="text-right text-blue-700"
+                >
                   View Resource
                 </a>
                 <a v-else target="_blank" :href="resource.pdf_url"></a>
@@ -196,7 +211,12 @@
                 <p>
                   {{ resource.description }}
                 </p>
-                <a target="_blank" v-if="resource.website_url" :href="resource.website_url" class="text-right">
+                <a
+                  target="_blank"
+                  v-if="resource.website_url"
+                  :href="resource.website_url"
+                  class="text-right text-blue-700"
+                >
                   View Resource
                 </a>
                 <a v-else target="_blank" :href="resource.pdf_url"></a>

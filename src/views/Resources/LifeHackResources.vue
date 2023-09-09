@@ -89,9 +89,9 @@
               <img
                 :src="post.logo"
                 alt=""
-                class="aspect-[16/9] w-full rounded-2xl bg-gray-100 object-cover sm:aspect-[2/1] lg:aspect-[3/2]"
+                class="aspect-[16/9] w-full rounded-xl bg-gray-100 object-cover sm:aspect-[2/1] lg:aspect-[3/2]"
               />
-              <div class="absolute inset-0 rounded-2xl ring-1 ring-inset ring-gray-900/10" />
+              <div class="absolute inset-0 rounded-xl ring-1 ring-inset ring-gray-900/10"></div>
             </div>
             <div class="max-w-xl">
               <div class="group relative px-2">
@@ -101,7 +101,7 @@
                     class="text-blue-900 hover:text-blue-700 no-underline hover:no-underline"
                     target="_blank"
                   >
-                    <span class="absolute inset-0" />
+                    <span class="absolute inset-0"></span>
                     {{ post.organization_name }}
                   </a>
                 </h3>

@@ -1,5 +1,5 @@
 <template>
-  <form>
+  <div>
     <div class="space-y-12">
       <div class="border-b border-gray-900/10 pb-12">
         <h2 class="font-semibold leading-7 text-gray-900 py-3">Talents</h2>
@@ -11,20 +11,54 @@
         </p>
 
         <div class="mt-10 flex flex-wrap">
-          <div class="w-full px-3" v-for="(talent, index) in talents" :key="index">
-            <div class="border-b border-gray-900/10 py-3" v-if="talent.type == 'checkbox'">
-              <label :for="talent.name" class="block text-base font-bold leading-6 text-gray-900 mb-0">
-                {{ talent.name }}
+          <div class="border-b last:border-0 w-full px-3" v-for="(talents, category) in categories" :key="category">
+            <div class="border-gray-900/10 py-3">
+              <label :for="category" class="block text-base font-bold leading-6 text-gray-900 mb-0">
+                {{ category }}
               </label>
               <p class="m-0 text-sm leading-6 italic text-gray-400">Select all that apply</p>
               <RadioButton
                 colNumberClass="grid-cols-3"
                 @update-checkbox="updateCheckbox"
-                :optionsName="talent.name"
-                :options="talent"
+                :optionsName="category"
+                :options="talents"
               ></RadioButton>
             </div>
-            <span v-else></span>
+            <div class="w-full pt-2 pb-3 mb-2">
+              <div class="mb-3" v-if="otherTalents[category]">
+                <span
+                  v-for="talent in otherTalents[category]"
+                  :key="talent"
+                  class="inline-flex items-center gap-x-0.5 rounded-md bg-blue-50 px-3 py-1 text-base font-medium text-blue-600 ring-1 ring-inset ring-blue-500/10 mr-3"
+                >
+                  {{ talent }}
+                  <button
+                    @click="removeTalent(category, talent)"
+                    type="button"
+                    class="group relative -mr-1 h-3.5 w-3.5 rounded-sm hover:bg-blue-500/20"
+                  >
+                    <span class="sr-only">Remove</span>
+                    <svg viewBox="0 0 14 14" class="h-3.5 w-3.5 stroke-blue-600/50 group-hover:stroke-blue-600/75">
+                      <path d="M4 4l6 6m0-6l-6 6" />
+                    </svg>
+                    <span class="absolute -inset-1" />
+                  </button>
+                </span>
+              </div>
+              <label for="otherTalents" class="flex block text-sm font-medium leading-6 text-gray-900 mb-0">
+                Other - {{ category }}:
+              </label>
+              <p class="m-0 text-sm leading-6 italic text-gray-400">Separate with a comma</p>
+              <div class="mt-2">
+                <input
+                  type="text"
+                  name="otherTalents"
+                  id="otherTalents"
+                  @input="updateText($event, category)"
+                  class="pl-3 block w-full rounded-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                />
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -44,199 +78,56 @@
         <button type="submit" class="text-sm font-semibold leading-6 text-gray-900">Save</button>
         <a
           href="/user/profile/training"
-          class="ml-3 rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 no-underline no-underline hover:no-underline"
+          class="ml-3 rounded-md bg-indigo-600 pl-3 pr-4 py-2 text-sm font-semibold text-white hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 no-underline no-underline hover:no-underline"
         >
-          Next
+          Save & Next
         </a>
       </span>
     </div>
-  </form>
+  </div>
 </template>
 
 <script>
+import axios from "axios";
 import RadioButton from "../../../form_elements/RadioButton.vue";
 export default {
   components: { RadioButton },
   data: function () {
     return {
-      talents: [
-        {
-          name: "Vocal",
-          srTitle: "Vocal",
-          type: "checkbox",
-          data: [
-            { name: "Singing", value: false },
-            { name: "Rapping", value: false },
-            { name: "Beat Boxing", value: false },
-          ],
-          additional: {
-            name: "Vocal Range",
-            srTitle: "Vocal Range",
-            type: "checkbox",
-            data: [
-              { name: "Bass", value: false },
-              { name: "Baritone", value: false },
-              { name: "Tenor", value: false },
-              { name: "Alto", value: false },
-              { name: "Mezzo-Soprano", value: false },
-              { name: "Soprano", value: false },
-            ],
-          },
-        },
-        {
-          name: "Dialects",
-          srTitle: "Dialects",
-          type: "checkbox",
-          data: [
-            { name: "Armenian", value: false },
-            { name: "Australian", value: false },
-            { name: "Boston", value: false },
-            { name: "British RP", value: false },
-            { name: "Cockney", value: false },
-            { name: "French", value: false },
-            { name: "German", value: false },
-            { name: "Irish", value: false },
-            { name: "Italian", value: false },
-            { name: "Minnesota", value: false },
-            { name: "Puerto Rican", value: false },
-            { name: "Russian", value: false },
-            { name: "Scottish", value: false },
-            { name: "South African", value: false },
-            { name: "Southern", value: false },
-            { name: "Spanish", value: false },
-            { name: "Swiss-German", value: false },
-            { name: "Other", value: false },
-          ],
-          additional: {
-            name: "Additional Dialects",
-            srTitle: "Additional Dialects",
-            type: "input",
-            data: [],
-          },
-        },
-        {
-          name: "Languages (fluent)",
-          srTitle: "Languages (fluent)",
-          type: "input",
-          data: [],
-        },
-        {
-          name: "Languages (familiar)",
-          srTitle: "Languages (familiar)",
-          type: "input",
-          data: [],
-        },
-        {
-          name: "Dance",
-          srTitle: "Dance",
-          type: "checkbox",
-          data: [
-            { name: "Tap", value: false },
-            { name: "Ballet", value: false },
-            { name: "Jazz", value: false },
-            { name: "Hip Hop", value: false },
-            { name: "Other", value: false },
-          ],
-          additional: {
-            name: "Dance (other)",
-            srTitle: "Dance (other)",
-            type: "input",
-            data: [],
-          },
-        },
-        {
-          name: "Stage Combat",
-          srTitle: "Stage Combat",
-          type: "checkbox",
-          data: [
-            { name: "Hand to Hand", value: false },
-            { name: "Broadsword", value: false },
-            { name: "Knife", value: false },
-            { name: "Quarterstaff", value: false },
-            { name: "Single Sword", value: false },
-            { name: "Small Sword", value: false },
-            { name: "Rapier & Dagger", value: false },
-            { name: "Firearms Training/Handling", value: false },
-            { name: "Other", value: false },
-          ],
-          additional: {
-            name: "Stage Combat (other)",
-            srTitle: "Stage Combat (other)",
-            type: "input",
-            data: [],
-          },
-        },
-        {
-          name: "Instruments",
-          srTitle: "Instruments",
-          type: "checkbox",
-          data: [
-            { name: "Guitar", value: false },
-            { name: "Piano", value: false },
-            { name: "Drums", value: false },
-            { name: "Violin", value: false },
-            { name: "Flute", value: false },
-            { name: "Other", value: false },
-          ],
-          additional: {
-            name: "Instruments (other)",
-            srTitle: "Instruments (other)",
-            type: "input",
-            data: [],
-          },
-        },
-        {
-          name: "Circus Arts",
-          srTitle: "Circus Arts",
-          type: "checkbox",
-          data: [
-            { name: "Aerial Silks", value: false },
-            { name: "Acrobatics", value: false },
-            { name: "Trapeze", value: false },
-            { name: "Clowning", value: false },
-            { name: "Juggling", value: false },
-            { name: "Stilts", value: false },
-            { name: "Tightrope Walking", value: false },
-            { name: "Other", value: false },
-          ],
-          additional: {
-            name: "Circus Arts (other)",
-            srTitle: "Circus Arts (other)",
-            type: "input",
-            data: [],
-          },
-        },
-        {
-          name: "Misc.",
-          srTitle: "Misc.",
-          type: "checkbox",
-          data: [
-            { name: "Gymnastics", value: false },
-            { name: "Magician", value: false },
-            { name: "Puppetry", value: false },
-            { name: "Improv / Stand Up", value: false },
-            { name: "Martial Arts", value: false },
-            { name: "Whistling", value: false },
-            { name: "Sign Language", value: false },
-            { name: "Yo-Yo", value: false },
-            { name: "Other", value: false },
-          ],
-          additional: {
-            name: "Misc (other)",
-            srTitle: "Misc (other)",
-            type: "input",
-            data: [],
-          },
-        },
-      ],
+      categories: [],
+      talentsToSave: {},
+      otherTalents: {},
     };
   },
-  watch: {},
-  computed: {},
+  mounted() {
+    this.getCategories();
+  },
   methods: {
-    updateCheckbox(option, index, name) {
-      // this.pronounOptionsTwo.data.splice(index, 1, option);
-      console.log(option, index, name);
+    removeTalent(category, talent) {
+      this.otherTalents[category] = this.otherTalents[category].filter((t) => t != talent);
+    },
+    updateText(event, category) {
+      if (event.target.value.includes(",")) {
+        if (this.otherTalents[category]) {
+          this.otherTalents[category].push(event.target.value.slice(0, -1));
+        } else {
+          this.otherTalents[category] = [event.target.value.slice(0, -1)];
+        }
+        event.target.value = "";
+      }
+    },
+    getCategories() {
+      axios.get("/talent-categories.json").then((response) => {
+        this.categories = response.data;
+      });
+    },
+    updateCheckbox(option, checked) {
+      if (checked) {
+        this.talentsToSave[option.id] = null;
+      } else {
+        delete this.talentsToSave[option.id];
+      }
+      console.log(this.talentsToSave);
     },
   },
 };

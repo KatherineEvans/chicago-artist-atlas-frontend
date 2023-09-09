@@ -77,7 +77,7 @@
           </h2>
           <p class="mx-auto mt-2 max-w-xl text-center text-lg leading-8 text-blue-100">
             We know you're excited...so are we! Signup for our newsletter to get updates of all the cool things
-            happening here are Chicago Artist Atlas, and be sure to follow us on social media.
+            happening here at Chicago Artist Atlas, and be sure to follow us on social media.
           </p>
           <form class="mx-auto mt-10 flex max-w-md gap-x-4">
             <label for="email-address" class="sr-only">Email address</label>

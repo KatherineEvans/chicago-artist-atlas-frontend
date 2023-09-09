@@ -46,7 +46,7 @@
     <div class="py-10">
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8 container">
         <div class="col-span-1 md:col-span-3">
-          <p class="text-xl md:text-2xl lg:text-3xl font-bold mb-1">Atlas Directories</p>
+          <p class="text-xl md:text-2xl lg:text-3xl font-bold mb-1">Atlas Offerings</p>
           <div class="mx-auto col-xl-7 col-lg-7 col-md-8 col-sm-12 col-xs-12">
             <p class="text-lg">Explore opportunities in the Chicago Theatre community!</p>
           </div>
@@ -108,7 +108,7 @@
             <p class="text-lg">
               Here at Atlas, we're focused on providing our users with the latest resources on topics that matter -
               inclusivity, diversity, sustainability, and the business of theatre! We strive to continually improve and
-              grow our resource respository to best serve the Chicago theatre community.
+              grow our collection of resource to best serve the Chicago theatre community.
             </p>
             <!-- <a style="text-decoration: underline" href="/resources">View all resources</a> -->
           </div>
@@ -134,7 +134,7 @@
             <img class="m-auto pb-2 pt-4" src="../assets/illustrations/business.png" alt="" />
             <div class="card-body">
               <div class="mb-1">
-                <p class="text-xl font-bold mb-3">Business Resources for Artist</p>
+                <p class="text-xl font-bold mb-3">Business Resources for Artists</p>
                 <div>
                   <p class="mb-2 text-base">
                     Enhance your theatre career with our extensive collection of practical tools and knowledge geared
