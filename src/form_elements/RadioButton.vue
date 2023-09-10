@@ -9,6 +9,7 @@
             aria-describedby="comments-description"
             :name="option.name"
             type="checkbox"
+            :checked="checkedArray.includes(option.id)"
             @change="handleChange(option, $event)"
             class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
           />
@@ -22,7 +23,7 @@
 </template>
 <script>
 export default {
-  props: ["options", "colNumberClass", "optionsName"],
+  props: ["options", "colNumberClass", "optionsName", "checkedArray"],
   data: function () {
     return {};
   },

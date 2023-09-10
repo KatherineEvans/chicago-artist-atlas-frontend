@@ -21,6 +21,7 @@
                 colNumberClass="grid-cols-3"
                 @update-checkbox="updateCheckbox"
                 :optionsName="category"
+                :checkedArray="talentIds"
                 :options="talents"
               ></RadioButton>
             </div>
@@ -75,7 +76,7 @@
         <button type="button" class="text-sm font-semibold leading-6 text-gray-900">Cancel</button>
       </span>
       <span>
-        <button type="submit" class="text-sm font-semibold leading-6 text-gray-900">Save</button>
+        <button @click="saveTalents" type="submit" class="text-sm font-semibold leading-6 text-gray-900">Save</button>
         <a
           href="/user/profile/training"
           class="ml-3 rounded-md bg-indigo-600 pl-3 pr-4 py-2 text-sm font-semibold text-white hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 no-underline no-underline hover:no-underline"
@@ -94,7 +95,10 @@ export default {
   components: { RadioButton },
   data: function () {
     return {
+      talentIds: [],
       categories: [],
+      deletedStandard: [],
+      deletedOther: [],
       talentsToSave: {},
       otherTalents: {},
     };
@@ -103,10 +107,24 @@ export default {
     this.getCategories();
   },
   methods: {
+    saveTalents() {
+      axios
+        .post("/talents.json", {
+          talents: this.talentsToSave,
+          other: this.otherTalents,
+          deletedStandard: this.deletedStandard,
+          deletedOther: this.deletedOther,
+        })
+        .then((response) => {
+          console.log(response);
+        });
+    },
     removeTalent(category, talent) {
+      this.deletedOther.push(talent);
       this.otherTalents[category] = this.otherTalents[category].filter((t) => t != talent);
     },
     updateText(event, category) {
+      console.log(this.categories[category]);
       if (event.target.value.includes(",")) {
         if (this.otherTalents[category]) {
           this.otherTalents[category].push(event.target.value.slice(0, -1));
@@ -119,15 +137,32 @@ export default {
     getCategories() {
       axios.get("/talent-categories.json").then((response) => {
         this.categories = response.data;
+        this.getTalents();
+      });
+    },
+    getTalents() {
+      axios.get("/talents.json").then((response) => {
+        this.talents = response.data;
+        this.talentsToSave = {};
+        response.data.forEach((talent) => {
+          if (talent.other) {
+            this.otherTalents[talent.talent_category.category]
+              ? this.otherTalents[talent.talent_category.category].push(talent.other)
+              : (this.otherTalents[talent.talent_category.category] = [talent.other]);
+          } else {
+            this.talentIds.push(talent.talent_category_id);
+            this.talentsToSave[talent.talent_category_id] = null;
+          }
+        });
       });
     },
     updateCheckbox(option, checked) {
       if (checked) {
         this.talentsToSave[option.id] = null;
       } else {
+        this.deletedStandard.push(option.id);
         delete this.talentsToSave[option.id];
       }
-      console.log(this.talentsToSave);
     },
   },
 };
