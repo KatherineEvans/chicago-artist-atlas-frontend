@@ -142,7 +142,7 @@ export default {
           link: "#LGBTQIA",
           classes: "rainbow-background ring-purple-600/10 text-purple-700 hover:text-purple-900",
         },
-        { name: "Women+", link: "#Women+", classes: "bg-pink-50 text-pink-700 hover:text-pink-900 ring-pink-700/10" },
+        { name: "Women", link: "#Women", classes: "bg-pink-50 text-pink-700 hover:text-pink-900 ring-pink-700/10" },
       ],
     };
   },

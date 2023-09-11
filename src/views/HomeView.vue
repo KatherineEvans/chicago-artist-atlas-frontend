@@ -122,7 +122,7 @@
                 <div>
                   <p class="mb-2 text-base">
                     A collection of resources centered around diverse experiences, including: BIPOC, LGBTQIA+,
-                    Female-Identifying, and ADA resources.
+                    Female-Identifying, and Artists with Disabilities.
                   </p>
                 </div>
               </div>
