@@ -192,8 +192,8 @@
                   @update-checkbox="updateCheckbox"
                   optionsName="Gender"
                   :options="genderOptions"
+                  :checkedArray="genderChecked"
                   colNumberClass="grid-cols-2"
-                  :checkedArray="[]"
                 ></RadioButton>
                 <div class="my-3">
                   <span
@@ -245,7 +245,7 @@
                   optionsName="Pronouns"
                   :options="pronounOptions"
                   colNumberClass="grid-cols-2"
-                  :checkedArray="[]"
+                  :checkedArray="pronounChecked"
                 ></RadioButton>
                 <div class="my-3">
                   <span
@@ -321,6 +321,8 @@ export default {
       fileTooBig: false,
       fileTypeWrong: false,
       keepPrivate: false,
+      genderChecked: [],
+      pronounChecked: [],
       otherGender: [],
       otherPronouns: [],
       profile: {
@@ -521,13 +523,25 @@ export default {
           if (response.data) {
             this.profile = response.data;
             this.imgFile = response.data.headshot_url;
+            console.log(response.data);
             if (response.data.pronouns) {
               let data = JSON.parse(response.data.pronouns);
               this.pronounOptions = data;
+              data.forEach((pronoun) => {
+                if (pronoun.value) {
+                  this.pronounChecked.push(pronoun.id);
+                }
+              });
             }
             if (response.data.gender) {
               let data = JSON.parse(response.data.gender);
               this.genderOptions = data;
+              data.forEach((gender) => {
+                if (gender.value) {
+                  this.genderChecked.push(gender.id);
+                }
+              });
+              console.log(this.genderChecked);
             }
             if (response.data.other_gender) {
               this.otherGender = JSON.parse(response.data.other_gender);
@@ -548,6 +562,7 @@ export default {
       data.append("image_upload", this.imgUpload);
       data.append("image_file", this.imgFile);
       data.append("pronouns", JSON.stringify(this.pronounOptions));
+      data.append("gender", JSON.stringify(this.genderOptions));
       data.append("other_pronouns", JSON.stringify(this.otherPronouns));
       data.append("other_gender", JSON.stringify(this.otherGender));
 
