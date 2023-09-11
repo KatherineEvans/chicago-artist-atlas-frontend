@@ -115,28 +115,6 @@
                 ></DropdownSelect>
               </div>
               <div class="w-full lg:w-1/2 pt-2 px-3 pb-2">
-                <label for="age" class="block text-sm font-medium leading-6 text-gray-900">Age:</label>
-                <DropdownSelect
-                  id="age"
-                  @set-selected="age.selected = $event"
-                  :selectedData="profile.age"
-                  width="w-50 pr-2"
-                  :dropdownData="age"
-                  name="age"
-                ></DropdownSelect>
-              </div>
-              <div class="w-full lg:w-1/2 pt-2 px-3 pb-2">
-                <label for="gender" class="flex block text-sm font-medium leading-6 text-gray-900">Gender:</label>
-                <DropdownSelect
-                  id="gender"
-                  @set-selected="gender.selected = $event"
-                  :selectedData="profile.gender"
-                  width="w-50 pr-2"
-                  :dropdownData="gender"
-                  name="gender"
-                ></DropdownSelect>
-              </div>
-              <div class="w-full lg:w-1/2 pt-2 px-3 pb-2">
                 <label for="ethnicity" class="flex block text-sm font-medium leading-6 text-gray-900">Ethnicity:</label>
                 <DropdownSelect
                   id="ethnicity"
@@ -147,7 +125,29 @@
                   name="ethnicity"
                 ></DropdownSelect>
               </div>
-              <div class="w-full lg:w-1/3 pt-2 px-3 pb-2">
+              <div class="w-full lg:w-1/4 pt-2 px-3 pb-2">
+                <label for="age_low" class="block text-sm font-medium leading-6 text-gray-900">Age Low:</label>
+                <DropdownSelect
+                  id="age_low"
+                  @set-selected="age.selected = $event"
+                  :selectedData="profile.age_low"
+                  width="w-50 pr-2"
+                  :dropdownData="age"
+                  name="age_low"
+                ></DropdownSelect>
+              </div>
+              <div class="w-full lg:w-1/4 pt-2 px-3 pb-2">
+                <label for="age_high" class="block text-sm font-medium leading-6 text-gray-900">Age High:</label>
+                <DropdownSelect
+                  id="age_high"
+                  @set-selected="age.selected = $event"
+                  :selectedData="profile.age_high"
+                  width="w-50 pr-2"
+                  :dropdownData="age"
+                  name="age_high"
+                ></DropdownSelect>
+              </div>
+              <div class="w-full lg:w-1/2 pt-2 px-3 pb-2">
                 <label for="height" class="block text-sm font-medium leading-6 text-gray-900 mb-1">Height (ft):</label>
                 <DropdownSelect
                   id="height"
@@ -158,7 +158,7 @@
                   name="height"
                 ></DropdownSelect>
               </div>
-              <div class="w-full lg:w-1/3 pt-2 px-3 pb-2">
+              <div class="w-full lg:w-1/2 pt-2 px-3 pb-2">
                 <label for="hair_color" class="block text-sm font-medium leading-6 text-gray-900">Hair Color:</label>
                 <DropdownSelect
                   id="hair_color"
@@ -169,7 +169,7 @@
                   name="hair_color"
                 ></DropdownSelect>
               </div>
-              <div class="w-full lg:w-1/3 pt-2 px-3 pb-2">
+              <div class="w-full lg:w-1/2 pt-2 px-3 pb-2">
                 <label for="eye_color" class="block text-sm font-medium leading-6 text-gray-900">Eye Color:</label>
                 <DropdownSelect
                   id="eye_color"
@@ -180,7 +180,56 @@
                   name="eye_color"
                 ></DropdownSelect>
               </div>
-              <!-- <div class="w-full pl-1 px-3">
+              <div class="w-full pl-1 px-3 mt-2">
+                <label for="gender" class="block text-sm font-medium leading-6 text-gray-900 mb-0 flex justify-between">
+                  <span>Gender:</span>
+                  <span class="ml-auto italic text-gray-400">select all that apply</span>
+                </label>
+                <RadioButton
+                  class="pl-1"
+                  id="gender"
+                  typeName="gender"
+                  @update-checkbox="updateCheckbox"
+                  optionsName="Gender"
+                  :options="genderOptions"
+                  colNumberClass="grid-cols-2"
+                  :checkedArray="[]"
+                ></RadioButton>
+                <div class="my-3">
+                  <span
+                    v-for="gender in otherGender"
+                    :key="gender"
+                    class="inline-flex items-center gap-x-0.5 rounded-md bg-blue-50 px-3 py-1 text-base font-medium text-blue-600 ring-1 ring-inset ring-blue-500/10 mr-3"
+                  >
+                    {{ gender }}
+                    <button
+                      @click="removeItem('gender', gender)"
+                      type="button"
+                      class="group relative -mr-1 h-3.5 w-3.5 rounded-sm hover:bg-blue-500/20"
+                    >
+                      <span class="sr-only">Remove</span>
+                      <svg viewBox="0 0 14 14" class="h-3.5 w-3.5 stroke-blue-600/50 group-hover:stroke-blue-600/75">
+                        <path d="M4 4l6 6m0-6l-6 6" />
+                      </svg>
+                      <span class="absolute -inset-1" />
+                    </button>
+                  </span>
+                </div>
+                <label for="otherGenders" class="flex block text-sm font-medium leading-6 text-gray-900 mb-0 mt-3">
+                  Other - Gender:
+                </label>
+                <p class="m-0 text-sm leading-6 italic text-gray-400">Separate with a comma</p>
+                <div class="mt-2">
+                  <input
+                    type="text"
+                    name="otherGenders"
+                    id="otherGenders"
+                    @input="updateText($event, 'gender')"
+                    class="pl-3 block w-full rounded-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  />
+                </div>
+              </div>
+              <div class="w-full pl-1 px-3 mt-2">
                 <label
                   for="pronouns"
                   class="block text-sm font-medium leading-6 text-gray-900 mb-0 flex justify-between"
@@ -191,12 +240,47 @@
                 <RadioButton
                   class="pl-1"
                   id="pronouns"
+                  typeName="pronouns"
                   @update-checkbox="updateCheckbox"
                   optionsName="Pronouns"
                   :options="pronounOptions"
                   colNumberClass="grid-cols-2"
+                  :checkedArray="[]"
                 ></RadioButton>
-              </div> -->
+                <div class="my-3">
+                  <span
+                    v-for="pronoun in otherPronouns"
+                    :key="pronoun"
+                    class="inline-flex items-center gap-x-0.5 rounded-md bg-blue-50 px-3 py-1 text-base font-medium text-blue-600 ring-1 ring-inset ring-blue-500/10 mr-3"
+                  >
+                    {{ pronoun }}
+                    <button
+                      @click="removeItem('pronoun', pronoun)"
+                      type="button"
+                      class="group relative -mr-1 h-3.5 w-3.5 rounded-sm hover:bg-blue-500/20"
+                    >
+                      <span class="sr-only">Remove</span>
+                      <svg viewBox="0 0 14 14" class="h-3.5 w-3.5 stroke-blue-600/50 group-hover:stroke-blue-600/75">
+                        <path d="M4 4l6 6m0-6l-6 6" />
+                      </svg>
+                      <span class="absolute -inset-1" />
+                    </button>
+                  </span>
+                </div>
+                <label for="otherPronouns" class="flex block text-sm font-medium leading-6 text-gray-900 mb-0 mt-3">
+                  Other - Pronouns:
+                </label>
+                <p class="m-0 text-sm leading-6 italic text-gray-400">Separate with a comma</p>
+                <div class="mt-2">
+                  <input
+                    type="text"
+                    name="otherPronouns"
+                    id="otherPronouns"
+                    @input="updateText($event, 'pronoun')"
+                    class="pl-3 block w-full rounded-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  />
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -222,11 +306,11 @@
 <script>
 import { PhotoIcon } from "@heroicons/vue/24/solid";
 import DropdownSelect from "../../../form_elements/DropdownSelect.vue";
-// import RadioButton from "../../../form_elements/RadioButton.vue";
+import RadioButton from "../../../form_elements/RadioButton.vue";
 import axios from "axios";
 
 export default {
-  components: { PhotoIcon, DropdownSelect },
+  components: { PhotoIcon, DropdownSelect, RadioButton },
   data: function () {
     return {
       next: false,
@@ -237,10 +321,13 @@ export default {
       fileTooBig: false,
       fileTypeWrong: false,
       keepPrivate: false,
+      otherGender: [],
+      otherPronouns: [],
       profile: {
         id: null,
         bio: null,
-        age: "18-22",
+        age_low: "18-22",
+        age_high: "33-37",
         keep_private: false,
         union_status: "Equity",
         ethnicity: "Multiple ethnicity / Other",
@@ -349,49 +436,49 @@ export default {
       age: {
         options: ["18-22", "23-27", "28-32", "33-37", "38-42", "43-47", "48-52", "53-57", "58-65", "Above 65"],
       },
-      pronounOptions: {
-        srTitle: "Pronouns",
-        data: [
-          {
-            name: "She, Her, Hers",
-            value: false,
-          },
-          {
-            name: "He, Him, His",
-            value: false,
-          },
-          {
-            name: "They, Them, Their",
-            value: false,
-          },
-          {
-            name: "Ze, Zir, Zirs",
-            value: false,
-          },
-          {
-            name: "Ze, Hir, Hirs",
-            value: false,
-          },
-          {
-            name: "Prefer not to share",
-            value: false,
-          },
-        ],
-      },
-      gender: {
-        options: [
-          "Male",
-          "Female",
-          "Transgender",
-          "Demigender",
-          "Agender",
-          "Nonbinary",
-          "Genderqueer",
-          "Two-Spirit",
-          "Other",
-          "No Response",
-        ],
-      },
+      pronounOptions: [
+        {
+          id: 1,
+          name: "She, Her, Hers",
+          value: false,
+        },
+        {
+          id: 2,
+          name: "He, Him, His",
+          value: false,
+        },
+        {
+          id: 3,
+          name: "They, Them, Their",
+          value: false,
+        },
+        {
+          id: 4,
+          name: "Ze, Zir, Zirs",
+          value: false,
+        },
+        {
+          id: 5,
+          name: "Ze, Hir, Hirs",
+          value: false,
+        },
+        {
+          id: 6,
+          name: "Prefer not to share",
+          value: false,
+        },
+      ],
+      genderOptions: [
+        { id: 1, name: "Male", value: false },
+        { id: 2, name: "Female", value: false },
+        { id: 3, name: "Transgender", value: false },
+        { id: 4, name: "Demigender", value: false },
+        { id: 5, name: "Agender", value: false },
+        { id: 6, name: "Nonbinary", value: false },
+        { id: 7, name: "Genderqueer", value: false },
+        { id: 8, name: "Two-Spirit", value: false },
+        { id: 10, name: "No Response", value: false },
+      ],
       ethnicity: {
         options: [
           "American Indian or Alaskan Native",
@@ -402,13 +489,31 @@ export default {
           "Multiple ethnicity / Other",
         ],
       },
-      pronouns: [],
     };
   },
   mounted() {
     this.getProfile();
   },
   methods: {
+    removeItem(type, item) {
+      if (type === "gender") {
+        this.otherGender = this.otherGender.filter((g) => g != item);
+      }
+      if (type === "pronoun") {
+        this.otherPronouns = this.otherPronouns.filter((p) => p != item);
+      }
+    },
+    updateText(event, type) {
+      if (event.target.value.includes(",")) {
+        if (type === "gender") {
+          this.otherGender.push(event.target.value.slice(0, -1));
+        }
+        if (type === "pronoun") {
+          this.otherPronouns = [event.target.value.slice(0, -1)];
+        }
+        event.target.value = "";
+      }
+    },
     getProfile() {
       axios
         .get("/profile.json")
@@ -419,6 +524,16 @@ export default {
             if (response.data.pronouns) {
               let data = JSON.parse(response.data.pronouns);
               this.pronounOptions = data;
+            }
+            if (response.data.gender) {
+              let data = JSON.parse(response.data.gender);
+              this.genderOptions = data;
+            }
+            if (response.data.other_gender) {
+              this.otherGender = JSON.parse(response.data.other_gender);
+            }
+            if (response.data.other_pronouns) {
+              this.otherPronouns = JSON.parse(response.data.other_pronouns);
             }
           }
           this.isLoading = false;
@@ -433,6 +548,8 @@ export default {
       data.append("image_upload", this.imgUpload);
       data.append("image_file", this.imgFile);
       data.append("pronouns", JSON.stringify(this.pronounOptions));
+      data.append("other_pronouns", JSON.stringify(this.otherPronouns));
+      data.append("other_gender", JSON.stringify(this.otherGender));
 
       this.profile.id ? this.updateProfile(data) : this.createProfile(data);
     },
@@ -489,8 +606,15 @@ export default {
         }
       }
     },
-    updateCheckbox(option, index) {
-      this.pronounOptions.data.splice(index, 1, option);
+    updateCheckbox(option, index, type) {
+      if (type === "pronouns") {
+        this.pronounOptions.map((po) => (po.name === option.name ? (po.value = index) : null));
+        console.log(this.pronounOptions);
+      }
+      if (type === "gender") {
+        this.genderOptions.map((go) => (go.name === option.name ? (go.value = index) : null));
+        console.log(this.genderOptions);
+      }
     },
   },
 };

@@ -23,6 +23,7 @@
                 :optionsName="category"
                 :checkedArray="talentIds"
                 :options="talents"
+                typeName="talents"
               ></RadioButton>
             </div>
             <div class="w-full pt-2 pb-3 mb-2">
@@ -76,13 +77,15 @@
         <button type="button" class="text-sm font-semibold leading-6 text-gray-900">Cancel</button>
       </span>
       <span>
-        <button @click="saveTalents" type="submit" class="text-sm font-semibold leading-6 text-gray-900">Save</button>
-        <a
-          href="/user/profile/training"
+        <button @click="saveTalents(false)" type="submit" class="text-sm font-semibold leading-6 text-gray-900">
+          Save
+        </button>
+        <button
+          @click="saveTalents(true)"
           class="ml-3 rounded-md bg-indigo-600 pl-3 pr-4 py-2 text-sm font-semibold text-white hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 no-underline no-underline hover:no-underline"
         >
           Save & Next
-        </a>
+        </button>
       </span>
     </div>
   </div>
@@ -97,8 +100,6 @@ export default {
     return {
       talentIds: [],
       categories: [],
-      deletedStandard: [],
-      deletedOther: [],
       talentsToSave: {},
       otherTalents: {},
     };
@@ -107,20 +108,20 @@ export default {
     this.getCategories();
   },
   methods: {
-    saveTalents() {
+    saveTalents(next) {
       axios
         .post("/talents.json", {
           talents: this.talentsToSave,
           other: this.otherTalents,
-          deletedStandard: this.deletedStandard,
-          deletedOther: this.deletedOther,
         })
         .then((response) => {
           console.log(response);
+          if (next) {
+            this.$router.push("/user/profile/trainings");
+          }
         });
     },
     removeTalent(category, talent) {
-      this.deletedOther.push(talent);
       this.otherTalents[category] = this.otherTalents[category].filter((t) => t != talent);
     },
     updateText(event, category) {
@@ -137,6 +138,7 @@ export default {
     getCategories() {
       axios.get("/talent-categories.json").then((response) => {
         this.categories = response.data;
+        console.log(this.categories);
         this.getTalents();
       });
     },
@@ -160,7 +162,6 @@ export default {
       if (checked) {
         this.talentsToSave[option.id] = null;
       } else {
-        this.deletedStandard.push(option.id);
         delete this.talentsToSave[option.id];
       }
     },

@@ -2,7 +2,7 @@
   <fieldset>
     <legend class="sr-only">{{ options.srTitle }}</legend>
     <div :class="colNumberClass" class="space-y-5 grid">
-      <div v-for="option in talentsWithOutOther" :key="option.id" class="relative flex items-start mt-3">
+      <div v-for="option in cleanData" :key="option.id" class="relative flex items-start mt-3">
         <div v-if="option.name != 'Other'" class="flex h-6 items-center">
           <input
             :id="option.name"
@@ -23,13 +23,13 @@
 </template>
 <script>
 export default {
-  props: ["options", "colNumberClass", "optionsName", "checkedArray"],
+  props: ["options", "colNumberClass", "optionsName", "checkedArray", "typeName"],
   data: function () {
     return {};
   },
   watch: {},
   computed: {
-    talentsWithOutOther() {
+    cleanData() {
       let data = this.options.filter((option) => {
         return option.name != "Other";
       });
@@ -38,7 +38,7 @@ export default {
   },
   methods: {
     handleChange(option, event) {
-      this.$emit("update-checkbox", option, event.target.checked);
+      this.$emit("update-checkbox", option, event.target.checked, this.typeName);
     },
   },
 };

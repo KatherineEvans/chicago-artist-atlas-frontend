@@ -16,7 +16,9 @@
             <div class="w-full grid flex flex-wrap">
               <div class="flex-wrap flex">
                 <div class="w-full lg:w-1/2 p-3">
-                  <label for="institution" class="block text-base font-medium leading-6 text-gray-900">Name:</label>
+                  <label for="institution" class="block text-base font-medium leading-6 text-gray-900">
+                    Award Name:
+                  </label>
                   <div class="mt-2">
                     <input
                       type="text"
@@ -28,7 +30,7 @@
                   </div>
                 </div>
                 <div class="w-full lg:w-1/2 p-3">
-                  <label for="degree" class="block text-base font-medium leading-6 text-gray-900">Year:</label>
+                  <label for="degree" class="block text-base font-medium leading-6 text-gray-900">Year Received:</label>
                   <div class="mt-2">
                     <input
                       type="text"
@@ -40,7 +42,9 @@
                   </div>
                 </div>
                 <div class="w-full lg:w-1/2 p-3">
-                  <label for="city" class="block text-base font-medium leading-6 text-gray-900">Organization:</label>
+                  <label for="city" class="block text-base font-medium leading-6 text-gray-900">
+                    Organization / Production:
+                  </label>
                   <div class="mt-2">
                     <input
                       type="text"
