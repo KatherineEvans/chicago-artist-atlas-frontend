@@ -135,7 +135,7 @@ export default {
             },
             {
               name: "Training",
-              href: "/user/profile/training",
+              href: "/user/profile/trainings",
               routeName: "user-profile-training",
             },
             {

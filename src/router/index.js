@@ -131,7 +131,7 @@ const routes = [
           },
           {
             path: "training",
-            name: "user-profile-training",
+            name: "user-profile-trainings",
             component: UserTraining,
           },
           {

@@ -108,6 +108,14 @@ export default {
     this.getCategories();
   },
   methods: {
+    alertMessage() {
+      this.$store.commit("alerts/setMessage", {
+        title: "Successfully Saved!",
+        body: "Your Artist Bio has been successfully saved.",
+        icon: "success",
+        isVisible: true,
+      });
+    },
     saveTalents(next) {
       axios
         .post("/talents.json", {
@@ -118,6 +126,8 @@ export default {
           console.log(response);
           if (next) {
             this.$router.push("/user/profile/trainings");
+          } else {
+            this.alertMessage();
           }
         });
     },

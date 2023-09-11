@@ -252,7 +252,7 @@
     <div class="mt-10 flex justify-between gap-x-6">
       <span>
         <a
-          href="/user/profile/training"
+          href="/user/profile/trainings"
           class="mr-3 rounded-md bg-slate-600 px-3 py-2 text-sm font-semibold text-white hover:bg-slate-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600 no-underline hover:no-underline"
         >
           Back
