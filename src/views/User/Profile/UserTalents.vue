@@ -11,14 +11,18 @@
         </p>
 
         <div class="mt-10 flex flex-wrap">
-          <div class="border-b last:border-0 w-full px-3" v-for="(talents, category) in categories" :key="category">
+          <div
+            class="border-b last:border-0 w-full px-1 lg:px-3"
+            v-for="(talents, category) in categories"
+            :key="category"
+          >
             <div class="border-gray-900/10 py-3">
               <label :for="category" class="block text-base font-bold leading-6 text-gray-900 mb-0">
                 {{ category }}
               </label>
               <p class="m-0 text-sm leading-6 italic text-gray-400">Select all that apply</p>
               <RadioButton
-                colNumberClass="grid-cols-3"
+                colNumberClass="grid-cols-2 lg:grid-cols-3 space-y-5 grid"
                 @update-checkbox="updateCheckbox"
                 :optionsName="category"
                 :checkedArray="talentIds"
@@ -74,7 +78,6 @@
         >
           Back
         </a>
-        <button type="button" class="text-sm font-semibold leading-6 text-gray-900">Cancel</button>
       </span>
       <span>
         <button @click="saveTalents(false)" type="submit" class="text-sm font-semibold leading-6 text-gray-900">

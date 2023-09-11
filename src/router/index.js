@@ -130,7 +130,7 @@ const routes = [
             component: UserPerformances,
           },
           {
-            path: "training",
+            path: "trainings",
             name: "user-profile-trainings",
             component: UserTraining,
           },

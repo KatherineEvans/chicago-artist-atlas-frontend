@@ -257,7 +257,6 @@
         >
           Back
         </a>
-        <button type="button" class="text-sm font-semibold leading-6 text-gray-900">Cancel</button>
       </span>
       <span>
         <button type="submit" class="text-sm font-semibold leading-6 text-gray-900">Save</button>
