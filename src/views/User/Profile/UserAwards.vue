@@ -16,41 +16,36 @@
             <div class="w-full grid flex flex-wrap">
               <div class="flex-wrap flex">
                 <div class="w-full lg:w-1/2 p-3">
-                  <label for="institution" class="block text-base font-medium leading-6 text-gray-900">
-                    Award Name:
-                  </label>
+                  <label for="name" class="block text-base font-medium leading-6 text-gray-900">Award Name:</label>
                   <div class="mt-2">
                     <input
                       type="text"
-                      name="institution"
-                      id="institution"
-                      autocomplete="address-level2"
+                      name="name"
+                      id="name"
                       class="block w-full rounded-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     />
                   </div>
                 </div>
                 <div class="w-full lg:w-1/2 p-3">
-                  <label for="degree" class="block text-base font-medium leading-6 text-gray-900">Year Received:</label>
+                  <label for="year" class="block text-base font-medium leading-6 text-gray-900">Year Received:</label>
                   <div class="mt-2">
                     <input
                       type="text"
-                      name="degree"
-                      id="degree"
-                      autocomplete="address-level2"
+                      name="year"
+                      id="year"
                       class="block w-full rounded-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     />
                   </div>
                 </div>
                 <div class="w-full lg:w-1/2 p-3">
-                  <label for="city" class="block text-base font-medium leading-6 text-gray-900">
+                  <label for="organization" class="block text-base font-medium leading-6 text-gray-900">
                     Organization / Production:
                   </label>
                   <div class="mt-2">
                     <input
                       type="text"
-                      name="city"
-                      id="city"
-                      autocomplete="address-level2"
+                      name="organization"
+                      id="organization"
                       class="block w-full rounded-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     />
                   </div>
@@ -62,7 +57,6 @@
                       type="text"
                       name="state"
                       id="state"
-                      autocomplete="address-level2"
                       class="block w-full rounded-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     />
                   </div>
@@ -71,11 +65,11 @@
             </div>
             <div class="w-full grid flex flex-wrap flex">
               <div class="col-span-full px-3">
-                <label for="about" class="block text-base font-medium leading-6 text-gray-900">Note:</label>
+                <label for="note" class="block text-base font-medium leading-6 text-gray-900">Note:</label>
                 <div class="mt-2">
                   <textarea
-                    id="about"
-                    name="about"
+                    id="note"
+                    name="note"
                     rows="3"
                     class="block w-full rounded-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
