@@ -42,7 +42,6 @@ export default {
     },
     setProfile(state, payload) {
       state.profile = payload;
-      console.log({ state: state });
     },
     setPerformances(state, payload) {
       state.performances = payload;
@@ -63,14 +62,11 @@ export default {
         .get("/profile.json")
         .then((response) => {
           if (response.data.profiles.length > 0) {
-            console.log(response.data.profiles[0]);
             commit("setProfile", response.data.profiles[0]);
           }
         })
         .catch((error) => {
-          // commit("setErrors", error.response.data.status.message);
           console.log("signup posted w/errors", error.response.data.status.message);
-          // return error.response.data.status.message;
         });
     },
   },
@@ -79,7 +75,6 @@ export default {
       return state.user;
     },
     profile(state) {
-      console.log(state, "party");
       return state.profile;
     },
     performances(state) {

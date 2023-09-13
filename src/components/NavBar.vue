@@ -303,7 +303,6 @@ export default {
     return {
       classNavOpen: false,
       rotate: false,
-      activeUser: `${localStorage.userFirstName} ${localStorage.userLastName}`,
       mobileMenuOpen: false,
       mobileUserMenuOpen: false,
       modalOpen: false,
@@ -349,6 +348,9 @@ export default {
     };
   },
   computed: {
+    activeUser() {
+      return `${localStorage.userFirstName} ${localStorage.userLastName}`;
+    },
     passwordResetToken() {
       return this.$route.query.reset_token;
     },

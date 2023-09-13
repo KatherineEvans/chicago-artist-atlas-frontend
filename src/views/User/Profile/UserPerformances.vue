@@ -259,7 +259,7 @@
         </a>
       </span>
       <span>
-        <button type="submit" class="text-sm font-semibold leading-6 text-gray-900">Save</button>
+        <!-- <button type="submit" class="text-sm font-semibold leading-6 text-gray-900">Save</button> -->
         <a
           href="/user/profile/awards"
           class="ml-3 rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 no-underline no-underline hover:no-underline"

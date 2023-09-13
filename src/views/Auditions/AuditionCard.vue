@@ -154,7 +154,7 @@
         </div>
         <div class="hide border-t border-gray-100 px-4 py-3 sm:col-span-1 sm:px-0" :class="characterCardClass">
           <dt class="text-sm leading-6 text-gray-900">Audition Location</dt>
-          <dd class="mt-1 text-base leading-6 text-gray-700 sm:mt-2">LOCATION</dd>
+          <dd class="mt-1 text-base leading-6 text-gray-700 sm:mt-2">-</dd>
         </div>
         <div
           class="hide border-t border-gray-100 px-4 py-3 sm:col-span-3 sm:px-0"
@@ -193,6 +193,7 @@
         <div class="border-t border-gray-100 px-4 py-3 sm:col-span-3 sm:px-0">
           <div class="d-flex flex-row-reverse">
             <button
+              v-if="audition.characters.length > 0"
               class="no-underline hover:no-underline flex-none rounded-md bg-blue-900 px-3.5 py-2.5 text-base float-right font-semibold shadow-sm hover:bg-blue-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white text-blue-50"
               style="text-decoration: none"
               @click="$emit('expandAudition', audition)"

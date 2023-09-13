@@ -103,6 +103,17 @@ export default {
 
           // Dispatch getUserProfile function
           this.$store.dispatch("users/getUserProfile");
+          // axios
+          //   .get("/profile.json")
+          //   .then((response) => {
+          //     if (response.data.profiles.length > 0) {
+          //       console.log(response.data);
+          //       // commit("setProfile", response.data.profiles[0]);
+          //     }
+          //   })
+          //   .catch((error) => {
+          //     console.log(error);
+          //   });
         })
         .catch((error) => {
           console.log("posted w/errors", error.response.data.messages);

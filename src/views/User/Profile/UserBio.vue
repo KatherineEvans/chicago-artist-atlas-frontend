@@ -287,7 +287,7 @@
       </div>
     </div>
 
-    <div class="mt-10 flex items-center justify-between gap-x-6">
+    <div class="mt-10 flex items-center justify-end gap-x-6">
       <span>
         <button type="submit" @click="next = false" class="px-3 py-2 text-sm font-semibold underline">Save</button>
         <button
@@ -579,7 +579,6 @@ export default {
       });
     },
     createProfile(data) {
-      console.log("create", data);
       axios.post("/profiles.json", data).then((response) => {
         console.log(response);
         this.$store.commit("users/setProfile", response.data);
