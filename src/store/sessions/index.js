@@ -59,13 +59,11 @@ export default {
       axios
         .post("/users.json", payload)
         .then((response) => {
-          // console.log("signup posted w/response", response);
           // commit("setUserInfo", response);
           // commit("setDefaultUserInfo", response);
         })
         .catch((error) => {
           commit("setErrors", error.response.data.status.message);
-          // console.log("signup posted w/errors", error.response.data.status.message);
           return error.response.data.status.message;
         });
     },
@@ -74,15 +72,12 @@ export default {
       axios
         .post("/users/sign_in.json", payload)
         .then((response) => {
-          // console.log(response, "signin");
-          // console.log(response.headers.authorization);
           localStorage.setItem("authToken", response.headers.authorization);
           axios.defaults.headers.common["Authorization"] = response.headers.authorization;
           // commit("setUserInfo", response);
           // commit("setDefaultUserInfo", response);
         })
         .catch((error) => {
-          // console.log("posted w/errors", error.response.data.status.message);
           commit("setErrors", error.response.data.status.message);
         });
     },

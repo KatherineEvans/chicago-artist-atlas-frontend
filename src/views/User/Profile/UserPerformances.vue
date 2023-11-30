@@ -316,7 +316,6 @@ export default {
     },
     getPerformances() {
       axios.get("/performances.json").then((response) => {
-        console.log(response.data);
         this.performances = response.data;
         this.isLoading = false;
       });

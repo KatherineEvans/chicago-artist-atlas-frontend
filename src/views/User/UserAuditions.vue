@@ -85,7 +85,6 @@ export default {
     getUserAuditions() {
       axios.get("/user_roles.json").then((response) => {
         this.auditions = response.data;
-        console.log(this.auditions);
         this.isLoading = false;
       });
     },

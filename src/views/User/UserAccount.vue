@@ -269,11 +269,7 @@ export default {
   methods: {
     getUser() {
       axios.get("/current_user.json").then((response) => {
-        console.log(response.data);
         this.user = response.data;
-        if (this.user.address) {
-          console.log(this.user.address);
-        }
       });
     },
     alertMessage() {

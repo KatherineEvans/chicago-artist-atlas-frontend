@@ -349,7 +349,6 @@ export default {
           this.theaters = response.data;
           this.currentTheater = this.theaters[0];
           let addressesForTooltip = [];
-          console.log({ theaters: this.theaters });
           let addressArray = [];
           this.theaters.forEach((theater) => {
             if (theater.address) {
@@ -361,7 +360,6 @@ export default {
             }
           });
           let addresses = addressArray.join(";");
-          console.log({ addresses: addresses });
 
           axios
             .get(
@@ -391,7 +389,6 @@ export default {
       });
     },
     setMap(center, data, addressesForTooltip, setDataForMap) {
-      console.log({ center: center });
       mapboxgl.accessToken = process.env.VUE_APP_MAP_KEY;
       this.map = new mapboxgl.Map({
         container: "map",
@@ -426,7 +423,6 @@ export default {
     },
     setCurrentTheater(theater) {
       this.currentTheater = theater;
-      console.log(theater.address);
       if (theater?.address?.lat && theater?.address?.lng) {
         // this.setMap([theater.address.lat, theater.address.lng], null, null, null);
         const center = new mapboxgl.LngLat(theater.address.lng, theater.address.lat);

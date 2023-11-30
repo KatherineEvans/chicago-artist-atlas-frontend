@@ -109,7 +109,6 @@ export default {
           //   .get("/profile.json")
           //   .then((response) => {
           //     if (response.data.profiles.length > 0) {
-          //       console.log(response.data);
           //       // commit("setProfile", response.data.profiles[0]);
           //     }
           //   })

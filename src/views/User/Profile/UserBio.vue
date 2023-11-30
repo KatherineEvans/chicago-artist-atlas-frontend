@@ -522,7 +522,6 @@ export default {
           if (response.data) {
             this.profile = response.data;
             this.imgFile = response.data.headshot_url;
-            console.log(response.data);
             if (response.data.pronouns) {
               let data = JSON.parse(response.data.pronouns);
               this.pronounOptions = data;
@@ -540,7 +539,6 @@ export default {
                   this.genderChecked.push(gender.id);
                 }
               });
-              console.log(this.genderChecked);
             }
             if (response.data.other_gender) {
               this.otherGender = JSON.parse(response.data.other_gender);
@@ -569,7 +567,6 @@ export default {
     },
     updateProfile(data) {
       axios.patch(`/profiles/${this.profile.id}.json`, data).then((response) => {
-        console.log(response);
         this.$store.commit("users/setProfile", response.data);
         if (this.next) {
           this.$router.push("/user/profile/talents");
@@ -580,7 +577,6 @@ export default {
     },
     createProfile(data) {
       axios.post("/profiles.json", data).then((response) => {
-        console.log(response);
         this.$store.commit("users/setProfile", response.data);
         if (this.next) {
           this.$router.push("/user/profile/talents");
@@ -622,11 +618,9 @@ export default {
     updateCheckbox(option, index, type) {
       if (type === "pronouns") {
         this.pronounOptions.map((po) => (po.name === option.name ? (po.value = index) : null));
-        console.log(this.pronounOptions);
       }
       if (type === "gender") {
         this.genderOptions.map((go) => (go.name === option.name ? (go.value = index) : null));
-        console.log(this.genderOptions);
       }
     },
   },
