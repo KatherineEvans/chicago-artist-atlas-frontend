@@ -43,16 +43,19 @@
       </template>
     </ModalContainer>
     <!-- CURRENT RESOURCES -->
-    <div class="py-10">
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 container">
-        <div class="col-span-1 md:col-span-3">
+    <div class="p-10">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+        <div class="flex flex-col col-span-1 md:col-span-3">
           <p class="text-xl md:text-2xl lg:text-3xl font-bold mb-1">Atlas Offerings</p>
           <div class="mx-auto col-xl-7 col-lg-7 col-md-8 col-sm-12 col-xs-12">
             <p class="text-lg">Explore opportunities in the Chicago Theatre community!</p>
           </div>
         </div>
-        <div class="col-span-1 p-2">
-          <a href="/auditions" class="h-100 card mx-auto text-center drop-shadow-md">
+        <div class="flex flex-col col-span-1 p-2">
+          <a
+            href="/auditions"
+            class="drop-shadow bg-white h-full block border border-grey-400 mx-auto text-center rounded p-4"
+          >
             <img class="m-auto pb-2 pt-4" src="../assets/illustrations/auditions.png" alt="" />
             <div class="card-body">
               <div class="mb-1">
@@ -66,8 +69,11 @@
             </div>
           </a>
         </div>
-        <div class="col-span-1 p-2">
-          <a href="/directory" class="drop-shadow-md h-100 card mx-auto text-center">
+        <div class="flex flex-col col-span-1 p-2">
+          <a
+            href="/directory"
+            class="drop-shadow bg-white h-full block border border-grey-400 mx-auto text-center rounded p-4"
+          >
             <img class="m-auto pb-2 pt-4" src="../assets/illustrations/directories.png" alt="" />
             <div class="card-body">
               <div class="mb-1">
@@ -81,8 +87,11 @@
             </div>
           </a>
         </div>
-        <div class="col-span-1 p-2">
-          <a @click="modalOpen = true" class="drop-shadow-md h-100 card mx-auto text-center">
+        <div class="flex flex-col col-span-1 p-2">
+          <a
+            @click="modalOpen = true"
+            class="drop-shadow bg-white h-full block border border-grey-400 mx-auto text-center rounded p-4"
+          >
             <img class="m-auto pb-2 pt-4" src="../assets/illustrations/classes.png" alt="" />
             <div class="card-body">
               <div class="mb-1">
@@ -100,9 +109,9 @@
       </div>
     </div>
     <!-- COMING SOON -->
-    <div class="py-10 bg-blue-50 mb-0">
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 container">
-        <div class="col-span-1 md:col-span-3">
+    <div class="p-10 bg-blue-50 mb-0">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+        <div class="flex flex-col col-span-1 md:col-span-3">
           <p class="text-xl md:text-2xl lg:text-3xl font-bold mb-1">Atlas Resources</p>
           <div class="mx-auto col-xl-7 col-lg-7 col-md-8 col-sm-12 col-xs-12">
             <p class="text-lg">
@@ -113,8 +122,11 @@
             <!-- <a style="text-decoration: underline" href="/resources">View all resources</a> -->
           </div>
         </div>
-        <div class="col-span-1 p-2">
-          <a href="/resources" class="drop-shadow-md h-100 card mx-auto text-center">
+        <div class="flex flex-col col-span-1 p-2">
+          <a
+            href="/resources"
+            class="drop-shadow h-full block border border-grey-400 mx-auto text-center bg-white rounded p-4"
+          >
             <img class="m-auto pb-2 pt-4" src="../assets/illustrations/identity.png" alt="" />
             <div class="card-body">
               <div class="mb-1">
@@ -129,8 +141,11 @@
             </div>
           </a>
         </div>
-        <div class="col-span-1 p-2">
-          <a href="/resources" class="drop-shadow-md h-100 card mx-auto text-center">
+        <div class="flex flex-col col-span-1 p-2">
+          <a
+            href="/resources"
+            class="drop-shadow h-full block border border-grey-400 mx-auto text-center bg-white rounded p-4"
+          >
             <img class="m-auto pb-2 pt-4" src="../assets/illustrations/business.png" alt="" />
             <div class="card-body">
               <div class="mb-1">
@@ -145,8 +160,11 @@
             </div>
           </a>
         </div>
-        <div class="col-span-1 p-2">
-          <a href="/resources" class="drop-shadow-md h-100 card mx-auto text-center">
+        <div class="flex flex-col col-span-1 p-2">
+          <a
+            href="/resources"
+            class="drop-shadow h-full block border border-grey-400 mx-auto text-center bg-white rounded p-4"
+          >
             <img class="m-auto pb-2 pt-4" src="../assets/illustrations/lifehacks.png" alt="" />
             <div class="card-body">
               <div class="mb-1">

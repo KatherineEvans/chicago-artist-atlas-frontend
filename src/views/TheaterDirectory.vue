@@ -20,16 +20,16 @@
       </div>
     </div> -->
     <!-- SEARCH / FILTER BAR -->
-    <div class="container">
-      <div class="grid grid-cols-2 lg:grid-cols-3 justify-center p-4 gap-4">
+    <div class="px-2 md:px-8">
+      <div class="grid grid-cols-2 lg:grid-cols-4 justify-center p-4 gap-6 mb-6">
         <div class="col-span-1">
-          <label for="equity" class="mr-2 sm:text-sm sm:leading-6">Equity</label>
+          <label for="equity" class="mr-2 sm:text-sm sm:leading-6 font-bold">Equity</label>
           <select
             id="equity"
             name="equity"
             v-model="equity"
             @change="trackValue"
-            class="w-100 rounded-md border-0 py-1.5 pl-3 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6"
+            class="w-full rounded-md border-0 py-1.5 pl-3 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6"
           >
             <option selected :value="null">Any</option>
             <option value="Equity">Equity</option>
@@ -38,21 +38,21 @@
           </select>
         </div>
         <div class="col-span-1">
-          <label for="seasonType" class="mr-2 sm:text-sm sm:leading-6">Season Type</label>
+          <label for="seasonType" class="mr-2 sm:text-sm sm:leading-6 font-bold">Season Type</label>
           <select
             id="seasonType"
             name="seasonType"
             v-model="seasonType"
             @change="trackValue"
-            class="w-100 rounded-md border-0 py-1.5 pl-3 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6"
+            class="w-full rounded-md border-0 py-1.5 pl-3 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6"
           >
             <option :value="null" selected>Any</option>
             <option v-for="season in seasonTypes" :key="season" :value="season">{{ season }}</option>
           </select>
         </div>
-        <div class="col-span-2 lg:col-span-1">
+        <div class="col-span-2">
           <div>
-            <label for="search" class="mr-2 sm:text-sm sm:leading-6">Search by Theater</label>
+            <label for="search" class="mr-2 sm:text-sm sm:leading-6 font-bold">Search by Theater</label>
             <div class="relative">
               <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
                 <MagnifyingGlassIcon class="h-5 w-5 text-gray-400" aria-hidden="true" />
@@ -88,15 +88,15 @@
             to the Atlas team.
           </p>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6" v-else>
-          <div class="col-span-1 mx-4 md:ml-6 md:mr-0">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 px-0 sm:px-4" v-else>
+          <div class="col-span-1">
             <div
               v-for="theater in theaters"
               v-bind:key="theater.id"
-              class="card text-left mb-3"
+              class="border rounded border-grey-400 text-left mb-3 p-3"
               :class="theater.id === currentTheater.id ? activeClass : ''"
             >
-              <div class="card-body" v-on:click="currentTheater = theater">
+              <div class="card-body" v-on:click="setCurrentTheater(theater)">
                 <div class="mb-2">
                   <h5 class="card-title d-inline">{{ theater.name }}</h5>
                   <a target="_blank" :href="theater.website" class="hover-text float-right card-link">
@@ -120,7 +120,7 @@
                     <i v-if="theater.contact_email" class="fa-solid fa-envelope mr-2"></i>
                     <i v-if="theater.contact_form" class="fa-solid fa-message mr-2"></i>
                     <span v-if="theater.contact_email">
-                      <a :href="'mailto:' + theater.contact_email">{{ theater.contact_email }}</a>
+                      <a :href="'mailto:' + theater.contact_email" class="break-all">{{ theater.contact_email }}</a>
                     </span>
                     <span v-if="theater.contact_form" target="_blank">
                       <a :href="theater.contact_form">Contact Form</a>
@@ -129,27 +129,64 @@
                 </div>
               </div>
             </div>
-            <div class="row py-3">
-              <nav aria-label="Page navigation example">
-                <ul class="pagination justify-content-center">
-                  <li :class="currentPage == 1 ? 'disabled' : ''" class="page-item link-blue">
-                    <a class="page-link" @click="currentPage--">Previous</a>
-                  </li>
-                  <li class="page-item link-blue" :class="currentPage == startingPage ? 'active' : ''">
-                    <a class="page-link" @click="currentPage = startingPage">{{ startingPage }}</a>
-                  </li>
-                  <li class="page-item link-blue" :class="currentPage == middlePage ? 'active' : ''">
-                    <a class="page-link" @click="currentPage = middlePage">{{ middlePage }}</a>
-                  </li>
-                  <li class="page-item link-blue" :class="currentPage == endingPage ? 'active' : ''">
-                    <a class="page-link" @click="currentPage = endingPage">{{ endingPage }}</a>
-                  </li>
-                  <li :class="currentPage == totalPages ? 'disabled' : ''" class="page-item link-blue">
-                    <a class="page-link" @click="currentPage++">Next</a>
-                  </li>
-                </ul>
-              </nav>
-            </div>
+            <nav class="flex items-center justify-between sm:px-4 px-0">
+              <div class="-mt-px flex w-0 flex-1">
+                <div
+                  :class="currentPage == 1 ? 'hidden' : ''"
+                  @click="currentPage--"
+                  class="inline-flex items-center border-t-2 border-transparent pr-1 pt-4 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700"
+                >
+                  <ArrowLongLeftIcon class="mr-3 h-5 w-5 text-gray-400" aria-hidden="true" />
+                  Previous
+                </div>
+              </div>
+              <div class="md:-mt-px md:flex">
+                <div
+                  @click="currentPage = startingPage"
+                  :class="
+                    currentPage == startingPage
+                      ? 'border-indigo-500 text-indigo-600'
+                      : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                  "
+                  class="inline-flex items-center border-t-2 px-4 pt-4 text-sm font-medium"
+                >
+                  {{ startingPage }}
+                </div>
+                <div
+                  @click="currentPage = middlePage"
+                  :class="
+                    currentPage == middlePage
+                      ? 'border-indigo-500 text-indigo-600'
+                      : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                  "
+                  class="inline-flex items-center border-t-2 px-4 pt-4 text-sm font-medium"
+                >
+                  {{ middlePage }}
+                </div>
+                <div
+                  @click="currentPage = endingPage"
+                  :class="
+                    currentPage == endingPage
+                      ? 'border-indigo-500 text-indigo-600'
+                      : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                  "
+                  class="inline-flex items-center border-t-2 px-4 pt-4 text-sm font-medium"
+                >
+                  {{ endingPage }}
+                </div>
+              </div>
+              <div class="-mt-px flex w-0 flex-1 justify-end">
+                <div
+                  href="#"
+                  @click="currentPage++"
+                  :class="currentPage == totalPages ? 'hidden' : ''"
+                  class="inline-flex items-center border-t-2 border-transparent pl-1 pt-4 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700"
+                >
+                  Next
+                  <ArrowLongRightIcon class="ml-3 h-5 w-5 text-gray-400" aria-hidden="true" />
+                </div>
+              </div>
+            </nav>
           </div>
           <div class="col-span-1 md:col-span-2 px-2">
             <div id="map" class="mx-auto mb-4 rounded-md"></div>
@@ -222,20 +259,24 @@
 </template>
 
 <script>
-import { MagnifyingGlassIcon } from "@heroicons/vue/20/solid";
+import { MagnifyingGlassIcon, ArrowLongLeftIcon, ArrowLongRightIcon } from "@heroicons/vue/20/solid";
+
 import axios from "axios";
 
 export default {
   components: {
     MagnifyingGlassIcon,
+    ArrowLongLeftIcon,
+    ArrowLongRightIcon,
   },
   data: function () {
     return {
+      map: null,
       title: "Theatre Directory",
       noTheatersToDisplay: false,
       theaters: [],
       currentTheater: {},
-      totalPages: 28,
+      totalPages: 26,
       startingPage: 1,
       middlePage: 2,
       endingPage: 3,
@@ -281,6 +322,7 @@ export default {
       );
     },
     currentPage(newPage) {
+      // REVIEW THIS LOGIC - IT'S WACK
       if (newPage > this.endingPage) {
         this.startingPage = newPage;
         this.middlePage = newPage + 1;
@@ -307,26 +349,37 @@ export default {
           this.theaters = response.data;
           this.currentTheater = this.theaters[0];
           let addressesForTooltip = [];
-          let addressArray = this.theaters.map((theater) => {
-            addressesForTooltip.push({
-              name: theater.name,
-              address: theater?.address?.full_address,
-            });
-            return theater?.address?.full_address;
+          console.log({ theaters: this.theaters });
+          let addressArray = [];
+          this.theaters.forEach((theater) => {
+            if (theater.address) {
+              addressesForTooltip.push({
+                name: theater.name,
+                address: theater.address.full_address,
+              });
+              addressArray.push(theater.address.full_address);
+            }
           });
           let addresses = addressArray.join(";");
+          console.log({ addresses: addresses });
+
           axios
             .get(
               `https://api.mapbox.com/geocoding/v5/mapbox.places-permanent/${addresses}.json?access_token=${process.env.VUE_APP_MAP_KEY}&limit=1`
             )
             .then((response) => {
-              let centerArray = response.data.map((address) => {
-                if (address?.features[0]?.center) {
-                  return address.features[0].center;
-                }
-                return;
-              });
-              this.setMap(centerArray, addressesForTooltip);
+              let centerArray = null;
+              if (response.data && !response.data.length) {
+                centerArray = [response.data.features[0]?.center];
+              } else {
+                centerArray = response.data.map((address) => {
+                  if (address?.features[0]?.center) {
+                    return address.features[0].center;
+                  }
+                  return;
+                });
+              }
+              this.setMap(centerArray[0], centerArray, addressesForTooltip, true);
             })
             .catch((error) => {
               console.log(error);
@@ -337,34 +390,48 @@ export default {
         }
       });
     },
-    setMap(data, addressesForTooltip) {
+    setMap(center, data, addressesForTooltip, setDataForMap) {
+      console.log({ center: center });
       mapboxgl.accessToken = process.env.VUE_APP_MAP_KEY;
-      const map = new mapboxgl.Map({
+      this.map = new mapboxgl.Map({
         container: "map",
         style: "mapbox://styles/mapbox/streets-v11",
-        center: data[0],
+        center: center,
         zoom: 10,
       });
 
-      // Create a marker and add it to the map.
-      for (let i = 0; i < data.length; i++) {
-        addressesForTooltip[i]["location"] = data[i];
-        addressesForTooltip[i]["html"] = `<h3>${addressesForTooltip[i].name}</h3>`;
-        if (data[i]) {
-          addressesForTooltip[i]["html"] = addressesForTooltip[i]["html"] + `<p>${addressesForTooltip[i]?.address}</p>`;
+      if (setDataForMap) {
+        // Create a marker and add it to the map.
+        for (let i = 0; i < data.length; i++) {
+          addressesForTooltip[i]["location"] = data[i];
+          addressesForTooltip[i]["html"] = `<h3>${addressesForTooltip[i].name}</h3>`;
+          if (data[i]) {
+            addressesForTooltip[i]["html"] =
+              addressesForTooltip[i]["html"] + `<p>${addressesForTooltip[i]?.address}</p>`;
+          }
         }
-      }
 
-      addressesForTooltip.forEach((place) => {
-        if (place.location) {
-          let popup = new mapboxgl.Popup({ offset: 25 }).setHTML(place.html);
-          let marker = new mapboxgl.Marker()
-            .setLngLat([place.location[0], place.location[1]])
-            .setPopup(popup)
-            .addTo(map);
-        }
-      });
-      this.isLoading = false;
+        addressesForTooltip.forEach((place) => {
+          if (place.location) {
+            let popup = new mapboxgl.Popup({ offset: 25 }).setHTML(place.html);
+            let marker = new mapboxgl.Marker()
+              .setLngLat([place.location[0], place.location[1]])
+              .setPopup(popup)
+              .addTo(this.map);
+          }
+        });
+
+        this.isLoading = false;
+      }
+    },
+    setCurrentTheater(theater) {
+      this.currentTheater = theater;
+      console.log(theater.address);
+      if (theater?.address?.lat && theater?.address?.lng) {
+        // this.setMap([theater.address.lat, theater.address.lng], null, null, null);
+        const center = new mapboxgl.LngLat(theater.address.lng, theater.address.lat);
+        this.map.setCenter(center);
+      }
     },
   },
 };

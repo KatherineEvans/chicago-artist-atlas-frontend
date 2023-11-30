@@ -28,6 +28,7 @@
             <label for="password" class="block text-sm font-medium leading-6 text-blue-950 mb-0">Password *</label>
             <div class="text-sm">
               <button
+                type="button"
                 @click="$emit('modalType', 'forgotPassword')"
                 class="font-semibold text-blue-800 hover:text-blue-700"
               >
@@ -61,6 +62,7 @@
       <p class="mt-10 text-center text-sm text-gray-500">
         Not a member?
         <button
+          type="button"
           @click="$emit('modalType', 'signup')"
           class="underline font-semibold leading-6 text-blue-800 hover:text-blue-700"
         >
