@@ -93,13 +93,13 @@
             <div
               v-for="theater in theaters"
               v-bind:key="theater.id"
-              class="border rounded border-grey-400 text-left mb-3 p-3"
+              class="border rounded border-grey-400 text-left mb-3 p-3 hover:bg-gray-100 hover:cursor-pointer"
               :class="theater.id === currentTheater.id ? activeClass : ''"
             >
-              <div class="card-body" v-on:click="setCurrentTheater(theater)">
+              <div v-on:click="setCurrentTheater(theater)">
                 <div class="mb-2">
-                  <h5 class="card-title d-inline">{{ theater.name }}</h5>
-                  <a target="_blank" :href="theater.website" class="hover-text float-right card-link">
+                  <h5 class="font-bold text-base inline">{{ theater.name }}</h5>
+                  <a target="_blank" :href="theater.website" class="hover-text float-right card-link inline">
                     <i class="fa-solid fa-square-up-right"></i>
                     <span class="tooltip-text" id="top">Visit Site</span>
                   </a>
@@ -355,6 +355,7 @@ export default {
               addressesForTooltip.push({
                 name: theater.name,
                 address: theater.address.full_address,
+                phone: theater.phone,
               });
               addressArray.push(theater.address.full_address);
             }
@@ -388,6 +389,22 @@ export default {
         }
       });
     },
+    flyToTheater(coordinates) {
+      this.map.flyTo({
+        center: coordinates,
+        zoom: 15,
+      });
+    },
+    createPopUp(coordinates, theaterInfo) {
+      const popUps = document.getElementsByClassName("mapboxgl-popup");
+      /** Check if there is already a popup on the map and if so, remove it */
+      if (popUps[0]) popUps[0].remove();
+
+      const popup = new mapboxgl.Popup({ closeOnClick: true })
+        .setLngLat(coordinates)
+        .setHTML(theaterInfo)
+        .addTo(this.map);
+    },
     setMap(center, data, addressesForTooltip, setDataForMap) {
       mapboxgl.accessToken = process.env.VUE_APP_MAP_KEY;
       this.map = new mapboxgl.Map({
@@ -400,10 +417,11 @@ export default {
       if (setDataForMap) {
         for (let i = 0; i < data.length; i++) {
           addressesForTooltip[i]["location"] = data[i];
-          addressesForTooltip[i]["html"] = `<h3>${addressesForTooltip[i].name}</h3>`;
+          addressesForTooltip[i]["html"] = `<h2 class="text-base font-bold mb-2">${addressesForTooltip[i].name}</h2>`;
           if (data[i]) {
             addressesForTooltip[i]["html"] =
-              addressesForTooltip[i]["html"] + `<p>${addressesForTooltip[i]?.address}</p>`;
+              addressesForTooltip[i]["html"] +
+              `<h4 class="text-sm">${addressesForTooltip[i].address}</h4><div class="text-sm">${addressesForTooltip[i].phone}</div>`;
           }
         }
 
@@ -422,10 +440,12 @@ export default {
     },
     setCurrentTheater(theater) {
       this.currentTheater = theater;
+      console.log(theater);
       if (theater?.address?.lat && theater?.address?.lng) {
-        // this.setMap([theater.address.lat, theater.address.lng], null, null, null);
-        const center = new mapboxgl.LngLat(theater.address.lng, theater.address.lat);
-        this.map.setCenter(center);
+        let theaterInfo = `<h2 class="text-base font-bold mb-2">${theater.name}</h2><h4 class="text-sm">${theater.address.full_address}</h4><div class="text-sm">${theater.phone}</div>`;
+        let coordinates = [theater.address.lng, theater.address.lat];
+        this.flyToTheater(coordinates);
+        this.createPopUp(coordinates, theaterInfo);
       }
     },
   },
@@ -433,12 +453,6 @@ export default {
 </script>
 
 <style scoped>
-.active {
-  background-color: #f5f5f5;
-}
-.link-blue {
-  color: #0d6efd !important;
-}
 #map {
   width: 100%;
   height: 500px;
