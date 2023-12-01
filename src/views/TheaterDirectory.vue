@@ -398,7 +398,6 @@ export default {
       });
 
       if (setDataForMap) {
-        // Create a marker and add it to the map
         for (let i = 0; i < data.length; i++) {
           addressesForTooltip[i]["location"] = data[i];
           addressesForTooltip[i]["html"] = `<h3>${addressesForTooltip[i].name}</h3>`;
