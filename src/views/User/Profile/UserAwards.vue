@@ -120,8 +120,7 @@
                 <img
                   src="https://res.cloudinary.com/dzlaaytu7/image/upload/v1688505115/iStock-1490723483_jjdmdb.jpg"
                   class="w-100 mx-auto mt-2"
-                  alt="Calender Under Construction"
-                  style="max-width: 400px"
+                  alt="No Awards Added Yet"
                 />
               </div>
             </div>

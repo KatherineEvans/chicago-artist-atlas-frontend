@@ -136,8 +136,7 @@
                 <img
                   src="https://res.cloudinary.com/dzlaaytu7/image/upload/v1688246190/iStock-1449282058_1_udwnjo.jpg"
                   class="w-100 mx-auto mt-2"
-                  alt="Calender Under Construction"
-                  style="max-width: 400px"
+                  alt="No Trainings Added Yet"
                 />
               </div>
             </div>

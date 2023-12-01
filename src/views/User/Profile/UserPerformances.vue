@@ -136,14 +136,13 @@
             </div>
             <div class="w-full grid flex flex-wrap flex">
               <div class="col-span-full px-2">
-                <label for="description" class="block text-base font-medium leading-6 text-gray-900">
-                  Description:
-                </label>
+                <label for="description" class="block text-base font-medium leading-6 text-gray-900">Notes:</label>
                 <div class="mt-2">
                   <textarea
                     id="description"
                     name="description"
                     rows="3"
+                    placeholder="Describe your role. Were you an understudy? The lighting director? The lead? Did the production win an award? Tell us!"
                     class="block w-full rounded-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
                 </div>
@@ -239,8 +238,7 @@
                 <img
                   src="https://res.cloudinary.com/dzlaaytu7/image/upload/v1688246189/iStock-1438367331_i5itmw.jpg"
                   class="w-100 mx-auto mt-2"
-                  alt="Calender Under Construction"
-                  style="max-width: 400px"
+                  alt="No Performances Added Yet"
                 />
               </div>
             </div>
@@ -318,7 +316,6 @@ export default {
     },
     getPerformances() {
       axios.get("/performances.json").then((response) => {
-        console.log(response.data);
         this.performances = response.data;
         this.isLoading = false;
       });

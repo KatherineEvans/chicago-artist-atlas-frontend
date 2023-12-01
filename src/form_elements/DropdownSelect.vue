@@ -66,7 +66,6 @@ export default {
   },
   watch: {
     selected(newVal) {
-      console.log(newVal);
       this.$emit("setSelected", newVal);
     },
   },

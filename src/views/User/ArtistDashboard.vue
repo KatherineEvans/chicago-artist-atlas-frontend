@@ -1,16 +1,4 @@
 <template>
-  <!-- <div class="row ltblue py-3 px-4 text-center">
-    <div class="col-8 m-auto my-4">
-      <h2 class="mb-4">
-        <strong>{{ title }}</strong>
-      </h2>
-      <p style="font-size: 16px">
-        Let's launch your career! With this dashboard, you can create the prefect artist's resume, save and submit it
-        for auditions, and build an eye-catching profile with your photos and performances. Keep track of all your
-        important performances and auditions so you never miss a beat!
-      </p>
-    </div>
-  </div> -->
   <div class="relative md:flex">
     <!-- MOBILE MENU BAR -->
     <div class="bg-white text-blue-900 flex justify-between md:hidden">
@@ -25,7 +13,7 @@
     </div>
     <!-- SIDEBAR -->
     <div
-      class="sidebar divide-y w-64 bg-blue-950/95 text-blue-100 space-y-6 px-3 absolute inset-y-0 left-0 transform -translate-x-full transition duration-200 ease-in-out md:relative md:translate-x-0"
+      class="sidebar divide-y w-64 bg-blue-950 text-blue-100 space-y-6 px-3 absolute inset-y-0 left-0 transform -translate-x-full transition duration-200 ease-in-out md:relative md:translate-x-0 z-10"
     >
       <!-- PROFILE PIC -->
       <div class="pt-3 text-center">
@@ -87,9 +75,9 @@
       </nav>
     </div>
     <!-- CONTENT -->
-    <div class="flex-1 p-10 text-2xl font-bold">
+    <div class="flex-1 p-3 sm:p-10 text-2xl font-bold">
       <div
-        class="border border-gray-400 lg:border-gray-400 bg-white rounded p-4 flex flex-col justify-between leading-normal"
+        class="border border-gray-300 lg:border-gray-300 bg-white rounded p-4 flex flex-col justify-between leading-normal"
       >
         <router-view></router-view>
       </div>

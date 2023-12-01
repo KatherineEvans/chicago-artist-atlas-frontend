@@ -48,9 +48,9 @@
               </div>
             </div>
             <div class="resource-cards">
-              <div class="card resource-card">
-                <div class="mb-2">
-                  <h6 class="d-inline">{{ bipoc.organization_name }}</h6>
+              <div class="bg-white border rounded resource-card">
+                <div class="mb-3">
+                  <h6 class="inline font-bold text-lg">{{ bipoc.organization_name }}</h6>
                   <span
                     class="inline-flex items-center rounded-full bg-blue-50 px-2 py-1 text-sm float-right font-medium text-blue-700 ring-1 ring-inset ring-blue-700/10"
                   >
@@ -60,14 +60,19 @@
                 <p>
                   {{ bipoc.description }}
                 </p>
-                <a target="_blank" v-if="bipoc.website_url" :href="bipoc.website_url" class="text-right text-blue-700">
+                <a
+                  target="_blank"
+                  v-if="bipoc.website_url"
+                  :href="bipoc.website_url"
+                  class="text-right text-blue-700 block mt-2"
+                >
                   View Resource
                 </a>
                 <a v-else target="_blank" :href="bipoc.pdf_url"></a>
               </div>
-              <div class="card resource-card">
-                <div class="mb-2">
-                  <h6 class="d-inline">{{ disabilities.organization_name }}</h6>
+              <div class="bg-white border rounded resource-card">
+                <div class="mb-3">
+                  <h6 class="inline font-bold text-lg">{{ disabilities.organization_name }}</h6>
                   <span
                     class="inline-flex items-center rounded-full bg-green-50 px-2 py-1 text-sm float-right font-medium text-green-700 ring-1 ring-inset ring-green-600/20"
                   >
@@ -81,15 +86,15 @@
                   target="_blank"
                   v-if="disabilities.website_url"
                   :href="disabilities.website_url"
-                  class="text-right text-blue-700"
+                  class="text-right text-blue-700 block mt-2"
                 >
                   View Resource
                 </a>
                 <a v-else target="_blank" :href="disabilities.pdf_url"></a>
               </div>
-              <div class="card resource-card">
-                <div class="mb-2">
-                  <h6 class="d-inline bold">{{ lgbtqia.organization_name }}</h6>
+              <div class="bg-white border rounded resource-card">
+                <div class="mb-3">
+                  <h6 class="inline font-bold text-lg">{{ lgbtqia.organization_name }}</h6>
                   <span
                     class="inline-flex items-center rounded-full rainbow-background px-2 py-1 text-sm float-right font-medium text-slate-700 ring-1 ring-inset ring-red-600/10"
                   >
@@ -103,16 +108,16 @@
                   target="_blank"
                   v-if="lgbtqia.website_url"
                   :href="lgbtqia.website_url"
-                  class="text-right text-blue-700"
+                  class="text-right text-blue-700 block mt-2"
                 >
                   View Resource
                 </a>
                 <a v-else target="_blank" :href="lgbtqia.pdf_url"></a>
               </div>
 
-              <div class="card resource-card">
-                <div class="mb-2">
-                  <h6 class="d-inline">{{ women.organization_name }}</h6>
+              <div class="bg-white border rounded resource-card">
+                <div class="mb-3">
+                  <h6 class="inline font-bold text-lg">{{ women.organization_name }}</h6>
                   <span
                     class="inline-flex items-center rounded-full bg-pink-50 px-2 py-1 text-sm float-right font-medium text-pink-700 ring-1 ring-inset ring-pink-700/10"
                   >
@@ -122,7 +127,12 @@
                 <p>
                   {{ women.description }}
                 </p>
-                <a target="_blank" v-if="women.website_url" :href="women.website_url" class="text-right text-blue-700">
+                <a
+                  target="_blank"
+                  v-if="women.website_url"
+                  :href="women.website_url"
+                  class="text-right text-blue-700 block mt-2"
+                >
                   View Resource
                 </a>
                 <a v-else target="_blank" :href="women.pdf_url"></a>
@@ -152,9 +162,13 @@
               </div>
             </div>
             <div class="resource-cards">
-              <div v-for="resource in businessResources" :key="resource.id" class="card resource-card">
-                <div class="mb-2">
-                  <h6 class="d-inline">{{ resource.organization_name }}</h6>
+              <div
+                v-for="resource in businessResources"
+                :key="resource.id"
+                class="bg-white border rounded resource-card"
+              >
+                <div class="mb-3">
+                  <h6 class="inline font-bold text-lg">{{ resource.organization_name }}</h6>
                   <span
                     class="inline-flex items-center rounded-full bg-orange-50 px-2 py-1 text-sm float-right font-medium text-orange-700 ring-1 ring-inset ring-orange-600/20"
                   >
@@ -168,7 +182,7 @@
                   target="_blank"
                   v-if="resource.website_url"
                   :href="resource.website_url"
-                  class="text-right text-blue-700"
+                  class="text-right text-blue-700 block mt-2"
                 >
                   View Resource
                 </a>
@@ -199,9 +213,13 @@
               </div>
             </div>
             <div class="resource-cards">
-              <div v-for="resource in lifeHackResources" :key="resource.id" class="card resource-card">
-                <div class="mb-2">
-                  <h6 class="d-inline">{{ resource.organization_name }}</h6>
+              <div
+                v-for="resource in lifeHackResources"
+                :key="resource.id"
+                class="bg-white border rounded resource-card"
+              >
+                <div class="mb-3">
+                  <h6 class="inline font-bold text-lg">{{ resource.organization_name }}</h6>
                   <span
                     class="inline-flex items-center rounded-full bg-purple-50 px-2 py-1 text-sm float-right font-medium text-purple-700 ring-1 ring-inset ring-purple-600/20"
                   >
@@ -215,7 +233,7 @@
                   target="_blank"
                   v-if="resource.website_url"
                   :href="resource.website_url"
-                  class="text-right text-blue-700"
+                  class="text-right text-blue-700 block mt-2"
                 >
                   View Resource
                 </a>
@@ -339,7 +357,7 @@ export default {
 }
 .resource-card {
   margin-bottom: 15px;
-  padding: 10px;
+  padding: 20px;
 }
 img {
   display: block;

@@ -126,7 +126,6 @@ export default {
           other: this.otherTalents,
         })
         .then((response) => {
-          console.log(response);
           if (next) {
             this.$router.push("/user/profile/trainings");
           } else {
@@ -138,7 +137,6 @@ export default {
       this.otherTalents[category] = this.otherTalents[category].filter((t) => t != talent);
     },
     updateText(event, category) {
-      console.log(this.categories[category]);
       if (event.target.value.includes(",")) {
         if (this.otherTalents[category]) {
           this.otherTalents[category].push(event.target.value.slice(0, -1));
@@ -151,7 +149,6 @@ export default {
     getCategories() {
       axios.get("/talent-categories.json").then((response) => {
         this.categories = response.data;
-        console.log(this.categories);
         this.getTalents();
       });
     },

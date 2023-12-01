@@ -263,7 +263,6 @@ export default {
             this.$emit("modalType", "login");
           })
           .catch((error) => {
-            console.log(error);
             console.log("signup posted w/errors", error.response.data.status.message);
           });
       } else {

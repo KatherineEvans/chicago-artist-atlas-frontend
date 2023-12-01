@@ -50,7 +50,7 @@
           <button
             v-else
             @click="$emit('saveCharacter', character)"
-            class="relative inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-b-lg border-top py-3 text-md font-semibold text-gray-900 no-underline hover:no-underline hover:bg-gray-50 hover:border-l"
+            class="relative inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-b-lg border-t py-3 text-md font-semibold text-gray-900 no-underline hover:no-underline hover:bg-gray-50 hover:border-l"
           >
             <HeartIcon class="h-5 w-5 text-gray-400" aria-hidden="true" />
             Save Role
