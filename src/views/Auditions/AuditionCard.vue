@@ -86,7 +86,7 @@
         <div class="border-t border-gray-100 px-4 py-3 sm:col-span-1 bg-blue-50/60">
           <dt class="text-sm leading-6 text-gray-900">How to Submit</dt>
           <dd class="mt-1 text-base leading-6 text-gray-700 sm:mt-2">
-            <span v-if="audition.how_to_submit">{{ audition.how_to_submit }}</span>
+            <span class="break-words" v-if="audition.how_to_submit">{{ audition.how_to_submit }}</span>
             <i v-else class="fa-solid fa-minus text-center"></i>
           </dd>
         </div>

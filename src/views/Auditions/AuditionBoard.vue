@@ -8,7 +8,7 @@
         <a class="text-blue-700 no-underline" target="_blank" href="https://forms.gle/L61zYMNooJ42G88QA">here!</a>
       </p>
     </div>
-    <div class="px-2 md:px-10">
+    <div class="px-2 md:px-6 lg:px-10">
       <!-- SEARCH / FILTER BAR -->
       <div class="d-flex flex-row-reverse p-4">
         <div>
@@ -83,7 +83,7 @@
           </div>
         </div>
       </div>
-      <div v-else class="row my-2 py-2 no-gutters px-2 md:px-10">
+      <div v-else class="row my-2 py-2 no-gutters px-2 md:px-6 lg:px-10">
         <!-- AUDITIONS -->
         <div class="row my-2 py-2 pl-4">
           <AuditionCard
