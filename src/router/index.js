@@ -29,6 +29,7 @@ import UserTraining from "../views/User/Profile/UserTraining.vue";
 // Resources
 import Resources from "../views/Resources/ResourcesView.vue";
 import BusinessResources from "../views/Resources/BusinessResources.vue";
+import TheaterResources from "../views/Resources/TheaterResources.vue";
 import IdentityResources from "../views/Resources/IdentityResources.vue";
 import LifeHackResources from "../views/Resources/LifeHackResources.vue";
 
@@ -72,6 +73,11 @@ const routes = [
     path: "/resources/business",
     name: "business-resources",
     component: BusinessResources,
+  },
+  {
+    path: "/resources/theaters",
+    name: "theater-resources",
+    component: TheaterResources,
   },
   {
     path: "/resources/life-hacks",

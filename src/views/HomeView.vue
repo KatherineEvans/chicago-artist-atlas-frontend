@@ -43,7 +43,7 @@
       </template>
     </ModalContainer>
     <!-- CURRENT RESOURCES -->
-    <div class="p-10">
+    <div class="p-10 md:px-20">
       <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
         <div class="flex flex-col col-span-1 md:col-span-3">
           <p class="text-xl md:text-2xl lg:text-3xl font-bold mb-1">Atlas Offerings</p>
@@ -109,9 +109,9 @@
       </div>
     </div>
     <!-- COMING SOON -->
-    <div class="p-10 bg-blue-50 mb-0">
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-        <div class="flex flex-col col-span-1 md:col-span-3">
+    <div class="p-10 md:px-20 bg-blue-50 mb-0">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+        <div class="flex flex-col col-span-1 md:col-span-2 lg:col-span-4">
           <p class="text-xl md:text-2xl lg:text-3xl font-bold mb-1">Atlas Resources</p>
           <div class="mx-auto col-xl-7 col-lg-7 col-md-8 col-sm-12 col-xs-12">
             <p class="text-lg">
@@ -124,7 +124,7 @@
         </div>
         <div class="flex flex-col col-span-1 p-2">
           <a
-            href="/resources"
+            href="/resources/identity"
             class="drop-shadow h-full block border border-grey-400 mx-auto text-center bg-white rounded p-4"
           >
             <img class="m-auto pb-2 pt-4" src="../assets/illustrations/identity.png" alt="" />
@@ -143,7 +143,7 @@
         </div>
         <div class="flex flex-col col-span-1 p-2">
           <a
-            href="/resources"
+            href="/resources/business"
             class="drop-shadow h-full block border border-grey-400 mx-auto text-center bg-white rounded p-4"
           >
             <img class="m-auto pb-2 pt-4" src="../assets/illustrations/business.png" alt="" />
@@ -162,7 +162,26 @@
         </div>
         <div class="flex flex-col col-span-1 p-2">
           <a
-            href="/resources"
+            href="/resources/theaters"
+            class="drop-shadow h-full block border border-grey-400 mx-auto text-center bg-white rounded p-4"
+          >
+            <img class="m-auto pb-2 pt-4" src="../assets/illustrations/business.png" alt="" />
+            <div class="card-body">
+              <div class="mb-1">
+                <p class="text-xl font-bold mb-3">Theater Resources</p>
+                <div>
+                  <p class="mb-2 text-base">
+                    Whether you're a new theater looking to grow, or an established theater with tons of industry
+                    knowledge, our collection of resources for the theater business help you perform at your best!
+                  </p>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="flex flex-col col-span-1 p-2">
+          <a
+            href="/resources/life-hacks"
             class="drop-shadow h-full block border border-grey-400 mx-auto text-center bg-white rounded p-4"
           >
             <img class="m-auto pb-2 pt-4" src="../assets/illustrations/lifehacks.png" alt="" />
