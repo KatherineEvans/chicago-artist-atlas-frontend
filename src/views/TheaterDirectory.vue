@@ -394,7 +394,7 @@ export default {
         container: "map",
         style: "mapbox://styles/mapbox/streets-v11",
         center: center,
-        zoom: 10,
+        zoom: 12,
       });
 
       if (setDataForMap) {
