@@ -165,7 +165,7 @@
             href="/resources/production"
             class="drop-shadow h-full block border border-grey-400 mx-auto text-center bg-white rounded p-4"
           >
-            <img class="m-auto pb-2 pt-4" src="../assets/illustrations/business.png" alt="" />
+            <img class="m-auto pb-2 pt-4" src="../assets/illustrations/production.png" alt="" />
             <div class="card-body">
               <div class="mb-1">
                 <p class="text-xl font-bold mb-3">Production Staff Resources</p>
