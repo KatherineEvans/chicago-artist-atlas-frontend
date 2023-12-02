@@ -567,6 +567,7 @@ export default {
     },
     updateProfile(data) {
       axios.patch(`/profiles/${this.profile.id}.json`, data).then((response) => {
+        localStorage.setItem("headshotUrl", response.data.headshot_url);
         this.$store.commit("users/setProfile", response.data);
         if (this.next) {
           this.$router.push("/user/profile/talents");
@@ -577,6 +578,7 @@ export default {
     },
     createProfile(data) {
       axios.post("/profiles.json", data).then((response) => {
+        localStorage.setItem("headshotUrl", response.data.headshot_url);
         this.$store.commit("users/setProfile", response.data);
         if (this.next) {
           this.$router.push("/user/profile/talents");

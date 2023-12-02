@@ -96,10 +96,12 @@ export default {
         .post("/users/sign_in.json", { user: this.user })
         .then((response) => {
           this.$emit("closeModal");
+          console.log(response);
           localStorage.setItem("authToken", response.headers.authorization);
           localStorage.setItem("userFirstName", response.data.data.user.first_name);
           localStorage.setItem("userLastName", response.data.data.user.last_name);
           localStorage.setItem("tokenGeneratedAt", response.data.data.user.generated_at);
+          localStorage.setItem("headshotUrl", response.data.data.user.headshot_url);
           axios.defaults.headers.common["Authorization"] = response.headers.authorization;
           this.$store.commit("sessions/setAuthToken", response.headers.authorization);
 

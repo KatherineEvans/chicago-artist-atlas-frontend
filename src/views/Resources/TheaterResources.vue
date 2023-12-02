@@ -1,7 +1,7 @@
 <template>
   <div class="container-fluid">
     <div class="bg-blue-50 px-10 py-8 mx-auto text-center">
-      <p class="text-2xl md:text-3xl font-bold mb-2">Business Resources for Theaters</p>
+      <p class="text-2xl md:text-3xl font-bold mb-2">Production Staff Resources</p>
       <p class="text-lg max-w-3xl mx-auto mb-2">
         Here at Atlas, we're focused on providing our users with the latest resources on topics that matter -
         inclusivity, diversity, sustainability, and the business of theatre! We strive to continually improve and grow
@@ -125,7 +125,7 @@ export default {
       resources: [],
       pages: [
         { name: "Resources", href: "/resources", current: false },
-        { name: "Business Resources for Theaters", href: "/resources/theaters", current: true },
+        { name: "Production Staff Resources", href: "/resources/production", current: true },
       ],
     };
   },

@@ -162,13 +162,13 @@
         </div>
         <div class="flex flex-col col-span-1 p-2">
           <a
-            href="/resources/theaters"
+            href="/resources/production"
             class="drop-shadow h-full block border border-grey-400 mx-auto text-center bg-white rounded p-4"
           >
             <img class="m-auto pb-2 pt-4" src="../assets/illustrations/business.png" alt="" />
             <div class="card-body">
               <div class="mb-1">
-                <p class="text-xl font-bold mb-3">Theater Resources</p>
+                <p class="text-xl font-bold mb-3">Production Staff Resources</p>
                 <div>
                   <p class="mb-2 text-base">
                     Whether you're a new theater looking to grow, or an established theater with tons of industry

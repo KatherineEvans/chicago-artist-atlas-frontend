@@ -17,7 +17,12 @@
     >
       <!-- PROFILE PIC -->
       <div class="pt-3 text-center">
-        <span class="inline-block w-24 h-24 overflow-hidden rounded-full bg-gray-100 m-auto mt-4 mb-3">
+        <div
+          v-if="userHeadshot"
+          class="bg-cover bg-center inline-block w-24 h-24 overflow-hidden rounded-full m-auto mt-4 mb-3"
+          :style="{ 'background-image': 'url(' + userHeadshot + ')' }"
+        ></div>
+        <span v-else class="inline-block w-24 h-24 overflow-hidden rounded-full bg-gray-100 m-auto mt-4 mb-3">
           <svg class="h-full w-full text-gray-300" fill="currentColor" viewBox="0 0 24 24">
             <path
               d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z"
@@ -42,7 +47,7 @@
             <Disclosure as="div" v-else :defaultOpen="navOpen" v-slot="navOpen">
               <DisclosureButton
                 @click="rotate = !rotate"
-                class="w-100 text-white flex items-center block py-3 px-4 hover:no-underline no-underline text-lg hover:bg-blue-800 rounded transition duration-200 font-bold"
+                class="w-full text-white flex items-center block py-3 px-4 hover:no-underline no-underline text-lg hover:bg-blue-800 rounded transition duration-200 font-bold"
                 :class="{ 'bg-blue-900': $route.name.includes('profile') }"
               >
                 <i class="mr-2" :class="link.icon"></i>
@@ -182,7 +187,11 @@ export default {
       }
     },
   },
-  computed: {},
+  computed: {
+    userHeadshot() {
+      return localStorage.headshotUrl == "null" ? null : localStorage.headshotUrl;
+    },
+  },
   methods: {},
 };
 </script>

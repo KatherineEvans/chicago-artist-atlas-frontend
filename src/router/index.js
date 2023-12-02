@@ -75,7 +75,7 @@ const routes = [
     component: BusinessResources,
   },
   {
-    path: "/resources/theaters",
+    path: "/resources/production",
     name: "theater-resources",
     component: TheaterResources,
   },
