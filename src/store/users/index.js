@@ -61,12 +61,10 @@ export default {
       axios
         .get("/profile.json")
         .then((response) => {
-          if (response.data.profiles.length > 0) {
-            commit("setProfile", response.data.profiles[0]);
-          }
+          commit("setProfile", response.data);
         })
         .catch((error) => {
-          console.log("signup posted w/errors", error.response.data.status.message);
+          console.log("user profile error", error);
         });
     },
   },

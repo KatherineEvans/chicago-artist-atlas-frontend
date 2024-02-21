@@ -9,7 +9,25 @@
           us and let the spotlight shine on your achievements. Whether you're an actor, director, playwright, or
           involved in any other aspect of the theatre world, we invite you to showcase your expertise.
         </p>
-
+        <div>
+          <div class="sm:hidden">
+            <label for="tabs" class="sr-only">Select a tab</label>
+            <!-- Use an "onChange" listener to redirect the user to the selected tab URL. -->
+            <select id="tabs" name="tabs" class="block w-full rounded-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 mt-3">
+              <option v-for="tab in tabs" :key="tab.name" :selected="tab.name === currentTab">{{ tab.name }}</option>
+            </select>
+          </div>
+          <div class="hidden sm:block">
+            <div class="border-b border-gray-200">
+              <nav class="pb-0 pl-0 -mb-px flex space-x-8" aria-label="Tabs">
+                <div v-for="tab in tabs" :key="tab.name" @click="currentTab = tab.name" :class="[tab.name === currentTab ? 'border-indigo-500 text-indigo-600' : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700', 'group inline-flex items-center border-b-2 py-4 pl-3 pr-4 text-sm font-medium']" :aria-current="tab.name === currentTab ? 'page' : undefined">
+                  <component :is="tab.icon" :class="[currentTab === tab.name ? 'text-indigo-500' : 'text-gray-400 group-hover:text-gray-500', '-ml-0.5 mr-2 h-5 w-5']" aria-hidden="true" />
+                  <span>{{ tab.name }}</span>
+                </div>
+              </nav>
+            </div>
+          </div>
+        </div>
         <div class="mt-10 flex flex-wrap">
           <div
             class="border-b last:border-0 w-full px-1 lg:px-3"
@@ -72,12 +90,12 @@
 
     <div class="mt-10 flex justify-between gap-x-6">
       <span>
-        <a
-          href="/user/profile/bio"
+        <router-link 
+          to="/user/profile/bio"
           class="mr-3 rounded-md bg-slate-600 px-3 py-2 text-sm font-semibold text-white hover:bg-slate-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600 no-underline hover:no-underline"
         >
           Back
-        </a>
+        </router-link>
       </span>
       <span>
         <button @click="saveTalents(false)" type="submit" class="text-sm font-semibold leading-6 text-gray-900">
@@ -97,14 +115,21 @@
 <script>
 import axios from "axios";
 import RadioButton from "../../../form_elements/RadioButton.vue";
+import { BuildingOfficeIcon, StarIcon } from '@heroicons/vue/20/solid'
+
 export default {
-  components: { RadioButton },
+  components: { RadioButton, BuildingOfficeIcon, StarIcon },
   data: function () {
     return {
       talentIds: [],
       categories: [],
       talentsToSave: {},
       otherTalents: {},
+      currentTab: 'Artist',
+      tabs: [
+        { name: 'Artist', href: '#', icon: StarIcon },
+        { name: 'Production Tech', href: '#', icon: BuildingOfficeIcon },
+      ],
     };
   },
   mounted() {
@@ -121,7 +146,7 @@ export default {
     },
     saveTalents(next) {
       axios
-        .post("/talents.json", {
+        .post("/user_talents.json", {
           talents: this.talentsToSave,
           other: this.otherTalents,
         })
@@ -153,17 +178,18 @@ export default {
       });
     },
     getTalents() {
-      axios.get("/talents.json").then((response) => {
+      axios.get("/user_talents.json").then((response) => {
         this.talents = response.data;
+        console.log(this.talents, 'talents hello');
         this.talentsToSave = {};
-        response.data.forEach((talent) => {
-          if (talent.other) {
-            this.otherTalents[talent.talent_category.category]
-              ? this.otherTalents[talent.talent_category.category].push(talent.other)
-              : (this.otherTalents[talent.talent_category.category] = [talent.other]);
+        response.data.forEach((userTalent) => {
+          if (userTalent.other) {
+            this.otherTalents[userTalent.talent.category]
+              ? this.otherTalents[userTalent.talent.category].push(userTalent.other)
+              : (this.otherTalents[userTalent.talent.category] = [userTalent.other]);
           } else {
-            this.talentIds.push(talent.talent_category_id);
-            this.talentsToSave[talent.talent_category_id] = null;
+            this.talentIds.push(userTalent.talent_id);
+            this.talentsToSave[userTalent.talent_id] = null;
           }
         });
       });

@@ -11,6 +11,25 @@
           and used solely to enhance your user experience and connect you to roles and productions that fit your unique
           self!
         </p>
+        <div>
+          <div class="sm:hidden">
+            <label for="tabs" class="sr-only">Select a tab</label>
+            <!-- Use an "onChange" listener to redirect the user to the selected tab URL. -->
+            <select id="tabs" name="tabs" class="block w-full rounded-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 mt-3">
+              <option v-for="tab in tabs" :key="tab.name" :selected="tab.name === currentTab">{{ tab.name }}</option>
+            </select>
+          </div>
+          <div class="hidden sm:block">
+            <div class="border-b border-gray-200">
+              <nav class="pb-0 pl-0 -mb-px flex space-x-8" aria-label="Tabs">
+                <div v-for="tab in tabs" :key="tab.name" @click="currentTab = tab.name" :class="[tab.name === currentTab ? 'border-indigo-500 text-indigo-600' : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700', 'group inline-flex items-center border-b-2 py-4 pl-3 pr-4 text-sm font-medium']" :aria-current="tab.name === currentTab ? 'page' : undefined">
+                  <component :is="tab.icon" :class="[currentTab === tab.name ? 'text-indigo-500' : 'text-gray-400 group-hover:text-gray-500', '-ml-0.5 mr-2 h-5 w-5']" aria-hidden="true" />
+                  <span>{{ tab.name }}</span>
+                </div>
+              </nav>
+            </div>
+          </div>
+        </div>
         <div class="loading-spinner-container" v-if="isLoading">
           <div class="loading-spinner m-auto">
             <div></div>
@@ -18,271 +37,10 @@
             <div></div>
           </div>
         </div>
-        <div v-else class="mt-6 flex flex-wrap">
-          <div class="w-full md:w-1/2 pt-3 px-3">
-            <label for="cover-photo" class="block text-sm font-medium leading-6 text-gray-900">Headshot:</label>
-            <div class="mb-3 mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
-              <div class="text-center mx-auto">
-                <img v-if="imgFile" :src="imgFile" class="max-h-52 m-auto" />
-                <PhotoIcon v-else class="mx-auto h-12 w-12 text-gray-300" aria-hidden="true" />
-                <div class="mt-4 flex justify-center text-sm leading-6 text-gray-600">
-                  <label
-                    for="file-upload"
-                    class="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500"
-                  >
-                    <span>Upload Photo</span>
-                    <input id="file-upload" name="file-upload" type="file" class="sr-only" @change="handleSetFile" />
-                  </label>
-                  <!-- <p class="pl-1">or drag and drop</p> -->
-                </div>
-                <p class="text-xs leading-5 text-gray-600">PNG, JPG, JPEG up to 5MB</p>
-                <p class="text-sm text-red-600 font-medium mx-3 mt-2" v-if="fileTooBig">
-                  Oops! Looks like the photo you uploaded was a little too big. Please resize or upload a different
-                  photo.
-                </p>
-                <p class="text-sm text-red-600 font-medium mx-3 mt-2" v-if="fileTypeWrong">
-                  File type unsupported, please upload a PNG, JPG, or a JPEG.
-                </p>
-              </div>
-            </div>
-            <div class="w-full pt-2 pb-3">
-              <label for="headline" class="flex block text-sm font-medium leading-6 text-gray-900">Headline:</label>
-              <div class="mt-2">
-                <input
-                  type="text"
-                  v-model="profile.headline"
-                  name="headline"
-                  id="headline"
-                  placeholder="Actor Extraordinaire"
-                  class="pl-3 block w-full rounded-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                />
-              </div>
-            </div>
-            <div class="w-full grid flex flex-wrap flex pt-2">
-              <div class="col-span-full">
-                <label for="bio" class="block text-sm font-medium leading-6 text-gray-900 mb-0">About:</label>
-                <p class="m-0 text-sm leading-6 italic text-gray-400">Write a few sentences about yourself!</p>
-                <div class="mt-2">
-                  <textarea
-                    v-model="profile.bio"
-                    id="bio"
-                    name="bio"
-                    rows="3"
-                    style="min-height: 200px"
-                    class="block w-full rounded-md border-0 p-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="w-full md:w-1/2 grid flex flex-wrap">
-            <div class="flex-wrap flex">
-              <div class="w-full lg:w-1/2 pt-3 px-3 pb-2">
-                <label for="manager" class="flex block text-sm font-medium leading-6 text-gray-900">Manager:</label>
-                <div class="mt-2">
-                  <input
-                    type="text"
-                    v-model="profile.manager"
-                    name="manager"
-                    id="manager"
-                    class="pl-3 block w-full rounded-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                  />
-                </div>
-              </div>
-              <div class="w-full lg:w-1/2 pt-3 px-3 pb-2">
-                <label for="agency" class="flex block text-sm font-medium leading-6 text-gray-900">Agency:</label>
-                <div class="mt-2">
-                  <input
-                    type="text"
-                    v-model="profile.agency"
-                    name="agency"
-                    id="agency"
-                    class="pl-3 block w-full rounded-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                  />
-                </div>
-              </div>
-              <div class="w-full lg:w-1/2 pt-2 px-3 pb-2">
-                <label for="unionStatus" class="flex block text-sm font-medium leading-6 text-gray-900 mb-1">
-                  Union Status:
-                </label>
-                <DropdownSelect
-                  id="unionStatus"
-                  @set-selected="unionStatus.selected = $event"
-                  width="w-50 pr-2"
-                  :selectedData="profile.union_status"
-                  :dropdownData="unionStatus"
-                  name="union_status"
-                ></DropdownSelect>
-              </div>
-              <div class="w-full lg:w-1/2 pt-2 px-3 pb-2">
-                <label for="ethnicity" class="flex block text-sm font-medium leading-6 text-gray-900">Ethnicity:</label>
-                <DropdownSelect
-                  id="ethnicity"
-                  @set-selected="ethnicity.selected = $event"
-                  :selectedData="profile.ethnicity"
-                  width="w-50 pr-2"
-                  :dropdownData="ethnicity"
-                  name="ethnicity"
-                ></DropdownSelect>
-              </div>
-              <div class="w-full lg:w-1/4 pt-2 px-3 pb-2">
-                <label for="age_low" class="block text-sm font-medium leading-6 text-gray-900">Age Low:</label>
-                <DropdownSelect
-                  id="age_low"
-                  @set-selected="age.selected = $event"
-                  :selectedData="profile.age_low"
-                  width="w-50 pr-2"
-                  :dropdownData="age"
-                  name="age_low"
-                ></DropdownSelect>
-              </div>
-              <div class="w-full lg:w-1/4 pt-2 px-3 pb-2">
-                <label for="age_high" class="block text-sm font-medium leading-6 text-gray-900">Age High:</label>
-                <DropdownSelect
-                  id="age_high"
-                  @set-selected="age.selected = $event"
-                  :selectedData="profile.age_high"
-                  width="w-50 pr-2"
-                  :dropdownData="age"
-                  name="age_high"
-                ></DropdownSelect>
-              </div>
-              <div class="w-full lg:w-1/2 pt-2 px-3 pb-2">
-                <label for="height" class="block text-sm font-medium leading-6 text-gray-900 mb-1">Height (ft):</label>
-                <DropdownSelect
-                  id="height"
-                  @set-selected="height.selected = $event"
-                  :selectedData="profile.height"
-                  width="w-50 pr-2"
-                  :dropdownData="height"
-                  name="height"
-                ></DropdownSelect>
-              </div>
-              <div class="w-full lg:w-1/2 pt-2 px-3 pb-2">
-                <label for="hair_color" class="block text-sm font-medium leading-6 text-gray-900">Hair Color:</label>
-                <DropdownSelect
-                  id="hair_color"
-                  @set-selected="hairColor.selected = $event"
-                  :selectedData="profile.hair_color"
-                  width="w-50 pr-2"
-                  :dropdownData="hairColor"
-                  name="hair_color"
-                ></DropdownSelect>
-              </div>
-              <div class="w-full lg:w-1/2 pt-2 px-3 pb-2">
-                <label for="eye_color" class="block text-sm font-medium leading-6 text-gray-900">Eye Color:</label>
-                <DropdownSelect
-                  id="eye_color"
-                  @set-selected="eyeColor.selected = $event"
-                  :selectedData="profile.eye_color"
-                  width="w-50 pr-2"
-                  :dropdownData="eyeColor"
-                  name="eye_color"
-                ></DropdownSelect>
-              </div>
-              <div class="w-full pl-1 px-3 mt-2">
-                <label for="gender" class="block text-sm font-medium leading-6 text-gray-900 mb-0 flex justify-between">
-                  <span>Gender:</span>
-                  <span class="ml-auto italic text-gray-400">select all that apply</span>
-                </label>
-                <RadioButton
-                  class="pl-1"
-                  id="gender"
-                  typeName="gender"
-                  @update-checkbox="updateCheckbox"
-                  optionsName="Gender"
-                  :options="genderOptions"
-                  :checkedArray="genderChecked"
-                  colNumberClass="grid-cols-2"
-                ></RadioButton>
-                <div class="my-3">
-                  <span
-                    v-for="gender in otherGender"
-                    :key="gender"
-                    class="inline-flex items-center gap-x-0.5 rounded-md bg-blue-50 px-3 py-1 text-base font-medium text-blue-600 ring-1 ring-inset ring-blue-500/10 mr-3"
-                  >
-                    {{ gender }}
-                    <button
-                      @click="removeItem('gender', gender)"
-                      type="button"
-                      class="group relative -mr-1 h-3.5 w-3.5 rounded-sm hover:bg-blue-500/20"
-                    >
-                      <span class="sr-only">Remove</span>
-                      <svg viewBox="0 0 14 14" class="h-3.5 w-3.5 stroke-blue-600/50 group-hover:stroke-blue-600/75">
-                        <path d="M4 4l6 6m0-6l-6 6" />
-                      </svg>
-                      <span class="absolute -inset-1" />
-                    </button>
-                  </span>
-                </div>
-                <label for="otherGenders" class="flex block text-sm font-medium leading-6 text-gray-900 mb-0 mt-3">
-                  Other - Gender:
-                </label>
-                <p class="m-0 text-sm leading-6 italic text-gray-400">Separate with a comma</p>
-                <div class="mt-2">
-                  <input
-                    type="text"
-                    name="otherGenders"
-                    id="otherGenders"
-                    @input="updateText($event, 'gender')"
-                    class="pl-3 block w-full rounded-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                  />
-                </div>
-              </div>
-              <div class="w-full pl-1 px-3 mt-2">
-                <label
-                  for="pronouns"
-                  class="block text-sm font-medium leading-6 text-gray-900 mb-0 flex justify-between"
-                >
-                  <span>Pronouns:</span>
-                  <span class="ml-auto italic text-gray-400">select all that apply</span>
-                </label>
-                <RadioButton
-                  class="pl-1"
-                  id="pronouns"
-                  typeName="pronouns"
-                  @update-checkbox="updateCheckbox"
-                  optionsName="Pronouns"
-                  :options="pronounOptions"
-                  colNumberClass="grid-cols-2"
-                  :checkedArray="pronounChecked"
-                ></RadioButton>
-                <div class="my-3">
-                  <span
-                    v-for="pronoun in otherPronouns"
-                    :key="pronoun"
-                    class="inline-flex items-center gap-x-0.5 rounded-md bg-blue-50 px-3 py-1 text-base font-medium text-blue-600 ring-1 ring-inset ring-blue-500/10 mr-3"
-                  >
-                    {{ pronoun }}
-                    <button
-                      @click="removeItem('pronoun', pronoun)"
-                      type="button"
-                      class="group relative -mr-1 h-3.5 w-3.5 rounded-sm hover:bg-blue-500/20"
-                    >
-                      <span class="sr-only">Remove</span>
-                      <svg viewBox="0 0 14 14" class="h-3.5 w-3.5 stroke-blue-600/50 group-hover:stroke-blue-600/75">
-                        <path d="M4 4l6 6m0-6l-6 6" />
-                      </svg>
-                      <span class="absolute -inset-1" />
-                    </button>
-                  </span>
-                </div>
-                <label for="otherPronouns" class="flex block text-sm font-medium leading-6 text-gray-900 mb-0 mt-3">
-                  Other - Pronouns:
-                </label>
-                <p class="m-0 text-sm leading-6 italic text-gray-400">Separate with a comma</p>
-                <div class="mt-2">
-                  <input
-                    type="text"
-                    name="otherPronouns"
-                    id="otherPronouns"
-                    @input="updateText($event, 'pronoun')"
-                    class="pl-3 block w-full rounded-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
+        <div v-else>
+          <GeneralBio v-if="currentTab === 'General'"/>
+          <ArtistBio v-if="currentTab === 'Artist'"/>
+          <ProductionBio v-if="currentTab === 'Production Tech'"/>
         </div>
       </div>
     </div>
@@ -303,15 +61,27 @@
 </template>
 
 <script>
+import { mapStores } from 'pinia';
+import { useUserStore } from '../../../stores/useUserStore.js';
 import { PhotoIcon } from "@heroicons/vue/24/solid";
 import DropdownSelect from "../../../form_elements/DropdownSelect.vue";
+import { BuildingOfficeIcon, UserIcon, StarIcon } from '@heroicons/vue/20/solid'
 import RadioButton from "../../../form_elements/RadioButton.vue";
+import ArtistBio from "./BioPages/ArtistBio.vue";
+import GeneralBio from "./BioPages/GeneralBio.vue";
+import ProductionBio from "./BioPages/ProductionBio.vue";
 import axios from "axios";
 
 export default {
-  components: { PhotoIcon, DropdownSelect, RadioButton },
+  components: { PhotoIcon, DropdownSelect, RadioButton, ArtistBio, ProductionBio, GeneralBio },
   data: function () {
     return {
+      currentTab: 'General',
+      tabs: [
+        { name: 'General', icon: UserIcon },
+        { name: 'Artist', icon: StarIcon },
+        { name: 'Production Tech', icon: BuildingOfficeIcon },
+      ],
       next: false,
       isLoading: true,
       imgFile: null,
@@ -494,6 +264,9 @@ export default {
   },
   mounted() {
     this.getProfile();
+  },
+  computed: {
+    ...mapStores(useUserStore),
   },
   methods: {
     removeItem(type, item) {

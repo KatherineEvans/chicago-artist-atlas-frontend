@@ -10,7 +10,25 @@
           industry accolades, or local acknowledgments. We're excited to hear about the moments that made you feel proud
           and accomplished.
         </p>
-
+        <div>
+          <div class="sm:hidden">
+            <label for="tabs" class="sr-only">Select a tab</label>
+            <!-- Use an "onChange" listener to redirect the user to the selected tab URL. -->
+            <select id="tabs" name="tabs" class="block w-full rounded-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 mt-3">
+              <option v-for="tab in tabs" :key="tab.name" :selected="tab.name === currentTab">{{ tab.name }}</option>
+            </select>
+          </div>
+          <div class="hidden sm:block">
+            <div class="border-b border-gray-200">
+              <nav class="pb-0 pl-0 -mb-px flex space-x-8" aria-label="Tabs">
+                <div v-for="tab in tabs" :key="tab.name" @click="currentTab = tab.name" :class="[tab.name === currentTab ? 'border-indigo-500 text-indigo-600' : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700', 'group inline-flex items-center border-b-2 py-4 pl-3 pr-4 text-sm font-medium']" :aria-current="tab.name === currentTab ? 'page' : undefined">
+                  <component :is="tab.icon" :class="[currentTab === tab.name ? 'text-indigo-500' : 'text-gray-400 group-hover:text-gray-500', '-ml-0.5 mr-2 h-5 w-5']" aria-hidden="true" />
+                  <span>{{ tab.name }}</span>
+                </div>
+              </nav>
+            </div>
+          </div>
+        </div>
         <div class="mt-10 flex flex-wrap md:divide-x lg:divide-x">
           <div class="w-full lg:w-1/2 px-3 order-2 lg:order-1 pt-3 lg:pt-0">
             <div class="w-full grid flex flex-wrap">
@@ -131,34 +149,33 @@
 
     <div class="mt-10 flex justify-between gap-x-6">
       <span>
-        <a
-          href="/user/profile/performances"
+        <router-link 
+          to="/user/profile/performances"
           class="mr-3 rounded-md bg-slate-600 px-3 py-2 text-sm font-semibold text-white hover:bg-slate-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600 no-underline hover:no-underline"
         >
           Back
-        </a>
+        </router-link>
       </span>
-      <!-- <span>
-        <button
-          class="ml-3 rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 no-underline no-underline hover:no-underline"
-        >
-          Save
-        </button>
-      </span> -->
     </div>
   </form>
 </template>
 
 <script>
 import { XMarkIcon } from "@heroicons/vue/24/outline";
+import { BuildingOfficeIcon, StarIcon } from '@heroicons/vue/20/solid'
 import axios from "axios";
 
 export default {
-  components: { XMarkIcon },
+  components: { XMarkIcon, BuildingOfficeIcon, StarIcon },
   data: function () {
     return {
       awards: [],
       isLoading: true,
+      currentTab: 'Artist',
+      tabs: [
+        { name: 'Artist', href: '#', icon: StarIcon },
+        { name: 'Production Staff', href: '#', icon: BuildingOfficeIcon },
+      ],
     };
   },
   mounted() {

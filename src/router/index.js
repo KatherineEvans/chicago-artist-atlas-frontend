@@ -96,8 +96,9 @@ const routes = [
   },
   {
     path: "/user",
+    name: "user-overview",
     component: ArtistDashboard,
-    redirect: "/user/account",
+    redirect: { name: "user-account" },
     children: [
       {
         path: "account",
@@ -118,7 +119,7 @@ const routes = [
         path: "profile",
         name: "user-profile",
         component: UserProfile,
-        redirect: "/user/profile/bio",
+        redirect: { name: "user-profile-bio" },
         children: [
           {
             path: "bio",
@@ -159,6 +160,20 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes,
+  scrollBehavior(to, from, savedPosition) {
+    if (savedPosition) {
+      return savedPosition;
+    } else {
+      if (to.hash) {
+        return {
+          el: to.hash,
+          behavior: "smooth",
+        };
+      } else {
+        return { top: 0 };
+      }
+    }
+  },
 });
 
 router.beforeEach((to, from, next) => {

@@ -1,8 +1,8 @@
 <template>
   <fieldset>
-    <legend class="sr-only">{{ options.srTitle }}</legend>
+    <!-- <legend class="sr-only">{{ options.srTitle }}</legend> -->
     <div :class="colNumberClass" class="space-y-5 grid">
-      <div v-for="option in cleanData" :key="option.id" class="relative flex items-start mt-3">
+      <div v-for="option in cleanData" :key="option.id" class="relative flex items-start mt-5">
         <div v-if="option.name != 'Other'" class="flex h-6 items-center">
           <input
             :id="option.name"

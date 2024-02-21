@@ -35,15 +35,15 @@
       <nav class="px-0">
         <ul class="p-0">
           <li :key="link.name" v-for="link in navigation">
-            <a
-              class="text-white flex items-center block py-3 px-4 hover:no-underline no-underline text-lg hover:bg-blue-800 rounded transition duration-200"
+            <router-link 
+              :to="link.href"
               v-if="!link.children"
-              :href="link.href"
+              class="text-white flex items-center block py-3 px-4 hover:no-underline no-underline text-lg hover:bg-blue-800 rounded transition duration-200"
               :class="{ 'bg-blue-900': $route.name == link.routeName.toLowerCase() }"
             >
               <i class="mr-2" :class="link.icon"></i>
               <span>{{ link.name }}</span>
-            </a>
+            </router-link>
             <Disclosure as="div" v-else :defaultOpen="navOpen" v-slot="navOpen">
               <DisclosureButton
                 @click="rotate = !rotate"
