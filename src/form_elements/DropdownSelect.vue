@@ -23,7 +23,7 @@
         >
           <ListboxOption
             as="template"
-            v-for="option in dropdownData.options"
+            v-for="option in dropdownData"
             :key="option"
             v-bind:value="option"
             v-slot="{ active, selected }"

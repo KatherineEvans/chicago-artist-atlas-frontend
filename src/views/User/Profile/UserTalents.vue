@@ -9,25 +9,6 @@
           us and let the spotlight shine on your achievements. Whether you're an actor, director, playwright, or
           involved in any other aspect of the theatre world, we invite you to showcase your expertise.
         </p>
-        <div>
-          <div class="sm:hidden">
-            <label for="tabs" class="sr-only">Select a tab</label>
-            <!-- Use an "onChange" listener to redirect the user to the selected tab URL. -->
-            <select id="tabs" name="tabs" class="block w-full rounded-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 mt-3">
-              <option v-for="tab in tabs" :key="tab.name" :selected="tab.name === currentTab">{{ tab.name }}</option>
-            </select>
-          </div>
-          <div class="hidden sm:block">
-            <div class="border-b border-gray-200">
-              <nav class="pb-0 pl-0 -mb-px flex space-x-8" aria-label="Tabs">
-                <div v-for="tab in tabs" :key="tab.name" @click="currentTab = tab.name" :class="[tab.name === currentTab ? 'border-indigo-500 text-indigo-600' : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700', 'group inline-flex items-center border-b-2 py-4 pl-3 pr-4 text-sm font-medium']" :aria-current="tab.name === currentTab ? 'page' : undefined">
-                  <component :is="tab.icon" :class="[currentTab === tab.name ? 'text-indigo-500' : 'text-gray-400 group-hover:text-gray-500', '-ml-0.5 mr-2 h-5 w-5']" aria-hidden="true" />
-                  <span>{{ tab.name }}</span>
-                </div>
-              </nav>
-            </div>
-          </div>
-        </div>
         <div class="mt-10 flex flex-wrap">
           <div
             class="border-b last:border-0 w-full px-1 lg:px-3"
@@ -115,10 +96,9 @@
 <script>
 import axios from "axios";
 import RadioButton from "../../../form_elements/RadioButton.vue";
-import { BuildingOfficeIcon, StarIcon } from '@heroicons/vue/20/solid'
 
 export default {
-  components: { RadioButton, BuildingOfficeIcon, StarIcon },
+  components: { RadioButton },
   data: function () {
     return {
       talentIds: [],
