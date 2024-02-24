@@ -104,12 +104,7 @@ export default {
       talentIds: [],
       categories: [],
       talentsToSave: {},
-      otherTalents: {},
-      currentTab: 'Artist',
-      tabs: [
-        { name: 'Artist', href: '#', icon: StarIcon },
-        { name: 'Production Tech', href: '#', icon: BuildingOfficeIcon },
-      ],
+      otherTalents: {},      
     };
   },
   mounted() {
@@ -180,6 +175,7 @@ export default {
       } else {
         delete this.talentsToSave[option.id];
       }
+      console.log(this.talentsToSave, 'talents to save')
     },
   },
 };

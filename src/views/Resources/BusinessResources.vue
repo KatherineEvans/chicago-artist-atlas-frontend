@@ -98,11 +98,20 @@
                 <h3 class="mt-4 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
                   <a
                     :href="post.website_url"
+                    v-if="post.website_url"
                     class="text-blue-900 hover:text-blue-700 no-underline hover:no-underline"
                     target="_blank"
                   >
                     <span class="absolute inset-0"></span>
-                    {{ post.organization_name }}
+                    {{ post.organization_name ? post.organization_name : post.document_name }}
+                  </a>
+                  <a 
+                    v-else
+                    :href="post.pdf_url"
+                    class="text-blue-900 hover:text-blue-700 no-underline hover:no-underline"
+                    target="_blank"
+                  >
+                    {{ post.organization_name ? post.organization_name : post.document_name }}
                   </a>
                 </h3>
                 <p class="mt-4 line-clamp-3 text-sm leading-6 text-gray-600">{{ post.description }}</p>

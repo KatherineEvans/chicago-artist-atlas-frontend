@@ -203,7 +203,7 @@
           <div class="text-2xl font-bold text-center">Production Staff Resources</div>
           <div class="resource-container drop-shadow-md bg-blue-100/25">
             <div class="img-desc">
-              <img class="lf-img mx-auto mb-3" src="../../assets/resources/life-hack-resources.png" />
+              <img class="lf-img mx-auto mb-3" src="../../assets/resources/production-resources.png" />
               <div class="resource-desc mb-3">
                 <p class="px-2 desc">
                   Whether you're a new theater looking to grow, or an established theater with tons of industry knowledge, our collection of resources for the theater business help you perform at your best!
@@ -239,7 +239,7 @@
               </div>
               <router-link
                 class="no-underline hover:no-underline flex-none rounded-md bg-blue-900 px-3.5 py-2.5 text-base float-right font-semibold shadow-sm hover:bg-blue-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
-                to="/resources/life-hacks"
+                to="/resources/production"
               >
                 <strong class="text-blue-100">View All Production Staff Resources</strong>
               </router-link>
