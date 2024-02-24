@@ -200,6 +200,55 @@
       </div>
       <div class="row">
         <div class="mt-5">
+          <div class="text-2xl font-bold text-center">Production Staff Resources</div>
+          <div class="resource-container drop-shadow-md bg-blue-100/25">
+            <div class="img-desc">
+              <img class="lf-img mx-auto mb-3" src="../../assets/resources/life-hack-resources.png" />
+              <div class="resource-desc mb-3">
+                <p class="px-2 desc">
+                  Whether you're a new theater looking to grow, or an established theater with tons of industry knowledge, our collection of resources for the theater business help you perform at your best!
+                </p>
+              </div>
+            </div>
+            <div class="resource-cards">
+              <div
+                v-for="resource in productionResources"
+                :key="resource.id"
+                class="bg-white border rounded resource-card"
+              >
+                <div class="mb-3">
+                  <h6 class="inline font-bold text-lg">{{ resource.organization_name ? resource.organization_name : resource.document_name  }}</h6>
+                  <span
+                    class="inline-flex items-center rounded-full bg-purple-50 px-2 py-1 text-sm float-right font-medium text-purple-700 ring-1 ring-inset ring-purple-600/20"
+                  >
+                    {{ resource.secondary_type }}
+                  </span>
+                </div>
+                <p>
+                  {{ resource.description }}
+                </p>
+                <a
+                  target="_blank"
+                  v-if="resource.website_url"
+                  :href="resource.website_url"
+                  class="text-right text-blue-700 block mt-2"
+                >
+                  View Resource
+                </a>
+                <a v-else target="_blank" :href="resource.pdf_url"></a>
+              </div>
+              <router-link
+                class="no-underline hover:no-underline flex-none rounded-md bg-blue-900 px-3.5 py-2.5 text-base float-right font-semibold shadow-sm hover:bg-blue-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                to="/resources/life-hacks"
+              >
+                <strong class="text-blue-100">View All Production Staff Resources</strong>
+              </router-link>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="mt-5">
           <div class="text-2xl font-bold text-center">#LifeHack Resources</div>
           <div class="resource-container drop-shadow-md bg-blue-100/25">
             <div class="img-desc">
@@ -221,7 +270,7 @@
                 <div class="mb-3">
                   <h6 class="inline font-bold text-lg">{{ resource.organization_name }}</h6>
                   <span
-                    class="inline-flex items-center rounded-full bg-purple-50 px-2 py-1 text-sm float-right font-medium text-purple-700 ring-1 ring-inset ring-purple-600/20"
+                    class="inline-flex items-center rounded-full bg-cyan-50 px-2 py-1 text-sm float-right font-medium text-cyan-700 ring-1 ring-inset ring-cyan-600/20"
                   >
                     {{ resource.secondary_type }}
                   </span>
@@ -267,6 +316,7 @@ export default {
       disabilities: {},
       businessResources: [],
       lifeHackResources: [],
+      productionResources: [],
     };
   },
   mounted() {
@@ -278,6 +328,7 @@ export default {
         this.groupedResources = response.data.grouped;
         this.businessResources = response.data.business;
         this.lifeHackResources = response.data.lifehack;
+        this.productionResources = response.data.production;
 
         this.bipoc =
           this.groupedResources["Identity Based"]["BIPOC"][
