@@ -52,7 +52,12 @@
           </div>
         </div>
         <div class="w-full pt-2 px-3 pb-2">
-          <label class="block text-base font-medium leading-6 text-gray-900 mb-2" for="file_input">Upload Resume:</label>
+          <label class="block text-base font-medium leading-6 text-gray-900 mb-2 flex justify-between" for="file_input">
+            <span>Upload Resume:</span>
+            <span v-if="userStore.profile?.resume_url">
+              <a target="_blank" :href="userStore.profile.resume_url" class="underline font-bold text-blue-700">View Resume</a>
+            </span>
+          </label>
           <input class="px-3 py-1 block w-full text-sm text-gray-900 border border-gray-300 rounded-md cursor-pointer focus:outline-none" id="file_input" type="file" @change="handleSetFile">
         </div>
       </div>
@@ -143,33 +148,18 @@
       ...mapStores(useUserStore),
     },
     methods: {
-      removeItem(type, item) {
-        if (type === "gender") {
-          this.otherGender = this.otherGender.filter((g) => g != item);
-        }
-        if (type === "pronoun") {
-          this.otherPronouns = this.otherPronouns.filter((p) => p != item);
-        }
-      },
-      updateText(event, type) {
-        if (event.target.value.includes(",")) {
-          if (type === "gender") {
-            this.otherGender.push(event.target.value.slice(0, -1));
+      handleSetFile(event, type) {
+        if (event.target.files.length > 0) {
+          this.userStore.resumeFileTooBig = false;
+          this.userStore.resumeFileTypeWrong = false;
+          this.userStore.resumeUpload = event.target.files[0];
+
+          if (event.target.files[0].type.includes("image")) {
+            this.userStore.resumeFileTypeWrong = true;
           }
-          if (type === "pronoun") {
-            this.otherPronouns = [event.target.value.slice(0, -1)];
-          }
-          event.target.value = "";
         }
       },
-      alertMessage() {
-        this.$store.commit("alerts/setMessage", {
-          title: "Successfully Saved!",
-          body: "Your Artist Bio has been successfully saved.",
-          icon: "success",
-          isVisible: true,
-        });
-      },
+      
     },
   };
   </script>

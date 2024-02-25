@@ -85,7 +85,7 @@
             >
               {{ talent }}
               <button
-                @click="removeTalent(category, talent)"
+                @click="userStore.removeTechTalent(category, talent)"
                 type="button"
                 class="group relative -mr-1 h-3.5 w-3.5 rounded-sm hover:bg-blue-500/20"
               >

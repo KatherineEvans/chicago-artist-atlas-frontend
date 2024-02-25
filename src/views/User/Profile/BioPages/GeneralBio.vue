@@ -14,15 +14,15 @@
                 class="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500"
               >
                 <span>Upload Photo</span>
-                <input id="file-upload" name="file-upload" type="file" class="sr-only" @change="userStore.handleSetFile" />
+                <input id="file-upload" name="file-upload" type="file" class="sr-only" @change="handleSetFile" />
               </label>
             </div>
             <p class="text-xs leading-5 text-gray-600">PNG, JPG, JPEG up to 5MB</p>
-            <p class="text-sm text-red-600 font-medium mx-3 mt-2" v-if="userStore.fileTooBig">
+            <p class="text-sm text-red-600 font-medium mx-3 mt-2" v-if="userStore.headshotFileTooBig">
               Oops! Looks like the photo you uploaded was a little too big. Please resize or upload a different
               photo.
             </p>
-            <p class="text-sm text-red-600 font-medium mx-3 mt-2" v-if="userStore.fileTypeWrong">
+            <p class="text-sm text-red-600 font-medium mx-3 mt-2" v-if="userStore.headshotFileTypeWrong">
               File type unsupported, please upload a PNG, JPG, or a JPEG.
             </p>
           </div>
@@ -55,7 +55,6 @@
                   id="bio"
                   name="bio"
                   rows="3"
-                  style="min-height: 225px"
                   class="block w-full rounded-md border-0 p-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
               </div>
@@ -258,24 +257,22 @@ export default {
         this.userStore.pronounOptions.map((po) => (po.name === option.name ? (po.value = index) : null));
       }
       if (type === "gender") {
-        console.log(option.id, 'gender')
         this.userStore.gendersChecked.push(option.id)
       }
       if (type === "ethnicity") {
-        console.log(option.id, 'ethnicity')
         this.userStore.ethnicitiesChecked.push(option.id)
       }
     },
     updateText(event, type) {
       if (event.target.value.includes(",")) {
-        if (type === "gender") {
+        if (type == "gender") {
           this.userStore.otherUserGenders.push(event.target.value.slice(0, -1));
         }
-        if (type === "pronoun") {
-          this.userStore.otherUserPronouns = [event.target.value.slice(0, -1)];
+        if (type == "pronoun") {
+          this.userStore.otherUserPronouns.push(event.target.value.slice(0, -1));
         }
-        if (type === "ethnicity") {
-          this.userStore.otherUserEthnicities = [event.target.value.slice(0, -1)];
+        if (type == "ethnicity") {
+          this.userStore.otherUserEthnicities.push(event.target.value.slice(0, -1));
         }
         event.target.value = "";
       }
@@ -285,7 +282,10 @@ export default {
         this.userStore.otherUserGenders = this.userStore.otherUserGenders.filter((g) => g != item);
       }
       if (type === "pronoun") {
-        this.otherPronouns = this.otherPronouns.filter((p) => p != item);
+        this.userStore.otherUserPronouns = this.userStore.otherUserPronouns.filter((g) => g != item);
+      }
+      if (type === "ethnicity") {
+        this.userStore.otherUserEthnicities = this.userStore.otherUserEthnicities.filter((g) => g != item);
       }
     },
     alertMessage() {
@@ -296,6 +296,27 @@ export default {
         isVisible: true,
       });
     },
+    handleSetFile(event, type) {
+      if (event.target.files.length > 0) {
+        this.userStore.headshotFileTooBig = false;
+        this.userStore.headshotFileTypeWrong = false;
+        this.userStore.headshotFile = null;
+        this.userStore.headshotUpload = event.target.files[0];
+        if (event.target.files[0].type.includes("image")) {
+          if (event.target.files[0].size > this.userStore.maxBytes) {
+            this.userStore.headshotFileTooBig = true;
+          } else {
+            let reader = new FileReader();
+            reader.onload = (event) => {
+              this.userStore.headshotFile = event.target.result;
+            };
+            reader.readAsDataURL(event.target.files[0]);
+          }
+        } else {
+          this.userStore.headshotFileTypeWrong = true;
+        }
+      }
+    }
   },
 };
 </script>

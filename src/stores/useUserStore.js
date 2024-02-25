@@ -50,16 +50,19 @@ export const useUserStore = defineStore("user", {
     userTalents: [],
     techTalents: [],
     userTechTalents: [],
-    otherUserTechTalents: [],
+    otherUserTechTalents: {},
     trainings: [],
     userTrainings: [],
 
     // Image/PDF Upload
+    maxBytes: 5242880,
     headshotFile: null,
     headshotUpload: null,
-    maxBytes: 5242880,
-    fileTooBig: false,
-    fileTypeWrong: false,
+    headshotFileTooBig: false,
+    headshotFileTypeWrong: false,
+    resumeUpload: null,
+    resumeFileTooBig: false,
+    resumeFileTypeWrong: false,
 
     // Ethnicities
     ethnicitiesChecked: [],
@@ -221,7 +224,6 @@ export const useUserStore = defineStore("user", {
         .get("/profile.json")
         .then((response) => {
           if (response.data) {
-            console.log(response.data, "profile");
             this.profile = response.data;
             this.originalProfile = response.data;
             this.headshotFile = response.data.headshot_url;
@@ -249,81 +251,85 @@ export const useUserStore = defineStore("user", {
           this.isLoading = false;
         });
     },
-    handleSetFile(event) {
-      if (event.target.files.length > 0) {
-        this.fileTooBig = false;
-        this.fileTypeWrong = false;
-        this.headshotFile = null;
-        this.headshotUpload = null;
-        this.headshotUpload = event.target.files[0];
-        if (event.target.files[0].type.includes("image")) {
-          if (event.target.files[0].size > this.maxBytes) {
-            this.fileTooBig = true;
-          } else {
-            let reader = new FileReader();
-            reader.onload = (event) => {
-              this.headshotFile = event.target.result;
-            };
-            reader.readAsDataURL(event.target.files[0]);
-          }
-        } else {
-          this.fileTypeWrong = true;
+    saveProfile(next) {
+      const formData = new FormData();
+
+      // Iterate through the object and append each key-value pair to FormData
+      for (const key in this.profile) {
+        if (this.profile.hasOwnProperty(key)) {
+          formData.append(key, this.profile[key]);
         }
       }
+
+      if (this.headshotUpload?.name) {
+        formData.append("image_upload", this.headshotUpload);
+      }
+      formData.append("image_file", this.headshotFile);
+      if (this.resumeUpload?.name) {
+        formData.append("resume_upload", this.resumeUpload);
+      }
+
+      formData.append("pronouns", JSON.stringify(this.pronounOptions));
+      formData.append("other_pronouns", JSON.stringify(this.otherUserPronouns));
+      formData.append("other_gender", JSON.stringify(this.otherUserGenders));
+      formData.append("other_ethnicities", JSON.stringify(this.otherUserEthnicities));
+
+      this.profile.id ? this.updateProfile(formData, next) : this.createProfile(formData, next);
     },
-    saveProfile(next) {
-      let data = {
-        ...this.profile,
-        image_upload: this.headshotUpload,
-        image_file: this.headshotFile,
-        pronouns: JSON.stringify(this.pronounOptions),
-        other_pronouns: JSON.stringify(this.otherUserPronouns),
-        other_gender: JSON.stringify(this.otherUserGenders),
-        other_ethnicities: JSON.stringify(this.otherUserEthnicities),
-      };
-      this.profile.id ? this.updateProfile(data, next) : this.createProfile(data, next);
+    saveTechTalents() {
+      axios.post("/tech-talents.json", {
+        tech_talents: this.userTechTalents,
+        other_tech_talents: this.otherUserTechTalents,
+      });
     },
     updateProfile(data, next) {
       axios.patch(`/profiles/${this.profile.id}.json`, data).then((response) => {
         localStorage.setItem("headshotUrl", response.data.headshot_url);
         this.profile = response.data;
+        this.saveTechTalents();
         if (next) {
+          this.currentTab = "General";
           this.$router.push("/user/profile/talents");
         } else {
-          this.alertMessage();
+          // this.alertMessage();
         }
       });
     },
     createProfile(data, next) {
-      console.log(data, next, "create");
-      // axios.post("/profiles.json", data).then((response) => {
-      //   localStorage.setItem("headshotUrl", response.data.headshot_url);
-      //   this.$store.commit("users/setProfile", response.data);
-      //   if (this.next) {
-      //     this.$router.push("/user/profile/talents");
-      //   } else {
-      //     this.alertMessage();
-      //   }
-      // });
+      axios.post("/profiles.json", data).then((response) => {
+        localStorage.setItem("headshotUrl", response.data.headshot_url);
+        this.profile = response.data;
+        this.saveTechTalents();
+        if (next) {
+          this.currentTab = "General";
+          this.$router.push("/user/profile/talents");
+        } else {
+          // this.alertMessage();
+        }
+      });
     },
-    updateTechTalentCheckbox(option, checked) {
-      console.log("update tech talent checkbox", option, checked);
-      if (checked) {
-        this.talentsToSave[option.id] = null;
+    updateTechTalentCheckbox(event) {
+      if (this.userTechTalents.includes(event.id)) {
+        const index = this.userTechTalents.indexOf(event.id);
+        if (index > -1) {
+          this.userTechTalents.splice(index, 1);
+        }
       } else {
-        delete this.talentsToSave[option.id];
+        this.userTechTalents.push(event.id);
       }
     },
     updateTechTalentText(event, category) {
-      console.log("update tech talent text", event, category);
       if (event.target.value.includes(",")) {
-        if (this.otherTalents[category]) {
-          this.otherTalents[category].push(event.target.value.slice(0, -1));
+        if (this.otherUserTechTalents[category]) {
+          this.otherUserTechTalents[category].push(event.target.value.slice(0, -1));
         } else {
-          this.otherTalents[category] = [event.target.value.slice(0, -1)];
+          this.otherUserTechTalents[category] = [event.target.value.slice(0, -1)];
         }
         event.target.value = "";
       }
+    },
+    removeTechTalent(category, talent) {
+      this.otherUserTechTalents[category] = this.otherUserTechTalents[category].filter((t) => t != talent);
     },
   },
   getters: {},

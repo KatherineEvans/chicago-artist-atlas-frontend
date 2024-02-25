@@ -155,7 +155,6 @@ export default {
     getTalents() {
       axios.get("/user_talents.json").then((response) => {
         this.talents = response.data;
-        console.log(this.talents, 'talents hello');
         this.talentsToSave = {};
         response.data.forEach((userTalent) => {
           if (userTalent.other) {
@@ -175,7 +174,6 @@ export default {
       } else {
         delete this.talentsToSave[option.id];
       }
-      console.log(this.talentsToSave, 'talents to save')
     },
   },
 };

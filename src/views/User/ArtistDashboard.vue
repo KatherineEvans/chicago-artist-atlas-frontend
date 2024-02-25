@@ -48,7 +48,7 @@
               <DisclosureButton
                 @click="rotate = !rotate"
                 class="w-full text-white flex items-center block py-3 px-4 hover:no-underline no-underline text-lg hover:bg-blue-800 rounded transition duration-200 font-bold"
-                :class="{ 'bg-blue-900': $route.name.includes('profile') }"
+                :class="{ 'bg-blue-900  text-white': $route.name.includes('profile') }"
               >
                 <i class="mr-2" :class="link.icon"></i>
                 {{ link.name }}
@@ -104,7 +104,7 @@ export default {
     return {
       title: "Artist Dashboard",
       showNav: false,
-      navOpen: false,
+      navOpen: true,
       rotate: false,
       activeUser: `${localStorage.userFirstName} ${localStorage.userLastName}`,
       navigation: [
@@ -113,7 +113,7 @@ export default {
           routeName: "user-profile",
           href: "/user/profile",
           current: false,
-          icon: "fa-regular fa-user",
+          icon: "fa-solid fa-user",
           rotate: false,
           children: [
             {
@@ -198,5 +198,8 @@ export default {
 <style scoped>
 .sub-nav-text {
   font-size: 1.1em;
+}
+nav a.router-link-exact-active{
+  color: white !important;
 }
 </style>
