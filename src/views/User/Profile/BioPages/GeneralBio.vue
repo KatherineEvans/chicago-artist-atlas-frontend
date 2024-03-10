@@ -45,7 +45,7 @@
         </div>
         <div class="flex-wrap flex">
           <!-- ABOUT ME -->
-          <div class="w-full grid flex flex-wrap flex pt-3">
+          <div class="w-full grid flex flex-wrap flex pt-0">
             <div class="col-span-full">
               <label for="bio" class="block text-base font-medium leading-6 text-gray-900 mb-0">About:</label>
               <p class="m-0 text-sm leading-6 italic text-gray-400">Write a few sentences about yourself!</p>
@@ -55,7 +55,7 @@
                   id="bio"
                   name="bio"
                   rows="3"
-                  class="block w-full rounded-md border-0 p-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  class="textarea block w-full rounded-md border-0 p-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
               </div>
             </div>
@@ -320,3 +320,9 @@ export default {
   },
 };
 </script>
+<style>
+  .textarea{
+    height: 100% !important;
+    min-height: 100px;
+  }
+</style>

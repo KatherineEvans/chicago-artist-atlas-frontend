@@ -13,29 +13,29 @@
         leave-to-class="opacity-0"
       >
         <div
-          v-if="message.isVisible"
+          v-if="alertStore.message.isVisible"
           class="pointer-events-auto w-full max-w-sm overflow-hidden rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5"
         >
           <div class="p-4">
             <div class="flex items-start">
               <div class="flex-shrink-0">
-                <CheckCircleIcon v-if="message.icon == 'success'" class="h-8 w-8 text-green-400" aria-hidden="true" />
-                <InformationCircleIcon v-if="message.icon == 'information'" />
-                <XCircleIcon v-if="message.icon == 'failure'" class="h-8 w-8 text-red-400" />
+                <CheckCircleIcon v-if="alertStore.message.icon == 'success'" class="h-8 w-8 text-green-400" aria-hidden="true" />
+                <InformationCircleIcon v-if="alertStore.message.icon == 'information'" />
+                <XCircleIcon v-if="alertStore.message.icon == 'failure'" class="h-8 w-8 text-red-400" />
               </div>
               <div class="ml-3 w-0 flex-1 pt-0.5">
-                <p class="text-base font-medium text-gray-900">{{ message.title }}</p>
+                <p class="text-base font-medium text-gray-900">{{ alertStore.message.title }}</p>
                 <p class="mt-1 text-base text-gray-500">
-                  {{ message.body }}
-                  <span v-if="message.linkName">
-                    <a :href="message.linkValue">{{ message.linkName }}</a>
+                  {{ alertStore.message.body }}
+                  <span v-if="alertStore.message.linkName">
+                    <a :href="alertStore.message.linkValue">{{ alertStore.message.linkName }}</a>
                   </span>
                 </p>
               </div>
               <div class="ml-4 flex flex-shrink-0">
                 <button
                   type="button"
-                  @click="$store.commit('alerts/hideMessage')"
+                  @click="alertStore.message.isVisible = false"
                   class="inline-flex rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                 >
                   <span class="sr-only">Close</span>
@@ -50,7 +50,9 @@
   </div>
 </template>
 <script>
+import { mapStores } from 'pinia';
 import { CheckCircleIcon, XCircleIcon, InformationCircleIcon } from "@heroicons/vue/24/outline";
+import { useAlertStore } from '../stores/useAlertStore.js';
 import { XMarkIcon } from "@heroicons/vue/20/solid";
 
 export default {
@@ -61,9 +63,7 @@ export default {
     XMarkIcon,
   },
   computed: {
-    message() {
-      return this.$store.state.alerts.message;
-    },
+    ...mapStores(useAlertStore),
   },
   methods: {},
 };

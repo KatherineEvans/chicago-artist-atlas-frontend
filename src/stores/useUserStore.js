@@ -1,4 +1,5 @@
 import { defineStore } from "pinia";
+import { useAlertStore } from "./useAlertStore.js";
 import axios from "axios";
 
 export const useUserStore = defineStore("user", {
@@ -23,8 +24,8 @@ export const useUserStore = defineStore("user", {
     profile: {
       acting_reel_url: null,
       agency: null,
-      age_low: "18-22",
-      age_high: "33-37",
+      age_low: "18",
+      age_high: "99",
       bio: null,
       eye_color: "Brown",
       hair_color: "Brown",
@@ -190,10 +191,7 @@ export const useUserStore = defineStore("user", {
       "Rainbow",
       "Other",
     ],
-    unionStatus: {
-      selected: "Equity",
-      options: ["Equity", "Non Equity", "SAG-AFTRA"],
-    },
+    unionStatus: ["Equity", "Non Equity", "SAG-AFTRA"],
   }),
   actions: {
     getTalents() {},
@@ -205,7 +203,7 @@ export const useUserStore = defineStore("user", {
           this.genderOptions = response.data.genders;
         })
         .catch((error) => {
-          console.log("couldn't fetch ethnicity list", error);
+          console.log(error);
         });
     },
     getTechTalents() {
@@ -214,9 +212,7 @@ export const useUserStore = defineStore("user", {
       });
     },
     getCurrentUser() {
-      axios.get("/current_user.json").then((response) => {
-        // console.log(response.data, "current user");
-      });
+      axios.get("/current_user.json").then((response) => {});
     },
     getUserProfile() {
       this.isLoading = true;
@@ -236,16 +232,37 @@ export const useUserStore = defineStore("user", {
                 }
               });
             }
+            if (response.data.user_gender) {
+              let data = JSON.parse(response.data.pronouns);
+              this.pronounOptions = data;
+              data.forEach((pronoun) => {
+                if (pronoun.value) {
+                  this.pronounsChecked.push(pronoun.id);
+                }
+              });
+            }
+            if (response.data.user_ethnicities) {
+              let data = JSON.parse(response.data.pronouns);
+              this.pronounOptions = data;
+              data.forEach((pronoun) => {
+                if (pronoun.value) {
+                  this.pronounsChecked.push(pronoun.id);
+                }
+              });
+            }
             if (response.data.other_gender) {
               this.otherUserGenders = JSON.parse(response.data.other_gender);
             }
             if (response.data.other_pronouns) {
               this.otherUserPronouns = JSON.parse(response.data.other_pronouns);
             }
+            if (response.data.other_ethnicities) {
+              this.otherUserEthnicities = JSON.parse(response.data.other_ethnicities);
+            }
           }
         })
         .catch((error) => {
-          console.log("error loading profile", error);
+          console.log(error);
         })
         .finally(() => {
           this.isLoading = false;
@@ -271,8 +288,10 @@ export const useUserStore = defineStore("user", {
 
       formData.append("pronouns", JSON.stringify(this.pronounOptions));
       formData.append("other_pronouns", JSON.stringify(this.otherUserPronouns));
-      formData.append("other_gender", JSON.stringify(this.otherUserGenders));
+      formData.append("other_genders", JSON.stringify(this.otherUserGenders));
       formData.append("other_ethnicities", JSON.stringify(this.otherUserEthnicities));
+      formData.append("checked_genders", JSON.stringify(this.gendersChecked));
+      formData.append("checked_ethnicities", JSON.stringify(this.ethnicitiesChecked));
 
       this.profile.id ? this.updateProfile(formData, next) : this.createProfile(formData, next);
     },
@@ -283,30 +302,67 @@ export const useUserStore = defineStore("user", {
       });
     },
     updateProfile(data, next) {
-      axios.patch(`/profiles/${this.profile.id}.json`, data).then((response) => {
-        localStorage.setItem("headshotUrl", response.data.headshot_url);
-        this.profile = response.data;
-        this.saveTechTalents();
-        if (next) {
-          this.currentTab = "General";
-          this.$router.push("/user/profile/talents");
-        } else {
-          // this.alertMessage();
-        }
-      });
+      axios
+        .patch(`/profiles/${this.profile.id}.json`, data)
+        .then((response) => {
+          localStorage.setItem("headshotUrl", response.data.headshot_url);
+          this.profile = response.data;
+          localStorage.setItem("headshotUrl", response.data.headshot_url);
+          this.saveTechTalents();
+          if (next) {
+            this.currentTab = "General";
+            this.$router.push("/user/profile/talents");
+          } else {
+            // SET SUCCESS MESSAGE
+            let message = {
+              title: "Yay!",
+              body: "Profile successfully saved.",
+              icon: "success",
+            };
+            useAlertStore().setMessage(message);
+          }
+        })
+        .catch((error) => {
+          console.error(error);
+          // SET ERROR MESSAGE
+          let message = {
+            title: "Whoops!",
+            body: "Looks like something went wrong. Please try again. If error persists, email info@chiartistatlas.com",
+            icon: "failure",
+          };
+          useAlertStore().setMessage(message);
+        });
     },
     createProfile(data, next) {
-      axios.post("/profiles.json", data).then((response) => {
-        localStorage.setItem("headshotUrl", response.data.headshot_url);
-        this.profile = response.data;
-        this.saveTechTalents();
-        if (next) {
-          this.currentTab = "General";
-          this.$router.push("/user/profile/talents");
-        } else {
-          // this.alertMessage();
-        }
-      });
+      axios
+        .post("/profiles.json", data)
+        .then((response) => {
+          localStorage.setItem("headshotUrl", response.data.headshot_url);
+          this.profile = response.data;
+          localStorage.setItem("headshotUrl", response.data.headshot_url);
+          this.saveTechTalents();
+          if (next) {
+            this.currentTab = "General";
+            this.$router.push("/user/profile/talents");
+          } else {
+            let message = {
+              title: "Yay!",
+              body: "Profile successfully saved.",
+              icon: "success",
+            };
+            useAlertStore().setMessage(message);
+          }
+        })
+        .catch((error) => {
+          console.error(error);
+          // SET ERROR MESSAGE
+          let message = {
+            title: "Whoops!",
+            body: "Looks like something went wrong. Please try again. If error persists, email info@chiartistatlas.com",
+            icon: "failure",
+          };
+          useAlertStore().setMessage(message);
+        });
     },
     updateTechTalentCheckbox(event) {
       if (this.userTechTalents.includes(event.id)) {

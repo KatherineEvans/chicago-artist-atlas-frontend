@@ -52,7 +52,7 @@
           </div>
         </div>
         <div class="w-full pt-2 px-3 pb-2">
-          <label class="block text-base font-medium leading-6 text-gray-900 mb-2 flex justify-between" for="file_input">
+          <label class="block text-base font-medium leading-6 text-gray-900 mb-2 flex justify-between">
             <span>Upload Resume:</span>
             <span v-if="userStore.profile?.resume_url">
               <a target="_blank" :href="userStore.profile.resume_url" class="underline font-bold text-blue-700">View Resume</a>
