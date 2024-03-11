@@ -18,7 +18,7 @@ export const useTheaterStore = defineStore("theater", {
       "Classical",
       "Opera",
       "Ballet",
-      "Children's Theater",
+      "Children's Theatre",
       "Avant Garde",
       "Theatre by Young Performers",
     ],
