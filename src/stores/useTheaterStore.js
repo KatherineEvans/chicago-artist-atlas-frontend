@@ -79,7 +79,9 @@ export const useTheaterStore = defineStore("theater", {
       }
 
       if (state.searchTerm) {
-        theaters = theaters.filter((theater) => theater.name && theater.name.includes(state.searchTerm));
+        theaters = theaters.filter(
+          (theater) => theater.name && theater.name.toLowerCase().includes(state.searchTerm.toLowerCase())
+        );
       }
 
       state.last = Math.ceil(theaters.length / 5);
