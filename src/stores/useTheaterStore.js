@@ -23,7 +23,7 @@ export const useTheaterStore = defineStore("theater", {
       "Theatre by Young Performers",
     ],
     first: 1,
-    current: null,
+    current: 1,
     last: null,
   }),
   actions: {
@@ -31,7 +31,6 @@ export const useTheaterStore = defineStore("theater", {
       axios.get("/theaters").then((response) => {
         if (response.data.length > 0) {
           this.theaters = response.data;
-          //   console.log(response.data);
           this.currentTheater = this.theaters[0];
           let addressesForTooltip = [];
           let addressArray = [];
@@ -67,7 +66,6 @@ export const useTheaterStore = defineStore("theater", {
     },
 
     formattedTheaters(state) {
-      console.log(state.current);
       state.isLoading = true;
       let theaters = [...state.theaters];
 
