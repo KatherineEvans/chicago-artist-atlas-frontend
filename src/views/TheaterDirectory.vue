@@ -83,7 +83,7 @@
               Whoops, nothing to see here...
             </p>
             <p class="text-xl">
-              It looks like your search terms returned zero results, try a different combination of search terms!
+              It looks like your search returned zero results, try something different!
             </p>
           </div>
           <div class="grid grid-cols-1 md:grid-cols-3 gap-6 px-0 sm:px-4" v-else>
