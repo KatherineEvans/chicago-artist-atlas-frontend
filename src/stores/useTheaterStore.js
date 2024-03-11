@@ -89,12 +89,11 @@ export const useTheaterStore = defineStore("theater", {
       //  Pull/show correct number of theaters
       let paginatedTheaters = theaters.slice((state.current - 1) * 5, state.current * 5);
 
-      state.isLoading = false;
-
       if (!paginatedTheaters.length) {
         state.noTheatersToDisplay = true;
-        this.isLoading = false;
       }
+
+      state.isLoading = false;
 
       return paginatedTheaters;
     },

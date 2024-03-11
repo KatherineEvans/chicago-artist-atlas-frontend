@@ -262,7 +262,7 @@ export default {
   data: function () {
     return {
       map: null,
-      title: 'Chicagoland Theater Directory',
+      title: 'Theater Directory',
       activeClass: "active",
     }
   },
@@ -298,7 +298,7 @@ export default {
     flyToTheater(coordinates) {
       this.map.flyTo({
         center: coordinates,
-        zoom: 15,
+        zoom: 9,
       });
     },
     createPopUp(coordinates, theaterInfo) {
@@ -312,14 +312,25 @@ export default {
         .addTo(this.map);
     },
     setMap() {
+      let zoom = 12;
       let center = this.theaterStore.formattedTheaters.find((theater) => !!theater?.address?.lat);
+
+      if (!center) {
+        center = {
+          address: {
+            lat: '41.8781',
+            lng: '-87.6298'
+          }
+        }
+        zoom = 9;
+      }
 
       mapboxgl.accessToken = process.env.VUE_APP_MAP_KEY;
       this.map = new mapboxgl.Map({
         container: "map",
         style: "mapbox://styles/mapbox/streets-v11",
         center: [center.address.lng, center.address.lat],
-        zoom: 12,
+        zoom: zoom,
       });
 
       for (let i = 0; i < this.theaterStore.formattedTheaters.length; i++) {
