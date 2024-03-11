@@ -43,7 +43,7 @@
           </div>
         </div>
         <div class="w-full lg:w-1/2 pt-3 px-3 pb-2">
-          <label for="portfolio" class="flex block text-base font-medium leading-6 text-gray-900">Portfolio:</label>
+          <label for="portfolio" class="flex block text-base font-medium leading-6 text-gray-900">Portfolio URL:</label>
           <div class="mt-2">
             <input
               type="text"

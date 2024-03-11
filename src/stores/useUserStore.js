@@ -321,6 +321,9 @@ export const useUserStore = defineStore("user", {
             };
             useAlertStore().setMessage(message);
           }
+          setTimeout(() => {
+            useAlertStore().setMessage({ isVisible: false });
+          }, 4000);
         })
         .catch((error) => {
           console.error(error);
@@ -352,6 +355,9 @@ export const useUserStore = defineStore("user", {
             };
             useAlertStore().setMessage(message);
           }
+          setTimeout(() => {
+            useAlertStore().setMessage({ isVisible: false });
+          }, 4000);
         })
         .catch((error) => {
           console.error(error);
