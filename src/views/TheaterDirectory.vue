@@ -21,7 +21,7 @@
     </div> -->
     <!-- SEARCH / FILTER BAR -->
     <div class="px-2 md:px-8">
-      <div class="grid grid-cols-2 lg:grid-cols-4 justify-center p-4 gap-6 mb-6">
+      <div class="grid grid-cols-1 lg:grid-cols-4 justify-center p-4 gap-6 mb-6">
         <div class="col-span-1">
           <label for="equity" class="mr-2 sm:text-sm sm:leading-6 font-bold">Equity</label>
           <select
@@ -48,7 +48,7 @@
             <option v-for="season in theaterStore.seasonTypes" :key="season" :value="season">{{ season }}</option>
           </select>
         </div>
-        <div class="col-span-2">
+        <div class="col-span-1 lg:col-span-2">
           <div>
             <label for="search" class="mr-2 sm:text-sm sm:leading-6 font-bold">Search by Theater</label>
             <div class="relative">
@@ -220,15 +220,17 @@
                             <i v-if="theaterStore.currentTheater.phone" class="fa-solid fa-phone mr-2"></i>
                             <span v-if="theaterStore.currentTheater.phone">{{ theaterStore.currentTheater.phone }}</span>
                           </div>
-                          <div class="mb-2">
-                            <i v-if="theaterStore.currentTheater.contact_email" class="fa-solid fa-envelope mr-2"></i>
-                            <i v-if="theaterStore.currentTheater.contact_form" class="fa-solid fa-message mr-2"></i>
-                            <span v-if="theaterStore.currentTheater.contact_email">
-                              <a :href="'mailto:' + theaterStore.currentTheater.contact_email">{{ theaterStore.currentTheater.contact_email }}</a>
-                            </span>
-                            <span v-if="theaterStore.currentTheater.contact_form" target="_blank">
-                              <a :href="theaterStore.currentTheater.contact_form">Contact Form</a>
-                            </span>
+                          <div class="row">
+                            <div class="col">
+                              <i v-if="theaterStore.currentTheater.contact_email" class="fa-solid fa-envelope mr-2"></i>
+                              <i v-if="theaterStore.currentTheater.contact_form" class="fa-solid fa-message mr-2"></i>
+                              <span v-if="theaterStore.currentTheater.contact_email">
+                                <a :href="'mailto:' + theaterStore.currentTheater.contact_email" class="break-all">{{ theaterStore.currentTheater.contact_email }}</a>
+                              </span>
+                              <span v-if="theaterStore.currentTheater.contact_form" target="_blank">
+                                <a :href="theaterStore.currentTheater.contact_form">Contact Form</a>
+                              </span>
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -346,6 +348,9 @@ export default {
 </script>
 
 <style scoped>
+a {
+  color: rgb(37 99 235);
+}
 #map {
   width: 100%;
   height: 500px;
