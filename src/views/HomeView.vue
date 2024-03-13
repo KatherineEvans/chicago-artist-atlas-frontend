@@ -216,12 +216,12 @@ export default {
       pdfLinks: [
         {
           name: "For Teachers",
-          href: "/pdfs/Teacher_Pay_Structure.pdf",
+          href: "https://res.cloudinary.com/dzlaaytu7/image/upload/v1710363114/Teacher_Pay_Structure_oxj1ut.pdf",
           description: "Are you a teacher in the performing arts? We're interested in working with you!",
         },
         {
           name: "For Coaches",
-          href: "/pdfs/Coach_Pay_Structure.pdf",
+          href: "https://res.cloudinary.com/dzlaaytu7/image/upload/v1710363114/Coach_Pay_Structure_zmuxyn.pdf",
           description: "Are you a coach in the performing arts? We're interested in working with you!",
         },
       ],

@@ -321,12 +321,12 @@ export default {
       pdfLinks: [
         {
           name: "For Teachers",
-          href: "https://res.cloudinary.com/dzlaaytu7/image/upload/v1690862878/Teacher_Pay_Structure_irz8sp.pdf",
+          href: "https://res.cloudinary.com/dzlaaytu7/image/upload/v1710363114/Teacher_Pay_Structure_oxj1ut.pdf",
           description: "Are you a teacher in the performing arts? We're interested in working with you!",
         },
         {
           name: "For Coaches",
-          href: "https://res.cloudinary.com/dzlaaytu7/image/upload/v1690862878/Coach_Pay_Structure_uceokn.pdf",
+          href: "https://res.cloudinary.com/dzlaaytu7/image/upload/v1710363114/Coach_Pay_Structure_zmuxyn.pdf",
           description: "Are you a coach in the performing arts? We're interested in working with you!",
         },
       ],

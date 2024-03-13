@@ -29,19 +29,19 @@ export default {
     if (hours >= 6 && hours <= 14) {
       // morning
       this.imageUrl = "https://res.cloudinary.com/dzlaaytu7/image/upload/v1685903849/morning-banner_o1yk9m.jpg";
-      this.logoUrl = "https://res.cloudinary.com/dzlaaytu7/image/upload/v1686364904/morning-logo-slim_pohsxp.png";
+      this.logoUrl = "https://res.cloudinary.com/dzlaaytu7/image/upload/v1710363055/morning-beta-logo-slim_ejkejd.png";
       this.placeholderImageUrl =
         "https://res.cloudinary.com/dzlaaytu7/image/upload/v1691520519/morning-banner_lkatc9.jpg";
     } else if (hours >= 15 && hours <= 18) {
       // afternoon
       this.imageUrl = "https://res.cloudinary.com/dzlaaytu7/image/upload/v1685903864/afternoon-banner_twgiwt.jpg";
-      this.logoUrl = "https://res.cloudinary.com/dzlaaytu7/image/upload/v1686364806/afternoon-logo-slim_qqyzyz.png";
+      this.logoUrl = "https://res.cloudinary.com/dzlaaytu7/image/upload/v1710363055/afternoon-beta-logo-slim_fb0dez.png";
       this.placeholderImageUrl =
         "https://res.cloudinary.com/dzlaaytu7/image/upload/v1691520518/afternoon-banner_x7flpb.jpg";
     } else {
       // evening
       this.imageUrl = "https://res.cloudinary.com/dzlaaytu7/image/upload/v1685903872/evening-banner_y5mvdg.jpg";
-      this.logoUrl = "https://res.cloudinary.com/dzlaaytu7/image/upload/v1686364873/evening-logo-slim_n4l8i9.png";
+      this.logoUrl = "https://res.cloudinary.com/dzlaaytu7/image/upload/v1710363055/evening-beta-logo-slim_vxezbx.png";
       this.placeholderImageUrl =
         "https://res.cloudinary.com/dzlaaytu7/image/upload/v1691520518/evening-banner_nthodg.jpg";
     }
