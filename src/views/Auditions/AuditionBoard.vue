@@ -54,17 +54,73 @@
         </div>
       </div>
       <div v-else class="row my-2 py-2 no-gutters px-2 md:px-6 lg:px-10">
+        <div v-if="!paginatedTheaters.length" class="text-center mt-6 mb-12">
+          <img class="director-chair" src="../../assets/director-chair.jpg">
+          <p class="text-xl font-bold mb-2">
+            Whoops, nothing to see here...
+          </p>
+          <p class="text-xl">
+            It looks like your search returned zero results, try something different!
+          </p>
+        </div>
         <!-- AUDITIONS -->
-        <div class="row lg:pl-4">
-          <AuditionCard
-            v-for="audition in filteredAuditions"
-            v-bind:key="audition.id"
-            :audition="audition"
-            :savedRoles="savedRoles"
-            :currentAuditionId="{ currentAuditionId }"
-            @expand-audition="expandAudition(audition)"
-            @add-to-saved-roles="addToSavedRoles"
-          />
+        <div v-else>
+          <div class="row lg:pl-4">
+            <AuditionCard
+              v-for="audition in paginatedTheaters"
+              v-bind:key="audition.id"
+              :audition="audition"
+              :savedRoles="savedRoles"
+              :currentAuditionId="{ currentAuditionId }"
+              @expand-audition="expandAudition(audition)"
+              @add-to-saved-roles="addToSavedRoles"
+            />
+          </div>
+          <nav class="flex items-center justify-center sm:px-4 px-0">
+            <div class="-mt-px mr-1 lg:mr-3">
+              <div
+                :class="current == 1 ? 'hidden' : ''"
+                @click="current -= 1"
+                class="inline-flex items-center border-t-2 border-transparent pr-1 pt-4 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700"
+              >
+                <ArrowLongLeftIcon class="mr-3 h-5 w-5 text-gray-400" aria-hidden="true" />
+                Previous
+              </div>
+            </div>
+            <div class="md:-mt-px md:flex">
+              <div
+                @click="current = startingPage"
+                class="border-indigo-500 text-indigo-600 inline-flex items-center border-t-2 px-2 lg:px-4 pt-4 text-sm font-medium"
+              >
+                {{ current }}
+              </div>
+              <div
+                v-if="second"
+                @click="current = second"
+                class="inline-flex items-center border-t-2 px-2 lg:px-4 pt-4 text-sm font-medium"
+              >
+                {{ second }}
+              </div>
+              <div
+                v-if="third"
+                @click="current = third"
+                class="inline-flex items-center border-t-2 px-2 lg:px-4 pt-4 text-sm font-medium"
+              >
+                {{ third }}
+              </div>
+            </div>
+            <div class="-mt-px ml-1 lg:ml-3">
+              <div
+                href="#"
+                @click="current += 1"
+                :class="current == last ? 'hidden' : ''"
+                class="inline-flex items-center border-t-2 border-transparent pl-1 pt-4 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700"
+              >
+                Next
+                <ArrowLongRightIcon class="ml-3 h-5 w-5 text-gray-400" aria-hidden="true" />
+              </div>
+            </div>
+          </nav>
         </div>
       </div>
     </div>
@@ -74,7 +130,7 @@
 import axios from "axios";
 import moment from "moment";
 import AuditionCard from "./AuditionCard.vue";
-import { MagnifyingGlassIcon } from "@heroicons/vue/20/solid";
+import { MagnifyingGlassIcon, ArrowLongLeftIcon, ArrowLongRightIcon } from "@heroicons/vue/20/solid";
 import DropdownSelect from "../../form_elements/DropdownSelect.vue";
 
 export default {
@@ -82,6 +138,8 @@ export default {
     AuditionCard,
     MagnifyingGlassIcon,
     DropdownSelect,
+    ArrowLongLeftIcon,
+    ArrowLongRightIcon,
   },
   data: function () {
     return {
@@ -94,8 +152,8 @@ export default {
       heart: false,
       isLoading: true,
       savedRoles: [],
-      equity: null,
-      unionStatuses: [null, "Equity", "Non Equity", "SAG-AFTRA"]
+      equity: "Any",
+      unionStatuses: ["Any", "Equity", "Non-Equity", "SAG-AFTRA"]
     };
   },
   watch: {},
@@ -117,26 +175,29 @@ export default {
       return this.current + 2;
     },
     last() {
-      return  Math.ceil(this.filteredAuditions.length / 10);
+      return  Math.ceil(this.filteredAuditions.length / 5);
     },
     filteredAuditions() {
       let auditions = [...this.auditions];
-
+      console.log(auditions, this.equity)
       //filter theaters
       if (this.equity) {
-        // auditions = auditions.filter((audition) => audition.union_status && audition.union_status == state.equity);
+        if(this.equity != "Any") {
+          auditions = auditions.filter((audition) => audition.union_status && audition.union_status == this.equity);
+        }
       }
 
       if (this.searchTerm) {
-        // auditions = auditions.filter(
-        //   (audition) => audition.name && audition.name.toLowerCase().includes(state.searchTerm.toLowerCase())
-        // );
+        auditions = auditions.filter(
+          (audition) => (audition.name_of_show && audition.name_of_show.toLowerCase().includes(this.searchTerm.toLowerCase())) || (audition.name_of_company && audition.name_of_company.toLowerCase().includes(this.searchTerm.toLowerCase()))
+        );
       }
 
       //  Pull/show correct number of theaters
-      let paginatedAuditions = auditions.slice((this.current - 1) * 10, this.current * 10);
-
-      return paginatedAuditions;
+      return auditions;
+    }, 
+    paginatedTheaters() {
+      return this.filteredAuditions.slice((this.current - 1) * 5, this.current * 5);
     }
   },
   methods: {
@@ -187,3 +248,9 @@ export default {
   },
 };
 </script>
+<style>
+  .director-chair {
+    max-height: 200px;
+    margin: auto;
+  }
+</style>
