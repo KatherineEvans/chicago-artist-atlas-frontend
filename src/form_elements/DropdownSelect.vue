@@ -7,6 +7,7 @@
       <ListboxButton
         class="relative w-full cursor-default rounded-md bg-white py-1.5 px-3 text-left text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-inset focus:ring-2 focus:ring-indigo-600 text-base sm:text-sm sm:leading-6"
       >
+        <span v-if="!selected" class="block truncate">Select one</span>
         <span class="block truncate">{{ selected }}</span>
         <span class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
           <ChevronUpDownIcon class="h-5 w-5 text-gray-400" aria-hidden="true" />
@@ -34,10 +35,11 @@
                 'relative cursor-default select-none py-2 pl-3 pr-9',
               ]"
             >
+              <span v-if="option === null">Select one</span>
               <span :class="[selected ? 'font-semibold' : 'font-normal', 'block truncate']">{{ option }}</span>
 
               <span
-                v-if="selected"
+                v-if="selected && option != null"
                 :class="[
                   active ? 'text-white' : 'text-indigo-600',
                   'absolute inset-y-0 right-0 flex items-center pr-4',

@@ -28,7 +28,7 @@
           </div>
         </div>
       </div>
-      <div class="w-full md:w-1/2 pt-3 px-3 grid flex flex-wrap">
+      <div class="w-full md:w-1/2 pt-3 px-3">
         <!-- HEADLINE -->
         <div class="w-full pb-3">
           <label for="headline" class="flex block text-base font-medium leading-6 text-gray-900">Headline:</label>
@@ -43,9 +43,9 @@
             />
           </div>
         </div>
-        <div class="flex-wrap flex">
+        <div >
           <!-- ABOUT ME -->
-          <div class="w-full grid flex flex-wrap flex pt-0">
+          <div class="w-full pt-0">
             <div class="col-span-full">
               <label for="bio" class="block text-base font-medium leading-6 text-gray-900 mb-0">About:</label>
               <p class="m-0 text-sm leading-6 italic text-gray-400">Write a few sentences about yourself!</p>
@@ -321,8 +321,9 @@ export default {
 };
 </script>
 <style>
-  .textarea{
+  .textarea {
     height: 100% !important;
-    min-height: 100px;
+    resize: vertical;
+    /* min-height: 100px; */
   }
 </style>

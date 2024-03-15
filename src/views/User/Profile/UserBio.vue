@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="space-y-12">
-      <div class="border-b border-gray-900/10 pb-12">
+      <div class="border-b border-gray-900/10 pb-10">
         <h2 class="font-semibold leading-7 text-gray-900 py-3">Bio</h2>
 
         <p class="mt-1 text-base leading-6 text-gray-600">
@@ -47,14 +47,7 @@
 
     <div class="mt-10 flex items-center justify-end gap-x-6">
       <span>
-        <button type="button" @click="userStore.saveProfile(false)" class="px-3 py-2 text-sm font-semibold underline">Save</button>
-        <button
-          type="button"
-          @click="userStore.saveProfile(true)"
-          class="ml-3 rounded-md bg-indigo-600 pl-2 pr-3 py-2 text-sm font-semibold text-white hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 no-underline hover:no-underline"
-        >
-          Save and Next
-        </button>
+        <button type="button" @click="userStore.saveProfile(false)" class="ml-3 rounded-md bg-indigo-600 pl-3 pr-3 py-2 text-sm font-semibold text-white hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 no-underline hover:no-underline">Save</button>
       </span>
     </div>
   </div>

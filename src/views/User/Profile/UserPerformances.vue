@@ -1,7 +1,7 @@
 <template>
   <form v-on:submit="savePerformance($event)">
-    <div class="space-y-12">
-      <div class="border-b border-gray-900/10 pb-12">
+    <div>
+      <div class="pb-10">
         <h2 class="font-semibold leading-7 text-gray-900 py-3">Performances</h2>
 
         <p class="mt-1 text-base leading-6 text-gray-600">
@@ -263,25 +263,6 @@
           </div>
         </div>
       </div>
-    </div>
-
-    <div class="mt-10 flex justify-between gap-x-6">
-      <span>
-        <router-link 
-          to="/user/profile/trainings"
-          class="mr-3 rounded-md bg-slate-600 px-3 py-2 text-sm font-semibold text-white hover:bg-slate-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600 no-underline hover:no-underline"
-        >
-          Back
-        </router-link>
-      </span>
-      <span>
-        <router-link 
-          to="/user/profile/awards"
-          class="ml-3 rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 no-underline no-underline hover:no-underline"
-        >
-          Next
-        </router-link>
-      </span>
     </div>
   </form>
 </template>

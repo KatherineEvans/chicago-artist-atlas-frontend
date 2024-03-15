@@ -24,13 +24,13 @@ export const useUserStore = defineStore("user", {
     profile: {
       acting_reel_url: null,
       agency: null,
-      age_low: "18",
-      age_high: "99",
+      age_low: null,
+      age_high: null,
       bio: null,
-      eye_color: "Brown",
-      hair_color: "Brown",
+      eye_color: null,
+      hair_color: null,
       headshot_url: null,
-      height: "5' 7\"",
+      height: null,
       keep_private: false,
       manager: null,
       performance_type: null,
@@ -38,7 +38,7 @@ export const useUserStore = defineStore("user", {
       tech_agent: null,
       tech_manager: null,
       resume_url: null,
-      union_status: "Equity",
+      union_status: null,
       vocal_range: null,
     },
 
@@ -113,6 +113,7 @@ export const useUserStore = defineStore("user", {
 
     // Other Traits
     heightOptions: [
+      null,
       "3' 0\"",
       "3' 1\"",
       "3' 2\"",
@@ -174,8 +175,9 @@ export const useUserStore = defineStore("user", {
       "7' 10\"",
       "7' 11\"",
     ],
-    eyeColorOptions: ["Blue", "Brown", "Green", "Gray", "Hazel", "Amber", "Red", "Other"],
+    eyeColorOptions: [null, "Blue", "Brown", "Green", "Gray", "Hazel", "Amber", "Red", "Other"],
     hairColorOptions: [
+      null,
       "Blonde",
       "Brown",
       "Red",
@@ -191,7 +193,7 @@ export const useUserStore = defineStore("user", {
       "Rainbow",
       "Other",
     ],
-    unionStatus: ["Equity", "Non Equity", "SAG-AFTRA"],
+    unionStatus: [null, "Equity", "Non Equity", "SAG-AFTRA"],
   }),
   actions: {
     getTalents() {},
@@ -273,7 +275,7 @@ export const useUserStore = defineStore("user", {
 
       // Iterate through the object and append each key-value pair to FormData
       for (const key in this.profile) {
-        if (this.profile.hasOwnProperty(key)) {
+        if (this.profile[key]) {
           formData.append(key, this.profile[key]);
         }
       }
@@ -307,6 +309,15 @@ export const useUserStore = defineStore("user", {
         .then((response) => {
           localStorage.setItem("headshotUrl", response.data.headshot_url);
           this.profile = response.data;
+          if (response.data.pronouns) {
+            let data = JSON.parse(response.data.pronouns);
+            this.pronounOptions = data;
+            data.forEach((pronoun) => {
+              if (pronoun.value) {
+                this.pronounsChecked.push(pronoun.id);
+              }
+            });
+          }
           localStorage.setItem("headshotUrl", response.data.headshot_url);
           this.saveTechTalents();
           if (next) {
@@ -321,9 +332,6 @@ export const useUserStore = defineStore("user", {
             };
             useAlertStore().setMessage(message);
           }
-          setTimeout(() => {
-            useAlertStore().setMessage({ isVisible: false });
-          }, 4000);
         })
         .catch((error) => {
           console.error(error);
@@ -342,6 +350,15 @@ export const useUserStore = defineStore("user", {
         .then((response) => {
           localStorage.setItem("headshotUrl", response.data.headshot_url);
           this.profile = response.data;
+          if (response.data.pronouns) {
+            let data = JSON.parse(response.data.pronouns);
+            this.pronounOptions = data;
+            data.forEach((pronoun) => {
+              if (pronoun.value) {
+                this.pronounsChecked.push(pronoun.id);
+              }
+            });
+          }
           localStorage.setItem("headshotUrl", response.data.headshot_url);
           this.saveTechTalents();
           if (next) {
@@ -355,9 +372,6 @@ export const useUserStore = defineStore("user", {
             };
             useAlertStore().setMessage(message);
           }
-          setTimeout(() => {
-            useAlertStore().setMessage({ isVisible: false });
-          }, 4000);
         })
         .catch((error) => {
           console.error(error);
