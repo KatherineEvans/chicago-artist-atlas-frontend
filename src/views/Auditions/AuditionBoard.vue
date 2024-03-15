@@ -4,8 +4,7 @@
       <p class="text-2xl md:text-3xl font-bold mb-2">Auditions</p>
       <p class="text-lg max-w-3xl mx-auto">
         Atlas strives to deliver accurate, timely, and transparent audition information for Chicago and the greater
-        Chicagoland area. Theatres and creative who would like to post an audition, please fill out the form
-        <a class="text-blue-700 no-underline" target="_blank" href="https://forms.gle/L61zYMNooJ42G88QA">here!</a>
+        Chicagoland area. Theatres and creative who would like to post an audition, stay tuned for our Audition builder!
       </p>
     </div>
     <div class="px-2 md:px-6 lg:px-10">
