@@ -10,67 +10,38 @@
     </div>
     <div class="px-2 md:px-6 lg:px-10">
       <!-- SEARCH / FILTER BAR -->
-      <div class="d-flex flex-row-reverse p-4">
-        <div>
-          <label for="union-status" class="mr-2 sm:text-sm sm:leading-6">Union Status:</label>
-          <Menu id="union-status" as="div" class="relative inline-block text-left">
-            <div>
-              <MenuButton
-                class="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
-              >
-                Any
-                <ChevronDownIcon class="-mr-1 h-5 w-5 text-gray-400" aria-hidden="true" />
-              </MenuButton>
-            </div>
-
-            <transition
-              enter-active-class="transition ease-out duration-100"
-              enter-from-class="transform opacity-0 scale-95"
-              enter-to-class="transform opacity-100 scale-100"
-              leave-active-class="transition ease-in duration-75"
-              leave-from-class="transform opacity-100 scale-100"
-              leave-to-class="transform opacity-0 scale-95"
-            >
-              <MenuItems
-                class="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
-              >
-                <div class="py-1">
-                  <MenuItem v-slot="{ active }">
-                    <button
-                      class="w-100 text-left"
-                      :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'block px-4 py-2']"
-                    >
-                      Non-Equity
-                    </button>
-                  </MenuItem>
-                  <MenuItem v-slot="{ active }">
-                    <button
-                      class="w-100 text-left"
-                      :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'block px-4 py-2']"
-                    >
-                      Equity
-                    </button>
-                  </MenuItem>
+      <div class="row my-2 py-2 no-gutters px-2 md:px-6 lg:px-10">
+        <div class="grid grid-cols-12 justify-end px-4 lg:gap-6">
+          <div class="col-span-12 lg:col-span-9 ml-auto mt-auto">
+            <div class="w-full max-w-lg lg:max-w-xs">
+              <label for="search" class="flex block text-base font-medium leading-6 text-gray-900 mb-1">Search:</label>
+              <div class="relative">
+                <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+                  <MagnifyingGlassIcon class="h-5 w-5 text-gray-400" aria-hidden="true" />
                 </div>
-              </MenuItems>
-            </transition>
-          </Menu>
-        </div>
-        <div class="flex flex-1 items-center justify-center pr-3 lg:ml-6 lg:justify-end">
-          <div class="w-full max-w-lg lg:max-w-xs">
-            <label for="search" class="sr-only">Search Production or Company</label>
-            <div class="relative">
-              <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-                <MagnifyingGlassIcon class="h-5 w-5 text-gray-400" aria-hidden="true" />
+                <input
+                  id="search"
+                  name="search"
+                  v-model="searchTerm"
+                  class="block w-full rounded-md border-0 bg-white py-1.5 pl-10 pr-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  placeholder="Production or Company"
+                  type="search"
+                />
               </div>
-              <input
-                id="search"
-                name="search"
-                class="block w-full rounded-md border-0 bg-white py-1.5 pl-10 pr-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                placeholder="Search Production or Company"
-                type="search"
-              />
             </div>
+          </div>
+          <div class="col-span-12 lg:col-span-3 pt-3 lg:pt-0">
+            <label for="unionStatus" class="flex block text-base font-medium leading-6 text-gray-900 mb-1">
+              Union Status:
+            </label>
+            <DropdownSelect
+              id="unionStatus"
+              @set-selected="equity = $event"
+              width="w-50 pr-2"
+              :selectedData="equity"
+              :dropdownData="unionStatuses"
+              name="union_status"
+            ></DropdownSelect>
           </div>
         </div>
       </div>
@@ -85,9 +56,9 @@
       </div>
       <div v-else class="row my-2 py-2 no-gutters px-2 md:px-6 lg:px-10">
         <!-- AUDITIONS -->
-        <div class="row my-2 py-2 pl-4">
+        <div class="row lg:pl-4">
           <AuditionCard
-            v-for="audition in auditions"
+            v-for="audition in filteredAuditions"
             v-bind:key="audition.id"
             :audition="audition"
             :savedRoles="savedRoles"
@@ -104,33 +75,70 @@
 import axios from "axios";
 import moment from "moment";
 import AuditionCard from "./AuditionCard.vue";
-import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/vue";
-import { ChevronDownIcon, MagnifyingGlassIcon } from "@heroicons/vue/20/solid";
+import { MagnifyingGlassIcon } from "@heroicons/vue/20/solid";
+import DropdownSelect from "../../form_elements/DropdownSelect.vue";
 
 export default {
   components: {
     AuditionCard,
-    Menu,
-    MenuButton,
-    MenuItem,
-    MenuItems,
-    ChevronDownIcon,
     MagnifyingGlassIcon,
+    DropdownSelect,
   },
   data: function () {
     return {
+      first: 1,
+      current: 1,
       title: "Audition Board",
+      searchTerm: null,
       auditions: [],
       currentAuditionId: null,
       heart: false,
       isLoading: true,
       savedRoles: [],
+      equity: null,
+      unionStatuses: [null, "Equity", "Non Equity", "SAG-AFTRA"]
     };
   },
   watch: {},
   mounted: function () {
     this.getAuditions("/auditions");
     this.getUserAuditions();
+  },
+  computed: {
+    second() {
+      if (this.current >= this.last) {
+        return null;
+      }
+      return this.current + 1;
+    },
+    third() {
+      if (this.current + 1 >= this.last) {
+        return null;
+      }
+      return this.current + 2;
+    },
+    last() {
+      return  Math.ceil(this.filteredAuditions.length / 10);
+    },
+    filteredAuditions() {
+      let auditions = [...this.auditions];
+
+      //filter theaters
+      if (this.equity) {
+        // auditions = auditions.filter((audition) => audition.union_status && audition.union_status == state.equity);
+      }
+
+      if (this.searchTerm) {
+        // auditions = auditions.filter(
+        //   (audition) => audition.name && audition.name.toLowerCase().includes(state.searchTerm.toLowerCase())
+        // );
+      }
+
+      //  Pull/show correct number of theaters
+      let paginatedAuditions = auditions.slice((this.current - 1) * 10, this.current * 10);
+
+      return paginatedAuditions;
+    }
   },
   methods: {
     addToSavedRoles(id) {

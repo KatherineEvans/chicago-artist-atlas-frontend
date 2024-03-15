@@ -64,7 +64,6 @@ export const useTheaterStore = defineStore("theater", {
       }
       return state.current + 2;
     },
-
     formattedTheaters(state) {
       state.isLoading = true;
       let theaters = [...state.theaters];
