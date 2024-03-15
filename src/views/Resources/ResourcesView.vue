@@ -206,7 +206,7 @@
               <img class="lf-img mx-auto mb-3" src="../../assets/resources/production-resources.png" />
               <div class="resource-desc mb-3">
                 <p class="px-2 desc">
-                  Whether you're a new theater looking to grow, or an established theater with tons of industry knowledge, our collection of resources for the theater business help you perform at your best!
+                  Whether you're a budding designer eager to expand your skills or a seasoned professional with a wealth of experience, our comprehensive array of resources for designers equips you to excel in your craft!
                 </p>
               </div>
             </div>

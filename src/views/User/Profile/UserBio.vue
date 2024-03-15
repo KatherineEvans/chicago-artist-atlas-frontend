@@ -6,7 +6,7 @@
 
         <p class="mt-1 text-base leading-6 text-gray-600">
           We would love to get to know you better! Please take a moment to share some key details about yourself. Your
-          information will always be treated with
+          information will always be treated with the
           <strong class="underline">utmost care and confidentiality</strong>
           and used solely to enhance your user experience and connect you to roles and productions that fit your unique
           self!

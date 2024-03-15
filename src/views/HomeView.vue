@@ -171,8 +171,7 @@
                 <p class="text-xl font-bold mb-3">Production Staff Resources</p>
                 <div>
                   <p class="mb-2 text-base">
-                    Whether you're a new theater looking to grow, or an established theater with tons of industry
-                    knowledge, our collection of resources for the theater business help you perform at your best!
+                    Whether you're a budding designer eager to expand your skills or a seasoned professional with a wealth of experience, our comprehensive array of resources for designers equips you to excel in your craft!
                   </p>
                 </div>
               </div>
