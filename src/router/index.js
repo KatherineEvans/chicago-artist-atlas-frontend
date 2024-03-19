@@ -9,7 +9,7 @@ import AuditionBoard from "../views/Auditions/AuditionBoard.vue";
 
 // Authentication
 import LogOut from "../views/Authentication/LogOut.vue";
-import Signup from "../views/SignUp.vue";
+import SignUpOptions from "../views/Authentication/SignUpOptions.vue";
 
 // Users
 import ArtistDashboard from "../views/User/ArtistDashboard.vue";
@@ -87,7 +87,7 @@ const routes = [
   {
     path: "/signup",
     name: "signup",
-    component: Signup,
+    component: SignUpOptions,
   },
   {
     path: "/logout",
@@ -177,7 +177,7 @@ const router = createRouter({
 });
 
 router.beforeEach((to, from, next) => {
-  if (localStorage.getItem("tokenGeneratedAt") && to.fullPath != "/logout") {
+  if (localStorage.getItem("tokenGeneratedAt") && to.fullPath != "/logout" && to.fullPath != "/signup") {
     var date = new Date(localStorage.getItem("tokenGeneratedAt"));
     var expDate = date.setMinutes(date.getMinutes() + 10079);
     var today = new Date();

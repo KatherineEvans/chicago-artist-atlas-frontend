@@ -282,6 +282,7 @@ import SignUpForm from "@/views/Authentication/SignUpForm.vue";
 import LoginForm from "@/views/Authentication/LoginForm.vue";
 import ForgotPassword from "@/views/Authentication/ForgotPassword.vue";
 import ResetPassword from "@/views/Authentication/ResetPassword.vue";
+import { useSignupStore } from '../stores/useSignupStore.js';
 import { mapState } from "vuex";
 import axios from "axios";
 
@@ -372,6 +373,7 @@ export default {
   methods: {
     closeModal() {
       this.modalOpen = false;
+      useSignupStore().resetState();
       setTimeout(() => {
         this.modalType = "signUpOptionsModal";
       }, 200);

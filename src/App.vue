@@ -3,6 +3,7 @@
   <AlertNotification></AlertNotification>
   <router-view v-if="isLoggedIn" />
   <div v-else>
+    <!-- <SignUpOptions></SignUpOptions> -->
     <div class="bg-blue-50 px-10 py-8 mx-auto text-center">
       <p class="text-2xl md:text-3xl font-bold mb-2">Chicago Artist Atlas - Closed Beta</p>
       <p class="text-lg max-w-3xl mx-auto">
@@ -51,6 +52,7 @@
 import NavBar from "./components/NavBar.vue";
 import FooterBar from "./components/FooterBar.vue";
 import AlertNotification from "./components/AlertNotification.vue";
+// import SignUpOptions from "./views/Authentication/SignUpOptions.vue";
 import axios from "axios";
 
 export default {
@@ -58,6 +60,7 @@ export default {
     NavBar,
     FooterBar,
     AlertNotification,
+    // SignUpOptions
   },
   data: function () {
     return {
