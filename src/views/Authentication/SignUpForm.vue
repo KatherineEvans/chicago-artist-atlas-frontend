@@ -171,9 +171,16 @@
           <button
             @click="submitRegestrationForm"
             type="button"
+            :disabled="isLoading"
             class="flex w-full justify-center rounded-md bg-blue-800 px-3 p-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-800 no-underline hover:no-underline disabled:opacity-25"
           >
-            Register
+            <svg 
+              v-if="isLoading"
+              class="animate-spin h-5 w-5 mr-3"
+              viewBox="0 0 24 24">
+            </svg>
+            <span v-if="isLoading">Processing...</span>
+            <span v-else>Register</span>
           </button>
           <div v-if="signupStore.step == 2" class="flex w-full justify-center text-sm mt-3 cursor-pointer" @click="signupStore.step = 1">
             <ArrowLongLeftIcon
@@ -208,6 +215,7 @@ export default {
   components: { CardComponent, CardNumber, CardExpiry, CardCvv, ArrowLongLeftIcon },
   data: function () {
     return {
+      isLoading: false,
       cardErrors: null,
       user: {
         first_name: null,
@@ -263,6 +271,7 @@ export default {
     };
   },
   mounted() {
+    this.signupStore.resetState();
     this.emailEl = document.querySelector('input[name="email"]');
     this.passwordEl = document.querySelector('input[name="password"]');
     this.passwordConfrimEl = document.querySelector('input[name="password-confirmation"]');
@@ -346,6 +355,7 @@ export default {
       }
     },
     submitRegestrationForm() {
+      this.isLoading = true;
       this.errors = [];
       this.cardErrors = null;
       event.preventDefault()
@@ -371,6 +381,7 @@ export default {
           .then((response) => {
             // open login screen
             console.log(response);
+            this.isLoading = false;
             this.$emit("modalType", "login");
           })
           .catch((error) => {
