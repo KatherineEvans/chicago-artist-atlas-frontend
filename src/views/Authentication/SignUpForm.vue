@@ -159,7 +159,7 @@
           <small class="mb-2 text-sm italic text-red-700" v-if="submissionError">
             {{ submissionError }}
           </small>
-          <button
+          <!-- <button
             type="button"
             :disabled="!isSubmittable"
             v-if="signupStore.step === 1"
@@ -167,9 +167,8 @@
             @click="signupStore.step = 2"
           >
             Continue
-          </button>
+          </button> -->
           <button
-            v-else
             @click="submitRegestrationForm"
             type="button"
             class="flex w-full justify-center rounded-md bg-blue-800 px-3 p-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-800 no-underline hover:no-underline disabled:opacity-25"
@@ -350,37 +349,37 @@ export default {
       this.errors = [];
       this.cardErrors = null;
       event.preventDefault()
-      this.$refs.cardComponent.tokenize({
-        firstName: this.signupStore.user.first_name,
-        lastName: this.signupStore.user.last_name,
-        addressLine1: this.signupStore.billing_addr1,
-        addressLine2: this.signupStore.billing_addr2,
-        city: this.signupStore.billing_city,
-        state: this.signupStore.billing_city,
-        stateCode: this.signupStore.billing_state_code,
-        zip: this.signupStore.billing_zip,
-        countryCode: "US",
-      }).then(data => {
-        console.log('chargebee token', data.token)
-      }).catch((error) => {
-        this.cardErrors = error;
-      });
-      // if (this.isSubmittable) {
-      //   event.preventDefault();
-      //   axios
-      //     .post("/users.json", { user: this.user, subscription: this.userStore.signupType })
-      //     .then((response) => {
-      //       // open login screen
-      //       console.log(response);
-      //       this.$emit("modalType", "login");
-      //     })
-      //     .catch((error) => {
-      //       console.log("signup posted w/errors", error.response.data.status.message);
-      //     });
-      // } else {
-      //   event.preventDefault();
-      //   this.submissionError = "Please make sure all fields are filled out.";
-      // }
+      // this.$refs.cardComponent.tokenize({
+      //   firstName: this.signupStore.user.first_name,
+      //   lastName: this.signupStore.user.last_name,
+      //   addressLine1: this.signupStore.billing_addr1,
+      //   addressLine2: this.signupStore.billing_addr2,
+      //   city: this.signupStore.billing_city,
+      //   state: this.signupStore.billing_city,
+      //   stateCode: this.signupStore.billing_state_code,
+      //   zip: this.signupStore.billing_zip,
+      //   countryCode: "US",
+      // }).then(data => {
+      //   console.log('chargebee token', data.token)
+      // }).catch((error) => {
+      //   this.cardErrors = error;
+      // });
+      if (this.isSubmittable) {
+        event.preventDefault();
+        axios
+          .post("/users.json", { user: this.signupStore.user, subscription: this.userStore.signupType })
+          .then((response) => {
+            // open login screen
+            console.log(response);
+            this.$emit("modalType", "login");
+          })
+          .catch((error) => {
+            console.log("signup posted w/errors", error);
+          });
+      } else {
+        event.preventDefault();
+        this.submissionError = "Please make sure all fields are filled out.";
+      }
     },
   },
 };

@@ -3,10 +3,10 @@
     <ModalContainer :open="modalOpen" @close-modal="closeModal">
       <template v-slot:content>
         <!-- content for the content slot -->
-        <SignUpOptions
+        <!-- <SignUpOptions
           v-if="modalType == 'signUpOptionsModal'"
           @modal-type="(type) => (modalType = type)"
-        ></SignUpOptions>
+        ></SignUpOptions> -->
         <SignUpForm v-if="modalType == 'signup'" @modal-type="(type) => (modalType = type)"></SignUpForm>
         <LoginForm
           @close-modal="closeModal"
@@ -80,7 +80,7 @@
           Log in
         </button>
         <button
-          @click="openModal('signUpOptionsModal')"
+          @click="openModal('signup')"
           class="rounded-md bg-blue-800 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-800 no-underline hover:no-underline"
         >
           Sign up
@@ -277,7 +277,7 @@ import {
 import { ChevronRightIcon } from "@heroicons/vue/20/solid";
 import { Bars3Icon, XMarkIcon } from "@heroicons/vue/24/outline";
 import ModalContainer from "./ModalContainer.vue";
-import SignUpOptions from "@/views/Authentication/SignUpOptions.vue";
+// import SignUpOptions from "@/views/Authentication/SignUpOptions.vue";
 import SignUpForm from "@/views/Authentication/SignUpForm.vue";
 import LoginForm from "@/views/Authentication/LoginForm.vue";
 import ForgotPassword from "@/views/Authentication/ForgotPassword.vue";
@@ -294,7 +294,7 @@ export default {
     Bars3Icon,
     XMarkIcon,
     ModalContainer,
-    SignUpOptions,
+    // SignUpOptions,
     SignUpForm,
     LoginForm,
     ForgotPassword,
@@ -318,7 +318,7 @@ export default {
       mobileMenuOpen: false,
       mobileUserMenuOpen: false,
       modalOpen: false,
-      modalType: "signUpOptionsModal",
+      modalType: "signup",
       pdfLinks: [
         {
           name: "For Teachers",

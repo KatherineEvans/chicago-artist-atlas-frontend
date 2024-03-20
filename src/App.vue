@@ -5,43 +5,31 @@
   <div v-else>
     <!-- <SignUpOptions></SignUpOptions> -->
     <div class="bg-blue-50 px-10 py-8 mx-auto text-center">
-      <p class="text-2xl md:text-3xl font-bold mb-2">Chicago Artist Atlas - Closed Beta</p>
+      <p class="text-2xl md:text-3xl font-bold mb-2">Chicago Artist Atlas</p>
       <p class="text-lg max-w-3xl mx-auto">
         We combine vital information in an easily navigated, one-stop-shop with original content from experts in our
         community to guide you on your journey.
       </p>
     </div>
     <div class="container p-5 m-auto text-left">
-      <p class="mx-auto mb-4 text-lg text-center font-bold">
-        Welcome! We're so glad you're here and excited to have you join us on the first leg of this journey as a
-        <em>beta tester!</em>
+      <p class="mx-auto mb-6 text-lg font-bold text-center underline">
+        Sign Up Now for the Open Beta of Chicago Artist Atlas!
       </p>
-      <p class="text-base">
-        We've been hard at work to develop this site as a one-stop-shop for Chicago theatremakers to find jobs and
-        audition postings, resources, classes, and community without the tedious digging around of the past. Chicago
-        Artist Atlas,
-        <strong>Atlas</strong>
-        for short, aims to be streamlined and fun for users so more time can be spent on craft and creativity. We hope
-        you will keep this in mind as you navigate and explore the site, and encourage you to keep track of your
-        thoughts and reactions.
+      <p class="text-lg">
+        We're thrilled to announce the open beta of Chicago Artist Atlas, your ultimate destination for all things related to the Chicago performing arts scene. As we gear up for our full launch in the coming months, we're asking you to be among the first to experience our platform.
       </p>
-      <p class="text-base mt-2">
-        You are one of the
-        <strong>first</strong>
-        to use this 'work-in-progress', and we greatly appreciate your feedback to help us make it even better for our
-        full launch this fall!
-        <br />
-        Go ahead and create a profile and take a look around! We hope you like what you see.
+      <p class="text-lg mt-2">
+        During this beta phase, you'll have exclusive access to explore the site and provide us with valuable feedback. Your insights will play a crucial role in shaping the final version of Chicago Artist Atlas.
       </p>
-      <p class="text-base italic mt-2">
-        (Please note, this is a closed, invite only beta test! If you're interested in being one of the first users of
-        Chicago Artist Atlas,
-        <a href="mailto:info@chiartistatlas.com?subject=I'm Interested in Beta Testing">let us know</a>
-        !)
+      <p class="text-lg mt-2">
+        Please note that while the beta version is free to access, some features will eventually transition to a monthly subscription-based "pro" account. By signing up for the beta, you'll also get the opportunity to become one of our valued customers when we officially launch at a discounted price!
+      </p>
+      <p class="text-lg mt-2">Thank you for joining us on this exciting journey! Let's make Chicago Artist Atlas the ultimate destination for theatremakers in the Windy City.</p>
+      <p class="text-lg font-bold mt-4">Sign up now and be part of the future of Chicago theatre with Chicago Artist Atlas!
       </p>
       <div class="w-100 text-left mt-2">
-        <p class="mt-4 text-base">Cheers,</p>
-        <p class="text-base font-bold">Anna, Elise, and Katherine</p>
+        <p class="mt-4 text-lg">Cheers,</p>
+        <p class="text-lg italic">Anna and Katherine</p>
       </div>
     </div>
   </div>
