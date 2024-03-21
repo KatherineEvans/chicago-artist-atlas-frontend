@@ -1,11 +1,11 @@
 <template>
-  <form v-on:submit="updateUser($event)">
+  <div>
     <div class="space-y-12">
       <div class="pb-12">
         <h2 class="font-semibold leading-7 text-gray-900 py-3">Account Information</h2>
-        <p class="mt-1 text-sm leading-6 text-gray-600">Hello! We're glad you're here.</p>
+        <!-- <p class="mt-1 text-sm leading-6 text-gray-600">Hello! We're glad you're here.</p> -->
 
-        <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+        <div class="mt-8 grid grid-cols-1 gap-x-6 gap-y-4 sm:grid-cols-6">
           <div class="sm:col-span-3">
             <label for="first_name" class="block text-sm font-medium leading-6 text-gray-900">First name</label>
             <div class="mt-2">
@@ -203,11 +203,11 @@
       </div> -->
     </div>
     <div>
-      <div class="bg-white rounded border">
+      <div class="bg-gray-50 rounded border">
         <div class="my-3 p-4 sm:p-6">
-          <h3 class="text-base font-semibold leading-6 text-gray-900">Manage subscription</h3>
-          <div class="mt-2 max-w-xl text-sm text-gray-500">
-            <p>More subscription options coming soon!</p>
+          <h3 class="text-lg font-semibold leading-6 text-gray-900">Manage subscription: <span class="font-normal italic">Basic Artist Membership</span></h3>
+          <div class="mt-2 max-w-xl text-base text-gray-500">
+            <p>Standby, more subscription options coming soon!</p>
           </div>
           <div class="mt-5">
             <button
@@ -222,74 +222,69 @@
       </div>
     </div>
     <div class="mt-10 flex items-center justify-end gap-x-6">
-      <button type="button" class="text-sm font-semibold leading-6 text-gray-900">Cancel</button>
+      <!-- <button type="button" class="text-sm font-semibold leading-6 text-gray-900">Cancel</button> -->
       <button
-        type="submit"
+        type="button"
+        @click="updateUser()"
         class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
       >
         Save
       </button>
     </div>
-  </form>
+  </div>
 </template>
 
 <script>
 import axios from "axios";
+import { useAlertStore } from '../../stores/useAlertStore.js';
+
 export default {
   data: function () {
     return {
       user: {},
-    };
-  },
-  mounted() {
-    this.getUser();
-  },
-  computed: {
-    address() {
-      let data = {
+      address: {
         street: null,
         city: null,
         state: null,
         country: null,
         postal_code: null,
-      };
-      if (this.user.address) {
-        data = {
-          street: this.user.address.address1,
-          city: this.user.address.city,
-          state: this.user.address.state,
-          country: this.user.address.country,
-          postal_code: this.user.address.postal_code,
-        };
       }
-
-      return data;
-    },
+    };
+  },
+  mounted() {
+    this.getUser();
   },
   methods: {
     getUser() {
       axios.get("/current_user.json").then((response) => {
         this.user = response.data;
+        this.address = {
+          street: response.data.address.address1,
+          city: response.data.address.city,
+          state: response.data.address.state,
+          country: response.data.address.country,
+          postal_code: response.data.address.postal_code,
+        }
       });
     },
-    alertMessage() {
-      this.$store.commit("alerts/setMessage", {
-        title: "Successfully Saved!",
-        body: "Your account information has been successfully saved.",
-        icon: "success",
-        isVisible: true,
-      });
-    },
-    updateUser(event) {
-      event.preventDefault();
-      let data = new FormData(event.target);
+    updateUser() {
       axios
-        .patch("/current_user.json", data)
+        .patch("/current_user.json", { user: this.user, address: this.address})
         .then((response) => {
-          this.alertMessage();
+          let message = {
+            title: "Successfully Saved!",
+            body: "Your account information has been successfully saved.",
+            icon: "success",
+          };
+          useAlertStore().setMessage(message);
         })
         .catch((error) => {
-          console.log(error);
+          let message = {
+            title: "Whoops!",
+            body: "Looks like something went wrong. Please try again. If error persists, email info@chiartistatlas.com",
+            icon: "failure",
+          };
+          useAlertStore().setMessage(message);
         });
     },
   },
