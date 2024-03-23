@@ -224,6 +224,7 @@ export const useUserStore = defineStore("user", {
       axios
         .get("/profile.json")
         .then((response) => {
+          this.getUserTechTalents();
           if (response.data) {
             this.profile = response.data;
             this.originalProfile = response.data;
@@ -403,6 +404,19 @@ export const useUserStore = defineStore("user", {
     },
     removeTechTalent(category, talent) {
       this.otherUserTechTalents[category] = this.otherUserTechTalents[category].filter((t) => t != talent);
+    },
+    getUserTechTalents() {
+      axios.get("/user_tech_talents.json").then((response) => {
+        response.data.forEach((userTalent) => {
+          if (userTalent.other) {
+            this.otherUserTechTalents[userTalent.talent.category]
+              ? this.otherUserTechTalents[userTalent.talent.category].push(userTalent.other)
+              : (this.otherUserTechTalents[userTalent.talent.category] = [userTalent.other]);
+          } else {
+            this.userTechTalents.push(userTalent.talent_id);
+          }
+        });
+      });
     },
   },
   getters: {},
