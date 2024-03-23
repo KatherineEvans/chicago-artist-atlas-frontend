@@ -406,6 +406,8 @@ export const useUserStore = defineStore("user", {
       this.otherUserTechTalents[category] = this.otherUserTechTalents[category].filter((t) => t != talent);
     },
     getUserTechTalents() {
+      this.otherUserTechTalents = [];
+      this.userTechTalents = [];
       axios.get("/user_tech_talents.json").then((response) => {
         response.data.forEach((userTalent) => {
           if (userTalent.other) {
