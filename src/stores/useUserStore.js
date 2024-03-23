@@ -324,7 +324,7 @@ export const useUserStore = defineStore("user", {
           } else {
             // SET SUCCESS MESSAGE
             let message = {
-              title: "Yay!",
+              title: "Success!",
               body: "Profile successfully saved.",
               icon: "success",
             };
@@ -364,7 +364,7 @@ export const useUserStore = defineStore("user", {
             this.$router.push("/user/profile/talents");
           } else {
             let message = {
-              title: "Yay!",
+              title: "Success!",
               body: "Profile successfully saved.",
               icon: "success",
             };
