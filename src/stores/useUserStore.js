@@ -217,6 +217,9 @@ export const useUserStore = defineStore("user", {
       axios.get("/current_user.json").then((response) => {});
     },
     getUserProfile() {
+      this.gendersChecked = [];
+      this.ethnicitiesChecked = [];
+      this.pronounsChecked = [];
       this.isLoading = true;
       axios
         .get("/profile.json")
@@ -234,22 +237,16 @@ export const useUserStore = defineStore("user", {
                 }
               });
             }
-            if (response.data.user_gender) {
-              let data = JSON.parse(response.data.pronouns);
-              this.pronounOptions = data;
-              data.forEach((pronoun) => {
-                if (pronoun.value) {
-                  this.pronounsChecked.push(pronoun.id);
-                }
+            if (response.data.user_genders) {
+              let data = response.data.user_genders;
+              data.forEach((gender) => {
+                this.gendersChecked.push(gender.gender_id);
               });
             }
             if (response.data.user_ethnicities) {
-              let data = JSON.parse(response.data.pronouns);
-              this.pronounOptions = data;
-              data.forEach((pronoun) => {
-                if (pronoun.value) {
-                  this.pronounsChecked.push(pronoun.id);
-                }
+              let data = response.data.user_ethnicities;
+              data.forEach((ethnicity) => {
+                this.ethnicitiesChecked.push(ethnicity.ethnicity_id);
               });
             }
             if (response.data.other_gender) {
@@ -292,8 +289,8 @@ export const useUserStore = defineStore("user", {
       formData.append("other_pronouns", JSON.stringify(this.otherUserPronouns));
       formData.append("other_genders", JSON.stringify(this.otherUserGenders));
       formData.append("other_ethnicities", JSON.stringify(this.otherUserEthnicities));
-      formData.append("checked_genders", JSON.stringify(this.gendersChecked));
-      formData.append("checked_ethnicities", JSON.stringify(this.ethnicitiesChecked));
+      formData.append("checked_genders", JSON.stringify([...new Set(this.gendersChecked)]));
+      formData.append("checked_ethnicities", JSON.stringify([...new Set(this.ethnicitiesChecked)]));
 
       this.profile.id ? this.updateProfile(formData, next) : this.createProfile(formData, next);
     },

@@ -252,15 +252,31 @@ export default {
     ...mapStores(useUserStore),
   },
   methods: {
-    updateCheckbox(option, index, type) {
+    updateCheckbox(option, value, type) {
+      console.log(option, value)
       if (type === "pronouns") {
-        this.userStore.pronounOptions.map((po) => (po.name === option.name ? (po.value = index) : null));
+        this.userStore.pronounOptions.map((po) => (po.name === option.name ? (po.value = value) : null));
       }
+      console.log(this.userStore.pronounOptions)
       if (type === "gender") {
-        this.userStore.gendersChecked.push(option.id)
+        if (value) {
+          this.userStore.gendersChecked.push(option.id)
+        } else {
+          let index = this.userStore.gendersChecked.indexOf(option.id);
+          if (index !== -1) {
+            this.userStore.gendersChecked.splice(index, 1);
+          }
+        }
       }
       if (type === "ethnicity") {
-        this.userStore.ethnicitiesChecked.push(option.id)
+        if (value) {
+          this.userStore.ethnicitiesChecked.push(option.id)
+        } else {
+          let index = this.userStore.ethnicitiesChecked.indexOf(option.id);
+          if (index !== -1) {
+            this.userStore.ethnicitiesChecked.splice(index, 1);
+          }
+        }
       }
     },
     updateText(event, type) {
