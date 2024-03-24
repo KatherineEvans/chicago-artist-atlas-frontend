@@ -105,64 +105,92 @@
           </dd>
         </div>
         <div class="hide border-t border-gray-100 px-4 py-3 sm:col-span-1" :class="characterCardClass">
-          <dt class="text-sm leading-6 text-gray-900 font-semibold">Audition Dates</dt>
+          <dt class="text-sm leading-6 text-gray-900 font-semibold">Audition Info</dt>
           <dd class="mt-1 text-base text-left leading-6 text-gray-700 sm:mt-2">
-            <ul v-if="anyAuditionDate" class="pl-0">
-              <li v-if="audition.audition_date1">
-                Day 1: {{ formatDate(audition.audition_date1) }}
-                {{ audition.audition_time1 ? ` - ${audition.audition_time1}` : "" }}
-              </li>
-              <li v-if="audition.audition_date2">
-                Day 2: {{ formatDate(audition.audition_date2) }}
-                {{ audition.audition_time2 ? ` - ${audition.audition_time2}` : "" }}
-              </li>
-              <li v-if="audition.audition_date3">
-                Day 3: {{ formatDate(audition.audition_date3) }}
-                {{ audition.audition_time3 ? ` - ${audition.audition_time3}` : "" }}
-              </li>
-              <li v-if="audition.audition_date4">
-                Day 4: {{ formatDate(audition.audition_date4) }}
-                {{ audition.audition_time4 ? ` - ${audition.audition_time4}` : "" }}
-              </li>
-              <li v-if="audition.audition_date5">
-                Day 5: {{ formatDate(audition.audition_date5) }}
-                {{ audition.audition_time5 ? ` - ${audition.audition_time5}` : "" }}
-              </li>
-            </ul>
+            <div v-if="anyAuditionDate">
+              <ul  class="pl-0">
+                <li v-if="audition.audition_date1">
+                  Day 1: {{ formatDate(audition.audition_date1) }}
+                  {{ audition.audition_time1 ? ` - ${audition.audition_time1}` : "" }}
+                </li>
+                <li v-if="audition.audition_date2">
+                  Day 2: {{ formatDate(audition.audition_date2) }}
+                  {{ audition.audition_time2 ? ` - ${audition.audition_time2}` : "" }}
+                </li>
+                <li v-if="audition.audition_date3">
+                  Day 3: {{ formatDate(audition.audition_date3) }}
+                  {{ audition.audition_time3 ? ` - ${audition.audition_time3}` : "" }}
+                </li>
+                <li v-if="audition.audition_date4">
+                  Day 4: {{ formatDate(audition.audition_date4) }}
+                  {{ audition.audition_time4 ? ` - ${audition.audition_time4}` : "" }}
+                </li>
+                <li v-if="audition.audition_date5">
+                  Day 5: {{ formatDate(audition.audition_date5) }}
+                  {{ audition.audition_time5 ? ` - ${audition.audition_time5}` : "" }}
+                </li>
+              </ul>
+              <div v-if="audition.audition_address_id">
+                <p class="text-sm leading-6 text-gray-900 italic underline mt-3">Location</p>
+                <div class="text-base">
+                  <p v-if="audition.audition_address.address1">{{ audition.audition_address.address1 }}</p>
+                  <p v-if="audition.audition_address.address2">{{ audition.audition_address.address2 }}</p>
+                  <p v-if="audition.audition_address.address3">{{ audition.audition_address.address3 }}</p>
+                  <p>{{ audition.audition_address.city }}, {{ audition.audition_address.state }} {{ audition.audition_address.postal_code }}</p>
+                </div>
+              </div>
+            </div>
             <i v-else class="fa-solid fa-minus text-center"></i>
           </dd>
         </div>
         <div class="hide border-t border-gray-100 px-4 py-3 sm:col-span-1" :class="characterCardClass">
           <dt class="text-sm leading-6 text-gray-900 font-semibold">Callback Dates</dt>
           <dd class="mt-1 text-base leading-6 text-gray-700 sm:mt-2">
-            <ul v-if="anyCallbackDate" class="pl-0">
-              <li v-if="audition.callback_date1">
-                Day 1: {{ formatDate(audition.callback_date1) }}
-                {{ audition.callback_time1 ? ` - ${audition.callback_time1}` : "" }}
-              </li>
-              <li v-if="audition.callback_date2">
-                Day 2: {{ formatDate(audition.callback_date2) }}
-                {{ audition.callback_time2 ? ` - ${audition.callback_time2}` : "" }}
-              </li>
-              <li v-if="audition.callback_date3">
-                Day 3: {{ formatDate(audition.callback_date3) }}
-                {{ audition.callback_time3 ? ` - ${audition.callback_time3}` : "" }}
-              </li>
-              <li v-if="audition.callback_date4">
-                Day 4: {{ formatDate(audition.callback_date4) }}
-                {{ audition.callback_time4 ? ` - ${audition.callback_time4}` : "" }}
-              </li>
-              <li v-if="audition.callback_date5">
-                Day 5: {{ formatDate(audition.callback_date5) }}
-                {{ audition.callback_time5 ? ` - ${audition.callback_time5}` : "" }}
-              </li>
-            </ul>
+            <div v-if="anyCallbackDate">
+              <ul v-if="anyCallbackDate" class="pl-0">
+                <li v-if="audition.callback_date1">
+                  Day 1: {{ formatDate(audition.callback_date1) }}
+                  {{ audition.callback_time1 ? ` - ${audition.callback_time1}` : "" }}
+                </li>
+                <li v-if="audition.callback_date2">
+                  Day 2: {{ formatDate(audition.callback_date2) }}
+                  {{ audition.callback_time2 ? ` - ${audition.callback_time2}` : "" }}
+                </li>
+                <li v-if="audition.callback_date3">
+                  Day 3: {{ formatDate(audition.callback_date3) }}
+                  {{ audition.callback_time3 ? ` - ${audition.callback_time3}` : "" }}
+                </li>
+                <li v-if="audition.callback_date4">
+                  Day 4: {{ formatDate(audition.callback_date4) }}
+                  {{ audition.callback_time4 ? ` - ${audition.callback_time4}` : "" }}
+                </li>
+                <li v-if="audition.callback_date5">
+                  Day 5: {{ formatDate(audition.callback_date5) }}
+                  {{ audition.callback_time5 ? ` - ${audition.callback_time5}` : "" }}
+                </li>
+              </ul>
+              <div v-if="audition.callback_address_id">
+                <p class="text-sm leading-6 text-gray-900 italic underline mt-3">Location</p>
+                <div class="text-base">
+                  <p v-if="audition.callback_address.address1">{{ audition.callback_address.address1 }}</p>
+                  <p v-if="audition.callback_address.address2">{{ audition.callback_address.address2 }}</p>
+                  <p v-if="audition.callback_address.address3">{{ audition.callback_address.address3 }}</p>
+                  <p>{{ audition.callback_address.city }}, {{ audition.callback_address.state }} {{ audition.callback_address.postal_code }}</p>
+                </div>
+              </div>
+            </div>
             <i v-else class="fa-solid fa-minus text-center"></i>
           </dd>
         </div>
         <div class="hide border-t border-gray-100 px-4 py-3 sm:col-span-1" :class="characterCardClass">
-          <dt class="text-sm leading-6 text-gray-900 font-semibold">Audition Location</dt>
-          <dd class="mt-1 text-base leading-6 text-gray-700 sm:mt-2">-</dd>
+          <dt class="text-sm leading-6 text-gray-900 font-semibold">Show Location</dt>
+          <dd v-if="audition.show_address_id" class="text-base mt-1">
+            <p v-if="audition.show_address.address1">{{ audition.show_address.address1 }}</p>
+            <p v-if="audition.show_address.address2">{{ audition.show_address.address2 }}</p>
+            <p v-if="audition.show_address.address3">{{ audition.show_address.address3 }}</p>
+            <p>{{ audition.show_address.city }}, {{ audition.show_address.state }} {{ audition.show_address.postal_code }}</p>
+          </dd>
+          <dd v-else class="mt-1 text-base leading-6 text-gray-700 sm:mt-2">-</dd>
         </div>
         <div
           class="hide border-t border-gray-100 px-4 py-3 sm:col-span-3"
