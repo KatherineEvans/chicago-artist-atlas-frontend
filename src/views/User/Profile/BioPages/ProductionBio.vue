@@ -68,7 +68,7 @@
           </label>
           <p class="m-0 text-sm leading-6 italic text-gray-400">Select all that apply</p>
           <RadioButton
-            colNumberClass="grid-cols-2 lg:grid-cols-3 space-y-5 grid"
+            colNumberClass="grid-cols-2 lg:grid-cols-3 space-y-5 grid pb-4"
             @update-checkbox="userStore.updateTechTalentCheckbox"
             :optionsName="category"
             :checkedArray="userStore.userTechTalents"
@@ -76,7 +76,7 @@
             typeName="talents"
           ></RadioButton>
         </div>
-        <div class="w-full pt-2 pb-3 mb-2">
+        <!-- <div class="w-full pt-2 pb-3 mb-2">
           <div class="mb-3" v-if="userStore.otherUserTechTalents[category]">
             <span
               v-for="talent in userStore.otherUserTechTalents[category]"
@@ -110,7 +110,7 @@
               class="pl-3 block w-full rounded-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
             />
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>
