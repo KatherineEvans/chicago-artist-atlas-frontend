@@ -30,7 +30,7 @@
             </div>
           </div>
         </div>
-        <div class="mt-10 flex flex-wrap lg:divide-x">
+        <div class="mt-8 flex flex-wrap lg:divide-x">
           <div class="w-full lg:w-1/2 px-3 order-2 lg:order-1 pt-3 lg:pg-0">
             <div class="w-full grid">
               <div class="flex-wrap flex">
@@ -167,7 +167,7 @@
                 <p class="mt-1 text-sm leading-6 text-gray-600 italic">Tell us a little more about your performance</p>
               </div>
             </div>
-            <button type="submit" class="text-sm float-right text-blue-700 font-bold">+ Add Performance</button>
+            <button type="submit" class="text-sm float-right text-blue-700 font-bold">+ Save Performance</button>
           </div>
           <div
             class="w-full lg:w-1/2 grid flex flex-wrap order-1 lg:order-2 border-b lg:border-0 pb-3"
@@ -198,7 +198,7 @@
                       </div>
                     </div>
                     <div class="ml-3 mb-2">
-                      <a v-if="performance.url" :href="performance.url">
+                      <a v-if="performance.url" :href="performance.url" target="_blank">
                         <div class="text-base font-medium mr-2 text-blue-700 hover:text-blue-700">
                           {{ performance.title }}
                         </div>

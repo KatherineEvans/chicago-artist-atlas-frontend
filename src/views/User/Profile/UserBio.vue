@@ -15,7 +15,7 @@
           <div class="sm:hidden">
             <label for="tabs" class="sr-only">Select a tab</label>
             <!-- Use an "onChange" listener to redirect the user to the selected tab URL. -->
-            <select id="tabs" name="tabs" class="block w-full rounded-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 mt-3">
+            <select id="tabs" name="tabs" class="block w-full rounded-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 mt-3" @change="userStore.currentTab = $event.target.value">
               <option v-for="tab in tabs" :key="tab.name" :selected="tab.name === userStore.currentTab">{{ tab.name }}</option>
             </select>
           </div>

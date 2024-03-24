@@ -217,10 +217,14 @@ export const useUserStore = defineStore("user", {
       axios.get("/current_user.json").then((response) => {});
     },
     getUserProfile() {
+      this.gendersChecked = [];
+      this.ethnicitiesChecked = [];
+      this.pronounsChecked = [];
       this.isLoading = true;
       axios
         .get("/profile.json")
         .then((response) => {
+          this.getUserTechTalents();
           if (response.data) {
             this.profile = response.data;
             this.originalProfile = response.data;
@@ -234,22 +238,16 @@ export const useUserStore = defineStore("user", {
                 }
               });
             }
-            if (response.data.user_gender) {
-              let data = JSON.parse(response.data.pronouns);
-              this.pronounOptions = data;
-              data.forEach((pronoun) => {
-                if (pronoun.value) {
-                  this.pronounsChecked.push(pronoun.id);
-                }
+            if (response.data.user_genders) {
+              let data = response.data.user_genders;
+              data.forEach((gender) => {
+                this.gendersChecked.push(gender.gender_id);
               });
             }
             if (response.data.user_ethnicities) {
-              let data = JSON.parse(response.data.pronouns);
-              this.pronounOptions = data;
-              data.forEach((pronoun) => {
-                if (pronoun.value) {
-                  this.pronounsChecked.push(pronoun.id);
-                }
+              let data = response.data.user_ethnicities;
+              data.forEach((ethnicity) => {
+                this.ethnicitiesChecked.push(ethnicity.ethnicity_id);
               });
             }
             if (response.data.other_gender) {
@@ -292,8 +290,8 @@ export const useUserStore = defineStore("user", {
       formData.append("other_pronouns", JSON.stringify(this.otherUserPronouns));
       formData.append("other_genders", JSON.stringify(this.otherUserGenders));
       formData.append("other_ethnicities", JSON.stringify(this.otherUserEthnicities));
-      formData.append("checked_genders", JSON.stringify(this.gendersChecked));
-      formData.append("checked_ethnicities", JSON.stringify(this.ethnicitiesChecked));
+      formData.append("checked_genders", JSON.stringify([...new Set(this.gendersChecked)]));
+      formData.append("checked_ethnicities", JSON.stringify([...new Set(this.ethnicitiesChecked)]));
 
       this.profile.id ? this.updateProfile(formData, next) : this.createProfile(formData, next);
     },
@@ -326,7 +324,7 @@ export const useUserStore = defineStore("user", {
           } else {
             // SET SUCCESS MESSAGE
             let message = {
-              title: "Yay!",
+              title: "Success!",
               body: "Profile successfully saved.",
               icon: "success",
             };
@@ -366,7 +364,7 @@ export const useUserStore = defineStore("user", {
             this.$router.push("/user/profile/talents");
           } else {
             let message = {
-              title: "Yay!",
+              title: "Success!",
               body: "Profile successfully saved.",
               icon: "success",
             };
@@ -406,6 +404,21 @@ export const useUserStore = defineStore("user", {
     },
     removeTechTalent(category, talent) {
       this.otherUserTechTalents[category] = this.otherUserTechTalents[category].filter((t) => t != talent);
+    },
+    getUserTechTalents() {
+      this.otherUserTechTalents = [];
+      this.userTechTalents = [];
+      axios.get("/user_tech_talents.json").then((response) => {
+        response.data.forEach((userTalent) => {
+          if (userTalent.other) {
+            this.otherUserTechTalents[userTalent.talent.category]
+              ? this.otherUserTechTalents[userTalent.talent.category].push(userTalent.other)
+              : (this.otherUserTechTalents[userTalent.talent.category] = [userTalent.other]);
+          } else {
+            this.userTechTalents.push(userTalent.talent_id);
+          }
+        });
+      });
     },
   },
   getters: {},
