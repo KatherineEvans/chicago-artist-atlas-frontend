@@ -98,14 +98,6 @@ export default {
     this.getCategories();
   },
   methods: {
-    alertMessage() {
-      this.$store.commit("alerts/setMessage", {
-        title: "Successfully Saved!",
-        body: "Your Artist Bio has been successfully saved.",
-        icon: "success",
-        isVisible: true,
-      });
-    },
     saveTalents() {
       axios
         .post("/user_talents.json", {
@@ -114,11 +106,11 @@ export default {
         })
         .then((response) => {
           let message = {
-              title: "Success!",
-              body: "Your talents have successfully saved.",
-              icon: "success",
-            };
-            useAlertStore().setMessage(message);
+            title: "Success!",
+            body: "Your talents have successfully saved.",
+            icon: "success",
+          };
+          useAlertStore().setMessage(message);
         }).catch((error) => {
           let message = {
             title: "Whoops!",

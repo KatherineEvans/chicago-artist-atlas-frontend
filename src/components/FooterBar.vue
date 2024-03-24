@@ -1,7 +1,7 @@
 <template>
   <footer class="bg-blue-950 text-blue-100" aria-labelledby="footer-heading">
     <h2 id="footer-heading" class="sr-only">Footer</h2>
-    <div class="mx-auto pb-4 pt-10 sm:pt-4 lg:pt-10">
+    <div class="mx-auto pb-4 pt-6 sm:pt-4 lg:pt-6 px-10">
       <div v-if="footerWithContact" class="xl:grid xl:grid-cols-3 xl:gap-8">
         <div class="grid grid-cols-2 gap-8 xl:col-span-2"></div>
         <div class="mt-10 xl:mt-0">
@@ -20,7 +20,7 @@
                     name="name"
                     id="name"
                     autocomplete="given-name"
-                    class="block w-full rounded-md border-0 px-3.5 py-2 text-blue-100 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    class="block w-full rounded-md font-semibold border-0 px-3.5 py-2 text-blue-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
                 </div>
               </div>
@@ -32,7 +32,7 @@
                     name="email"
                     id="email"
                     autocomplete="email"
-                    class="block w-full rounded-md border-0 px-3.5 py-2 text-blue-100 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    class="block w-full rounded-md font-semibold border-0 px-3.5 py-2 text-blue-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
                 </div>
               </div>
@@ -43,7 +43,7 @@
                     type="subject"
                     name="subject"
                     id="subject"
-                    class="block w-full rounded-md border-0 px-3.5 py-2 text-blue-100 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    class="block w-full rounded-md font-semibold border-0 px-3.5 py-2 text-blue-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
                 </div>
               </div>
@@ -54,7 +54,7 @@
                     name="message"
                     id="message"
                     rows="4"
-                    class="block w-full rounded-md border-0 px-3.5 py-2 text-blue-100 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    class="block w-full rounded-md font-semibold border-0 px-3.5 py-2 text-blue-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
                 </div>
               </div>
@@ -73,35 +73,98 @@
       <div v-else>
         <div class="relative isolate overflow-hidden px-6">
           <h2 class="mx-auto max-w-2xl text-center text-2xl font-bold tracking-tight text-blue-100 mt-4">
-            Get notified when we’re launching.
+            Get In Touch
           </h2>
-          <p class="mx-auto mt-2 max-w-xl text-center text-lg leading-8 text-blue-100">
-            We know you're excited...so are we! Signup for our newsletter to get updates of all the cool things
-            happening here at Chicago Artist Atlas, and be sure to follow us on social media.
+          <p class="mx-auto mt-2 max-w-2xl text-center text-lg leading-8 text-blue-100">
+            Do you have any questions? Want to report a bug? Just want to drop in and say hi? Please do not hesitate to contact us! Our team will respond within 24-hours.
           </p>
-          <form class="mx-auto mt-10 flex max-w-md gap-x-4" v-on:submit.prevent="notifyMe()">
-            <label for="email-address" class="sr-only">Email address</label>
-            <input
-              id="email-address"
-              name="email"
-              type="email"
-              autocomplete="email"
-              required=""
-              class="min-w-0 flex-auto rounded-md border-0 bg-white/5 px-3.5 py-2 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-white sm:text-sm sm:leading-6"
-              placeholder="Enter your email"
-              v-model="email"
-            />
-            <button
-              type="submit"
-              class="flex-none rounded-md bg-blue-100 px-3.5 py-2.5 text-sm font-semibold text-blue-900 shadow-sm hover:bg-blue-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
-            >
-              Notify me
-            </button>
-          </form>
+          <div class="mt-4">
+            <!-- v-on:submit.prevent="notifyMe()" -->
+            <div class="mx-auto mt-3 sm:mt-4 max-w-2xl">
+              <div class="grid grid-cols-2 gap-x-8">
+                <div class="col-span-2 md:col-span-1">
+                  <div class="mt-2">
+                    <label for="name" class="block text-sm font-semibold text-blue-100">Name</label>
+                    <div class="mt-1">
+                      <input
+                        type="text"
+                        name="name"
+                        id="name"
+                        v-model="name"
+                        autocomplete="given-name"
+                        class="block w-full rounded-md font-semibold border-0 px-3.5 py-2 text-blue-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                      />
+                    </div>
+                  </div>
+                  <div class="mt-2">
+                    <label for="email" class="block text-sm font-semibold text-blue-100">Email</label>
+                    <div class="mt-1">
+                      <input
+                        type="text"
+                        name="email"
+                        id="email"
+                        v-model="email"
+                        autocomplete="email"
+                        class="block w-full rounded-md font-semibold border-0 px-3.5 py-2 text-blue-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                      />
+                    </div>
+                  </div>
+                  <div class="sm:col-span-2 mt-2">
+                    <label for="phone" class="block text-sm font-semibold text-blue-100">Phone</label>
+                    <div class="mt-1">
+                      <input
+                        type="text"
+                        name="phone"
+                        id="phone"
+                        v-model="phone"
+                        autocomplete="phone"
+                        class="block w-full rounded-md font-semibold border-0 px-3.5 py-2 text-blue-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="col-span-2 md:col-span-1">
+                  <div class="sm:col-span-2 mt-2">
+                    <label for="subject" class="block text-sm font-semibold text-blue-100">Subject</label>
+                    <div class="mt-1">
+                      <input
+                        type="subject"
+                        name="subject"
+                        id="subject"
+                        v-model="subject"
+                        class="block w-full rounded-md font-semibold border-0 px-3.5 py-2 text-blue-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                      />
+                    </div>
+                  </div>
+                  <div class="sm:col-span-2 mt-2">
+                    <label for="message" class="block text-sm font-semibold text-blue-100">Message</label>
+                    <div class="mt-1">
+                      <textarea
+                        name="message"
+                        id="message"
+                        rows="4"
+                        v-model="message"
+                        class="block w-full rounded-md font-semibold border-0 px-3.5 py-2 text-blue-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="mt-8">
+                <button
+                  type="submit"
+                  @click="notifyMe()"
+                  class="block w-full rounded-md bg-blue-800 px-3.5 py-2.5 text-center text-sm font-semibold shadow-sm hover:bg-blue-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-200 text-blue-950 bg-blue-100 text-white"
+                >
+                  Let's talk
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <div
-        class="mt-5 border-t border-white/10 pt-8 sm:mt-20 md:flex md:items-center md:justify-between lg:mt-24 lg:px-8 px-6"
+        class="mt-5 border-t border-white/10 pt-4 sm:mt-10 md:flex md:items-center md:justify-between lg:mt-12 lg:px-8 px-6"
       >
         <div class="flex justify-center space-x-6 md:order-2">
           <a v-for="item in socials" :key="item.name" :href="item.href" class="text-blue-100 hover:text-blue-200" target="_blank">
@@ -121,12 +184,17 @@
 
 <script>
 import { defineComponent, h } from "vue";
+import { useAlertStore } from "../stores/useAlertStore.js";
 import axios from "axios";
 
 export default {
   data: function () {
     return {
       email: "",
+      name: "",
+      phone: "",
+      subject: "",
+      message: "",
       footerWithContact: false,
       socials: [
         {
@@ -175,25 +243,30 @@ export default {
   methods: {
     notifyMe() {
       axios
-        .post(
-          "/notify-me",
-          { email: this.email },
-          {
-            headers: {
-              Accept: "application/json",
-              "Content-Type": "application/json",
-            },
-            crossDomain: true,
-          }
+        .post("/notify-me.json",
+          { 
+            name: this.name,
+            phone: this.phone,
+            email: this.email,
+            subject: this.subject,
+            message: this.message
+          },
         )
         .then((response) => {
-          console.log("CALL TOAST MESSAGE HERE");
+          let message = {
+            title: "Thanks for the message!",
+            body: "We'll get back to you as soon as we can",
+            icon: "success",
+          };
+          useAlertStore().setMessage(message);
         })
         .catch((error) => {
-          console.log(error.response);
-          this.errors = ["Invalid email or password."];
-          this.email = "";
-          this.password = "";
+          let message = {
+            title: "Whoops!",
+            body: "Looks like something went wrong. Please try again. If error persists, email info@chiartistatlas.com",
+            icon: "success",
+          };
+          useAlertStore().setMessage(message);
         });
     },
   },
