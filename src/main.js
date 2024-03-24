@@ -15,7 +15,9 @@ const pinia = createPinia();
 pinia.use(piniaPluginPersistedstate);
 
 axios.defaults.baseURL =
-  process.env.NODE_ENV === "development" ? "http://localhost:3000" : "https://chi-artist-atlas-backend.herokuapp.com";
+  process.env.NODE_ENV === "development"
+    ? "http://localhost:3000"
+    : "https://chicago-atlas-backend-prod-0a2c8b1b8fbc.herokuapp.com/";
 
 axios.defaults.headers.common = {
   "X-Requested-With": "XMLHttpRequest",

@@ -258,12 +258,14 @@ export default {
     getUser() {
       axios.get("/current_user.json").then((response) => {
         this.user = response.data;
-        this.address = {
-          street: response.data.address.address1,
-          city: response.data.address.city,
-          state: response.data.address.state,
-          country: response.data.address.country,
-          postal_code: response.data.address.postal_code,
+        if (response.data.address) {
+          this.address = {
+            street: response.data.address.address1,
+            city: response.data.address.city,
+            state: response.data.address.state,
+            country: response.data.address.country,
+            postal_code: response.data.address.postal_code,
+          }
         }
       });
     },
