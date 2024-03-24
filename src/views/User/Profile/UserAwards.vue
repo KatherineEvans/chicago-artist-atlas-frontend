@@ -95,7 +95,7 @@
                 <p class="mt-1 text-sm leading-6 text-gray-600 italic">More to tell? Go for it!</p>
               </div>
             </div>
-            <button type="submit" class="text-sm float-right text-blue-700 font-bold">+ Add Award</button>
+            <button type="submit" class="text-sm float-right text-blue-700 font-bold">+ Save Award</button>
           </div>
           <div
             class="w-full lg:w-1/2 grid flex flex-wrap order-1 lg:order-2 border-b lg:border-0 pb-3"

@@ -137,8 +137,8 @@ const routes = [
             component: UserPerformances,
           },
           {
-            path: "trainings",
-            name: "user-profile-trainings",
+            path: "training",
+            name: "user-profile-training",
             component: UserTraining,
           },
           {

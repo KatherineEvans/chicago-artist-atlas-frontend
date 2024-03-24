@@ -104,7 +104,7 @@
         class="mt-5 border-t border-white/10 pt-8 sm:mt-20 md:flex md:items-center md:justify-between lg:mt-24 lg:px-8 px-6"
       >
         <div class="flex justify-center space-x-6 md:order-2">
-          <a v-for="item in socials" :key="item.name" :href="item.href" class="text-blue-100 hover:text-blue-200">
+          <a v-for="item in socials" :key="item.name" :href="item.href" class="text-blue-100 hover:text-blue-200" target="_blank">
             <span class="sr-only">{{ item.name }}</span>
             <component :is="item.icon" class="h-6 w-6" aria-hidden="true" />
           </a>
