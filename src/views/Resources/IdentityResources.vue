@@ -12,7 +12,7 @@
       </p>
     </div>
     <nav class="flex flex-wrap justify-between text-base pb-0" aria-label="Breadcrumb">
-      <ol role="list" class="flex items-center space-x-4">
+      <ol role="list" class="items-center space-x-4 hidden sm:flex">
         <li>
           <div>
             <a href="/" class="text-gray-400 hover:text-gray-500">
@@ -55,13 +55,13 @@
             leave-to-class="transform opacity-0 scale-95"
           >
             <MenuItems
-              class="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+              class="absolute z-10 mt-2 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
             >
               <div class="py-1">
                 <MenuItem v-for="(value, name, index) in resources" :key="index">
                   <a
                     :href="'#' + name.replace(/\s/g, '')"
-                    class="text-gray-700 block px-4 py-2 text-base hover:no-underline no-underline"
+                    class="text-gray-700 block px-4 py-2 text-base hover:no-underline no-underline hover:bg-gray-100"
                   >
                     {{ name }}
                   </a>
