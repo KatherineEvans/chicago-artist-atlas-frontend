@@ -179,7 +179,6 @@ export default {
     },
     filteredAuditions() {
       let auditions = [...this.auditions];
-      console.log(auditions, this.equity)
       //filter theaters
       if (this.equity) {
         if(this.equity != "Any") {
