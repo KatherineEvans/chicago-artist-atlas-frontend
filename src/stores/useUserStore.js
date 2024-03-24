@@ -318,18 +318,12 @@ export const useUserStore = defineStore("user", {
           }
           localStorage.setItem("headshotUrl", response.data.headshot_url);
           this.saveTechTalents();
-          if (next) {
-            this.currentTab = "General";
-            this.$router.push("/user/profile/talents");
-          } else {
-            // SET SUCCESS MESSAGE
-            let message = {
-              title: "Success!",
-              body: "Profile successfully saved.",
-              icon: "success",
-            };
-            useAlertStore().setMessage(message);
-          }
+          let message = {
+            title: "Success!",
+            body: "Profile successfully saved.",
+            icon: "success",
+          };
+          useAlertStore().setMessage(message);
         })
         .catch((error) => {
           console.error(error);
@@ -359,17 +353,12 @@ export const useUserStore = defineStore("user", {
           }
           localStorage.setItem("headshotUrl", response.data.headshot_url);
           this.saveTechTalents();
-          if (next) {
-            this.currentTab = "General";
-            this.$router.push("/user/profile/talents");
-          } else {
-            let message = {
-              title: "Success!",
-              body: "Profile successfully saved.",
-              icon: "success",
-            };
-            useAlertStore().setMessage(message);
-          }
+          let message = {
+            title: "Success!",
+            body: "Profile successfully saved.",
+            icon: "success",
+          };
+          useAlertStore().setMessage(message);
         })
         .catch((error) => {
           console.error(error);

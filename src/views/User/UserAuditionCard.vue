@@ -22,13 +22,20 @@
       </div>
       <!-- <p class="text-base font-normal">{{ audition.character.description }}</p> -->
     </div>
-    <div class="flex ml-auto mt-1">
+    <div class="flex mt-1 justify-between">
       <div class="relative inline-block text-left">
-        <button
-          class="inline-flex items-center gap-x-1.5 rounded-full px-4 py-1 text-base font-medium text-gray-900 ring-2 ring-inset ring-gray-200"
-        >
-          View
-        </button>
+        <span v-if="audition.role.submitted" className="inline-flex items-center rounded-full bg-blue-100 px-2 py-1 text-base font-medium text-blue-700 px-4">
+          Submitted
+        </span>
+        <span v-else-if="audition.role.invited_to_callbacks" className="inline-flex items-center rounded-full bg-purple-100 px-2 py-1 text-base font-medium text-purple-700 px-4">
+          Callbacks
+        </span>
+        <span v-else-if="audition.role.cast_in_show" className="inline-flex items-center rounded-full bg-green-100 px-2 py-1 text-base font-medium text-green-700 px-4">
+          Cast
+        </span>
+        <span v-else className="inline-flex items-center rounded-full bg-gray-100 px-2 py-1 text-base font-medium text-gray-600 px-4">
+          Saved
+        </span>
       </div>
       <Menu as="div" class="relative inline-block text-left">
         <div>
@@ -51,12 +58,23 @@
             class="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none font-medium"
           >
             <div class="py-1">
-              <MenuItem v-slot="{ active }">
+              <MenuItem v-if="audition.role.cast || audition.role.submitted || audition.role.invited_to_callbacks" v-slot="{ active }">
                 <button
-                  href="#"
+                  @click="update(audition, 'clear')"
                   :class="[
                     active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                    'block px-4 py-2 text-base w-100 text-left',
+                    'block px-4 py-2 text-base w-full text-left',
+                  ]"
+                >
+                  Clear Status
+                </button>
+              </MenuItem>
+              <MenuItem v-slot="{ active }">
+                <button
+                  @click="update(audition, 'submitted')"
+                  :class="[
+                    active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                    'block px-4 py-2 text-base w-full text-left',
                   ]"
                 >
                   Submitted
@@ -64,10 +82,10 @@
               </MenuItem>
               <MenuItem v-slot="{ active }">
                 <button
-                  href="#"
+                  @click="update(audition, 'callbacks')"
                   :class="[
                     active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                    'block px-4 py-2 text-base w-100 text-left',
+                    'block px-4 py-2 text-base w-full text-left',
                   ]"
                 >
                   Callbacks
@@ -75,10 +93,10 @@
               </MenuItem>
               <MenuItem v-slot="{ active }">
                 <button
-                  href="#"
+                  @click="update(audition, 'cast')"
                   :class="[
                     active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                    'block px-4 py-2 text-base w-100 text-left',
+                    'block px-4 py-2 text-base w-full text-left',
                   ]"
                 >
                   Cast
@@ -87,7 +105,7 @@
               <MenuItem v-slot="{ active }">
                 <button
                   @click="$emit('removeRole', audition)"
-                  :class="[active ? 'bg-gray-100' : '', 'block px-4 py-2 text-base w-100 text-left text-red-600']"
+                  :class="[active ? 'bg-gray-100' : '', 'block px-4 py-2 text-base w-full text-left text-red-600']"
                 >
                   Remove
                 </button>
@@ -103,6 +121,7 @@
 import axios from "axios";
 import moment from "moment";
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/vue";
+import { useAlertStore } from '../../stores/useAlertStore.js';
 
 export default {
   props: ["audition"],
@@ -120,8 +139,42 @@ export default {
     },
   },
   methods: {
-    updateUserRole(role) {
-      axios.get(`/user_roles/${role.id}.json`).then((response) => {});
+    update(audition, type) {
+      if (type == 'clear') {
+        audition.role.submitted = false
+        audition.role.invited_to_callbacks = false
+        audition.role.cast_in_show = false
+      }
+      if (type == 'cast') {
+        audition.role.submitted = false
+        audition.role.invited_to_callbacks = false
+        audition.role.cast_in_show = true
+      }
+      if (type == 'callbacks') {
+        audition.role.submitted = false
+        audition.role.invited_to_callbacks = true
+        audition.role.cast_in_show = false
+      }
+      if (type == 'submitted') {
+        audition.role.submitted = true
+        audition.role.invited_to_callbacks = false
+        audition.role.cast_in_show = false
+      }
+      axios.patch(`/user_roles/${audition.role.id}.json`, audition.role).then((response) => {
+        let message = {
+            title: "Successfully Updated!",
+            body: "Your saved audition has been successfully updated.",
+            icon: "success",
+          };
+          useAlertStore().setMessage(message);
+      }).catch((error) => {
+        let message = {
+            title: "Whoops!",
+            body: "Looks like something went wrong. Please try again. If error persists, email info@chiartistatlas.com",
+            icon: "failure",
+          };
+          useAlertStore().setMessage(message);
+      })
     },
   },
 };
