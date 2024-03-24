@@ -1,7 +1,7 @@
 <template>
   <footer class="bg-blue-950 text-blue-100" aria-labelledby="footer-heading">
     <h2 id="footer-heading" class="sr-only">Footer</h2>
-    <div class="mx-auto pb-4 pt-6 sm:pt-4 lg:pt-6 px-10">
+    <div class="mx-auto pb-4 pt-6 sm:pt-4 lg:pt-6 px-4 sm:px-10">
       <div v-if="footerWithContact" class="xl:grid xl:grid-cols-3 xl:gap-8">
         <div class="grid grid-cols-2 gap-8 xl:col-span-2"></div>
         <div class="mt-10 xl:mt-0">

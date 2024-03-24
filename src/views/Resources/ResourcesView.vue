@@ -15,7 +15,7 @@
       </p>
     </div>
     <nav class="flex flex-wrap justify-between text-base pb-2" aria-label="Breadcrumb">
-      <ol role="list" class="flex items-center space-x-4">
+      <ol role="list" class="items-center space-x-4 hidden sm:flex">
         <li>
           <div>
             <a href="/" class="text-gray-400 hover:text-gray-500">
@@ -36,7 +36,7 @@
       <div class="row">
         <div>
           <div class="text-2xl font-bold text-center">Identity Based Resources</div>
-          <div class="resource-container drop-shadow-md bg-blue-100/25">
+          <div class="resource-container m-1 p-1 md:m-4 md:p-4 drop-shadow-md bg-blue-100/25">
             <div class="img-desc">
               <img class="lf-img mx-auto mb-3" src="../../assets/resources/identity-based-resources.png" />
               <div class="resource-desc mb-3">
@@ -52,7 +52,7 @@
                 <div class="mb-3">
                   <h6 class="inline font-bold text-lg">{{ bipoc.organization_name }}</h6>
                   <span
-                    class="inline-flex items-center rounded-full bg-blue-50 px-2 py-1 text-sm float-right font-medium text-blue-700 ring-1 ring-inset ring-blue-700/10"
+                    class="hidden sm:inline-block inline-flex items-center rounded-full bg-blue-50 px-2 py-1 text-sm float-right font-medium text-blue-700 ring-1 ring-inset ring-blue-700/10"
                   >
                     BIPOC
                   </span>
@@ -74,7 +74,7 @@
                 <div class="mb-3">
                   <h6 class="inline font-bold text-lg">{{ disabilities.organization_name }}</h6>
                   <span
-                    class="inline-flex items-center rounded-full bg-green-50 px-2 py-1 text-sm float-right font-medium text-green-700 ring-1 ring-inset ring-green-600/20"
+                    class="hidden sm:inline-block inline-flex items-center rounded-full bg-green-50 px-2 py-1 text-sm float-right font-medium text-green-700 ring-1 ring-inset ring-green-600/20"
                   >
                     Artists of Disability
                   </span>
@@ -96,7 +96,7 @@
                 <div class="mb-3">
                   <h6 class="inline font-bold text-lg">{{ lgbtqia.organization_name }}</h6>
                   <span
-                    class="inline-flex items-center rounded-full rainbow-background px-2 py-1 text-sm float-right font-medium text-slate-700 ring-1 ring-inset ring-red-600/10"
+                    class="hidden sm:inline-block inline-flex items-center rounded-full rainbow-background px-2 py-1 text-sm float-right font-medium text-slate-700 ring-1 ring-inset ring-red-600/10"
                   >
                     LGBTQIA+
                   </span>
@@ -119,7 +119,7 @@
                 <div class="mb-3">
                   <h6 class="inline font-bold text-lg">{{ women.organization_name }}</h6>
                   <span
-                    class="inline-flex items-center rounded-full bg-pink-50 px-2 py-1 text-sm float-right font-medium text-pink-700 ring-1 ring-inset ring-pink-700/10"
+                    class="hidden sm:inline-block inline-flex items-center rounded-full bg-pink-50 px-2 py-1 text-sm float-right font-medium text-pink-700 ring-1 ring-inset ring-pink-700/10"
                   >
                     Women+
                   </span>
@@ -141,7 +141,7 @@
                 class="no-underline hover:no-underline flex-none rounded-md bg-blue-900 px-3.5 py-2.5 text-base float-right font-semibold shadow-sm hover:bg-blue-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
                 to="/resources/identity"
               >
-                <strong class="text-blue-100">View All Identity Based Resources</strong>
+                <strong class="text-blue-100">View All <span class="hidden sm:inline-block">Identity Based Resources</span></strong>
               </router-link>
             </div>
           </div>
@@ -150,7 +150,7 @@
       <div class="row">
         <div class="mt-5">
           <div class="text-2xl font-bold text-center">Business Resources for Artist</div>
-          <div class="resource-container drop-shadow-md bg-blue-100/25">
+          <div class="resource-container m-1 p-1 md:m-4 md:p-4 drop-shadow-md bg-blue-100/25">
             <div class="img-desc">
               <img class="lf-img mx-auto mb-3" src="../../assets/resources/business-resources.png" />
               <div class="resource-desc mb-3">
@@ -170,7 +170,7 @@
                 <div class="mb-3">
                   <h6 class="inline font-bold text-lg">{{ resource.organization_name }}</h6>
                   <span
-                    class="inline-flex items-center rounded-full bg-orange-50 px-2 py-1 text-sm float-right font-medium text-orange-700 ring-1 ring-inset ring-orange-600/20"
+                    class="hidden sm:inline-block inline-flex items-center rounded-full bg-orange-50 px-2 py-1 text-sm float-right font-medium text-orange-700 ring-1 ring-inset ring-orange-600/20"
                   >
                     {{ resource.secondary_type }}
                   </span>
@@ -192,7 +192,7 @@
                 class="no-underline hover:no-underline flex-none rounded-md bg-blue-900 px-3.5 py-2.5 text-base float-right font-semibold shadow-sm hover:bg-blue-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
                 to="/resources/business"
               >
-                <strong class="text-blue-100">View All Business Resources</strong>
+                <strong class="text-blue-100">View All <span class="hidden sm:inline-block">Business Resources</span></strong>
               </router-link>
             </div>
           </div>
@@ -201,7 +201,7 @@
       <div class="row">
         <div class="mt-5">
           <div class="text-2xl font-bold text-center">Production Staff Resources</div>
-          <div class="resource-container drop-shadow-md bg-blue-100/25">
+          <div class="resource-container m-1 p-1 md:m-4 md:p-4 drop-shadow-md bg-blue-100/25">
             <div class="img-desc">
               <img class="lf-img mx-auto mb-3" src="../../assets/resources/production-resources.png" />
               <div class="resource-desc mb-3">
@@ -219,7 +219,7 @@
                 <div class="mb-3">
                   <h6 class="inline font-bold text-lg">{{ resource.organization_name ? resource.organization_name : resource.document_name  }}</h6>
                   <span
-                    class="inline-flex items-center rounded-full bg-purple-50 px-2 py-1 text-sm float-right font-medium text-purple-700 ring-1 ring-inset ring-purple-600/20"
+                    class="hidden sm:inline-block inline-flex items-center rounded-full bg-purple-50 px-2 py-1 text-sm float-right font-medium text-purple-700 ring-1 ring-inset ring-purple-600/20"
                   >
                     {{ resource.secondary_type }}
                   </span>
@@ -241,7 +241,7 @@
                 class="no-underline hover:no-underline flex-none rounded-md bg-blue-900 px-3.5 py-2.5 text-base float-right font-semibold shadow-sm hover:bg-blue-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
                 to="/resources/production"
               >
-                <strong class="text-blue-100">View All Production Staff Resources</strong>
+                <strong class="text-blue-100">View All <span class="hidden sm:inline-block">Production Staff Resources</span></strong>
               </router-link>
             </div>
           </div>
@@ -250,7 +250,7 @@
       <div class="row">
         <div class="mt-5">
           <div class="text-2xl font-bold text-center">#LifeHack Resources</div>
-          <div class="resource-container drop-shadow-md bg-blue-100/25">
+          <div class="resource-container m-1 p-1 md:m-4 md:p-4 drop-shadow-md bg-blue-100/25">
             <div class="img-desc">
               <img class="lf-img mx-auto mb-3" src="../../assets/resources/life-hack-resources.png" />
               <div class="resource-desc mb-3">
@@ -270,7 +270,7 @@
                 <div class="mb-3">
                   <h6 class="inline font-bold text-lg">{{ resource.organization_name }}</h6>
                   <span
-                    class="inline-flex items-center rounded-full bg-cyan-50 px-2 py-1 text-sm float-right font-medium text-cyan-700 ring-1 ring-inset ring-cyan-600/20"
+                    class="hidden sm:inline-block inline-flex items-center rounded-full bg-cyan-50 px-2 py-1 text-sm float-right font-medium text-cyan-700 ring-1 ring-inset ring-cyan-600/20"
                   >
                     {{ resource.secondary_type }}
                   </span>
@@ -292,7 +292,7 @@
                 class="no-underline hover:no-underline flex-none rounded-md bg-blue-900 px-3.5 py-2.5 text-base float-right font-semibold shadow-sm hover:bg-blue-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
                 to="/resources/life-hacks"
               >
-                <strong class="text-blue-100">View All LifeHack Resources</strong>
+                <strong class="text-blue-100">View All <span class="hidden sm:inline-block">LifeHack Resources</span></strong>
               </router-link>
             </div>
           </div>
@@ -360,8 +360,6 @@ export default {
   border-radius: 10px;
   display: flex;
   flex-direction: row;
-  margin: 15px;
-  padding: 20px;
 }
 .desc {
   font-size: 16px;
@@ -429,5 +427,10 @@ img {
 }
 img {
   border-radius: 5px;
+}
+@media only screen and (max-width: 300px) {
+  .lf-img {
+    max-width: 200px;
+  }
 }
 </style>
