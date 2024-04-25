@@ -6,6 +6,7 @@ import TheaterDirectory from "../views/TheaterDirectory.vue";
 
 // Auditions
 import AuditionBoard from "../views/Auditions/AuditionBoard.vue";
+import AuditionView from "../views/Auditions/AuditionView.vue";
 
 // Authentication
 import LogOut from "../views/Authentication/LogOut.vue";
@@ -48,6 +49,11 @@ const routes = [
     path: "/auditions",
     name: "auditions",
     component: AuditionBoard,
+  },
+  {
+    path: "/auditions/:id",
+    name: "auditions-show",
+    component: AuditionView,
   },
   // {
   //   path: "/contact",
