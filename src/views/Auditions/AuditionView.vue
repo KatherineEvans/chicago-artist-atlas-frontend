@@ -64,155 +64,164 @@
             </div>
           </div>
           <div class="pt-10 lg:pt-24 lg:col-span-2 pr-10 lg:pr-32">
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-x-8 gap-y-8 border-t border-gray-900/10 lg:border-none pt-8 lg:pt-0 text-base">
-              <div>
-                <p class="mb-2 text-base font-semibold leading-7 text-blue-800">Company</p>
-                <p>{{ audition.name_of_company }}</p>
-              </div>
-              <div>
-                <p class="mb-2 text-base font-semibold leading-7 text-blue-800">Pay Scale</p>
-                <p>{{ audition.pay_scale }}</p>
-              </div>
-              <div>
-                <p class="mb-2 text-base font-semibold leading-7 text-blue-800">Union Status</p>
-                <p>{{ audition.union_status }}</p>
+            <div class="loading-spinner-container" v-if="isLoading">
+              <div class="loading-spinner m-auto">
+                <div></div>
+                <div></div>
+                <div></div>
               </div>
             </div>
-            <dl v-if="anyAuditionDate || audition.audition_address_id || anyCallbackDate || audition.callback_address_id || audition.show_startdate || audition.show_address_id" class="my-10 border-t border-gray-900/10 pt-10">
-              <div class="grid grid-cols-1 lg:grid-cols-3 gap-x-8 gap-y-8 text-base">
+            <span v-else>
+              <div class="grid grid-cols-1 lg:grid-cols-3 gap-x-8 gap-y-8 border-t border-gray-900/10 lg:border-none pt-8 lg:pt-0 text-base">
                 <div>
-                  <p class="mb-2 text-base font-semibold leading-7 text-blue-800">Audition Info</p>
-                  <div v-if="anyAuditionDate || audition.audition_address_id">
-                    <ul v-if="anyAuditionDate" class="pl-0">
-                      <li v-if="audition.audition_date1">
-                        Day 1: <span class="font-semibold">{{ formatDate(audition.audition_date1) }}
-                        {{ audition.audition_time1 ? ` - ${audition.audition_time1}` : "" }}</span>
-                      </li>
-                      <li v-if="audition.audition_date2">
-                        Day 2: {{ formatDate(audition.audition_date2) }}
-                        {{ audition.audition_time2 ? ` - ${audition.audition_time2}` : "" }}
-                      </li>
-                      <li v-if="audition.audition_date3">
-                        Day 3: {{ formatDate(audition.audition_date3) }}
-                        {{ audition.audition_time3 ? ` - ${audition.audition_time3}` : "" }}
-                      </li>
-                      <li v-if="audition.audition_date4">
-                        Day 4: {{ formatDate(audition.audition_date4) }}
-                        {{ audition.audition_time4 ? ` - ${audition.audition_time4}` : "" }}
-                      </li>
-                      <li v-if="audition.audition_date5">
-                        Day 5: {{ formatDate(audition.audition_date5) }}
-                        {{ audition.audition_time5 ? ` - ${audition.audition_time5}` : "" }}
-                      </li>
-                    </ul>
-                    <div v-if="audition.audition_address_id">
-                      <p class="text-sm leading-6 text-gray-900 italic underline mt-3">Location</p>
-                      <div class="text-base">
-                        <p v-if="audition.audition_address.address1">{{ audition.audition_address.address1 }}</p>
-                        <p v-if="audition.audition_address.address2">{{ audition.audition_address.address2 }}</p>
-                        <p v-if="audition.audition_address.address3">{{ audition.audition_address.address3 }}</p>
-                        <p>{{ audition.audition_address.city }}, {{ audition.audition_address.state }} {{ audition.audition_address.postal_code }}</p>
+                  <p class="mb-2 text-base font-semibold leading-7 text-blue-800">Company</p>
+                  <p>{{ audition.name_of_company }}</p>
+                </div>
+                <div>
+                  <p class="mb-2 text-base font-semibold leading-7 text-blue-800">Pay Scale</p>
+                  <p>{{ audition.pay_scale }}</p>
+                </div>
+                <div>
+                  <p class="mb-2 text-base font-semibold leading-7 text-blue-800">Union Status</p>
+                  <p>{{ audition.union_status }}</p>
+                </div>
+              </div>
+              <dl v-if="anyAuditionDate || audition.audition_address_id || anyCallbackDate || audition.callback_address_id || audition.show_startdate || audition.show_address_id" class="my-10 border-t border-gray-900/10 pt-10">
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-x-8 gap-y-8 text-base">
+                  <div>
+                    <p class="mb-2 text-base font-semibold leading-7 text-blue-800">Audition Info</p>
+                    <div v-if="anyAuditionDate || audition.audition_address_id">
+                      <ul v-if="anyAuditionDate" class="pl-0">
+                        <li v-if="audition.audition_date1">
+                          Day 1: <span class="font-semibold">{{ formatDate(audition.audition_date1) }}
+                          {{ audition.audition_time1 ? ` - ${audition.audition_time1}` : "" }}</span>
+                        </li>
+                        <li v-if="audition.audition_date2">
+                          Day 2: {{ formatDate(audition.audition_date2) }}
+                          {{ audition.audition_time2 ? ` - ${audition.audition_time2}` : "" }}
+                        </li>
+                        <li v-if="audition.audition_date3">
+                          Day 3: {{ formatDate(audition.audition_date3) }}
+                          {{ audition.audition_time3 ? ` - ${audition.audition_time3}` : "" }}
+                        </li>
+                        <li v-if="audition.audition_date4">
+                          Day 4: {{ formatDate(audition.audition_date4) }}
+                          {{ audition.audition_time4 ? ` - ${audition.audition_time4}` : "" }}
+                        </li>
+                        <li v-if="audition.audition_date5">
+                          Day 5: {{ formatDate(audition.audition_date5) }}
+                          {{ audition.audition_time5 ? ` - ${audition.audition_time5}` : "" }}
+                        </li>
+                      </ul>
+                      <div v-if="audition.audition_address_id">
+                        <p class="text-sm leading-6 text-gray-900 italic underline mt-3">Location</p>
+                        <div class="text-base">
+                          <p v-if="audition.audition_address.address1">{{ audition.audition_address.address1 }}</p>
+                          <p v-if="audition.audition_address.address2">{{ audition.audition_address.address2 }}</p>
+                          <p v-if="audition.audition_address.address3">{{ audition.audition_address.address3 }}</p>
+                          <p>{{ audition.audition_address.city }}, {{ audition.audition_address.state }} {{ audition.audition_address.postal_code }}</p>
+                        </div>
                       </div>
                     </div>
+                    <i v-else class="fa-solid fa-minus text-center"></i>
                   </div>
-                  <i v-else class="fa-solid fa-minus text-center"></i>
-                </div>
-                <div>
-                  <p class="mb-2 text-base font-semibold leading-7 text-blue-800">Callback Info</p>
-                  <div v-if="anyCallbackDate || audition.callback_address_id">
-                    <ul v-if="anyCallbackDate" class="pl-0">
-                      <li v-if="audition.callback_date1">
-                        Day 1: {{ formatDate(audition.callback_date1) }}
-                        {{ audition.callback_time1 ? ` - ${audition.callback_time1}` : "" }}
-                      </li>
-                      <li v-if="audition.callback_date2">
-                        Day 2: {{ formatDate(audition.callback_date2) }}
-                        {{ audition.callback_time2 ? ` - ${audition.callback_time2}` : "" }}
-                      </li>
-                      <li v-if="audition.callback_date3">
-                        Day 3: {{ formatDate(audition.callback_date3) }}
-                        {{ audition.callback_time3 ? ` - ${audition.callback_time3}` : "" }}
-                      </li>
-                      <li v-if="audition.callback_date4">
-                        Day 4: {{ formatDate(audition.callback_date4) }}
-                        {{ audition.callback_time4 ? ` - ${audition.callback_time4}` : "" }}
-                      </li>
-                      <li v-if="audition.callback_date5">
-                        Day 5: {{ formatDate(audition.callback_date5) }}
-                        {{ audition.callback_time5 ? ` - ${audition.callback_time5}` : "" }}
-                      </li>
-                    </ul>
-                    <div v-if="audition.callback_address_id">
-                      <p class="text-sm leading-6 text-gray-900 italic underline mt-3">Location</p>
-                      <div class="text-base">
-                        <p v-if="audition.callback_address.address1">{{ audition.callback_address.address1 }}</p>
-                        <p v-if="audition.callback_address.address2">{{ audition.callback_address.address2 }}</p>
-                        <p v-if="audition.callback_address.address3">{{ audition.callback_address.address3 }}</p>
-                        <p>{{ audition.callback_address.city }}, {{ audition.callback_address.state }} {{ audition.callback_address.postal_code }}</p>
+                  <div>
+                    <p class="mb-2 text-base font-semibold leading-7 text-blue-800">Callback Info</p>
+                    <div v-if="anyCallbackDate || audition.callback_address_id">
+                      <ul v-if="anyCallbackDate" class="pl-0">
+                        <li v-if="audition.callback_date1">
+                          Day 1: {{ formatDate(audition.callback_date1) }}
+                          {{ audition.callback_time1 ? ` - ${audition.callback_time1}` : "" }}
+                        </li>
+                        <li v-if="audition.callback_date2">
+                          Day 2: {{ formatDate(audition.callback_date2) }}
+                          {{ audition.callback_time2 ? ` - ${audition.callback_time2}` : "" }}
+                        </li>
+                        <li v-if="audition.callback_date3">
+                          Day 3: {{ formatDate(audition.callback_date3) }}
+                          {{ audition.callback_time3 ? ` - ${audition.callback_time3}` : "" }}
+                        </li>
+                        <li v-if="audition.callback_date4">
+                          Day 4: {{ formatDate(audition.callback_date4) }}
+                          {{ audition.callback_time4 ? ` - ${audition.callback_time4}` : "" }}
+                        </li>
+                        <li v-if="audition.callback_date5">
+                          Day 5: {{ formatDate(audition.callback_date5) }}
+                          {{ audition.callback_time5 ? ` - ${audition.callback_time5}` : "" }}
+                        </li>
+                      </ul>
+                      <div v-if="audition.callback_address_id">
+                        <p class="text-sm leading-6 text-gray-900 italic underline mt-3">Location</p>
+                        <div class="text-base">
+                          <p v-if="audition.callback_address.address1">{{ audition.callback_address.address1 }}</p>
+                          <p v-if="audition.callback_address.address2">{{ audition.callback_address.address2 }}</p>
+                          <p v-if="audition.callback_address.address3">{{ audition.callback_address.address3 }}</p>
+                          <p>{{ audition.callback_address.city }}, {{ audition.callback_address.state }} {{ audition.callback_address.postal_code }}</p>
+                        </div>
                       </div>
                     </div>
+                    <i v-else class="fa-solid fa-minus text-center"></i>
                   </div>
-                  <i v-else class="fa-solid fa-minus text-center"></i>
-                </div>
-                <div>
-                  <p class="mb-2 text-base font-semibold leading-7 text-blue-800">Opening Performance</p>
-                  <div v-if="audition.show_startdate || audition.show_address_id">
-                    <span v-if="audition.show_startdate" class="mb-2 font-semibold">{{ formatDate(audition.show_startdate) }}</span>
-                    <div v-if="audition.show_address_id" class="text-base mt-1">
-                      <p v-if="audition.show_address.address1">{{ audition.show_address.address1 }}</p>
-                      <p v-if="audition.show_address.address2">{{ audition.show_address.address2 }}</p>
-                      <p v-if="audition.show_address.address3">{{ audition.show_address.address3 }}</p>
-                      <p>{{ audition.show_address.city }}, {{ audition.show_address.state }} {{ audition.show_address.postal_code }}</p>
+                  <div>
+                    <p class="mb-2 text-base font-semibold leading-7 text-blue-800">Opening Performance</p>
+                    <div v-if="audition.show_startdate || audition.show_address_id">
+                      <span v-if="audition.show_startdate" class="mb-2 font-semibold">{{ formatDate(audition.show_startdate) }}</span>
+                      <div v-if="audition.show_address_id" class="text-base mt-1">
+                        <p v-if="audition.show_address.address1">{{ audition.show_address.address1 }}</p>
+                        <p v-if="audition.show_address.address2">{{ audition.show_address.address2 }}</p>
+                        <p v-if="audition.show_address.address3">{{ audition.show_address.address3 }}</p>
+                        <p>{{ audition.show_address.city }}, {{ audition.show_address.state }} {{ audition.show_address.postal_code }}</p>
+                      </div>
                     </div>
+                    <i v-else class="fa-solid fa-minus text-center"></i>
                   </div>
-                  <i v-else class="fa-solid fa-minus text-center"></i>
                 </div>
-              </div>
-            </dl>
-            <dl v-if="audition.how_to_submit || audition.materials_to_prepare" class="my-10 border-t border-gray-900/10 pt-10">
-              <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-8">
+              </dl>
+              <dl v-if="audition.how_to_submit || audition.materials_to_prepare" class="my-10 border-t border-gray-900/10 pt-10">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-8">
+                  <div class="text-base leading-7 text-gray-700">
+                    <p class="mb-2 text-base font-semibold leading-7 text-blue-800">How to Submit</p>
+                    <div v-if="audition.how_to_submit" v-html="audition.how_to_submit"></div>
+                    <div v-else-if="audition.how_to_submit_link" v-html="audition.how_to_submit_link"></div>
+                    <i v-else class="fa-solid fa-minus text-center"></i>
+                  </div>
+                  <div class="text-base leading-7 text-gray-700">
+                    <p class="mb-2 text-base font-semibold leading-7 text-blue-800">Materials to Prepare</p>
+                    <div v-if="audition.materials_to_prepare" v-html="audition.materials_to_prepare"></div>
+                    <i v-else class="fa-solid fa-minus text-center"></i>
+                  </div>
+                </div>
+              </dl>
+              <dl class="my-10 border-t border-gray-900/10 pt-10">
+                <p class="mb-3 text-base font-semibold leading-7 text-blue-800">Cast Breakdown</p>
+                <ul role="list" class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 mt-2 pl-0">
+                  <CharacterCardSlim
+                    v-for="character in audition.characters"
+                    :key="character.id"
+                    :character="character"
+                    :savedRoles="savedRoles"
+                    @show-full-card="showFullCard"
+                    @save-character="addToFavorites"
+                  />
+                </ul>
+              </dl>
+              <dl v-if="audition.show_warnings" class="my-10 border-t border-gray-900/10 pt-10">
                 <div class="text-base leading-7 text-gray-700">
-                  <p class="mb-2 text-base font-semibold leading-7 text-blue-800">How to Submit</p>
-                  <div v-if="audition.how_to_submit" v-html="audition.how_to_submit"></div>
-                  <div v-else-if="audition.how_to_submit_link" v-html="audition.how_to_submit_link"></div>
-                  <i v-else class="fa-solid fa-minus text-center"></i>
+                  <p class="mb-2 text-base font-semibold leading-7 text-blue-800">Show Warning</p>
+                  <div>
+                    {{ audition.show_warnings }}
+                  </div>
                 </div>
+              </dl>
+              <dl v-if="audition.additional_notes" class="my-10 border-t border-gray-900/10 pt-10">
                 <div class="text-base leading-7 text-gray-700">
-                  <p class="mb-2 text-base font-semibold leading-7 text-blue-800">Materials to Prepare</p>
-                  <div v-if="audition.materials_to_prepare" v-html="audition.materials_to_prepare"></div>
-                  <i v-else class="fa-solid fa-minus text-center"></i>
+                  <p class="mb-2 text-base font-semibold leading-7 text-blue-800">Additional Notes</p>
+                  <div>
+                    {{ audition.additional_notes }}
+                  </div>
                 </div>
-              </div>
-            </dl>
-            <dl class="my-10 border-t border-gray-900/10 pt-10">
-              <p class="mb-3 text-base font-semibold leading-7 text-blue-800">Cast Breakdown</p>
-              <ul role="list" class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 mt-2 pl-0">
-                <CharacterCardSlim
-                  v-for="character in audition.characters"
-                  :key="character.id"
-                  :character="character"
-                  :savedRoles="savedRoles"
-                  @show-full-card="showFullCard"
-                  @save-character="addToFavorites"
-                />
-              </ul>
-            </dl>
-            <dl v-if="audition.show_warnings" class="my-10 border-t border-gray-900/10 pt-10">
-              <div class="text-base leading-7 text-gray-700">
-                <p class="mb-2 text-base font-semibold leading-7 text-blue-800">Show Warning</p>
-                <div>
-                  {{ audition.show_warnings }}
-                </div>
-              </div>
-            </dl>
-            <dl v-if="audition.additional_notes" class="my-10 border-t border-gray-900/10 pt-10">
-              <div class="text-base leading-7 text-gray-700">
-                <p class="mb-2 text-base font-semibold leading-7 text-blue-800">Additional Notes</p>
-                <div>
-                  {{ audition.additional_notes }}
-                </div>
-              </div>
-            </dl>
+              </dl>
+            </span>
           </div>
         </div>
       </div>
@@ -245,9 +254,9 @@ export default {
       modalOpen: false,
       character: {},
       cardElement: null,
-      isLoading: true,
       savedRoles: [],
       auditionLink: '',
+      isLoading: false,
     };
   },
   mounted() {
