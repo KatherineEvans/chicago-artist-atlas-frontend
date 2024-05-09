@@ -6,6 +6,7 @@ import TheaterDirectory from "../views/TheaterDirectory.vue";
 
 // Auditions
 import AuditionBoard from "../views/Auditions/AuditionBoard.vue";
+import AuditionView from "../views/Auditions/AuditionView.vue";
 
 // Authentication
 import LogOut from "../views/Authentication/LogOut.vue";
@@ -33,6 +34,9 @@ import TheaterResources from "../views/Resources/TheaterResources.vue";
 import IdentityResources from "../views/Resources/IdentityResources.vue";
 import LifeHackResources from "../views/Resources/LifeHackResources.vue";
 
+// Theaters
+import ProfessionalsBrowse from "@/views/Theaters/ProfessionalsBrowse.vue";
+
 const routes = [
   {
     path: "/",
@@ -49,10 +53,15 @@ const routes = [
     name: "auditions",
     component: AuditionBoard,
   },
+  {
+    path: "/auditions/:id",
+    name: "auditions-show",
+    component: AuditionView,
+  },
   // {
-  //   path: "/contact",
-  //   name: "contact",
-  //   component: ContactView,
+  //   path: "/theaters/theatre-professionals/search",
+  //   name: "search-theatre-professionals",
+  //   component: ProfessionalsBrowse,
   // },
   // {
   //   path: "/classes",
