@@ -174,6 +174,7 @@
                 <div class="text-base leading-7 text-gray-700">
                   <p class="mb-2 text-base font-semibold leading-7 text-blue-800">How to Submit</p>
                   <div v-if="audition.how_to_submit" v-html="audition.how_to_submit"></div>
+                  <div v-else-if="audition.how_to_submit_link" v-html="audition.how_to_submit_link"></div>
                   <i v-else class="fa-solid fa-minus text-center"></i>
                 </div>
                 <div class="text-base leading-7 text-gray-700">
