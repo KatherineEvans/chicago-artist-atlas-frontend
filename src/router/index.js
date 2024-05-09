@@ -34,6 +34,9 @@ import TheaterResources from "../views/Resources/TheaterResources.vue";
 import IdentityResources from "../views/Resources/IdentityResources.vue";
 import LifeHackResources from "../views/Resources/LifeHackResources.vue";
 
+// Theaters
+import ProfessionalsBrowse from "@/views/Theaters/ProfessionalsBrowse.vue";
+
 const routes = [
   {
     path: "/",
@@ -56,9 +59,9 @@ const routes = [
     component: AuditionView,
   },
   // {
-  //   path: "/contact",
-  //   name: "contact",
-  //   component: ContactView,
+  //   path: "/theaters/theatre-professionals/search",
+  //   name: "search-theatre-professionals",
+  //   component: ProfessionalsBrowse,
   // },
   // {
   //   path: "/classes",
