@@ -97,20 +97,20 @@
                           {{ audition.audition_time1 ? ` - ${audition.audition_time1}` : "" }}</span>
                         </li>
                         <li v-if="audition.audition_date2">
-                          Day 2: {{ formatDate(audition.audition_date2) }}
-                          {{ audition.audition_time2 ? ` - ${audition.audition_time2}` : "" }}
+                          Day 2: <span class="font-semibold">{{ formatDate(audition.audition_date2) }}
+                          {{ audition.audition_time2 ? ` - ${audition.audition_time2}` : "" }}</span>
                         </li>
                         <li v-if="audition.audition_date3">
-                          Day 3: {{ formatDate(audition.audition_date3) }}
-                          {{ audition.audition_time3 ? ` - ${audition.audition_time3}` : "" }}
+                          Day 3: <span class="font-semibold">{{ formatDate(audition.audition_date3) }}
+                          {{ audition.audition_time3 ? ` - ${audition.audition_time3}` : "" }}</span>
                         </li>
                         <li v-if="audition.audition_date4">
-                          Day 4: {{ formatDate(audition.audition_date4) }}
-                          {{ audition.audition_time4 ? ` - ${audition.audition_time4}` : "" }}
+                          Day 4: <span class="font-semibold">{{ formatDate(audition.audition_date4) }}
+                          {{ audition.audition_time4 ? ` - ${audition.audition_time4}` : "" }}</span>
                         </li>
                         <li v-if="audition.audition_date5">
-                          Day 5: {{ formatDate(audition.audition_date5) }}
-                          {{ audition.audition_time5 ? ` - ${audition.audition_time5}` : "" }}
+                          Day 5: <span class="font-semibold">{{ formatDate(audition.audition_date5) }}
+                          {{ audition.audition_time5 ? ` - ${audition.audition_time5}` : "" }}</span>
                         </li>
                       </ul>
                       <div v-if="audition.audition_address_id">
@@ -130,24 +130,24 @@
                     <div v-if="anyCallbackDate || audition.callback_address_id">
                       <ul v-if="anyCallbackDate" class="pl-0">
                         <li v-if="audition.callback_date1">
-                          Day 1: {{ formatDate(audition.callback_date1) }}
-                          {{ audition.callback_time1 ? ` - ${audition.callback_time1}` : "" }}
+                          Day 1: <span class="font-semibold">{{ formatDate(audition.callback_date1) }}
+                          {{ audition.callback_time1 ? ` - ${audition.callback_time1}` : "" }}</span>
                         </li>
                         <li v-if="audition.callback_date2">
-                          Day 2: {{ formatDate(audition.callback_date2) }}
-                          {{ audition.callback_time2 ? ` - ${audition.callback_time2}` : "" }}
+                          Day 2: <span class="font-semibold">{{ formatDate(audition.callback_date2) }}
+                          {{ audition.callback_time2 ? ` - ${audition.callback_time2}` : "" }}</span>
                         </li>
                         <li v-if="audition.callback_date3">
-                          Day 3: {{ formatDate(audition.callback_date3) }}
-                          {{ audition.callback_time3 ? ` - ${audition.callback_time3}` : "" }}
+                          Day 3: <span class="font-semibold">{{ formatDate(audition.callback_date3) }}
+                          {{ audition.callback_time3 ? ` - ${audition.callback_time3}` : "" }}</span>
                         </li>
                         <li v-if="audition.callback_date4">
-                          Day 4: {{ formatDate(audition.callback_date4) }}
-                          {{ audition.callback_time4 ? ` - ${audition.callback_time4}` : "" }}
+                          Day 4: <span class="font-semibold">{{ formatDate(audition.callback_date4) }}
+                          {{ audition.callback_time4 ? ` - ${audition.callback_time4}` : "" }}</span>
                         </li>
                         <li v-if="audition.callback_date5">
-                          Day 5: {{ formatDate(audition.callback_date5) }}
-                          {{ audition.callback_time5 ? ` - ${audition.callback_time5}` : "" }}
+                          Day 5: <span class="font-semibold">{{ formatDate(audition.callback_date5) }}
+                          {{ audition.callback_time5 ? ` - ${audition.callback_time5}` : "" }}</span>
                         </li>
                       </ul>
                       <div v-if="audition.callback_address_id">
@@ -308,10 +308,10 @@ export default {
     getAudition() {
         axios.get(`/auditions/${this.$route.params.id}`).then(response => {
           this.audition = response.data;
-          console.log(response.data);
           this.getUserAuditions();
           this.isLoading = false;
           this.auditionLink = `/auditions/${this.audition.id}`;
+          window.scrollTo(0, 0);
         }).catch(error => {
           console.log(error);
         })
