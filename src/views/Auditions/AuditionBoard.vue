@@ -80,7 +80,7 @@
             <div class="-mt-px mr-1 lg:mr-3">
               <div
                 :class="current == 1 ? 'hidden' : ''"
-                @click="current -= 1"
+                @click="previous()"
                 class="inline-flex items-center border-t-2 border-transparent pr-1 pt-4 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700"
               >
                 <ArrowLongLeftIcon class="mr-3 h-5 w-5 text-gray-400" aria-hidden="true" />
@@ -89,21 +89,21 @@
             </div>
             <div class="md:-mt-px md:flex">
               <div
-                @click="current = startingPage"
+                @click="scroll()"
                 class="border-indigo-500 text-indigo-600 inline-flex items-center border-t-2 px-2 lg:px-4 pt-4 text-sm font-medium"
               >
                 {{ current }}
               </div>
               <div
                 v-if="second"
-                @click="current = second"
+                @click="secondLink()"
                 class="inline-flex items-center border-t-2 px-2 lg:px-4 pt-4 text-sm font-medium"
               >
                 {{ second }}
               </div>
               <div
                 v-if="third"
-                @click="current = third"
+                @click="thirdLink()"
                 class="inline-flex items-center border-t-2 px-2 lg:px-4 pt-4 text-sm font-medium"
               >
                 {{ third }}
@@ -112,7 +112,7 @@
             <div class="-mt-px ml-1 lg:ml-3">
               <div
                 href="#"
-                @click="current += 1"
+                @click="next()"
                 :class="current == last ? 'hidden' : ''"
                 class="inline-flex items-center border-t-2 border-transparent pl-1 pt-4 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700"
               >
@@ -158,6 +158,7 @@ export default {
   },
   watch: {},
   mounted: function () {
+    this.scroll();
     this.getAuditions("/auditions");
     this.getUserAuditions();
   },
@@ -200,6 +201,25 @@ export default {
     }
   },
   methods: {
+    scroll(){
+      window.scrollTo(0, 0);
+    },
+    secondLink() {
+      this.current = this.second;
+      this.scroll();
+    },
+    thirdLink() {
+      this.current = this.third;
+      this.scroll();
+    },
+    previous() {
+      this.current -= 1;
+      window.scrollTo(0, 0)
+    },
+    next() {
+      this.current += 1;
+      this.scroll();
+    },
     addToSavedRoles(id) {
       this.savedRoles.push(id);
     },
