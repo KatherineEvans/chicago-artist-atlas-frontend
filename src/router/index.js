@@ -35,7 +35,11 @@ import IdentityResources from "../views/Resources/IdentityResources.vue";
 import LifeHackResources from "../views/Resources/LifeHackResources.vue";
 
 // Theaters
-import ProfessionalsBrowse from "@/views/Theaters/ProfessionalsBrowse.vue";
+import ProfessionalsBrowse from "@/views/Theater/ProfessionalsBrowse.vue";
+import TheaterDashboard from "@/views/Theater/TheaterDashboard.vue";
+import TheaterAccount from "@/views/Theater/TheaterAccount.vue";
+import TheaterProfile from "@/views/Theater/TheaterProfile.vue";
+import TheaterBio from "@/views/Theater/Profile/TheaterBio.vue";
 
 const routes = [
   {
@@ -59,15 +63,41 @@ const routes = [
     component: AuditionView,
   },
   // {
-  //   path: "/theaters/theatre-professionals/search",
-  //   name: "search-theatre-professionals",
-  //   component: ProfessionalsBrowse,
-  // },
-  // {
   //   path: "/classes",
   //   name: "classes",
   //   component: Classes,
   // },
+  {
+    path: "/theater",
+    name: "theater-overview",
+    component: TheaterDashboard,
+    redirect: { name: "theater-account" },
+    children: [
+      {
+        path: "account",
+        name: "theater-account",
+        component: TheaterAccount,
+      },
+      {
+        path: "professionals",
+        name: "search-theatre-professionals",
+        component: ProfessionalsBrowse,
+      },
+      {
+        path: "profile",
+        name: "theater-profile",
+        component: TheaterProfile,
+        redirect: { name: "theater-profile-bio" },
+        children: [
+          {
+            path: "bio",
+            name: "theater-profile-bio",
+            component: TheaterBio,
+          },
+        ],
+      },
+    ],
+  },
   {
     path: "/resources",
     name: "resources",

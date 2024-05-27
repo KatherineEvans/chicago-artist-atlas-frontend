@@ -17,19 +17,14 @@
       >
         <!-- PROFILE PIC -->
         <div class="pt-3 text-center">
-          <div
-            v-if="userHeadshot"
-            class="bg-cover bg-center inline-block w-24 h-24 overflow-hidden rounded-full m-auto mt-4 mb-3"
-            :style="{ 'background-image': 'url(' + userHeadshot + ')' }"
-          ></div>
+          <img v-if="theater && theater.image_url" :src="theater.image_url" :alt="theater.name" class="w-40 m-auto">
           <span v-else class="inline-block w-24 h-24 overflow-hidden rounded-full bg-gray-100 m-auto mt-4 mb-3">
-            <svg class="h-full w-full text-gray-300" fill="currentColor" viewBox="0 0 24 24">
-              <path
-                d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z"
-              />
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-full w-full text-gray-300">
+              <path fill-rule="evenodd" d="M3 2.25a.75.75 0 0 0 0 1.5v16.5h-.75a.75.75 0 0 0 0 1.5H15v-18a.75.75 0 0 0 0-1.5H3ZM6.75 19.5v-2.25a.75.75 0 0 1 .75-.75h3a.75.75 0 0 1 .75.75v2.25a.75.75 0 0 1-.75.75h-3a.75.75 0 0 1-.75-.75ZM6 6.75A.75.75 0 0 1 6.75 6h.75a.75.75 0 0 1 0 1.5h-.75A.75.75 0 0 1 6 6.75ZM6.75 9a.75.75 0 0 0 0 1.5h.75a.75.75 0 0 0 0-1.5h-.75ZM6 12.75a.75.75 0 0 1 .75-.75h.75a.75.75 0 0 1 0 1.5h-.75a.75.75 0 0 1-.75-.75ZM10.5 6a.75.75 0 0 0 0 1.5h.75a.75.75 0 0 0 0-1.5h-.75Zm-.75 3.75A.75.75 0 0 1 10.5 9h.75a.75.75 0 0 1 0 1.5h-.75a.75.75 0 0 1-.75-.75ZM10.5 12a.75.75 0 0 0 0 1.5h.75a.75.75 0 0 0 0-1.5h-.75ZM16.5 6.75v15h5.25a.75.75 0 0 0 0-1.5H21v-12a.75.75 0 0 0 0-1.5h-4.5Zm1.5 4.5a.75.75 0 0 1 .75-.75h.008a.75.75 0 0 1 .75.75v.008a.75.75 0 0 1-.75.75h-.008a.75.75 0 0 1-.75-.75v-.008Zm.75 2.25a.75.75 0 0 0-.75.75v.008c0 .414.336.75.75.75h.008a.75.75 0 0 0 .75-.75v-.008a.75.75 0 0 0-.75-.75h-.008ZM18 17.25a.75.75 0 0 1 .75-.75h.008a.75.75 0 0 1 .75.75v.008a.75.75 0 0 1-.75.75h-.008a.75.75 0 0 1-.75-.75v-.008Z" clip-rule="evenodd" />
             </svg>
+            
           </span>
-          <div class="font-extrabold text-2xl text-center text-white mt-3">Theater Name</div>
+          <div v-if="theater && theater.name" class="font-extrabold text-2xl text-center text-white mt-3">{{theater.name}}</div>
         </div>
         <!-- NAVIGATION -->
         <nav class="px-0">
@@ -93,6 +88,8 @@
   <script>
   import { Disclosure, DisclosureButton, DisclosurePanel } from "@headlessui/vue";
   import { ChevronRightIcon } from "@heroicons/vue/20/solid";
+  import axios from "axios";
+
   export default {
     components: {
       Disclosure,
@@ -102,7 +99,9 @@
     },
     data: function () {
       return {
+        loading: false,
         title: "Theater Dashboard",
+        theater: {},
         showNav: false,
         navOpen: true,
         rotate: false,
@@ -112,7 +111,14 @@
             routeName: "theater-profile",
             href: "/theater/profile",
             current: false,
-            icon: "fa-solid fa-user",
+            icon: "fa-solid fa-building",
+          },
+          {
+            name: "Search Professionals",
+            routeName: "theater-profile",
+            href: "/theater/professionals",
+            current: false,
+            icon: "fa-solid fa-magnifying-glass",
           },
           {
             name: "Auditions",
@@ -132,13 +138,15 @@
       };
     },
     created() {
-      if (this.$route.name.includes("user-profile")) {
-        this.navOpen = true;
-        this.rotate = true;
-      } else {
-        this.navOpen = false;
-        this.rotate = false;
-      }
+      this.loading = true;
+      this.getTheater();
+      // if (this.$route.name.includes("user-profile")) {
+      //   this.navOpen = true;
+      //   this.rotate = true;
+      // } else {
+      //   this.navOpen = false;
+      //   this.rotate = false;
+      // }
     },
     watch: {
       showNav(newVal) {
@@ -151,11 +159,18 @@
       },
     },
     computed: {
-      userHeadshot() {
-        return localStorage.headshotUrl == "null" ? null : localStorage.headshotUrl;
-      },
     },
-    methods: {},
+    methods: {
+      getTheater() {
+        axios
+          .get(`/theaters/${localStorage.theaterId}`)
+          .then((response) => {
+            this.loading = false;
+            this.theater = response.data;
+            console.log(response.data);
+          });
+      }
+    },
   };
   </script>
   <style scoped>
