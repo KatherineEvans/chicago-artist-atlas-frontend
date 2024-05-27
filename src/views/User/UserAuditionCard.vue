@@ -44,6 +44,12 @@
           >
             Move
           </MenuButton>
+          <router-link
+            class="inline-flex items-center gap-x-1.5 rounded-full px-4 py-1 text-base font-medium text-blue-100 bg-blue-950 ml-3"
+            :to="auditionLink"
+          >
+            View
+          </router-link>
         </div>
 
         <transition
@@ -127,10 +133,13 @@ export default {
   props: ["audition"],
   components: { Menu, MenuButton, MenuItem, MenuItems },
   data: function () {
-    return {};
+    return {
+      auditionLink: '',
+    };
   },
-  mounted() {},
-  watch: {},
+  mounted() {
+    this.auditionLink = `/auditions/${this.audition.audition.id}`;
+  },
   computed: {
     formatDate() {
       return (value) => {
