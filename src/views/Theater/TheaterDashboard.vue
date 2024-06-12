@@ -128,11 +128,11 @@
             icon: "fa-solid fa-star",
           },
           {
-            name: "Calendar",
+            name: "Account",
             routeName: "theater-calendar",
-            href: "/theater/calendar",
+            href: "/theater/account",
             current: false,
-            icon: "fa-solid fa-calendar-days",
+            icon: "fa-solid fa-gear",
           },
         ],
       };
@@ -167,7 +167,6 @@
           .then((response) => {
             this.loading = false;
             this.theater = response.data;
-            console.log(response.data);
           });
       }
     },
