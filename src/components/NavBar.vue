@@ -144,7 +144,17 @@
                     class="no-underline hover:no-underline"
                     :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'block px-4 py-2 text-sm']"
                   >
-                    Artist Profile
+                    User Profile
+                  </a>
+                </MenuItem>
+                <MenuItem v-slot="{ active }">
+                  <a
+                    href="/theater/profile"
+                    class="no-underline hover:no-underline"
+                    :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'block px-4 py-2 text-sm']"
+                    v-if="hasTheaterRelationship"
+                  >
+                    Theater Profile
                   </a>
                 </MenuItem>
                 <MenuItem v-slot="{ active }">
@@ -369,6 +379,9 @@ export default {
     passwordResetToken() {
       return this.$route.query.reset_token;
     },
+    hasTheaterRelationship() {
+      return !!localStorage.theaterId;
+    }
   },
   methods: {
     closeModal() {
