@@ -254,7 +254,6 @@ export default {
             this.checked.push(option.id);
           }
         });
-        console.log(this.checked);
       });
     },
     saveTheaterProfile() {
