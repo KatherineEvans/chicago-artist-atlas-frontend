@@ -297,7 +297,6 @@ import { mapState } from "vuex";
 import axios from "axios";
 
 export default {
-  props: ["isLoggedIn"],
   components: {
     Dialog,
     DialogPanel,
@@ -323,6 +322,7 @@ export default {
   },
   data: function () {
     return {
+      isLoggedIn: !!localStorage.authToken,
       classNavOpen: false,
       rotate: false,
       mobileMenuOpen: false,
