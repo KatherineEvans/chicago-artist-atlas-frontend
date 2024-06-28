@@ -216,6 +216,8 @@ const router = createRouter({
 });
 
 router.beforeEach((to, from, next) => {
+  const isLoggedIn = !!localStorage.getItem("authToken");
+  console.log({ isLoggedIn: isLoggedIn, to: to.name, from: from.name, next: next.name });
   if (localStorage.getItem("tokenGeneratedAt") && to.fullPath != "/logout" && to.fullPath != "/signup") {
     var date = new Date(localStorage.getItem("tokenGeneratedAt"));
     var expDate = date.setMinutes(date.getMinutes() + 10079);
@@ -228,7 +230,11 @@ router.beforeEach((to, from, next) => {
       next();
     }
   } else {
-    next();
+    if (!isLoggedIn && to.name != "home") {
+      next({ name: "home", query: { login: true } });
+    } else {
+      next();
+    }
   }
 });
 
