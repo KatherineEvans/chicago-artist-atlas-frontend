@@ -1,38 +1,7 @@
 <template>
-  <NavBar :isLoggedIn="isLoggedIn" />
+  <NavBar />
   <AlertNotification></AlertNotification>
-  <router-view v-if="isLoggedIn" />
-  <div v-else>
-    <!-- <SignUpOptions></SignUpOptions> -->
-    <div class="bg-blue-50 px-10 py-8 mx-auto text-center">
-      <p class="text-2xl md:text-3xl font-bold mb-2">Chicago Artist Atlas</p>
-      <p class="text-lg max-w-3xl mx-auto">
-        We combine vital information in an easily navigated, one-stop-shop with original content from experts in our
-        community to guide you on your journey.
-      </p>
-    </div>
-    <div class="container p-5 m-auto text-left">
-      <p class="mx-auto mb-6 text-lg font-bold text-center underline">
-        Sign Up Now for the Open Beta of Chicago Artist Atlas!
-      </p>
-      <p class="text-lg">
-        We're thrilled to announce the open beta of Chicago Artist Atlas, your ultimate destination for all things related to the Chicago performing arts scene. As we gear up for our full launch in the coming months, we're asking you to be among the first to experience our platform.
-      </p>
-      <p class="text-lg mt-2">
-        During this beta phase, you'll have exclusive access to explore the site and provide us with valuable feedback. Your insights will play a crucial role in shaping the final version of Chicago Artist Atlas.
-      </p>
-      <p class="text-lg mt-2">
-        Please note that while the beta version is free to access, some features will eventually transition to a monthly subscription-based "pro" account. By signing up for the beta, you'll also get the opportunity to become one of our valued customers when we officially launch at a discounted price!
-      </p>
-      <p class="text-lg mt-2">Thank you for joining us on this exciting journey! Let's make Chicago Artist Atlas the ultimate destination for theatremakers in the Windy City.</p>
-      <p class="text-lg font-bold mt-4">Sign up now and be part of the future of Chicago theatre with Chicago Artist Atlas!
-      </p>
-      <div class="w-100 text-left mt-2">
-        <p class="mt-4 text-lg">Cheers,</p>
-        <p class="text-lg italic">Anna and Katherine</p>
-      </div>
-    </div>
-  </div>
+  <router-view />
   <FooterBar />
 </template>
 

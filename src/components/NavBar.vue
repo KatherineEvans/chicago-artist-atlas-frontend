@@ -409,6 +409,11 @@ export default {
       this.modalType = "resetPassword";
       this.modalOpen = true;
     },
+    '$route.query.login'(newValue) {
+      if (newValue) {
+        this.openModal('login')
+      }
+    },
   },
 };
 </script>
